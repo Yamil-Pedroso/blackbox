@@ -1,9 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoWarningOutline } from "react-icons/io5";
+import { BsInfoCircle } from "react-icons/bs";
 import { useState, useEffect, useRef } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../lib/hooks/useTheme";
+import assets from "../assets";
 import gsap from "gsap";
 
 interface TopNavbarProps {
@@ -85,14 +86,20 @@ const TopNavbar = ({
   return (
     <header
       ref={headerRef}
-      className="w-full h-8 border-b border-neutral-800 flex items-center justify-between px-4 bg-secondary-bg relative"
+      className="w-full h-8 border-b border-neutral-800 flex items-center justify-between large:px-4 bg-secondary-bg relative"
     >
       {/* ================= LEFT SIDE ================= */}
 
       {layout !== "large" && (
         <div className="flex items-center gap-4 animate-section">
-          <div className="w-8 h-8 bg-neutral-700"></div>
-          <IoWarningOutline className="text-secondary text-[18px]" />
+          <div className="w-8 h-8 bg-neutral-700">
+            <img
+              src={assets.avatar}
+              alt="Logo"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <BsInfoCircle className="text-secondary text-[18px]" />
         </div>
       )}
 
@@ -165,7 +172,7 @@ const TopNavbar = ({
 
       {/* ================= RIGHT SIDE (Mobile) ================= */}
       {layout === "mobile" && (
-        <div className="flex items-center gap-4 animate-section">
+        <div className="flex items-center gap-4 animate-section px-4">
           <button
             onClick={toggleTheme}
             className="text-secondary hover:text-primary transition-colors"
@@ -179,7 +186,7 @@ const TopNavbar = ({
 
       {/* ================= RIGHT SIDE (Medium) ================= */}
       {layout === "medium" && (
-        <div className="flex items-center gap-6 animate-section">
+        <div className="flex items-center gap-6 animate-section px-4">
           <span className="font-ibm-plex-mono text-secondary text-[12px]">
             Blackbox
           </span>
