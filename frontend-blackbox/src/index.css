@@ -12,12 +12,29 @@ body {
 }
 
 @theme {
-  --font-geist: "Geist Placeholder", sans-serif;
+  /* ================= FONTS ================= */
+  --font-geist: "Geist", sans-serif;
   --font-ibm-plex-mono: "IBM Plex Mono", monospace;
 
+  /* ================= DARK MODE (default) ================= */
   --color-main-bg: #1f1f1f;
   --color-secondary-bg: #181818;
-
   --color-primary: #ffffff;
   --color-secondary: #b1b1b1;
+  --color-green: #5bee6c;
+
+  /* ================= BREAKPOINTS ================= */
+  --breakpoint-sm: 640px;
+  --breakpoint-medium: 810px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-large: 1200px;
+}
+
+/* ================= LIGHT MODE ================= */
+.light {
+  --color-main-bg: #f7f7f7;
+  --color-secondary-bg: #ffffff;
+  --color-primary: #111111;
+  --color-secondary: #555555;
+  --color-green: #269b32;
 }

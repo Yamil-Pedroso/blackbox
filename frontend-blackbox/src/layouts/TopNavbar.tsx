@@ -1,108 +1,199 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoWarningOutline } from "react-icons/io5";
+import { useState, useEffect, useRef } from "react";
+import { FiSun, FiMoon } from "react-icons/fi";
+import { useTheme } from "../lib/hooks/useTheme";
+import gsap from "gsap";
 
 interface TopNavbarProps {
   itemsMenu?: { name: string; to: string }[];
   itemsMenu2?: string[];
 }
 
-const topNavbarDefaultItemsMenu: TopNavbarProps["itemsMenu"] = [
-  {
-    name: "yami.info",
-    to: "/",
-  },
-  {
-    name: "content1",
-    to: "/content1",
-  },
-  {
-    name: "content2",
-    to: "/content2",
-  },
+const topNavbarDefaultItemsMenu = [
+  { name: "yami.info", to: "/" },
+  { name: "content1", to: "/content1" },
+  { name: "content2", to: "/content2" },
 ];
 
-const topNavbarDefaultItemsMenu2: TopNavbarProps["itemsMenu2"] = [
+const topNavbarDefaultItemsMenu2 = [
   "Open to new creation",
   "Switzerland, Zurich",
   "My time:",
 ];
 
+type LayoutMode = "mobile" | "medium" | "large";
+
 const TopNavbar = ({
   itemsMenu = topNavbarDefaultItemsMenu,
   itemsMenu2 = topNavbarDefaultItemsMenu2,
 }: TopNavbarProps) => {
-  // Get current pathname from TanStack Router
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
+
+  const { theme, toggleTheme } = useTheme();
+
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState<LayoutMode>("mobile");
 
   const currentTime = new Date().toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
 
+  // ================= BREAKPOINT DETECTION =================
+  useEffect(() => {
+    const updateLayout = () => {
+      if (window.innerWidth >= 1200) {
+        setLayout("large");
+      } else if (window.innerWidth >= 810) {
+        setLayout("medium");
+      } else {
+        setLayout("mobile");
+      }
+    };
+
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+
+    return () => window.removeEventListener("resize", updateLayout);
+  }, []);
+
+  // ================= GSAP ANIMATION =================
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".animate-section",
+        { opacity: 0, y: -10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          stagger: 0.05,
+        },
+      );
+    }, headerRef);
+
+    return () => ctx.revert();
+  }, [layout]);
+
   return (
-    <header className="h-[27.6px] border-b border-neutral-800 flex items-center px-6 bg-secondary-bg">
-      {/* Logo */}
-      <div className="w-75">
-        <h1 className="font-ibm-plex-mono text-secondary tracking-wide text-[12px]">
-          Blackbox
-        </h1>
-      </div>
+    <header
+      ref={headerRef}
+      className="w-full h-8 border-b border-neutral-800 flex items-center justify-between px-4 bg-secondary-bg relative"
+    >
+      {/* ================= LEFT SIDE ================= */}
 
-      <div className="w-full flex justify-between ml-auto space-x-6">
-        {/* Left Menu */}
-        <ul className="flex space-x-6 ml-10">
-          {itemsMenu.map((item) => {
-            const isActive = pathname === item.to;
+      {layout !== "large" && (
+        <div className="flex items-center gap-4 animate-section">
+          <div className="w-8 h-8 bg-neutral-700"></div>
+          <IoWarningOutline className="text-secondary text-[18px]" />
+        </div>
+      )}
 
-            return (
-              <Link to={item.to} key={item.name}>
-                <li
-                  className={`relative font-ibm-plex-mono text-[12px] cursor-pointer transition-colors duration-300 hover:text-primary ${
-                    isActive ? "text-primary" : "text-secondary"
-                  }`}
-                >
-                  {item.name}
+      {layout === "large" && (
+        <div className="flex w-full items-center animate-section">
+          {/* LOGO fixed width */}
+          <div className="w-75">
+            <h1 className="font-ibm-plex-mono text-secondary text-[12px]">
+              Blackbox
+            </h1>
+          </div>
 
-                  {/* Underline */}
-                  <div
-                    className={`absolute left-0 -bottom-1 h-0.5 rounded-full transition-all duration-300 ${
-                      isActive ? "w-full bg-primary" : "w-0 bg-transparent"
+          {/* MENU */}
+          <ul className="flex gap-10 flex-1">
+            {itemsMenu.map((item) => {
+              const isActive = pathname === item.to;
+
+              return (
+                <Link key={item.name} to={item.to}>
+                  <li
+                    className={`relative font-ibm-plex-mono text-[12px] cursor-pointer transition-colors duration-300 ${
+                      isActive ? "text-primary" : "text-secondary"
                     }`}
-                  />
-                </li>
-              </Link>
-            );
-          })}
-        </ul>
+                  >
+                    {item.name}
+                    <div
+                      className={`absolute left-0 -bottom-1 h-px transition-all duration-300 ${
+                        isActive ? "w-full bg-primary" : "w-0"
+                      }`}
+                    />
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
 
-        {/* Right Info Section */}
-        <ul className="flex space-x-4 ml-10 items-center">
-          {itemsMenu2.map((item) => (
-            <li
-              key={item}
-              className="font-ibm-plex-mono text-secondary text-[12px]"
+          {/* RIGHT INFO */}
+          <div className="flex items-center gap-6">
+            {itemsMenu2.map((item) => (
+              <span
+                key={item}
+                className="font-ibm-plex-mono text-secondary text-[12px]"
+              >
+                {item === "Open to new creation" ? (
+                  <span className="relative inline-flex items-center gap-2 bg-green/10 px-3 py-1 rounded-md">
+                    <span className="relative flex justify-center items-center h-2 w-2">
+                      <span className="absolute h-full w-full rounded-full bg-green opacity-40 animate-ping"></span>
+                      <span className="relative h-1.5 w-1.5 rounded-full bg-green"></span>
+                    </span>
+                    <span className="text-green">{item}</span>
+                  </span>
+                ) : item === "My time:" ? (
+                  <span>My time: {currentTime}</span>
+                ) : (
+                  item
+                )}
+              </span>
+            ))}
+
+            {/* THEME TOGGLE */}
+            <button
+              onClick={toggleTheme}
+              className="text-secondary hover:text-primary transition-colors duration-300"
             >
-              {item === topNavbarDefaultItemsMenu2[0] ? (
-                <span className="relative inline-flex items-center gap-2 bg-[#5bee6c]/10 px-3 py-1 rounded-md">
-                  <span className="relative flex h-2 w-2 justify-center items-center">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-[#5bee6c] opacity-40 animate-ping"></span>
+              {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
+            </button>
+          </div>
+        </div>
+      )}
 
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#5bee6c]"></span>
-                  </span>
-                  <span className="text-[#5bee6c] font-ibm-plex-mono text-[12px]">
-                    {item}
-                  </span>
-                </span>
-              ) : item === topNavbarDefaultItemsMenu2[2] ? (
-                <span>My time: {currentTime}</span>
-              ) : (
-                item
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* ================= RIGHT SIDE (Mobile) ================= */}
+      {layout === "mobile" && (
+        <div className="flex items-center gap-4 animate-section">
+          <button
+            onClick={toggleTheme}
+            className="text-secondary hover:text-primary transition-colors"
+          >
+            {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
+          </button>
+
+          <GiHamburgerMenu className="text-secondary text-[18px]" />
+        </div>
+      )}
+
+      {/* ================= RIGHT SIDE (Medium) ================= */}
+      {layout === "medium" && (
+        <div className="flex items-center gap-6 animate-section">
+          <span className="font-ibm-plex-mono text-secondary text-[12px]">
+            Blackbox
+          </span>
+
+          <button
+            onClick={toggleTheme}
+            className="text-secondary hover:text-primary transition-colors"
+          >
+            {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
+          </button>
+
+          <GiHamburgerMenu className="text-secondary text-[18px]" />
+        </div>
+      )}
     </header>
   );
 };

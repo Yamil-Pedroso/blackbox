@@ -120,7 +120,6 @@ const ProjectsGallery = () => {
               >
                 <project.image className="w-full h-full" />
               </div>
-              div
             </div>
           </div>
         ))}
