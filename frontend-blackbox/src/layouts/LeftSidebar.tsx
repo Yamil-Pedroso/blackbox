@@ -1,6 +1,7 @@
-import assets from "../assets";
-
 import { FaMapMarkerAlt, FaLanguage, FaPhone } from "react-icons/fa";
+import assets from "../assets";
+import Button from "../components/common/Button";
+
 interface LeftSidebarProps {
   items?: {
     title: string;
@@ -25,7 +26,7 @@ const leftSidebarDefaultItems = [
 
 const LeftSidebar = ({ items = leftSidebarDefaultItems }: LeftSidebarProps) => {
   return (
-    <aside className="border-r border-neutral-800 bg-secondary-bg p-6">
+    <aside className="border-r border-neutral-800 bg-secondary-bg p-6 flex-col h-screen w-80 hidden large:flex">
       <div className="flex items-center space-x-4 mb-6">
         <div className="w-10 h-10 bg-neutral-700 flex items-center justify-center">
           <img
@@ -65,6 +66,15 @@ const LeftSidebar = ({ items = leftSidebarDefaultItems }: LeftSidebarProps) => {
           })}
         </ul>
       </nav>
+
+      <div className="space-y-4 border-t border-neutral-800 pt-8 mt-auto mb-10">
+        <Button className="bg-white text-tertiary " onClick={() => {}}>
+          Schedule a call
+        </Button>
+        <Button className="border border-white text-white" onClick={() => {}}>
+          Development journey
+        </Button>
+      </div>
     </aside>
   );
 };

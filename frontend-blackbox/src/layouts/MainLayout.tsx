@@ -26,7 +26,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     }
   }, [pathname]);
   return (
-    <div className="h-screen grid">
+    <div className="h-screen grid grid-rows-[auto_1fr]">
       <TopNavbar />
 
       <div
@@ -34,7 +34,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       >
         <LeftSidebar />
 
-        <main ref={mainRef} className="overflow-y-auto bg-main-bg">
+        <main
+          ref={mainRef}
+          className="overflow-y-auto w-screen bg-main-bg large:w-full"
+        >
           <div className="grid grid-cols-[40px_1fr] min-h-full">
             <div className="text-right pr-3 border-r border-neutral-800 font-ibm-plex-mono text-[11px] text-secondary select-none">
               {Array.from({ length: 357 }, (_, i) => (
@@ -44,7 +47,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               ))}
             </div>
 
-            <div className="">{children}</div>
+            {children}
           </div>
         </main>
 

@@ -17,7 +17,7 @@ const RightSidebar = ({
   items = leftSidebarDefaultItems,
 }: LeftSidebarProps) => {
   return (
-    <aside className="border-l border-neutral-800 bg-secondary-bg p-6">
+    <aside className="border-l border-neutral-800 bg-secondary-bg p-6 hidden large:flex">
       <div>
         <span className="text-secondary">Index</span>
         <div className="border-t border-neutral-800 mt-2" />

@@ -21,6 +21,7 @@ body {
   --color-secondary-bg: #181818;
   --color-primary: #ffffff;
   --color-secondary: #b1b1b1;
+  --color-tertiary: #181818;
   --color-green: #5bee6c;
 
   /* ================= BREAKPOINTS ================= */
@@ -36,5 +37,6 @@ body {
   --color-secondary-bg: #ffffff;
   --color-primary: #111111;
   --color-secondary: #555555;
+  --color-tertiary: #f0f0f0;
   --color-green: #269b32;
 }

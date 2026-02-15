@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import HeaderCommentar from "./common/HeaderCommentar";
 import gsap from "gsap";
 
 const MainContent = () => {
@@ -38,6 +39,7 @@ const MainContent = () => {
   return (
     <div className="flex bg-main-bg min-h-screen">
       <div className="p-8 space-y-6 w-full">
+        <HeaderCommentar text="Hero section" />
         <h1
           ref={titleRef}
           className="font-geist font-bold text-[5.75rem] text-primary leading-[1.1] overflow-hidden"
@@ -48,7 +50,6 @@ const MainContent = () => {
           <span className="word inline-block mr-4 text-secondary">
             Blackbox
           </span>
-          <span className="word inline-block">Frontend!</span>
         </h1>
 
         <p className="font-ibm-plex-mono text-secondary max-w-3xl">
