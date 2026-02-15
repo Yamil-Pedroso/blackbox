@@ -47,6 +47,7 @@ const TopNavbar = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState<LayoutMode>("mobile");
   const [infoOpen, setInfoOpen] = useState(false);
+  const [adminInfoOpen, setAdminInfoOpen] = useState(false);
 
   const currentTime = new Date().toLocaleTimeString([], {
     hour: "2-digit",
@@ -203,7 +204,12 @@ const TopNavbar = ({
             {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
           </button>
 
-          <GiHamburgerMenu className="text-secondary text-[18px]" />
+          <button
+            onClick={() => setAdminInfoOpen(!adminInfoOpen)}
+            className="text-secondary hover:text-primary transition-colors"
+          >
+            <GiHamburgerMenu className="text-secondary text-[18px]" />
+          </button>
         </div>
       )}
 
@@ -221,7 +227,12 @@ const TopNavbar = ({
             {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
           </button>
 
-          <GiHamburgerMenu className="text-secondary text-[18px]" />
+          <button
+            onClick={() => setAdminInfoOpen(!adminInfoOpen)}
+            className="text-secondary hover:text-primary transition-colors"
+          >
+            <GiHamburgerMenu className="text-secondary text-[18px]" />
+          </button>
         </div>
       )}
 
@@ -229,7 +240,7 @@ const TopNavbar = ({
       {infoOpen && layout !== "large" && (
         <div
           ref={dropdownRef}
-          className="absolute top-full left-0 w-full bg-secondary-bg border-b border-neutral-800 p-6 z-50"
+          className="absolute top-full left-0 w-full bg-secondary-bg border border-blue-600 p-6 z-50"
         >
           <div className="flex items-center space-x-4 mb-6">
             <div className="w-10 h-10 bg-neutral-700">
@@ -262,6 +273,24 @@ const TopNavbar = ({
                 </li>
               );
             })}
+          </ul>
+        </div>
+      )}
+
+      {/* ================= ADMIN INFO DROPDOWN ================= */}
+      {adminInfoOpen && (layout === "medium" || layout === "mobile") && (
+        <div
+          ref={dropdownRef}
+          className="absolute top-full right-0 w-48 bg-secondary-bg border border-blue-700 p-4 z-50"
+        >
+          <ul className="space-y-3">
+            {itemsMenu.map((item) => (
+              <Link key={item.name} to={item.to}>
+                <li className="text-secondary font-ibm-plex-mono text-sm hover:text-primary transition-colors">
+                  {item.name}
+                </li>
+              </Link>
+            ))}
           </ul>
         </div>
       )}
