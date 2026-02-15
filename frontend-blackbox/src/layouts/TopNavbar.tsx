@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsInfoCircle } from "react-icons/bs";
+import { FaMapMarkerAlt, FaLanguage, FaPhone } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../lib/hooks/useTheme";
@@ -26,6 +27,12 @@ const topNavbarDefaultItemsMenu2 = [
 
 type LayoutMode = "mobile" | "medium" | "large";
 
+const infoItems = [
+  { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
+  { title: "English, German", icon: FaLanguage },
+  { title: "+41 79 532 65 19", icon: FaPhone },
+];
+
 const TopNavbar = ({
   itemsMenu = topNavbarDefaultItemsMenu,
   itemsMenu2 = topNavbarDefaultItemsMenu2,
@@ -37,7 +44,9 @@ const TopNavbar = ({
   const { theme, toggleTheme } = useTheme();
 
   const headerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState<LayoutMode>("mobile");
+  const [infoOpen, setInfoOpen] = useState(false);
 
   const currentTime = new Date().toLocaleTimeString([], {
     hour: "2-digit",
@@ -83,6 +92,18 @@ const TopNavbar = ({
     return () => ctx.revert();
   }, [layout]);
 
+  useEffect(() => {
+    if (!dropdownRef.current) return;
+
+    if (infoOpen) {
+      gsap.fromTo(
+        dropdownRef.current,
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+      );
+    }
+  }, [infoOpen]);
+
   return (
     <header
       ref={headerRef}
@@ -99,7 +120,9 @@ const TopNavbar = ({
               className="w-full h-full object-cover"
             />
           </div>
-          <BsInfoCircle className="text-secondary text-[18px]" />
+          <button onClick={() => setInfoOpen(!infoOpen)}>
+            <BsInfoCircle className="text-secondary text-[18px]" />
+          </button>
         </div>
       )}
 
@@ -126,7 +149,7 @@ const TopNavbar = ({
                   >
                     {item.name}
                     <div
-                      className={`absolute left-0 -bottom-1 h-px transition-all duration-300 ${
+                      className={`absolute left-0 -bottom-1 h-px transition-all duration-700 ${
                         isActive ? "w-full bg-primary" : "w-0"
                       }`}
                     />
@@ -199,6 +222,47 @@ const TopNavbar = ({
           </button>
 
           <GiHamburgerMenu className="text-secondary text-[18px]" />
+        </div>
+      )}
+
+      {/* ================= INFO DROPDOWN ================= */}
+      {infoOpen && layout !== "large" && (
+        <div
+          ref={dropdownRef}
+          className="absolute top-full left-0 w-full bg-secondary-bg border-b border-neutral-800 p-6 z-50"
+        >
+          <div className="flex items-center space-x-4 mb-6">
+            <div className="w-10 h-10 bg-neutral-700">
+              <img
+                src={assets.avatar}
+                alt="avatar"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="font-ibm-plex-mono text-secondary text-[18px]">
+                Yami Carfo
+              </h2>
+              <p className="font-ibm-plex-mono text-secondary text-[14px]">
+                Software dev
+              </p>
+            </div>
+          </div>
+
+          <ul className="space-y-5">
+            {infoItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li
+                  key={item.title}
+                  className="flex items-center gap-3 text-secondary font-ibm-plex-mono text-sm"
+                >
+                  <Icon />
+                  {item.title}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </header>
