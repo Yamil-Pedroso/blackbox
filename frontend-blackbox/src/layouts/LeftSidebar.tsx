@@ -19,7 +19,7 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
   return (
     <aside className="border-r border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
       <div className="flex items-center gap-4">
-        <div className="w-12 h-12 bg-neutral-700 flex items-center justify-center overflow-hidden">
+        <div className="w-12.5 h-12.5 bg-neutral-700 flex items-center justify-center overflow-hidden">
           <img
             src={assets.avatar}
             alt="Avatar"
@@ -31,7 +31,7 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
           <h2 className="font-ibm-plex-mono text-secondary text-[18px]">
             Yamil Pedroso
           </h2>
-          <p className="font-ibm-plex-mono text-secondary text-[14px]">
+          <p className="font-ibm-plex-mono text-secondary text-[14px] whitespace-nowrap">
             Creative Technologist
           </p>
         </div>
