@@ -11,7 +11,7 @@ interface LeftSidebarProps {
 
 const defaultInfoItems = [
   { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
-  { title: "English, German", icon: FaLanguage },
+  { title: "English, German, Spanish, Italian, French", icon: FaLanguage },
   { title: "+41 79 532 65 19", icon: FaPhone },
 ];
 
@@ -53,8 +53,10 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
                   key={item.title}
                   className="font-ibm-plex-mono text-secondary text-sm flex items-center gap-3"
                 >
-                  <Icon className="text-[0.9rem]" />
-                  <span>{item.title}</span>
+                  <div className="">
+                    <Icon className="text-[0.9rem]" />
+                  </div>
+                  <span className="">{item.title}</span>
                 </li>
               );
             })}
