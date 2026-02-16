@@ -15,10 +15,10 @@ interface TopNavbarProps {
 
 const topNavbarDefaultItemsMenu = [
   { name: "Home", to: "/" },
-  { name: "Experiments", to: "/experiments" },
   { name: "Tools", to: "/tools" },
   { name: "AI", to: "/ai" },
   { name: "Systems", to: "/systems" },
+  { name: "Experiments", to: "/experiments" },
   { name: "Mini-Games", to: "/mini-games" },
 ];
 

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
 const moduleInfoMap: Record<string, string[]> = {
@@ -14,9 +15,55 @@ const RightSidebar = () => {
     select: (state) => state.location.pathname,
   });
 
+  const textRef = useRef<HTMLParagraphElement>(null);
+
   const baseRoute = pathname === "/" ? "/" : "/" + pathname.split("/")[1];
 
   const items = moduleInfoMap[baseRoute] || [];
+
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    const finalText = "Blackbox is currently in active development.";
+
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    let currentIndex = 0;
+    let currentText = "";
+
+    textRef.current.innerText = "";
+
+    const typeNext = () => {
+      if (!textRef.current) return;
+      if (currentIndex >= finalText.length) return;
+
+      let scrambleCount = 0;
+      const scrambleMax = 6;
+
+      const scrambleInterval = setInterval(() => {
+        if (!textRef.current) return;
+
+        if (scrambleCount < scrambleMax) {
+          const randomChar = chars[Math.floor(Math.random() * chars.length)];
+
+          textRef.current.innerText = currentText + randomChar;
+
+          scrambleCount++;
+        } else {
+          clearInterval(scrambleInterval);
+
+          currentText += finalText[currentIndex];
+          textRef.current.innerText = currentText;
+
+          currentIndex++;
+          setTimeout(typeNext, 40);
+        }
+      }, 15);
+    };
+
+    typeNext();
+  }, [pathname]);
 
   return (
     <aside className="border-l border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
@@ -36,10 +83,11 @@ const RightSidebar = () => {
         </ul>
       </div>
 
-      <div className="mt-auto pt-10 border-t border-neutral-800">
-        <p className="font-ibm-plex-mono text-secondary text-xs opacity-70">
-          Blackbox is currently in active development.
-        </p>
+      <div className="mt-auto pt-6 border-t border-neutral-800 mb-3.5 w-35">
+        <p
+          ref={textRef}
+          className="font-ibm-plex-mono text-secondary text-xs opacity-70 "
+        />
       </div>
     </aside>
   );

@@ -18,7 +18,6 @@ const defaultInfoItems = [
 const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
   return (
     <aside className="border-r border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
-      {/* ================= PROFILE ================= */}
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 bg-neutral-700 flex items-center justify-center overflow-hidden">
           <img
@@ -38,16 +37,13 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
         </div>
       </div>
 
-      {/* ================= MAIN CONTENT ================= */}
       <div className="mt-12 flex flex-col gap-12">
-        {/* Identity Statement */}
         <p className="font-ibm-plex-mono text-secondary text-[14px] leading-relaxed">
           Focused on interactive systems, full-stack architecture and
           intelligent interfaces. Building structured environments where code,
           motion and logic converge.
         </p>
 
-        {/* Contact Info */}
         <nav>
           <ul className="space-y-4">
             {items.map((item) => {
@@ -65,7 +61,6 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
           </ul>
         </nav>
 
-        {/* Blackbox Meta */}
         <div className="border-t border-neutral-800 pt-6">
           <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest mb-4">
             Blackbox Status
@@ -90,8 +85,7 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
         </div>
       </div>
 
-      {/* ================= CTA ================= */}
-      <div className="mt-auto pt-10 border-t border-neutral-800 flex flex-col gap-4">
+      <div className="mt-auto pt-6 border-t border-neutral-800 flex flex-col gap-4 mb-3.5">
         <Button className="bg-white text-tertiary w-full" onClick={() => {}}>
           Schedule a call
         </Button>
