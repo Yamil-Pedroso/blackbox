@@ -29,7 +29,7 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
 
         <div>
           <h2 className="font-ibm-plex-mono text-secondary text-[18px]">
-            Yami Carfo
+            Yamil Pedroso
           </h2>
           <p className="font-ibm-plex-mono text-secondary text-[14px]">
             Creative Technologist

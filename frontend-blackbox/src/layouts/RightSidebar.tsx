@@ -16,6 +16,7 @@ const RightSidebar = () => {
   });
 
   const textRef = useRef<HTMLParagraphElement>(null);
+  const hasAnimated = useRef(false);
 
   const baseRoute = pathname === "/" ? "/" : "/" + pathname.split("/")[1];
 
@@ -25,6 +26,13 @@ const RightSidebar = () => {
     if (!textRef.current) return;
 
     const finalText = "Blackbox is currently in active development.";
+
+    if (hasAnimated.current) {
+      textRef.current.innerText = finalText;
+      return;
+    }
+
+    hasAnimated.current = true;
 
     const chars =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -57,13 +65,13 @@ const RightSidebar = () => {
           textRef.current.innerText = currentText;
 
           currentIndex++;
-          setTimeout(typeNext, 40);
+          setTimeout(typeNext, 2);
         }
       }, 15);
     };
 
     typeNext();
-  }, [pathname]);
+  }, []);
 
   return (
     <aside className="border-l border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
@@ -84,7 +92,10 @@ const RightSidebar = () => {
       </div>
 
       <div className="mt-auto pt-6 border-t border-neutral-800 mb-3.5 w-35">
-        <p className="font-ibm-plex-mono text-secondary text-xs opacity-70 " />
+        <p
+          ref={textRef}
+          className="font-ibm-plex-mono text-secondary text-xs opacity-70"
+        />
       </div>
     </aside>
   );
