@@ -1,81 +1,65 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { BsGridFill, BsGrid3X3GapFill } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
-import { BsImage } from "react-icons/bs";
-import gsap from "gsap";
-import Flip from "gsap/Flip";
-
-gsap.registerPlugin(Flip);
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Project {
   id: number;
   title: string;
-  image: React.ComponentType<{ className?: string }>;
+  image: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
     title: "Lorem Ipsum Generator",
-    image: BsImage,
+    image:
+      "https://images.unsplash.com/photo-1471981172431-b1c4155be4b1?q=80&w=2370&auto=format&fit=crop",
   },
   {
     id: 2,
-    title: "Lorem Ipsum Generator",
-    image: BsImage,
+    title: "Creative Dashboard",
+    image:
+      "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?q=80&w=1287&auto=format&fit=crop",
   },
   {
     id: 3,
-    title: "Lorem Ipsum Generator",
-    image: BsImage,
+    title: "UI System Design",
+    image:
+      "https://images.unsplash.com/photo-1471981172431-b1c4155be4b1?q=80&w=2370&auto=format&fit=crop",
   },
   {
     id: 4,
-    title: "Lorem Ipsum Generator",
-    image: BsImage,
+    title: "Portfolio Builder",
+    image:
+      "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?q=80&w=1287&auto=format&fit=crop",
   },
   {
     id: 5,
-    title: "Lorem Ipsum Generator",
-    image: BsImage,
+    title: "App Framework",
+    image:
+      "https://images.unsplash.com/photo-1471981172431-b1c4155be4b1?q=80&w=2370&auto=format&fit=crop",
   },
   {
     id: 6,
-    title: "Lorem Ipsum Generator",
-    image: BsImage,
+    title: "Component Library",
+    image:
+      "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?q=80&w=1287&auto=format&fit=crop",
   },
 ];
 
 const ProjectsGallery = () => {
   const [compact, setCompact] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const toggleLayout = (nextValue: boolean) => {
-    if (!containerRef.current) return;
-
-    const state = Flip.getState(".project-card");
-
-    setCompact(nextValue);
-
-    requestAnimationFrame(() => {
-      Flip.from(state, {
-        duration: 0.5,
-        ease: "power2.out",
-        stagger: 0.03,
-        absolute: false,
-      });
-    });
-  };
 
   return (
     <div className="w-full space-y-6">
       {/* Toggle Buttons */}
       <div className="flex justify-end gap-3">
         <button
-          onClick={() => toggleLayout(false)}
+          onClick={() => setCompact(false)}
           className={`p-2 border border-neutral-700 transition-all duration-500 ${
             !compact
-              ? "bg-primary text-black"
+              ? "bg-primary text-tertiary"
               : "text-secondary hover:border-primary"
           }`}
         >
@@ -83,10 +67,10 @@ const ProjectsGallery = () => {
         </button>
 
         <button
-          onClick={() => toggleLayout(true)}
-          className={`p-2 border border-neutral-700 transition-all duration-300 ${
+          onClick={() => setCompact(true)}
+          className={`p-2 border border-neutral-700 transition-all duration-500 ${
             compact
-              ? "bg-primary text-black"
+              ? "bg-primary text-tertiary"
               : "text-secondary hover:border-primary"
           }`}
         >
@@ -94,36 +78,58 @@ const ProjectsGallery = () => {
         </button>
       </div>
 
-      <div
-        ref={containerRef}
+      <motion.div
+        layout
+        transition={{
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className={`grid gap-6 ${compact ? "grid-cols-3" : "grid-cols-2"}`}
       >
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="project-card h-120 bg-secondary-bg border border-neutral-800 hover:border-primary transition-all duration-300 group overflow-hidden"
-          >
-            <div className="flex justify-between items-center px-4 py-3 border-b border-neutral-800">
-              <span className="font-ibm-plex-mono text-secondary text-xs">
-                {project.title}
-              </span>
-              {!compact && (
-                <FaArrowRight className="text-secondary group-hover:text-primary transition-colors" />
-              )}
-            </div>
+        <AnimatePresence>
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 0.7,
+                ease: "easeInOut",
+              }}
+              whileHover={{ scale: 1.02 }}
+              className="h-105 bg-secondary-bg border border-neutral-800 hover:border-primary transition-colors duration-300 group overflow-hidden"
+            >
+              <div className="flex justify-between items-center px-4 py-3 border-b border-neutral-800">
+                <span className="font-ibm-plex-mono text-secondary text-xs">
+                  {project.title}
+                </span>
 
-            <div className="overflow-hidden mt-20">
-              <div
-                className={`w-full object-cover transition-transform duration-700 group-hover:scale-105 ${
-                  compact ? "h-40" : "h-65"
-                }`}
-              >
-                <project.image className="w-full h-full" />
+                {!compact && (
+                  <motion.div
+                    initial={{ x: -10, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <FaArrowRight className="text-secondary group-hover:text-primary transition-colors" />
+                  </motion.div>
+                )}
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+
+              <motion.div layout className="overflow-hidden h-full">
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6 }}
+                />
+              </motion.div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 };
