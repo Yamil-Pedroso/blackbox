@@ -9,18 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as Content2RouteImport } from './routes/content2'
-import { Route as Content1RouteImport } from './routes/content1'
+import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as SystemsRouteImport } from './routes/systems'
+import { Route as MiniGamesRouteImport } from './routes/mini-games'
+import { Route as ExperimentsRouteImport } from './routes/experiments'
+import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
 
-const Content2Route = Content2RouteImport.update({
-  id: '/content2',
-  path: '/content2',
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Content1Route = Content1RouteImport.update({
-  id: '/content1',
-  path: '/content1',
+const SystemsRoute = SystemsRouteImport.update({
+  id: '/systems',
+  path: '/systems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MiniGamesRoute = MiniGamesRouteImport.update({
+  id: '/mini-games',
+  path: '/mini-games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsRoute = ExperimentsRouteImport.update({
+  id: '/experiments',
+  path: '/experiments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiRoute = AiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,48 +49,94 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/content1': typeof Content1Route
-  '/content2': typeof Content2Route
+  '/ai': typeof AiRoute
+  '/experiments': typeof ExperimentsRoute
+  '/mini-games': typeof MiniGamesRoute
+  '/systems': typeof SystemsRoute
+  '/tools': typeof ToolsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/content1': typeof Content1Route
-  '/content2': typeof Content2Route
+  '/ai': typeof AiRoute
+  '/experiments': typeof ExperimentsRoute
+  '/mini-games': typeof MiniGamesRoute
+  '/systems': typeof SystemsRoute
+  '/tools': typeof ToolsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/content1': typeof Content1Route
-  '/content2': typeof Content2Route
+  '/ai': typeof AiRoute
+  '/experiments': typeof ExperimentsRoute
+  '/mini-games': typeof MiniGamesRoute
+  '/systems': typeof SystemsRoute
+  '/tools': typeof ToolsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/content1' | '/content2'
+  fullPaths:
+    | '/'
+    | '/ai'
+    | '/experiments'
+    | '/mini-games'
+    | '/systems'
+    | '/tools'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/content1' | '/content2'
-  id: '__root__' | '/' | '/content1' | '/content2'
+  to: '/' | '/ai' | '/experiments' | '/mini-games' | '/systems' | '/tools'
+  id:
+    | '__root__'
+    | '/'
+    | '/ai'
+    | '/experiments'
+    | '/mini-games'
+    | '/systems'
+    | '/tools'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Content1Route: typeof Content1Route
-  Content2Route: typeof Content2Route
+  AiRoute: typeof AiRoute
+  ExperimentsRoute: typeof ExperimentsRoute
+  MiniGamesRoute: typeof MiniGamesRoute
+  SystemsRoute: typeof SystemsRoute
+  ToolsRoute: typeof ToolsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/content2': {
-      id: '/content2'
-      path: '/content2'
-      fullPath: '/content2'
-      preLoaderRoute: typeof Content2RouteImport
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/content1': {
-      id: '/content1'
-      path: '/content1'
-      fullPath: '/content1'
-      preLoaderRoute: typeof Content1RouteImport
+    '/systems': {
+      id: '/systems'
+      path: '/systems'
+      fullPath: '/systems'
+      preLoaderRoute: typeof SystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mini-games': {
+      id: '/mini-games'
+      path: '/mini-games'
+      fullPath: '/mini-games'
+      preLoaderRoute: typeof MiniGamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiments': {
+      id: '/experiments'
+      path: '/experiments'
+      fullPath: '/experiments'
+      preLoaderRoute: typeof ExperimentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai': {
+      id: '/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,8 +151,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Content1Route: Content1Route,
-  Content2Route: Content2Route,
+  AiRoute: AiRoute,
+  ExperimentsRoute: ExperimentsRoute,
+  MiniGamesRoute: MiniGamesRoute,
+  SystemsRoute: SystemsRoute,
+  ToolsRoute: ToolsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

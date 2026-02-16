@@ -14,9 +14,12 @@ interface TopNavbarProps {
 }
 
 const topNavbarDefaultItemsMenu = [
-  { name: "yami.info", to: "/" },
-  { name: "content1", to: "/content1" },
-  { name: "content2", to: "/content2" },
+  { name: "Home", to: "/" },
+  { name: "Experiments", to: "/experiments" },
+  { name: "Tools", to: "/tools" },
+  { name: "AI", to: "/ai" },
+  { name: "Systems", to: "/systems" },
+  { name: "Mini-Games", to: "/mini-games" },
 ];
 
 const topNavbarDefaultItemsMenu2 = [
@@ -57,7 +60,7 @@ const TopNavbar = ({
   // ================= BREAKPOINT DETECTION =================
   useEffect(() => {
     const updateLayout = () => {
-      if (window.innerWidth >= 1200) {
+      if (window.innerWidth >= 1370) {
         setLayout("large");
       } else if (window.innerWidth >= 810) {
         setLayout("medium");

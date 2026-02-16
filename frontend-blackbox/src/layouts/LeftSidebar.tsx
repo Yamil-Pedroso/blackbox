@@ -9,70 +9,98 @@ interface LeftSidebarProps {
   }[];
 }
 
-const leftSidebarDefaultItems = [
-  {
-    title: "Swizerland, Zurich",
-    icon: FaMapMarkerAlt,
-  },
-  {
-    title: "English, German",
-    icon: FaLanguage,
-  },
-  {
-    title: "+41 79 532 65 19",
-    icon: FaPhone,
-  },
+const defaultInfoItems = [
+  { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
+  { title: "English, German", icon: FaLanguage },
+  { title: "+41 79 532 65 19", icon: FaPhone },
 ];
 
-const LeftSidebar = ({ items = leftSidebarDefaultItems }: LeftSidebarProps) => {
+const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
   return (
-    <aside className="border-r border-neutral-800 bg-secondary-bg p-6 flex-col h-screen w-80 hidden large:flex">
-      <div className="flex items-center space-x-4 mb-6">
-        <div className="w-10 h-10 bg-neutral-700 flex items-center justify-center">
+    <aside className="border-r border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
+      {/* ================= PROFILE ================= */}
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 bg-neutral-700 flex items-center justify-center overflow-hidden">
           <img
             src={assets.avatar}
-            alt="Logo"
-            className="w-full h-full  object-cover"
+            alt="Avatar"
+            className="w-full h-full object-cover"
           />
         </div>
+
         <div>
-          <h2 className="font-ibm-plex-mono text-secondary tracking-wide text-[18px]">
-            Yami Carfo{" "}
+          <h2 className="font-ibm-plex-mono text-secondary text-[18px]">
+            Yami Carfo
           </h2>
           <p className="font-ibm-plex-mono text-secondary text-[14px]">
-            Software dev
+            Creative Technologist
           </p>
         </div>
       </div>
 
-      <p className="font-ibm-plex-mono text-secondary tracking-wide text-[1rem] mb-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing consectetur
-        adipiscing.
-      </p>
+      {/* ================= MAIN CONTENT ================= */}
+      <div className="mt-12 flex flex-col gap-12">
+        {/* Identity Statement */}
+        <p className="font-ibm-plex-mono text-secondary text-[14px] leading-relaxed">
+          Focused on interactive systems, full-stack architecture and
+          intelligent interfaces. Building structured environments where code,
+          motion and logic converge.
+        </p>
 
-      <nav className="space-y-3 mt-6">
-        <ul>
-          {items.map((item) => {
-            const Icon = item.icon;
-            return (
-              <li
-                key={item.title}
-                className="font-ibm-plex-mono text-secondary text-sm cursor-pointer hover:text-primary transition-colors flex items-center space-x-2 mb-5"
-              >
-                <Icon className="text-[1rem]" />
-                <span>{item.title}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+        {/* Contact Info */}
+        <nav>
+          <ul className="space-y-4">
+            {items.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li
+                  key={item.title}
+                  className="font-ibm-plex-mono text-secondary text-sm flex items-center gap-3"
+                >
+                  <Icon className="text-[0.9rem]" />
+                  <span>{item.title}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <div className="space-y-4 border-t border-neutral-800 pt-8 mt-auto mb-10">
-        <Button className="bg-white text-tertiary " onClick={() => {}}>
+        {/* Blackbox Meta */}
+        <div className="border-t border-neutral-800 pt-6">
+          <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest mb-4">
+            Blackbox Status
+          </h3>
+
+          <div className="space-y-3 font-ibm-plex-mono text-secondary text-sm">
+            <div className="flex justify-between">
+              <span>Modules</span>
+              <span>5</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Version</span>
+              <span>v1.0</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Status</span>
+              <span className="text-green">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= CTA ================= */}
+      <div className="mt-auto pt-10 border-t border-neutral-800 flex flex-col gap-4">
+        <Button className="bg-white text-tertiary w-full" onClick={() => {}}>
           Schedule a call
         </Button>
-        <Button className="border border-white text-white" onClick={() => {}}>
-          Development journey
+
+        <Button
+          className="border border-white text-white w-full"
+          onClick={() => {}}
+        >
+          View development journey
         </Button>
       </div>
     </aside>
