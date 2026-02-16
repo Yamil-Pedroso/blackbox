@@ -57,7 +57,6 @@ const TopNavbar = ({
     minute: "2-digit",
   });
 
-  // ================= BREAKPOINT DETECTION =================
   useEffect(() => {
     const updateLayout = () => {
       if (window.innerWidth >= 1370) {
@@ -75,7 +74,6 @@ const TopNavbar = ({
     return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
-  // ================= GSAP ANIMATION =================
   useEffect(() => {
     if (!headerRef.current) return;
 
@@ -113,10 +111,8 @@ const TopNavbar = ({
       ref={headerRef}
       className="w-full h-8 border-b border-neutral-800 flex items-center justify-between large:px-4 bg-secondary-bg relative"
     >
-      {/* ================= LEFT SIDE ================= */}
-
       {layout !== "large" && (
-        <div className="flex items-center gap-4 animate-section">
+        <div className="flex items-stretch gap-4 animate-section">
           <div className="w-8 h-8 bg-neutral-700">
             <img
               src={assets.avatar}
@@ -131,16 +127,14 @@ const TopNavbar = ({
       )}
 
       {layout === "large" && (
-        <div className="flex w-full items-center animate-section">
-          {/* LOGO fixed width */}
-          <div className="w-75">
+        <div className="flex w-full h-full items-stretch animate-section">
+          <div className="w-71 h-full border-r border-neutral-800 flex items-center px-4">
             <h1 className="font-ibm-plex-mono text-secondary text-[12px]">
               Blackbox
             </h1>
           </div>
 
-          {/* MENU */}
-          <ul className="flex gap-10 flex-1">
+          <ul className="flex gap-10 flex-1 mx-10 items-center">
             {itemsMenu.map((item) => {
               const isActive = pathname === item.to;
 
@@ -153,7 +147,7 @@ const TopNavbar = ({
                   >
                     {item.name}
                     <div
-                      className={`absolute left-0 -bottom-1 h-px transition-all duration-700 ${
+                      className={`absolute left-0 -bottom-1.25 h-px transition-all duration-700 ${
                         isActive ? "w-full bg-primary" : "w-0"
                       }`}
                     />
@@ -163,7 +157,6 @@ const TopNavbar = ({
             })}
           </ul>
 
-          {/* RIGHT INFO */}
           <div className="flex items-center gap-6">
             {itemsMenu2.map((item) => (
               <span
@@ -186,7 +179,6 @@ const TopNavbar = ({
               </span>
             ))}
 
-            {/* THEME TOGGLE */}
             <button
               onClick={toggleTheme}
               className="text-secondary hover:text-primary transition-colors duration-300"
@@ -197,7 +189,6 @@ const TopNavbar = ({
         </div>
       )}
 
-      {/* ================= RIGHT SIDE (Mobile) ================= */}
       {layout === "mobile" && (
         <div className="flex items-center gap-4 animate-section px-4">
           <button
@@ -216,7 +207,6 @@ const TopNavbar = ({
         </div>
       )}
 
-      {/* ================= RIGHT SIDE (Medium) ================= */}
       {layout === "medium" && (
         <div className="flex items-center gap-6 animate-section px-4">
           <span className="font-ibm-plex-mono text-secondary text-[12px]">
@@ -239,7 +229,6 @@ const TopNavbar = ({
         </div>
       )}
 
-      {/* ================= INFO DROPDOWN ================= */}
       {infoOpen && layout !== "large" && (
         <div
           ref={dropdownRef}
@@ -280,7 +269,6 @@ const TopNavbar = ({
         </div>
       )}
 
-      {/* ================= ADMIN INFO DROPDOWN ================= */}
       {adminInfoOpen && (layout === "medium" || layout === "mobile") && (
         <div
           ref={dropdownRef}
