@@ -84,10 +84,7 @@ const RightSidebar = () => {
       </div>
 
       <div className="mt-auto pt-6 border-t border-neutral-800 mb-3.5 w-35">
-        <p
-          ref={textRef}
-          className="font-ibm-plex-mono text-secondary text-xs opacity-70 "
-        />
+        <p className="font-ibm-plex-mono text-secondary text-xs opacity-70 " />
       </div>
     </aside>
   );

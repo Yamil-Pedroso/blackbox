@@ -69,7 +69,7 @@ const ToolsPage = () => {
   return (
     <div
       ref={containerRef}
-      className="px-6 md:px-10 xl:px-8 py-8 max-w-6xl mx-auto space-y-20"
+      className="px-6 md:px-10 xl:px-8 py-8 max-w-6xl  space-y-20 "
     >
       <section className="space-y-6">
         <div className="tools-hero">

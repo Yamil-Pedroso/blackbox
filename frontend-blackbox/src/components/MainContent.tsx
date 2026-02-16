@@ -87,7 +87,7 @@ const MainContent = () => {
 
   return (
     <div ref={containerRef} className="bg-main-bg">
-      <div className="px-6 sm:px-8 md:px-12 xl:px-8 py-12 md:py-16 xl:py-8 space-y-20 max-w-7xl mx-auto">
+      <div className="px-6 sm:px-8 md:px-12 xl:px-8 py-8 md:py-16 xl:py-8 space-y-8 max-w-7xl mx-auto">
         <section className="space-y-8">
           <div className="hero-animate">
             <SectionLabel text="Hero Section" />
