@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scroll-behavior: smooth;
+}
+
 body {
 }
 
@@ -28,7 +33,7 @@ body {
   --breakpoint-sm: 640px;
   --breakpoint-medium: 810px;
   --breakpoint-lg: 1024px;
-  --breakpoint-large: 1200px;
+  --breakpoint-large: 1370px;
 }
 
 /* ================= LIGHT MODE ================= */
@@ -39,4 +44,21 @@ body {
   --color-secondary: #555555;
   --color-tertiary: #f0f0f0;
   --color-green: #269b32;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
 }

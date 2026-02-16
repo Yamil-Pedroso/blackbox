@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useRouterState } from "@tanstack/react-router";
-
 import TopNavbar from "./TopNavbar";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
@@ -11,12 +10,12 @@ interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   const mainRef = useRef<HTMLDivElement>(null);
+
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
 
-  const hideRightSidebar = pathname === "/content1" || pathname === "/content2";
-
+  // Scroll to top on route change
   useEffect(() => {
     if (mainRef.current) {
       mainRef.current.scrollTo({
@@ -25,18 +24,17 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       });
     }
   }, [pathname]);
+
   return (
-    <div className="h-screen grid grid-rows-[auto_1fr]">
+    <div className="h-screen grid grid-rows-[auto_1fr] overflow-hidden">
       <TopNavbar />
 
-      <div
-        className={`grid overflow-hidden ${hideRightSidebar ? "grid-cols-[300px_1fr]" : "grid-cols-[300px_1fr_200px] "}`}
-      >
+      <div className="grid h-full overflow-hidden grid-cols-1 large:grid-cols-[300px_1fr_200px]">
         <LeftSidebar />
 
         <main
           ref={mainRef}
-          className="overflow-y-auto w-screen bg-main-bg large:w-full"
+          className="overflow-y-auto bg-main-bg custom-scroll"
         >
           <div className="grid grid-cols-[40px_1fr] min-h-full">
             <div className="text-right pr-3 border-r border-neutral-800 font-ibm-plex-mono text-[11px] text-secondary select-none">
@@ -51,7 +49,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           </div>
         </main>
 
-        {!hideRightSidebar && <RightSidebar />}
+        <RightSidebar />
       </div>
     </div>
   );

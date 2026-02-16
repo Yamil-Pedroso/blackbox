@@ -66,9 +66,8 @@ const MainContent = () => {
   }, []);
 
   return (
-    <div className="bg-main-bg min-h-screen">
+    <div className="bg-main-bg">
       <div className="p-10 space-y-20 max-w-350 mx-auto">
-        {/* ================= HERO ================= */}
         <section className="space-y-8">
           <HeaderCommentar text="Hero section" />
 
@@ -91,7 +90,6 @@ const MainContent = () => {
           </p>
         </section>
 
-        {/* ================= MODULES SECTION ================= */}
         <section className="space-y-10">
           <HeaderCommentar text="Blackbox Modules" />
 
@@ -107,8 +105,7 @@ const MainContent = () => {
                   }}
                   className="group relative border border-neutral-800 bg-secondary-bg p-8 cursor-pointer overflow-hidden"
                 >
-                  {/* Subtle Hover Background */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-primary/5 to-transparent pointer-events-none" />
 
                   <h3 className="text-primary font-geist text-2xl mb-4 relative z-10">
                     {module.title}
@@ -118,7 +115,6 @@ const MainContent = () => {
                     {module.description}
                   </p>
 
-                  {/* Bottom Animated Line */}
                   <div className="mt-8 h-px w-0 bg-primary group-hover:w-full transition-all duration-700 relative z-10" />
                 </motion.div>
               </Link>
@@ -126,7 +122,6 @@ const MainContent = () => {
           </div>
         </section>
 
-        {/* ================= FOOTER STATEMENT ================= */}
         <section className="pt-20 border-t border-neutral-800">
           <p className="text-secondary font-ibm-plex-mono text-sm max-w-2xl">
             Blackbox is an evolving environment. Each module represents a
