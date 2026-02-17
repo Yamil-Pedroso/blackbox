@@ -3,8 +3,8 @@ import SectionHero from "../../common/SectionHero";
 import SectionLabel from "../../common/SectionLabel";
 
 const phases = [
-  { id: 1, name: "Search & Filtering", status: "active" },
-  { id: 2, name: "Availability Calendar", status: "pending" },
+  { id: 1, name: "Search & Filtering", status: "done" },
+  { id: 2, name: "Availability Calendar", status: "active" },
   { id: 3, name: "Pricing Engine", status: "pending" },
   { id: 4, name: "Multi-Step Booking Flow", status: "pending" },
   { id: 5, name: "Payment Simulation", status: "pending" },
@@ -77,7 +77,18 @@ const BookingSimulation = () => {
             </p>
           </div>
 
-          <Link to="/experiments/booking-simulation/app">
+          <Link
+            to="/experiments/booking-simulation/app"
+            search={{
+              location: "",
+              guests: 1,
+              minPrice: 0,
+              maxPrice: 500,
+              sort: "price_asc",
+              page: 1,
+              limit: 6,
+            }}
+          >
             <button className="mt-8 border border-primary px-6 py-3 text-sm font-ibm-plex-mono text-primary hover:bg-primary hover:text-tertiary transition-colors duration-300">
               Enter Box →
             </button>

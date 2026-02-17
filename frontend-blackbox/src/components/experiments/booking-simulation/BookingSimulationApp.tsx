@@ -1,45 +1,60 @@
-import { useMemo, useState } from "react";
-import { hotels } from "./data/hotel";
-import { Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { FaStar } from "react-icons/fa";
-
-interface SearchState {
-  location: string;
-  guests: number;
-  minPrice: number;
-  maxPrice: number;
-}
+import { useBookingSearch } from "./hooks/useBookingSearch";
+import { useDebounce } from "./hooks/useDebounce";
+import type { BookingQuery, Hotel } from "./types/booking.types";
+import { Route } from "../../../routes/experiments/booking-simulation/app";
 
 const BookingSimulatorApp = () => {
-  const [search, setSearch] = useState<SearchState>({
-    location: "",
-    guests: 1,
-    minPrice: 0,
-    maxPrice: 500,
-  });
+  const navigate = useNavigate({ from: Route.fullPath });
+  const search = useSearch({ from: Route.fullPath });
 
-  const filteredHotels = useMemo(() => {
-    return hotels.filter((hotel) => {
-      if (
-        search.location &&
-        !hotel.location.toLowerCase().includes(search.location.toLowerCase())
-      )
-        return false;
+  const [allHotels, setAllHotels] = useState<Hotel[]>([]);
 
-      if (hotel.maxGuests < search.guests) return false;
+  // ✅ Debounce ONLY location
+  const debouncedLocation = useDebounce(search.location ?? "", 400);
 
-      if (
-        hotel.pricePerNight < search.minPrice ||
-        hotel.pricePerNight > search.maxPrice
-      )
-        return false;
+  const effectiveQuery: BookingQuery = {
+    ...search,
+    location: debouncedLocation,
+  };
 
-      return true;
+  const { data, isLoading } = useBookingSearch(effectiveQuery);
+
+  const hasMore = data?.hasMore ?? false;
+
+  // ✅ Append logic for load more
+  useEffect(() => {
+    if (!data) return;
+
+    setAllHotels((prev) =>
+      search.page === 1 ? data.data : [...prev, ...data.data],
+    );
+  }, [data, search.page]);
+
+  // ✅ Update URL search params
+  const updateQuery = (updates: Partial<BookingQuery>) => {
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        ...updates,
+        page: 1,
+      }),
     });
-  }, [search]);
+  };
+
+  const loadMore = () => {
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        page: (prev.page ?? 1) + 1,
+      }),
+    });
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-secondary-bg">
+    <div className="h-full flex flex-col bg-secondary-bg overflow-scroll">
       <header className="border-b border-neutral-800 px-6 py-4 flex justify-between items-center bg-main-bg">
         <div className="flex items-center gap-6">
           <Link
@@ -65,17 +80,11 @@ const BookingSimulatorApp = () => {
               type="text"
               placeholder="Zurich, Bern..."
               value={search.location}
-              onChange={(e) =>
-                setSearch((prev) => ({
-                  ...prev,
-                  location: e.target.value,
-                }))
-              }
+              onChange={(e) => updateQuery({ location: e.target.value })}
               className="bg-secondary-bg border border-neutral-700 px-4 py-2 text-sm text-primary focus:outline-none focus:border-primary transition-colors"
             />
           </div>
 
-          {/* GUESTS */}
           <div className="flex flex-col gap-2">
             <label className="text-xs text-secondary font-ibm-plex-mono uppercase tracking-wide">
               Guests
@@ -86,15 +95,14 @@ const BookingSimulatorApp = () => {
                 type="text"
                 readOnly
                 value={search.guests}
-                className="w-full bg-secondary-bg border border-neutral-700 px-10 py-2 text-center text-sm text-primary focus:outline-none"
+                className="w-full bg-secondary-bg border border-neutral-700 px-10 py-2 text-center text-sm text-primary"
               />
 
               <button
                 onClick={() =>
-                  setSearch((prev) => ({
-                    ...prev,
-                    guests: Math.max(1, prev.guests - 1),
-                  }))
+                  updateQuery({
+                    guests: Math.max(1, (search.guests ?? 1) - 1),
+                  })
                 }
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary"
               >
@@ -103,10 +111,9 @@ const BookingSimulatorApp = () => {
 
               <button
                 onClick={() =>
-                  setSearch((prev) => ({
-                    ...prev,
-                    guests: prev.guests + 1,
-                  }))
+                  updateQuery({
+                    guests: (search.guests ?? 1) + 1,
+                  })
                 }
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary"
               >
@@ -125,15 +132,14 @@ const BookingSimulatorApp = () => {
                 type="text"
                 readOnly
                 value={search.minPrice}
-                className="w-full bg-secondary-bg border border-neutral-700 px-10 py-2 text-center text-sm text-primary focus:outline-none"
+                className="w-full bg-secondary-bg border border-neutral-700 px-10 py-2 text-center text-sm text-primary"
               />
 
               <button
                 onClick={() =>
-                  setSearch((prev) => ({
-                    ...prev,
-                    minPrice: Math.max(0, prev.minPrice - 10),
-                  }))
+                  updateQuery({
+                    minPrice: Math.max(0, (search.minPrice ?? 0) - 10),
+                  })
                 }
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary"
               >
@@ -142,10 +148,12 @@ const BookingSimulatorApp = () => {
 
               <button
                 onClick={() =>
-                  setSearch((prev) => ({
-                    ...prev,
-                    minPrice: Math.min(prev.maxPrice, prev.minPrice + 10),
-                  }))
+                  updateQuery({
+                    minPrice: Math.min(
+                      search.maxPrice ?? 500,
+                      (search.minPrice ?? 0) + 10,
+                    ),
+                  })
                 }
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary"
               >
@@ -164,15 +172,17 @@ const BookingSimulatorApp = () => {
                 type="text"
                 readOnly
                 value={search.maxPrice}
-                className="w-full bg-secondary-bg border border-neutral-700 px-10 py-2 text-center text-sm text-primary focus:outline-none"
+                className="w-full bg-secondary-bg border border-neutral-700 px-10 py-2 text-center text-sm text-primary"
               />
 
               <button
                 onClick={() =>
-                  setSearch((prev) => ({
-                    ...prev,
-                    maxPrice: Math.max(prev.minPrice, prev.maxPrice - 10),
-                  }))
+                  updateQuery({
+                    maxPrice: Math.max(
+                      search.minPrice ?? 0,
+                      (search.maxPrice ?? 500) - 10,
+                    ),
+                  })
                 }
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary"
               >
@@ -181,23 +191,39 @@ const BookingSimulatorApp = () => {
 
               <button
                 onClick={() =>
-                  setSearch((prev) => ({
-                    ...prev,
-                    maxPrice: prev.maxPrice + 10,
-                  }))
+                  updateQuery({
+                    maxPrice: (search.maxPrice ?? 500) + 10,
+                  })
                 }
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary"
               >
                 +
               </button>
             </div>
+            <select
+              className="bg-secondary-bg border border-neutral-700 px-4 py-2 text-sm text-primary focus:outline-none focus:border-primary transition-colors"
+              value={search.sort}
+              onChange={(e) =>
+                updateQuery({ sort: e.target.value as BookingQuery["sort"] })
+              }
+            >
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="rating">Rating</option>
+            </select>
           </div>
         </div>
       </div>
 
       <div className="flex-1 px-6 py-8">
+        {isLoading && search.page === 1 && (
+          <div className="text-secondary font-ibm-plex-mono text-sm">
+            Loading hotels...
+          </div>
+        )}
+
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filteredHotels.map((hotel) => (
+          {allHotels.map((hotel) => (
             <div
               key={hotel.id}
               className="border border-neutral-800 bg-main-bg overflow-hidden group hover:border-primary transition-colors duration-300"
@@ -219,30 +245,30 @@ const BookingSimulatorApp = () => {
 
                 <div className="flex justify-between text-sm text-secondary">
                   <span>CHF {hotel.pricePerNight} / night</span>
-                  <span className="flex justify-center items-center">
-                    <FaStar className="text-amber-400" />{" "}
-                    <span className="mx-1.5">{hotel.rating}</span>
+                  <span className="flex items-center">
+                    <FaStar className="text-amber-400" />
+                    <span className="ml-1">{hotel.rating}</span>
                   </span>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {hotel.amenities.map((a) => (
-                    <span
-                      key={a}
-                      className="px-2 py-1 text-xs border border-neutral-700 bg-secondary-bg text-secondary"
-                    >
-                      {a}
-                    </span>
-                  ))}
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {filteredHotels.length === 0 && (
+        {!isLoading && allHotels.length === 0 && (
           <div className="text-center text-secondary mt-12 font-ibm-plex-mono text-sm">
             No hotels match your filters.
+          </div>
+        )}
+
+        {hasMore && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={loadMore}
+              className="border border-neutral-700 px-6 py-2 text-sm font-ibm-plex-mono text-secondary hover:text-primary hover:border-primary transition-colors cursor-pointer"
+            >
+              Load More
+            </button>
           </div>
         )}
       </div>

@@ -35,7 +35,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }
 
   return (
-    <div className="h-screen grid grid-rows-[auto_1fr] overflow-hidden">
+    <div className="h-screen grid grid-rows-[auto_1fr] overflow-y-auto">
       <TopNavbar />
 
       <div className="grid h-full overflow-hidden grid-cols-1 large:grid-cols-[300px_1fr_200px]">
@@ -43,7 +43,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
         <main
           ref={mainRef}
-          className="overflow-y-auto bg-main-bg custom-scroll"
+          className="overflow-y-auto bg-main-bg custom-scroll h-full"
         >
           <div className="grid grid-cols-[40px_1fr] min-h-full">
             <div className="text-right pr-3 border-r border-neutral-800 font-ibm-plex-mono text-[11px] text-secondary select-none">
