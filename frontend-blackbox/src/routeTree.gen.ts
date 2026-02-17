@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as MiniGamesRouteImport } from './routes/mini-games'
-import { Route as ExperimentsRouteImport } from './routes/experiments'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
+import { Route as ExperimentsBookingSimulationRouteImport } from './routes/experiments/booking-simulation'
+import { Route as ExperimentsBookingSimulationAppRouteImport } from './routes/experiments/booking-simulation/app'
 
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
@@ -31,11 +33,6 @@ const MiniGamesRoute = MiniGamesRouteImport.update({
   path: '/mini-games',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ExperimentsRoute = ExperimentsRouteImport.update({
-  id: '/experiments',
-  path: '/experiments',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AiRoute = AiRouteImport.update({
   id: '/ai',
   path: '/ai',
@@ -46,60 +43,96 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperimentsIndexRoute = ExperimentsIndexRouteImport.update({
+  id: '/experiments/',
+  path: '/experiments/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsBookingSimulationRoute =
+  ExperimentsBookingSimulationRouteImport.update({
+    id: '/experiments/booking-simulation',
+    path: '/experiments/booking-simulation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ExperimentsBookingSimulationAppRoute =
+  ExperimentsBookingSimulationAppRouteImport.update({
+    id: '/app',
+    path: '/app',
+    getParentRoute: () => ExperimentsBookingSimulationRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
-  '/experiments': typeof ExperimentsRoute
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/tools': typeof ToolsRoute
+  '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
+  '/experiments/': typeof ExperimentsIndexRoute
+  '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
-  '/experiments': typeof ExperimentsRoute
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/tools': typeof ToolsRoute
+  '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
+  '/experiments': typeof ExperimentsIndexRoute
+  '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
-  '/experiments': typeof ExperimentsRoute
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/tools': typeof ToolsRoute
+  '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
+  '/experiments/': typeof ExperimentsIndexRoute
+  '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/ai'
-    | '/experiments'
     | '/mini-games'
     | '/systems'
     | '/tools'
+    | '/experiments/booking-simulation'
+    | '/experiments/'
+    | '/experiments/booking-simulation/app'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ai' | '/experiments' | '/mini-games' | '/systems' | '/tools'
+  to:
+    | '/'
+    | '/ai'
+    | '/mini-games'
+    | '/systems'
+    | '/tools'
+    | '/experiments/booking-simulation'
+    | '/experiments'
+    | '/experiments/booking-simulation/app'
   id:
     | '__root__'
     | '/'
     | '/ai'
-    | '/experiments'
     | '/mini-games'
     | '/systems'
     | '/tools'
+    | '/experiments/booking-simulation'
+    | '/experiments/'
+    | '/experiments/booking-simulation/app'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiRoute: typeof AiRoute
-  ExperimentsRoute: typeof ExperimentsRoute
   MiniGamesRoute: typeof MiniGamesRoute
   SystemsRoute: typeof SystemsRoute
   ToolsRoute: typeof ToolsRoute
+  ExperimentsBookingSimulationRoute: typeof ExperimentsBookingSimulationRouteWithChildren
+  ExperimentsIndexRoute: typeof ExperimentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -125,13 +158,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiniGamesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/experiments': {
-      id: '/experiments'
-      path: '/experiments'
-      fullPath: '/experiments'
-      preLoaderRoute: typeof ExperimentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ai': {
       id: '/ai'
       path: '/ai'
@@ -146,16 +172,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiments/': {
+      id: '/experiments/'
+      path: '/experiments'
+      fullPath: '/experiments/'
+      preLoaderRoute: typeof ExperimentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiments/booking-simulation': {
+      id: '/experiments/booking-simulation'
+      path: '/experiments/booking-simulation'
+      fullPath: '/experiments/booking-simulation'
+      preLoaderRoute: typeof ExperimentsBookingSimulationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiments/booking-simulation/app': {
+      id: '/experiments/booking-simulation/app'
+      path: '/app'
+      fullPath: '/experiments/booking-simulation/app'
+      preLoaderRoute: typeof ExperimentsBookingSimulationAppRouteImport
+      parentRoute: typeof ExperimentsBookingSimulationRoute
+    }
   }
 }
+
+interface ExperimentsBookingSimulationRouteChildren {
+  ExperimentsBookingSimulationAppRoute: typeof ExperimentsBookingSimulationAppRoute
+}
+
+const ExperimentsBookingSimulationRouteChildren: ExperimentsBookingSimulationRouteChildren =
+  {
+    ExperimentsBookingSimulationAppRoute: ExperimentsBookingSimulationAppRoute,
+  }
+
+const ExperimentsBookingSimulationRouteWithChildren =
+  ExperimentsBookingSimulationRoute._addFileChildren(
+    ExperimentsBookingSimulationRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiRoute: AiRoute,
-  ExperimentsRoute: ExperimentsRoute,
   MiniGamesRoute: MiniGamesRoute,
   SystemsRoute: SystemsRoute,
   ToolsRoute: ToolsRoute,
+  ExperimentsBookingSimulationRoute:
+    ExperimentsBookingSimulationRouteWithChildren,
+  ExperimentsIndexRoute: ExperimentsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

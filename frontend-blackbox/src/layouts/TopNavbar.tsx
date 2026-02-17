@@ -7,6 +7,7 @@ import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../lib/hooks/useTheme";
 import assets from "../assets";
 import gsap from "gsap";
+import { LuLanguages } from "react-icons/lu";
 
 interface TopNavbarProps {
   itemsMenu?: { name: string; to: string }[];
@@ -32,7 +33,7 @@ type LayoutMode = "mobile" | "medium" | "large";
 
 const infoItems = [
   { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
-  { title: "English, German", icon: FaLanguage },
+  { title: "English, German", icon: LuLanguages },
   { title: "+41 79 532 65 19", icon: FaPhone },
 ];
 
@@ -244,10 +245,10 @@ const TopNavbar = ({
             </div>
             <div>
               <h2 className="font-ibm-plex-mono text-secondary text-[18px]">
-                Yami Carfo
+                Yamil Pedroso
               </h2>
               <p className="font-ibm-plex-mono text-secondary text-[14px]">
-                Software dev
+                Creative Technologist
               </p>
             </div>
           </div>
@@ -255,12 +256,17 @@ const TopNavbar = ({
           <ul className="space-y-5">
             {infoItems.map((item) => {
               const Icon = item.icon;
+              const LanIcon = infoItems[1].icon;
               return (
                 <li
                   key={item.title}
                   className="flex items-center gap-3 text-secondary font-ibm-plex-mono text-sm"
                 >
-                  <Icon />
+                  {Icon === LuLanguages ? (
+                    <LanIcon className="text-[1.2rem]" />
+                  ) : (
+                    <Icon className="text-[0.9rem]" />
+                  )}
                   {item.title}
                 </li>
               );

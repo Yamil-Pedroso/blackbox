@@ -15,7 +15,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     select: (state) => state.location.pathname,
   });
 
-  // Scroll to top on route change
+  const isImmersive = pathname.includes("/experiments/booking-simulation/app");
+
   useEffect(() => {
     if (mainRef.current) {
       mainRef.current.scrollTo({
@@ -24,6 +25,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       });
     }
   }, [pathname]);
+
+  if (isImmersive) {
+    return (
+      <div className="h-screen w-screen overflow-hidden bg-white">
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen grid grid-rows-[auto_1fr] overflow-hidden">

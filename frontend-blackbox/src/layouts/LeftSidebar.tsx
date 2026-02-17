@@ -1,6 +1,7 @@
-import { FaMapMarkerAlt, FaLanguage, FaPhone } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import assets from "../assets";
 import Button from "../components/common/Button";
+import { LuLanguages } from "react-icons/lu";
 
 interface LeftSidebarProps {
   items?: {
@@ -11,7 +12,7 @@ interface LeftSidebarProps {
 
 const defaultInfoItems = [
   { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
-  { title: "English, German, Spanish, Italian, French", icon: FaLanguage },
+  { title: "English, German, Spanish, Italian, French", icon: LuLanguages },
   { title: "+41 79 532 65 19", icon: FaPhone },
 ];
 
@@ -48,13 +49,19 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
           <ul className="space-y-4">
             {items.map((item) => {
               const Icon = item.icon;
+              const LanIcon = items[1].icon;
+
               return (
                 <li
                   key={item.title}
                   className="font-ibm-plex-mono text-secondary text-sm flex items-center gap-3"
                 >
                   <div className="">
-                    <Icon className="text-[0.9rem]" />
+                    {Icon === LuLanguages ? (
+                      <LanIcon className="text-[1.2rem]" />
+                    ) : (
+                      <Icon className="text-[0.9rem]" />
+                    )}
                   </div>
                   <span className="">{item.title}</span>
                 </li>

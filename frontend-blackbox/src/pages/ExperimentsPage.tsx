@@ -1,9 +1,18 @@
 import { useEffect, useRef } from "react";
+import { Link } from "@tanstack/react-router";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
 
 const experiments = [
+  {
+    title: "Booking Platform Simulation",
+    description:
+      "End-to-end booking UI simulation including search, availability calendar, pricing logic, multi-step flow and payment states.",
+    tag: "Product System",
+    status: "Active",
+    route: "/experiments/booking-simulation",
+  },
   {
     title: "Scroll Physics Engine",
     description:
@@ -109,9 +118,17 @@ const ExperimentsPage = () => {
                 {exp.description}
               </p>
 
-              <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity">
-                Launch →
-              </button>
+              {exp.route ? (
+                <Link to={exp.route}>
+                  <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity">
+                    Launch →
+                  </button>
+                </Link>
+              ) : (
+                <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-50 cursor-not-allowed">
+                  Coming Soon
+                </button>
+              )}
             </div>
           ))}
         </div>
