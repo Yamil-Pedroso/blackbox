@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsInfoCircle } from "react-icons/bs";
-import { FaMapMarkerAlt, FaLanguage, FaPhone } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../lib/hooks/useTheme";
