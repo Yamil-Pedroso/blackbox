@@ -9,6 +9,11 @@ export const Route = createFileRoute("/experiments/booking-simulation/app")({
     minPrice: Number(search.minPrice ?? 0),
     maxPrice: Number(search.maxPrice ?? 500),
     sort: (search.sort as BookingQuery["sort"]) ?? "price_asc",
+
+    checkInDate: search.checkInDate ? String(search.checkInDate) : undefined,
+
+    checkOutDate: search.checkOutDate ? String(search.checkOutDate) : undefined,
+
     page: Number(search.page ?? 1),
     limit: Number(search.limit ?? 6),
   }),

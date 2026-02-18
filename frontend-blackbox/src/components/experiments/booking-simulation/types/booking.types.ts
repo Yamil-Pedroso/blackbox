@@ -1,3 +1,10 @@
+type Status = "pending" | "active" | "done";
+export interface BookingSimulationPhase {
+  id: number;
+  name: string;
+  status: Status;
+}
+
 export interface Hotel {
   id: number | string;
   name: string;
@@ -6,6 +13,8 @@ export interface Hotel {
   maxGuests: number;
   rating: number;
   amenities: string[];
+  availableFrom: string; // ISO date
+  availableTo: string; // ISO date
   image: string;
 }
 
@@ -15,6 +24,8 @@ export interface BookingQuery {
   minPrice: number;
   maxPrice: number;
   sort: "price_asc" | "price_desc" | "rating";
+  checkInDate?: string;
+  checkOutDate?: string;
   page: number;
   limit: number;
 }

@@ -1,17 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import SectionHero from "../../common/SectionHero";
 import SectionLabel from "../../common/SectionLabel";
-
-const phases = [
-  { id: 1, name: "Search & Filtering", status: "done" },
-  { id: 2, name: "Availability Calendar", status: "active" },
-  { id: 3, name: "Pricing Engine", status: "pending" },
-  { id: 4, name: "Multi-Step Booking Flow", status: "pending" },
-  { id: 5, name: "Payment Simulation", status: "pending" },
-  { id: 6, name: "Authentication Integration", status: "pending" },
-  { id: 7, name: "Performance Optimization", status: "pending" },
-  { id: 8, name: "Mobile UX", status: "pending" },
-];
+import { phases } from "./data/phases";
 
 const BookingSimulation = () => {
   const currentPhase = phases.find((p) => p.status === "active");

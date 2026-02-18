@@ -120,7 +120,7 @@ const ExperimentsPage = () => {
 
               {exp.route ? (
                 <Link to={exp.route}>
-                  <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity">
+                  <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity cursor-pointer">
                     Launch →
                   </button>
                 </Link>

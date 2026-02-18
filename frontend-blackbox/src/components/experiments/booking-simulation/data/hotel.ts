@@ -1,14 +1,4 @@
-export interface Hotel {
-  id: string;
-  name: string;
-  location: string;
-  pricePerNight: number;
-  maxGuests: number;
-  rating: number;
-  amenities: string[];
-  availableDates: string[];
-  image: string;
-}
+import type { Hotel } from "../types/booking.types";
 
 export const hotels: Hotel[] = [
   {
@@ -19,7 +9,8 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 4.7,
     amenities: ["wifi", "spa"],
-    availableDates: ["2025-02-20", "2025-02-21", "2025-02-22"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-03-31",
     image:
       "https://images.unsplash.com/photo-1635503540730-dde3f051c36f?w=900&auto=format&fit=crop&q=60",
   },
@@ -31,7 +22,8 @@ export const hotels: Hotel[] = [
     maxGuests: 4,
     rating: 4.9,
     amenities: ["wifi", "parking", "breakfast"],
-    availableDates: ["2025-02-20", "2025-02-23"],
+    availableFrom: "2026-02-10",
+    availableTo: "2026-04-15",
     image: "https://plus.unsplash.com/premium_photo-1673735052822-5ad5966cfc2f",
   },
   {
@@ -42,7 +34,8 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 4.3,
     amenities: ["wifi"],
-    availableDates: ["2025-02-21", "2025-02-22"],
+    availableFrom: "2026-01-15",
+    availableTo: "2026-05-01",
     image: "https://images.unsplash.com/photo-1612949411928-c5ff3809dcb9",
   },
   {
@@ -53,7 +46,8 @@ export const hotels: Hotel[] = [
     maxGuests: 3,
     rating: 4.8,
     amenities: ["wifi", "spa", "gym"],
-    availableDates: ["2025-02-24", "2025-02-25"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-02-28",
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
   },
   {
@@ -64,9 +58,9 @@ export const hotels: Hotel[] = [
     maxGuests: 4,
     rating: 4.6,
     amenities: ["wifi", "parking"],
-    availableDates: ["2025-02-20", "2025-02-26"],
-    image:
-      "https://images.unsplash.com/photo-1637509695542-b3945f3c9028?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEx1Y2VybmUlMjByZW50JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+    availableFrom: "2026-02-05",
+    availableTo: "2026-03-20",
+    image: "https://images.unsplash.com/photo-1637509695542-b3945f3c9028",
   },
   {
     id: "h6",
@@ -76,7 +70,8 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 4.4,
     amenities: ["wifi", "workspace"],
-    availableDates: ["2025-02-22", "2025-02-23"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-06-01",
     image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
   },
   {
@@ -87,7 +82,8 @@ export const hotels: Hotel[] = [
     maxGuests: 6,
     rating: 4.9,
     amenities: ["wifi", "spa", "fireplace"],
-    availableDates: ["2025-02-20", "2025-02-28"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-12-31",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
   },
   {
@@ -98,9 +94,9 @@ export const hotels: Hotel[] = [
     maxGuests: 3,
     rating: 4.5,
     amenities: ["wifi", "pool"],
-    availableDates: ["2025-02-21", "2025-02-24"],
-    image:
-      "https://images.unsplash.com/photo-1723119832675-0031e0f0408c?q=80&w=2146&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    availableFrom: "2026-03-01",
+    availableTo: "2026-06-30",
+    image: "https://images.unsplash.com/photo-1723119832675-0031e0f0408c",
   },
   {
     id: "h9",
@@ -110,7 +106,8 @@ export const hotels: Hotel[] = [
     maxGuests: 4,
     rating: 4.6,
     amenities: ["wifi", "breakfast"],
-    availableDates: ["2025-02-25", "2025-02-27"],
+    availableFrom: "2026-02-20",
+    availableTo: "2026-04-30",
     image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c",
   },
   {
@@ -121,9 +118,9 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 5.0,
     amenities: ["wifi", "spa", "butler"],
-    availableDates: ["2025-02-20", "2025-02-22"],
-    image:
-      "https://images.unsplash.com/photo-1700250866774-50acaf583df8?q=80&w=2371&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    availableFrom: "2026-01-01",
+    availableTo: "2026-12-31",
+    image: "https://images.unsplash.com/photo-1700250866774-50acaf583df8",
   },
   {
     id: "h11",
@@ -133,7 +130,8 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 4.2,
     amenities: ["wifi"],
-    availableDates: ["2025-02-23", "2025-02-24"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-03-15",
     image: "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
   },
   {
@@ -144,7 +142,8 @@ export const hotels: Hotel[] = [
     maxGuests: 5,
     rating: 4.8,
     amenities: ["wifi", "parking", "gym"],
-    availableDates: ["2025-02-20", "2025-02-26"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-05-31",
     image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
   },
   {
@@ -155,7 +154,8 @@ export const hotels: Hotel[] = [
     maxGuests: 3,
     rating: 4.4,
     amenities: ["wifi", "spa"],
-    availableDates: ["2025-02-25"],
+    availableFrom: "2026-02-10",
+    availableTo: "2026-04-01",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
   },
   {
@@ -166,7 +166,8 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 4.1,
     amenities: ["wifi", "parking"],
-    availableDates: ["2025-02-20", "2025-02-21"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-02-28",
     image: "https://images.unsplash.com/photo-1529290130-4ca3753253ae",
   },
   {
@@ -177,7 +178,8 @@ export const hotels: Hotel[] = [
     maxGuests: 4,
     rating: 4.7,
     amenities: ["wifi", "fireplace"],
-    availableDates: ["2025-02-23", "2025-02-28"],
+    availableFrom: "2026-02-15",
+    availableTo: "2026-06-15",
     image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
   },
   {
@@ -188,7 +190,8 @@ export const hotels: Hotel[] = [
     maxGuests: 3,
     rating: 4.3,
     amenities: ["wifi"],
-    availableDates: ["2025-02-20", "2025-02-22"],
+    availableFrom: "2026-01-20",
+    availableTo: "2026-03-20",
     image: "https://images.unsplash.com/photo-1484154218962-a197022b5858",
   },
   {
@@ -199,7 +202,8 @@ export const hotels: Hotel[] = [
     maxGuests: 2,
     rating: 4.0,
     amenities: ["wifi", "breakfast"],
-    availableDates: ["2025-02-24"],
+    availableFrom: "2026-02-01",
+    availableTo: "2026-03-01",
     image: "https://images.unsplash.com/photo-1559599101-f09722fb4948",
   },
   {
@@ -210,7 +214,8 @@ export const hotels: Hotel[] = [
     maxGuests: 4,
     rating: 4.6,
     amenities: ["wifi", "spa"],
-    availableDates: ["2025-02-21", "2025-02-27"],
+    availableFrom: "2026-02-05",
+    availableTo: "2026-04-30",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
   },
 ];

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { FaStar } from "react-icons/fa";
 import { useBookingSearch } from "./hooks/useBookingSearch";
+import AvailabilityCalendar from "./components/AvailabilityCalendar";
 import { useDebounce } from "./hooks/useDebounce";
 import type { BookingQuery, Hotel } from "./types/booking.types";
 import { Route } from "../../../routes/experiments/booking-simulation/app";
@@ -10,9 +11,13 @@ const BookingSimulatorApp = () => {
   const navigate = useNavigate({ from: Route.fullPath });
   const search = useSearch({ from: Route.fullPath });
 
+  const checkInDate = search.checkInDate ? new Date(search.checkInDate) : null;
+  const checkOutDate = search.checkOutDate
+    ? new Date(search.checkOutDate)
+    : null;
+
   const [allHotels, setAllHotels] = useState<Hotel[]>([]);
 
-  // ✅ Debounce ONLY location
   const debouncedLocation = useDebounce(search.location ?? "", 400);
 
   const effectiveQuery: BookingQuery = {
@@ -213,6 +218,29 @@ const BookingSimulatorApp = () => {
             </select>
           </div>
         </div>
+
+        <div className="px-6 py-10 border-b border-neutral-800 bg-main-bg">
+          <h2 className="text-primary font-geist text-lg mb-6">Select Dates</h2>
+
+          <AvailabilityCalendar
+            checkIn={checkInDate}
+            checkOut={checkOutDate}
+            onChange={(range) => {
+              navigate({
+                search: (prev) => ({
+                  ...prev,
+                  checkInDate: range.checkIn
+                    ? range.checkIn.toISOString().slice(0, 10)
+                    : undefined,
+                  checkOutDate: range.checkOut
+                    ? range.checkOut.toISOString().slice(0, 10)
+                    : undefined,
+                  page: 1,
+                }),
+              });
+            }}
+          />
+        </div>
       </div>
 
       <div className="flex-1 px-6 py-8">
@@ -241,7 +269,32 @@ const BookingSimulatorApp = () => {
                   {hotel.name}
                 </h2>
 
-                <p className="text-secondary text-sm">{hotel.location}</p>
+                <p className="text-secondary text-sm">📍 {hotel.location}</p>
+
+                <div className="text-secondary">
+                  👥 Max Guests: {hotel.maxGuests}
+                </div>
+
+                <div>
+                  <p className="text-secondary mb-1">Amenities:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {hotel.amenities.map((amenity) => (
+                      <span
+                        key={amenity}
+                        className="px-2 py-1 text-xs bg-secondary-bg border border-neutral-700 rounded-md text-secondary"
+                      >
+                        {amenity}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-secondary mb-1">Availability:</p>
+                  <div className="text-primary text-sm bg-neutral-800 px-3 py-2 rounded-md inline-block">
+                    {hotel.availableFrom} → {hotel.availableTo}
+                  </div>
+                </div>
 
                 <div className="flex justify-between text-sm text-secondary">
                   <span>CHF {hotel.pricePerNight} / night</span>
