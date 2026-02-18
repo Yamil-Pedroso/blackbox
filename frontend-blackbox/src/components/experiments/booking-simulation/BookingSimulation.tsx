@@ -75,6 +75,8 @@ const BookingSimulation = () => {
               minPrice: 0,
               maxPrice: 500,
               sort: "price_asc",
+              checkInDate: undefined,
+              checkOutDate: undefined,
               page: 1,
               limit: 6,
             }}
