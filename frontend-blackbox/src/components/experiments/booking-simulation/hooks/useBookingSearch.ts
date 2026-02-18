@@ -20,3 +20,4 @@ export function useBookingSearch(query: BookingQuery) {
     placeholderData: (previousData) => previousData,
   });
 }
+//http://localhost:5173/experiments/booking-simulation/app?location=&guests=1&minPrice=0&maxPrice=500&sort=price_asc&page=1&limit=6&checkInDate=2026-02-03&checkOutDate=2026-02-13

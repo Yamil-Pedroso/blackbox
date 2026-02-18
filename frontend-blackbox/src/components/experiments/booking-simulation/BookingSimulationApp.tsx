@@ -81,13 +81,31 @@ const BookingSimulatorApp = () => {
             <label className="text-xs text-secondary font-ibm-plex-mono uppercase tracking-wide">
               Location
             </label>
-            <input
-              type="text"
-              placeholder="Zurich, Bern..."
-              value={search.location}
-              onChange={(e) => updateQuery({ location: e.target.value })}
-              className="bg-secondary-bg border border-neutral-700 px-4 py-2 text-sm text-primary focus:outline-none focus:border-primary transition-colors"
-            />
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+
+                updateQuery({
+                  location: search.location ?? "",
+                });
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Zurich, Bern..."
+                value={search.location ?? ""}
+                onChange={(e) =>
+                  navigate({
+                    search: (prev) => ({
+                      ...prev,
+                      location: e.target.value,
+                    }),
+                  })
+                }
+                className="w-full bg-secondary-bg border border-neutral-700 px-4 py-2 text-sm text-primary focus:outline-none focus:border-primary transition-colors"
+              />
+            </form>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -219,7 +237,7 @@ const BookingSimulatorApp = () => {
           </div>
         </div>
 
-        <div className="px-6 py-10 border-b border-neutral-800 bg-main-bg">
+        <div className="flex flex-col justify-center items-center px-6 py-10  bg-main-bg">
           <h2 className="text-primary font-geist text-lg mb-6">Select Dates</h2>
 
           <AvailabilityCalendar

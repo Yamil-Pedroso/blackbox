@@ -17,7 +17,7 @@ const AvailabilityCalendar = ({
     : undefined;
 
   return (
-    <div className="p-6 bg-main-bg border border-neutral-800 rounded-xl text-primary">
+    <div className=" p-6 bg-main-bg text-primary">
       <DayPicker
         mode="range"
         selected={selectedRange}
@@ -44,4 +44,4 @@ const AvailabilityCalendar = ({
 
 export default AvailabilityCalendar;
 
-//http://localhost:5173/experiments/booking-simulation/app?location=&guests=1&minPrice=0&maxPrice=500&sort=price_asc&page=1&limit=6&checkInDate=2026-02-05&checkOutDate=2026-02-27&checkIn=2026-01-31&checkOut=2026-02-10
+//https://blackbox-one-olive.vercel.app/experiments/booking-simulation/app?location=Zurich&guests=3&minPrice=0&maxPrice=500&sort=price_asc&page=1&limit=6&checkInDate=2026-02-02&checkOutDate=2026-02-12
