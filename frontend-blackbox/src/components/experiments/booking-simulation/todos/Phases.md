@@ -9,9 +9,10 @@
 [x] 8. Query params simulados
 
 ## Phase 2:
-[x]Availability Calendar
+[x] Availability Calendar
 
-## Phase 3: Pricing Engine
+## Phase 3:
+[x] Pricing Engine
 
 ## Phase 4: Multi-Step Booking Flow
 

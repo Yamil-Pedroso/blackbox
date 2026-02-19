@@ -61,3 +61,23 @@ export type PricingRule = (
   nights: number,
   subtotal: number,
 ) => PricingLine;
+
+// Booking Flow Types
+export type BookingStep = "dates" | "guests" | "review" | "confirm";
+
+export interface BookingFlowState {
+  step: BookingStep;
+  checkIn: Date | null;
+  checkOut: Date | null;
+  guests: number;
+}
+
+export type BookingFlowAction =
+  | {
+      type: "SET_DATES";
+      payload: { checkIn: Date | null; checkOut: Date | null };
+    }
+  | { type: "SET_GUESTS"; payload: number }
+  | { type: "NEXT_STEP" }
+  | { type: "PREV_STEP" }
+  | { type: "RESET" };
