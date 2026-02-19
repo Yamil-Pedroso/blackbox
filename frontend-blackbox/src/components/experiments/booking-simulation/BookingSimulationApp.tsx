@@ -8,6 +8,7 @@ import { useDebounce } from "./hooks/useDebounce";
 import type { BookingQuery, Hotel } from "./types/booking.types";
 import { Route } from "../../../routes/experiments/booking-simulation/app";
 import PricingBreakdown from "./components/PricingBreakdown";
+import { format } from "date-fns";
 
 interface HotelCardProps {
   hotel: Hotel;
@@ -316,15 +317,14 @@ const BookingSimulatorApp = () => {
             checkIn={checkInDate}
             checkOut={checkOutDate}
             onChange={(range) => {
-              console.log("Selected range:", range);
               navigate({
                 search: (prev) => ({
                   ...prev,
                   checkInDate: range.checkIn
-                    ? range.checkIn.toISOString().slice(0, 10)
+                    ? format(range.checkIn, "yyyy-MM-dd")
                     : undefined,
                   checkOutDate: range.checkOut
-                    ? range.checkOut.toISOString().slice(0, 10)
+                    ? format(range.checkOut, "yyyy-MM-dd")
                     : undefined,
                   page: 1,
                 }),
