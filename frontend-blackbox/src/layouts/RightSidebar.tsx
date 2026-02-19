@@ -11,9 +11,17 @@ const routeKeyMap: Record<string, string> = {
   "/mini-games": "miniGames",
 };
 
+const langLabels: Record<string, string> = {
+  en: "EN",
+  es: "ES",
+  de: "DE",
+};
+
 const RightSidebar = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation("rightSidebar");
+
+  console.log("Rendering RightSidebar with language:", i18n.language);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -101,9 +109,15 @@ const RightSidebar = () => {
       </div>
 
       <div className="flex gap-2 text-xs mt-6">
-        <button onClick={() => changeLanguage("en")}>EN</button>
-        <button onClick={() => changeLanguage("es")}>ES</button>
-        <button onClick={() => changeLanguage("de")}>DE</button>
+        {Object.keys(langLabels).map((lng) => (
+          <button
+            key={lng}
+            onClick={() => changeLanguage(lng)}
+            className={`px-2 py-1 border border-neutral-800 rounded ${i18n.language === lng ? "bg-neutral-800 text-green" : "text-secondary"}`}
+          >
+            {langLabels[lng]}
+          </button>
+        ))}
       </div>
 
       <div className="mt-auto pt-6 border-t border-neutral-800 mb-3.5 w-35">
