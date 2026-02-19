@@ -8,7 +8,8 @@
 [x] 7. Debounce
 [x] 8. Query params simulados
 
-## Phase 2: Availability Calendar
+## Phase 2:
+[x]Availability Calendar
 
 ## Phase 3: Pricing Engine
 

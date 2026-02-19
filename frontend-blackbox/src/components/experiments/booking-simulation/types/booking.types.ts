@@ -3,6 +3,7 @@ export interface BookingSimulationPhase {
   id: number;
   name: string;
   status: Status;
+  goal?: string;
 }
 
 export interface Hotel {
@@ -35,3 +36,28 @@ export interface BookingResponse {
   total: number;
   hasMore: boolean;
 }
+
+// Pricing Engine Types
+export interface PricingContext {
+  hotel: Hotel;
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+}
+
+export interface PricingLine {
+  label: string;
+  amount: number;
+}
+
+export interface PricingResult {
+  nights: number;
+  lines: PricingLine[];
+  total: number;
+}
+
+export type PricingRule = (
+  context: PricingContext,
+  nights: number,
+  subtotal: number,
+) => PricingLine;

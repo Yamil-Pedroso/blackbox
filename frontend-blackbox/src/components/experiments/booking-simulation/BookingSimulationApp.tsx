@@ -2,14 +2,86 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { FaStar } from "react-icons/fa";
 import { useBookingSearch } from "./hooks/useBookingSearch";
+import { usePricing } from "./hooks/usePricing";
 import AvailabilityCalendar from "./components/AvailabilityCalendar";
 import { useDebounce } from "./hooks/useDebounce";
 import type { BookingQuery, Hotel } from "./types/booking.types";
 import { Route } from "../../../routes/experiments/booking-simulation/app";
+import PricingBreakdown from "./components/PricingBreakdown";
+
+interface HotelCardProps {
+  hotel: Hotel;
+  checkIn?: string;
+  checkOut?: string;
+  guests?: number;
+}
+
+const HotelCard = ({ hotel, checkIn, checkOut, guests }: HotelCardProps) => {
+  const pricing = usePricing({
+    hotel,
+    checkIn,
+    checkOut,
+    guests,
+  });
+
+  return (
+    <div className="border border-neutral-800 bg-main-bg overflow-hidden group hover:border-primary transition-colors duration-300">
+      <div className="h-48 overflow-hidden">
+        <img
+          src={hotel.image}
+          alt={hotel.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+
+      <div className="p-5 flex flex-col gap-3">
+        <h2 className="font-geist text-lg text-primary">{hotel.name}</h2>
+
+        <p className="text-secondary text-sm">📍 {hotel.location}</p>
+
+        <div className="text-secondary">👥 Max Guests: {hotel.maxGuests}</div>
+
+        <div>
+          <p className="text-secondary mb-1">Amenities:</p>
+          <div className="flex flex-wrap gap-2">
+            {hotel.amenities.map((amenity) => (
+              <span
+                key={amenity}
+                className="px-2 py-1 text-xs bg-secondary-bg border border-neutral-700 rounded-md text-secondary"
+              >
+                {amenity}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="text-secondary mb-1">Availability:</p>
+          <div className="text-primary text-sm bg-neutral-800 px-3 py-2 rounded-md inline-block">
+            {hotel.availableFrom} → {hotel.availableTo}
+          </div>
+        </div>
+
+        <div className="flex justify-between text-sm text-secondary">
+          <span>CHF {hotel.pricePerNight} / night</span>
+          <span className="flex items-center">
+            <FaStar className="text-amber-400" />
+            <span className="ml-1">{hotel.rating}</span>
+          </span>
+        </div>
+
+        {/* Pricing Breakdown */}
+        {pricing && <PricingBreakdown pricing={pricing} />}
+      </div>
+    </div>
+  );
+};
 
 const BookingSimulatorApp = () => {
   const navigate = useNavigate({ from: Route.fullPath });
   const search = useSearch({ from: Route.fullPath });
+
+  console.log("Current search params:", search);
 
   const checkInDate = search.checkInDate ? new Date(search.checkInDate) : null;
   const checkOutDate = search.checkOutDate
@@ -244,6 +316,7 @@ const BookingSimulatorApp = () => {
             checkIn={checkInDate}
             checkOut={checkOutDate}
             onChange={(range) => {
+              console.log("Selected range:", range);
               navigate({
                 search: (prev) => ({
                   ...prev,
@@ -270,59 +343,13 @@ const BookingSimulatorApp = () => {
 
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
           {allHotels.map((hotel) => (
-            <div
+            <HotelCard
               key={hotel.id}
-              className="border border-neutral-800 bg-main-bg overflow-hidden group hover:border-primary transition-colors duration-300"
-            >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={hotel.image}
-                  alt={hotel.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-
-              <div className="p-5 flex flex-col gap-3">
-                <h2 className="font-geist text-lg text-primary">
-                  {hotel.name}
-                </h2>
-
-                <p className="text-secondary text-sm">📍 {hotel.location}</p>
-
-                <div className="text-secondary">
-                  👥 Max Guests: {hotel.maxGuests}
-                </div>
-
-                <div>
-                  <p className="text-secondary mb-1">Amenities:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {hotel.amenities.map((amenity) => (
-                      <span
-                        key={amenity}
-                        className="px-2 py-1 text-xs bg-secondary-bg border border-neutral-700 rounded-md text-secondary"
-                      >
-                        {amenity}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-secondary mb-1">Availability:</p>
-                  <div className="text-primary text-sm bg-neutral-800 px-3 py-2 rounded-md inline-block">
-                    {hotel.availableFrom} → {hotel.availableTo}
-                  </div>
-                </div>
-
-                <div className="flex justify-between text-sm text-secondary">
-                  <span>CHF {hotel.pricePerNight} / night</span>
-                  <span className="flex items-center">
-                    <FaStar className="text-amber-400" />
-                    <span className="ml-1">{hotel.rating}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
+              hotel={hotel}
+              checkIn={search.checkInDate}
+              checkOut={search.checkOutDate}
+              guests={search.guests}
+            />
           ))}
         </div>
 
