@@ -3,41 +3,19 @@ import { Link } from "@tanstack/react-router";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
-
-const experiments = [
-  {
-    title: "Booking Platform Simulation",
-    description:
-      "End-to-end booking UI simulation including search, availability calendar, pricing logic, multi-step flow and payment states.",
-    tag: "Product System",
-    status: "Active",
-    route: "/experiments/booking-simulation",
-  },
-  {
-    title: "Scroll Physics Engine",
-    description:
-      "Custom inertia-based scroll behavior using velocity tracking and frame interpolation.",
-    tag: "Motion",
-    status: "Active",
-  },
-  {
-    title: "Shader Noise Study",
-    description:
-      "Fragment shader experiment exploring procedural noise and dynamic color blending.",
-    tag: "WebGL",
-    status: "Prototype",
-  },
-  {
-    title: "3D Layout Morph",
-    description:
-      "FLIP-based transformation system between grid and compact layouts.",
-    tag: "Animation",
-    status: "Archived",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const ExperimentsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation("experiments");
+
+  const experiments = t("items", { returnObjects: true }) as {
+    title: string;
+    description: string;
+    tag: string;
+    status: string;
+    route?: string;
+  }[];
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -76,13 +54,13 @@ const ExperimentsPage = () => {
     >
       <section className="space-y-6">
         <div className="exp-hero">
-          <SectionLabel text="Research & Exploration" />
+          <SectionLabel text={t("label")} />
         </div>
 
         <div className="exp-hero">
           <SectionHero
-            title="Experiments Lab"
-            description="A controlled environment for rendering research, motion systems and interactive prototypes. Each entry represents a technical study."
+            title={t("hero.title")}
+            description={t("hero.description")}
           />
         </div>
       </section>
@@ -121,12 +99,12 @@ const ExperimentsPage = () => {
               {exp.route ? (
                 <Link to={exp.route}>
                   <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity cursor-pointer">
-                    Launch →
+                    {t("launch")}
                   </button>
                 </Link>
               ) : (
                 <button className="mt-4 text-sm font-ibm-plex-mono text-secondary opacity-50 cursor-not-allowed">
-                  Coming Soon
+                  {t("comingSoon")}
                 </button>
               )}
             </div>

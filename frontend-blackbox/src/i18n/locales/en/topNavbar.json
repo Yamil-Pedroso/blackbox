@@ -1,0 +1,20 @@
+{
+  "brand": "Blackbox",
+  "menu": {
+    "home": "Home",
+    "tools": "Tools",
+    "ai": "AI",
+    "systems": "Systems",
+    "experiments": "Experiments",
+    "miniGames": "Mini-Games"
+  },
+  "status": {
+    "open": "Open to new creation",
+    "location": "Switzerland, Zurich",
+    "time": "My time:"
+  },
+  "profile": {
+    "role": "Creative Technologist",
+    "languages": "English, German"
+  }
+}

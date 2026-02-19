@@ -1,0 +1,40 @@
+{
+  "label": "Werkzeuge",
+  "hero": {
+    "title": "Angewandte Werkzeuge",
+    "description": "Praktische Tools zur Lösung realer Entwicklungsprobleme. Jedes Werkzeug fokussiert sich auf Benutzerfreundlichkeit, Klarheit und technische Qualität."
+  },
+  "launch": "Tool starten →",
+  "status": {
+    "active": "Aktiv",
+    "inProgress": "In Bearbeitung",
+    "prototype": "Prototyp",
+    "planned": "Geplant"
+  },
+  "items": [
+    {
+      "title": "API-Schema-Visualizer",
+      "description": "Erstellt strukturierte visuelle Dokumentation aus OpenAPI-Schemata.",
+      "stack": "Node + React",
+      "status": "active"
+    },
+    {
+      "title": "Prompt-Optimierer",
+      "description": "Analysiert und verfeinert Prompts für strukturierte KI-Antworten.",
+      "stack": "KI + Streaming",
+      "status": "inProgress"
+    },
+    {
+      "title": "JSON-Diff-Engine",
+      "description": "Vergleicht große JSON-Strukturen und visualisiert strukturelle Unterschiede.",
+      "stack": "TypeScript",
+      "status": "prototype"
+    },
+    {
+      "title": "Markdown → Sauberes PDF",
+      "description": "Konvertiert strukturiertes Markdown in exportfertige PDFs.",
+      "stack": "Node + Rendering",
+      "status": "planned"
+    }
+  ]
+}

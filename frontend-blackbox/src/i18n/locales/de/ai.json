@@ -1,0 +1,26 @@
+{
+  "label": "Intelligenz-Ebene",
+  "hero": {
+    "title": "Künstliche Intelligenz Systeme",
+    "description": "Dieses Modul untersucht strukturierte KI-Integration, Streaming-Pipelines, Speichersysteme und retrieval-basierte Architekturen. Intelligenz wird als Systemebene behandelt, nicht als Feature."
+  },
+  "explore": "Erkunden →",
+  "modules": [
+    {
+      "title": "Streaming-Engine",
+      "description": "Token-basierte Streaming-Pipeline mit inkrementellem Rendering und Kontext-Injektion."
+    },
+    {
+      "title": "Kontext-Speichersystem",
+      "description": "Kurz- und Langzeit-Speicherverwaltung mit strukturierter Kontextspeicherung."
+    },
+    {
+      "title": "RAG-Prototyp",
+      "description": "Retrieval-Augmented-Generation-System mit Vektor-Ähnlichkeitssuche."
+    },
+    {
+      "title": "Embedding-Visualizer",
+      "description": "Interaktive Vektorraum-Visualisierung für semantischen Vergleich."
+    }
+  ]
+}

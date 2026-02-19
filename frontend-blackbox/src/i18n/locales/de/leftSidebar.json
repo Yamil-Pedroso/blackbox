@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "role": "Kreativer Technologe",
+    "description": "Fokussiert auf interaktive Systeme, Full-Stack-Architektur und intelligente Schnittstellen. Aufbau strukturierter Umgebungen, in denen Code, Bewegung und Logik zusammenfließen."
+  },
+  "info": {
+    "location": "Schweiz, Zürich",
+    "languages": "Englisch, Deutsch, Spanisch, Italienisch, Französisch"
+  },
+  "status": {
+    "title": "Blackbox Status",
+    "modules": "Module",
+    "version": "Version",
+    "state": "Status",
+    "active": "Aktiv"
+  },
+  "buttons": {
+    "schedule": "Gespräch vereinbaren",
+    "journey": "Entwicklungsreise ansehen"
+  }
+}

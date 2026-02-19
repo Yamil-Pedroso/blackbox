@@ -1,0 +1,23 @@
+{
+  "label": "Backend-Architektur",
+  "hero": {
+    "title": "Systemtechnik",
+    "description": "Backend-Architektur, sichere Authentifizierungsprozesse und strukturierte Service-Schichten. Dieser Bereich demonstriert systemisches Denken, nicht nur CRUD-Anwendungen."
+  },
+  "engine": {
+    "title": "Zugriffskontroll-Engine",
+    "description": "Rollenbasiertes Authentifizierungssystem mit Node.js, Express und PostgreSQL. Enthält JWT-Access-Tokens, Refresh-Tokens, Middleware-Routenschutz und strukturierte Service-Schichten."
+  },
+  "meta": {
+    "architecture": "Architektur",
+    "security": "Sicherheit",
+    "status": "Status",
+    "statusValue": "In Entwicklung"
+  },
+  "actions": {
+    "api": "Live API Explorer (Demnächst)",
+    "diagram": "Architekturdiagramm",
+    "protected": "Geschützte Route Demo",
+    "logs": "Echtzeit-Logs"
+  }
+}

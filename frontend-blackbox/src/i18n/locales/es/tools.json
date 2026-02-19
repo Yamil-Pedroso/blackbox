@@ -1,0 +1,40 @@
+{
+  "label": "Herramientas",
+  "hero": {
+    "title": "Herramientas Aplicadas",
+    "description": "Utilidades prácticas diseñadas para resolver problemas reales de desarrollo. Cada herramienta se centra en la usabilidad, claridad y calidad de ingeniería."
+  },
+  "launch": "Abrir herramienta →",
+  "status": {
+    "active": "Activa",
+    "inProgress": "En progreso",
+    "prototype": "Prototipo",
+    "planned": "Planificada"
+  },
+  "items": [
+    {
+      "title": "Visualizador de Esquemas API",
+      "description": "Genera documentación visual estructurada a partir de esquemas OpenAPI.",
+      "stack": "Node + React",
+      "status": "active"
+    },
+    {
+      "title": "Optimizador de Prompts",
+      "description": "Analiza y refina prompts para respuestas estructuradas de IA.",
+      "stack": "IA + Streaming",
+      "status": "inProgress"
+    },
+    {
+      "title": "Motor de Diferencias JSON",
+      "description": "Compara grandes estructuras JSON y visualiza diferencias estructurales.",
+      "stack": "TypeScript",
+      "status": "prototype"
+    },
+    {
+      "title": "Markdown → PDF Limpio",
+      "description": "Convierte markdown estructurado en PDFs listos para exportación.",
+      "stack": "Node + Rendering",
+      "status": "planned"
+    }
+  ]
+}

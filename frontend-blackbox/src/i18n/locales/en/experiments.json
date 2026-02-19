@@ -1,0 +1,36 @@
+{
+  "label": "Research & Exploration",
+  "hero": {
+    "title": "Experiments Lab",
+    "description": "A controlled environment for rendering research, motion systems and interactive prototypes. Each entry represents a technical study."
+  },
+  "launch": "Launch →",
+  "comingSoon": "Coming Soon",
+  "items": [
+    {
+      "title": "Booking Platform Simulation",
+      "description": "End-to-end booking UI simulation including search, availability calendar, pricing logic, multi-step flow and payment states.",
+      "tag": "Product System",
+      "status": "Active",
+      "route": "/experiments/booking-simulation"
+    },
+    {
+      "title": "Scroll Physics Engine",
+      "description": "Custom inertia-based scroll behavior using velocity tracking and frame interpolation.",
+      "tag": "Motion",
+      "status": "Active"
+    },
+    {
+      "title": "Shader Noise Study",
+      "description": "Fragment shader experiment exploring procedural noise and dynamic color blending.",
+      "tag": "WebGL",
+      "status": "Prototype"
+    },
+    {
+      "title": "3D Layout Morph",
+      "description": "FLIP-based transformation system between grid and compact layouts.",
+      "tag": "Animation",
+      "status": "Archived"
+    }
+  ]
+}

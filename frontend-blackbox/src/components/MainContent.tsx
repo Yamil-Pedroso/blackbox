@@ -4,41 +4,18 @@ import SectionHero from "./common/SectionHero";
 import SectionLabel from "./common/SectionLabel";
 import gsap from "gsap";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const modules = [
-  {
-    title: "Experiments",
-    to: "/experiments",
-    description:
-      "Rendering explorations, shader studies and advanced motion systems.",
-  },
-  {
-    title: "Tools",
-    to: "/tools",
-    description:
-      "Utility systems built with clean architecture and practical UX design.",
-  },
-  {
-    title: "AI",
-    to: "/ai",
-    description:
-      "Applied intelligence integrations, streaming pipelines and context systems.",
-  },
-  {
-    title: "Systems",
-    to: "/systems",
-    description:
-      "Backend architecture, authentication flows and real-time data structures.",
-  },
-  {
-    title: "Mini-Games",
-    to: "/mini-games",
-    description:
-      "Interactive mechanics and WebGL / Unity based gameplay experiments.",
-  },
+  { key: "experiments", to: "/experiments" },
+  { key: "tools", to: "/tools" },
+  { key: "ai", to: "/ai" },
+  { key: "systems", to: "/systems" },
+  { key: "miniGames", to: "/mini-games" },
 ];
 
 const MainContent = () => {
+  const { t } = useTranslation("main");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -90,25 +67,25 @@ const MainContent = () => {
       <div className="px-6 sm:px-8 md:px-12 xl:px-8 py-8 md:py-16 xl:py-8 space-y-8 max-w-7xl mx-auto">
         <section className="space-y-8">
           <div className="hero-animate">
-            <SectionLabel text="Hero Section" />
+            <SectionLabel text={t("hero.label")} />
           </div>
 
           <div className="hero-animate">
             <SectionHero
-              title="Welcome to the Blackbox"
-              description="A sandbox environment for rendering research, motion systems and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
+              title={t("hero.title")}
+              description={t("hero.description")}
             />
           </div>
         </section>
 
         <section className="space-y-10">
           <div className="hero-animate">
-            <SectionLabel text="Blackbox Modules" />
+            <SectionLabel text={t("modulesLabel")} />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 xl:gap-10">
             {modules.map((module) => (
-              <Link key={module.title} to={module.to}>
+              <Link key={module.key} to={module.to}>
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{
@@ -126,11 +103,11 @@ const MainContent = () => {
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-primary/5 to-transparent pointer-events-none" />
 
                   <h3 className="text-primary font-geist text-xl md:text-2xl mb-4 relative z-10">
-                    {module.title}
+                    {t(`modules.${module.key}.title`)}
                   </h3>
 
                   <p className="text-secondary font-ibm-plex-mono text-sm md:text-base leading-relaxed relative z-10">
-                    {module.description}
+                    {t(`modules.${module.key}.description`)}
                   </p>
 
                   <div className="mt-6 md:mt-8 h-px w-0 bg-primary group-hover:w-full transition-all duration-700 relative z-10" />
@@ -142,9 +119,7 @@ const MainContent = () => {
 
         <section className="pt-16 md:pt-20 border-t border-neutral-800">
           <p className="footer-animate text-secondary font-ibm-plex-mono text-sm md:text-base max-w-xl">
-            Blackbox is an evolving environment. Each module represents a
-            dimension of engineering: rendering, architecture, intelligence,
-            interaction and structured systems.
+            {t("footer")}
           </p>
         </section>
       </div>

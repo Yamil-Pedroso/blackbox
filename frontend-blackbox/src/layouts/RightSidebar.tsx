@@ -1,16 +1,23 @@
 import { useEffect, useRef } from "react";
 import { useRouterState } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
-const moduleInfoMap: Record<string, string[]> = {
-  "/": ["Overview", "Blackbox Structure", "Modules"],
-  "/experiments": ["Overview", "Purpose", "Planned Explorations", "Status"],
-  "/tools": ["Overview", "Purpose", "Planned Utilities", "Status"],
-  "/ai": ["Overview", "Purpose", "Planned Integrations", "Status"],
-  "/systems": ["Overview", "Purpose", "Architecture Plan", "Status"],
-  "/mini-games": ["Overview", "Purpose", "Planned Concepts", "Status"],
+const routeKeyMap: Record<string, string> = {
+  "/": "home",
+  "/experiments": "experiments",
+  "/tools": "tools",
+  "/ai": "ai",
+  "/systems": "systems",
+  "/mini-games": "miniGames",
 };
 
 const RightSidebar = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation("rightSidebar");
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -20,12 +27,14 @@ const RightSidebar = () => {
 
   const baseRoute = pathname === "/" ? "/" : "/" + pathname.split("/")[1];
 
-  const items = moduleInfoMap[baseRoute] || [];
+  const routeKey = routeKeyMap[baseRoute] || "home";
+
+  const items = t(`routes.${routeKey}`, { returnObjects: true }) as string[];
 
   useEffect(() => {
     if (!textRef.current) return;
 
-    const finalText = "Blackbox is currently in active development.";
+    const finalText = t("developmentStatus");
 
     if (hasAnimated.current) {
       textRef.current.innerText = finalText;
@@ -71,13 +80,13 @@ const RightSidebar = () => {
     };
 
     typeNext();
-  }, []);
+  }, [t, routeKey, pathname]);
 
   return (
     <aside className="border-l border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
       <div>
         <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest">
-          Section
+          {t("sectionLabel")}
         </h3>
 
         <div className="border-t border-neutral-800 mt-4 mb-6" />
@@ -89,6 +98,12 @@ const RightSidebar = () => {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className="flex gap-2 text-xs mt-6">
+        <button onClick={() => changeLanguage("en")}>EN</button>
+        <button onClick={() => changeLanguage("es")}>ES</button>
+        <button onClick={() => changeLanguage("de")}>DE</button>
       </div>
 
       <div className="mt-auto pt-6 border-t border-neutral-800 mb-3.5 w-35">

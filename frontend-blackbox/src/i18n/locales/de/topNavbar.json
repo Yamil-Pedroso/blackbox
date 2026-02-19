@@ -1,0 +1,20 @@
+{
+  "brand": "Blackbox",
+  "menu": {
+    "home": "Start",
+    "tools": "Werkzeuge",
+    "ai": "KI",
+    "systems": "Systeme",
+    "experiments": "Experimente",
+    "miniGames": "Mini-Spiele"
+  },
+  "status": {
+    "open": "Offen für neue Kreationen",
+    "location": "Schweiz, Zürich",
+    "time": "Meine Zeit:"
+  },
+  "profile": {
+    "role": "Kreativer Technologe",
+    "languages": "Englisch, Deutsch"
+  }
+}

@@ -2,32 +2,16 @@ import { useEffect, useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
-
-const aiModules = [
-  {
-    title: "Streaming Engine",
-    description:
-      "Token-level streaming pipeline with incremental rendering and context injection.",
-  },
-  {
-    title: "Context Memory System",
-    description:
-      "Short-term and long-term memory handling using structured context storage.",
-  },
-  {
-    title: "RAG Prototype",
-    description:
-      "Retrieval-Augmented Generation system with vector similarity search.",
-  },
-  {
-    title: "Embedding Visualizer",
-    description:
-      "Interactive vector space visualization for semantic comparison.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const AIPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation("ai");
+
+  const aiModules = t("modules", { returnObjects: true }) as {
+    title: string;
+    description: string;
+  }[];
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -66,13 +50,13 @@ const AIPage = () => {
     >
       <section className="space-y-6">
         <div className="ai-hero">
-          <SectionLabel text="Inteligence Layer" />
+          <SectionLabel text={t("label")} />
         </div>
 
         <div className="ai-hero">
           <SectionHero
-            title="Artificial Intelligence Systems"
-            description="This module explores structured AI integration, streaming pipelines, memory systems and retrieval-based architectures. Intelligence is treated as a system layer, not a feature."
+            title={t("hero.title")}
+            description={t("hero.description")}
           />
         </div>
       </section>
@@ -92,7 +76,7 @@ const AIPage = () => {
             </p>
 
             <button className="text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity">
-              Explore →
+              {t("explore")}
             </button>
           </div>
         ))}

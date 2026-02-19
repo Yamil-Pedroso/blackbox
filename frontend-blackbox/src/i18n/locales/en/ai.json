@@ -1,0 +1,26 @@
+{
+  "label": "Intelligence Layer",
+  "hero": {
+    "title": "Artificial Intelligence Systems",
+    "description": "This module explores structured AI integration, streaming pipelines, memory systems and retrieval-based architectures. Intelligence is treated as a system layer, not a feature."
+  },
+  "explore": "Explore →",
+  "modules": [
+    {
+      "title": "Streaming Engine",
+      "description": "Token-level streaming pipeline with incremental rendering and context injection."
+    },
+    {
+      "title": "Context Memory System",
+      "description": "Short-term and long-term memory handling using structured context storage."
+    },
+    {
+      "title": "RAG Prototype",
+      "description": "Retrieval-Augmented Generation system with vector similarity search."
+    },
+    {
+      "title": "Embedding Visualizer",
+      "description": "Interactive vector space visualization for semantic comparison."
+    }
+  ]
+}

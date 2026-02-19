@@ -1,0 +1,6 @@
+{
+  "greetings": {
+    "welcome": "Welcome to the Booking Simulation Experiment",
+    "description": "This experiment simulates a hotel booking process, allowing you to explore different phases of development and see how they impact the user experience."
+  }
+}

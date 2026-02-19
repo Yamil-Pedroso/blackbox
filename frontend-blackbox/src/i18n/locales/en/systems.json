@@ -1,0 +1,23 @@
+{
+  "label": "Backend Architecture",
+  "hero": {
+    "title": "Systems Engineering",
+    "description": "Backend architecture, secure authentication flows and structured service layers. This section demonstrates system-level thinking, not just CRUD applications."
+  },
+  "engine": {
+    "title": "Access Control Engine",
+    "description": "A role-based authentication system built with Node.js, Express and PostgreSQL. Includes JWT access tokens, refresh tokens, middleware-based route protection and structured service layers."
+  },
+  "meta": {
+    "architecture": "Architecture",
+    "security": "Security",
+    "status": "Status",
+    "statusValue": "In Development"
+  },
+  "actions": {
+    "api": "Live API Explorer (Coming Soon)",
+    "diagram": "Architecture Diagram",
+    "protected": "Protected Route Demo",
+    "logs": "Real-time Logs"
+  }
+}

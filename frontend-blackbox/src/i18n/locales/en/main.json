@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "label": "Hero Section",
+    "title": "Welcome to the Blackbox",
+    "description": "A sandbox environment for rendering research, motion systems and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
+  },
+  "modulesLabel": "Blackbox Modules",
+  "footer": "Blackbox is an evolving environment. Each module represents a dimension of engineering: rendering, architecture, intelligence, interaction and structured systems.",
+  "modules": {
+    "experiments": {
+      "title": "Experiments",
+      "description": "Rendering explorations, shader studies and advanced motion systems."
+    },
+    "tools": {
+      "title": "Tools",
+      "description": "Utility systems built with clean architecture and practical UX design."
+    },
+    "ai": {
+      "title": "AI",
+      "description": "Applied intelligence integrations, streaming pipelines and context systems."
+    },
+    "systems": {
+      "title": "Systems",
+      "description": "Backend architecture, authentication flows and real-time data structures."
+    },
+    "miniGames": {
+      "title": "Mini-Games",
+      "description": "Interactive mechanics and WebGL / Unity based gameplay experiments."
+    }
+  }
+}

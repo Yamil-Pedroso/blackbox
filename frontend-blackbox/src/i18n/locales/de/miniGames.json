@@ -1,0 +1,31 @@
+{
+  "label": "Interaktiver Bereich",
+  "hero": {
+    "title": "Mini-Spiele Unity",
+    "description": "Eine Sammlung von Unity WebGL-Prototypen mit interaktiven Mechaniken und Echtzeit-Physik."
+  },
+  "arcade": "ARCADE MODUS",
+  "select": "> Spiel auswählen",
+  "launch": "▶ STARTEN",
+  "unity": {
+    "title": "Unity WebGL Demo",
+    "description": "Eingebetteter Unity WebGL-Prototyp mit Echtzeit-Physik, Kollisionserkennung und interaktiven Mechaniken innerhalb der Blackbox-Umgebung."
+  },
+  "games": [
+    {
+      "id": 1,
+      "title": "Unity Micro Demo",
+      "description": "Kurzer Unity WebGL-Prototyp mit Fokus auf Mechaniken."
+    },
+    {
+      "id": 2,
+      "title": "Asteroid Runner",
+      "description": "WebGL-basiertes Endless-Runner-Experiment."
+    },
+    {
+      "id": 3,
+      "title": "Memory Grid",
+      "description": "Mustererkennungs-Herausforderung."
+    }
+  ]
+}

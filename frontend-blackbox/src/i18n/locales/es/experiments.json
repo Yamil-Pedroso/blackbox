@@ -1,0 +1,36 @@
+{
+  "label": "Investigación y Exploración",
+  "hero": {
+    "title": "Laboratorio de Experimentos",
+    "description": "Un entorno controlado para investigación en renderizado, sistemas de movimiento y prototipos interactivos. Cada entrada representa un estudio técnico."
+  },
+  "launch": "Iniciar →",
+  "comingSoon": "Próximamente",
+  "items": [
+    {
+      "title": "Simulación de Plataforma de Reservas",
+      "description": "Simulación completa de interfaz de reservas incluyendo búsqueda, calendario de disponibilidad, lógica de precios, flujo multi-paso y estados de pago.",
+      "tag": "Sistema de Producto",
+      "status": "Activo",
+      "route": "/experiments/booking-simulation"
+    },
+    {
+      "title": "Motor de Física de Scroll",
+      "description": "Comportamiento de scroll personalizado basado en inercia usando seguimiento de velocidad e interpolación por frames.",
+      "tag": "Movimiento",
+      "status": "Activo"
+    },
+    {
+      "title": "Estudio de Ruido en Shaders",
+      "description": "Experimento con fragment shaders explorando ruido procedural y mezcla dinámica de colores.",
+      "tag": "WebGL",
+      "status": "Prototipo"
+    },
+    {
+      "title": "Transformación 3D de Layout",
+      "description": "Sistema de transformación basado en FLIP entre layouts en grid y compactos.",
+      "tag": "Animación",
+      "status": "Archivado"
+    }
+  ]
+}

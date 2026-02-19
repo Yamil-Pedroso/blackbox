@@ -1,0 +1,12 @@
+{
+  "sectionLabel": "Abschnitt",
+  "developmentStatus": "Blackbox befindet sich derzeit in aktiver Entwicklung.",
+  "routes": {
+    "home": ["Überblick", "Blackbox-Struktur", "Module"],
+    "experiments": ["Überblick", "Zweck", "Geplante Experimente", "Status"],
+    "tools": ["Überblick", "Zweck", "Geplante Werkzeuge", "Status"],
+    "ai": ["Überblick", "Zweck", "Geplante Integrationen", "Status"],
+    "systems": ["Überblick", "Zweck", "Architekturplan", "Status"],
+    "miniGames": ["Überblick", "Zweck", "Geplante Konzepte", "Status"]
+  }
+}

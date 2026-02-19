@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "role": "Tecnólogo Creativo",
+    "description": "Enfocado en sistemas interactivos, arquitectura full-stack e interfaces inteligentes. Construyendo entornos estructurados donde el código, el movimiento y la lógica convergen."
+  },
+  "info": {
+    "location": "Suiza, Zúrich",
+    "languages": "Inglés, Alemán, Español, Italiano, Francés"
+  },
+  "status": {
+    "title": "Estado de Blackbox",
+    "modules": "Módulos",
+    "version": "Versión",
+    "state": "Estado",
+    "active": "Activo"
+  },
+  "buttons": {
+    "schedule": "Agendar una llamada",
+    "journey": "Ver recorrido de desarrollo"
+  }
+}

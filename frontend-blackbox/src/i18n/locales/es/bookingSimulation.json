@@ -1,0 +1,66 @@
+{
+  "label": "Simulación de Producto",
+  "hero": {
+    "title": "Simulación de Plataforma de Reservas",
+    "description": "Una simulación estructurada de una plataforma de reservas del mundo real, diseñada para replicar desafíos frontend a nivel de producto."
+  },
+  "developmentPhases": "Fases de Desarrollo",
+  "currentFocus": "Enfoque Actual",
+  "enter": "Entrar →",
+  "noActivePhase": "No hay fase activa.",
+  "status": {
+    "active": "En Progreso",
+    "done": "Completado",
+    "pending": "Pendiente"
+  },
+  "phases": [
+    {
+      "id": 1,
+      "name": "Búsqueda y Filtros",
+      "status": "done",
+      "goal": "Implementar una arquitectura de filtrado basada en URL con inputs controlados y gestión estructurada del estado."
+    },
+    {
+      "id": 2,
+      "name": "Calendario de Disponibilidad",
+      "status": "done",
+      "goal": "Desarrollar un componente de calendario interactivo para seleccionar fechas de entrada y salida, integrado con la gestión de estado en la URL."
+    },
+    {
+      "id": 3,
+      "name": "Motor de Precios",
+      "status": "done",
+      "goal": "Crear un motor dinámico de precios que calcule tarifas según criterios del usuario y actualice la URL."
+    },
+    {
+      "id": 4,
+      "name": "Flujo Multi-Paso de Reserva",
+      "status": "active",
+      "goal": "Diseñar e implementar un proceso de reserva guiado que refleje el estado en la URL."
+    },
+    {
+      "id": 5,
+      "name": "Simulación de Pago",
+      "status": "pending",
+      "goal": "Simular procesamiento de pagos para validar el flujo de reserva."
+    },
+    {
+      "id": 6,
+      "name": "Integración de Autenticación",
+      "status": "pending",
+      "goal": "Integrar autenticación para proteger el proceso de reserva y gestionar sesiones."
+    },
+    {
+      "id": 7,
+      "name": "Optimización de Rendimiento",
+      "status": "pending",
+      "goal": "Optimizar rendimiento para manejar grandes volúmenes de datos y tráfico."
+    },
+    {
+      "id": 8,
+      "name": "UX Móvil",
+      "status": "pending",
+      "goal": "Mejorar la experiencia móvil con diseño responsive e interacciones táctiles."
+    }
+  ]
+}

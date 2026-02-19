@@ -1,0 +1,36 @@
+{
+  "label": "Forschung & Exploration",
+  "hero": {
+    "title": "Experimente-Labor",
+    "description": "Eine kontrollierte Umgebung für Rendering-Forschung, Bewegungssysteme und interaktive Prototypen. Jeder Eintrag repräsentiert eine technische Studie."
+  },
+  "launch": "Starten →",
+  "comingSoon": "Demnächst",
+  "items": [
+    {
+      "title": "Buchungsplattform-Simulation",
+      "description": "End-to-End Buchungs-UI-Simulation mit Suche, Verfügbarkeitskalender, Preislogik, Multi-Step-Flow und Zahlungsstatus.",
+      "tag": "Produktsystem",
+      "status": "Aktiv",
+      "route": "/experiments/booking-simulation"
+    },
+    {
+      "title": "Scroll-Physik-Engine",
+      "description": "Benutzerdefiniertes Scroll-Verhalten mit Trägheit, Geschwindigkeits-Tracking und Frame-Interpolation.",
+      "tag": "Bewegung",
+      "status": "Aktiv"
+    },
+    {
+      "title": "Shader-Rausch-Studie",
+      "description": "Fragment-Shader-Experiment zur Untersuchung von prozeduralem Rauschen und dynamischer Farbüberblendung.",
+      "tag": "WebGL",
+      "status": "Prototyp"
+    },
+    {
+      "title": "3D-Layout-Morph",
+      "description": "FLIP-basiertes Transformationssystem zwischen Grid- und Kompaktlayouts.",
+      "tag": "Animation",
+      "status": "Archiviert"
+    }
+  ]
+}

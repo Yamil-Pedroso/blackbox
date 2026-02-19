@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "role": "Creative Technologist",
+    "description": "Focused on interactive systems, full-stack architecture and intelligent interfaces. Building structured environments where code, motion and logic converge."
+  },
+  "info": {
+    "location": "Switzerland, Zurich",
+    "languages": "English, German, Spanish, Italian, French"
+  },
+  "status": {
+    "title": "Blackbox Status",
+    "modules": "Modules",
+    "version": "Version",
+    "state": "Status",
+    "active": "Active"
+  },
+  "buttons": {
+    "schedule": "Schedule a call",
+    "journey": "View development journey"
+  }
+}

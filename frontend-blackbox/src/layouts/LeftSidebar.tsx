@@ -2,21 +2,16 @@ import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import assets from "../assets";
 import Button from "../components/common/Button";
 import { LuLanguages } from "react-icons/lu";
+import { useTranslation } from "react-i18next";
 
-interface LeftSidebarProps {
-  items?: {
-    title: string;
-    icon: React.ComponentType<{ className?: string }>;
-  }[];
-}
+const LeftSidebar = () => {
+  const { t } = useTranslation("leftSidebar");
+  const defaultInfoItems = [
+    { title: t("info.location"), icon: FaMapMarkerAlt },
+    { title: t("info.languages"), icon: LuLanguages },
+    { title: t("+41 79 532 65 19"), icon: FaPhone },
+  ];
 
-const defaultInfoItems = [
-  { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
-  { title: "English, German, Spanish, Italian, French", icon: LuLanguages },
-  { title: "+41 79 532 65 19", icon: FaPhone },
-];
-
-const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
   return (
     <aside className="border-r border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
       <div className="flex items-center gap-4">
@@ -33,23 +28,21 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
             Yamil Pedroso
           </h2>
           <p className="font-ibm-plex-mono text-secondary text-[14px] whitespace-nowrap">
-            Creative Technologist
+            {t("profile.role")}
           </p>
         </div>
       </div>
 
       <div className="mt-12 flex flex-col gap-12">
         <p className="font-ibm-plex-mono text-secondary text-[14px] leading-relaxed">
-          Focused on interactive systems, full-stack architecture and
-          intelligent interfaces. Building structured environments where code,
-          motion and logic converge.
+          {t("profile.description")}
         </p>
 
         <nav>
           <ul className="space-y-4">
-            {items.map((item) => {
+            {defaultInfoItems.map((item) => {
               const Icon = item.icon;
-              const LanIcon = items[1].icon;
+              const LanIcon = defaultInfoItems[1].icon;
 
               return (
                 <li
@@ -72,23 +65,23 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
 
         <div className="border-t border-neutral-800 pt-6">
           <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest mb-4">
-            Blackbox Status
+            {t("status.title")}
           </h3>
 
           <div className="space-y-3 font-ibm-plex-mono text-secondary text-sm">
             <div className="flex justify-between">
-              <span>Modules</span>
+              <span>{t("status.modules")}</span>
               <span>5</span>
             </div>
 
             <div className="flex justify-between">
-              <span>Version</span>
+              <span>{t("status.version")}</span>
               <span>v1.0</span>
             </div>
 
             <div className="flex justify-between">
-              <span>Status</span>
-              <span className="text-green">Active</span>
+              <span>{t("status.state")}</span>
+              <span className="text-green">{t("status.active")}</span>
             </div>
           </div>
         </div>
@@ -96,14 +89,14 @@ const LeftSidebar = ({ items = defaultInfoItems }: LeftSidebarProps) => {
 
       <div className="mt-auto pt-6 border-t border-neutral-800 flex flex-col gap-4 mb-3.5">
         <Button className="bg-white text-tertiary w-full" onClick={() => {}}>
-          Schedule a call
+          {t("buttons.schedule")}
         </Button>
 
         <Button
           className="border border-white text-white w-full"
           onClick={() => {}}
         >
-          View development journey
+          {t("buttons.journey")}
         </Button>
       </div>
     </aside>

@@ -8,50 +8,49 @@ import { useTheme } from "../lib/hooks/useTheme";
 import assets from "../assets";
 import gsap from "gsap";
 import { LuLanguages } from "react-icons/lu";
+import { useTranslation } from "react-i18next";
 
-interface TopNavbarProps {
+/*interface TopNavbarProps {
   itemsMenu?: { name: string; to: string }[];
   itemsMenu2?: string[];
-}
-
-const topNavbarDefaultItemsMenu = [
-  { name: "Home", to: "/" },
-  { name: "Tools", to: "/tools" },
-  { name: "AI", to: "/ai" },
-  { name: "Systems", to: "/systems" },
-  { name: "Experiments", to: "/experiments" },
-  { name: "Mini-Games", to: "/mini-games" },
-];
-
-const topNavbarDefaultItemsMenu2 = [
-  "Open to new creation",
-  "Switzerland, Zurich",
-  "My time:",
-];
+} */
 
 type LayoutMode = "mobile" | "medium" | "large";
 
-const infoItems = [
-  { title: "Switzerland, Zurich", icon: FaMapMarkerAlt },
-  { title: "English, German", icon: LuLanguages },
-  { title: "+41 79 532 65 19", icon: FaPhone },
-];
-
-const TopNavbar = ({
-  itemsMenu = topNavbarDefaultItemsMenu,
-  itemsMenu2 = topNavbarDefaultItemsMenu2,
-}: TopNavbarProps) => {
+const TopNavbar = () => {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
 
+  const { t } = useTranslation("topNavbar");
   const { theme, toggleTheme } = useTheme();
 
   const headerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
   const [layout, setLayout] = useState<LayoutMode>("mobile");
   const [infoOpen, setInfoOpen] = useState(false);
   const [adminInfoOpen, setAdminInfoOpen] = useState(false);
+
+  // 🔹 Translated Menu
+  const itemsMenu = [
+    { name: t("menu.home"), to: "/" },
+    { name: t("menu.tools"), to: "/tools" },
+    { name: t("menu.ai"), to: "/ai" },
+    { name: t("menu.systems"), to: "/systems" },
+    { name: t("menu.experiments"), to: "/experiments" },
+    { name: t("menu.miniGames"), to: "/mini-games" },
+  ];
+
+  // 🔹 Translated Status Items
+  const itemsMenu2 = [t("status.open"), t("status.location"), t("status.time")];
+
+  // 🔹 Translated Info Items
+  const infoItems = [
+    { title: t("status.location"), icon: FaMapMarkerAlt },
+    { title: t("profile.languages"), icon: LuLanguages },
+    { title: "+41 79 532 65 19", icon: FaPhone },
+  ];
 
   const currentTime = new Date().toLocaleTimeString([], {
     hour: "2-digit",
@@ -112,6 +111,7 @@ const TopNavbar = ({
       ref={headerRef}
       className="w-full h-8 border-b border-neutral-800 flex items-center justify-between large:px-4 bg-secondary-bg relative"
     >
+      {/* MOBILE + MEDIUM LEFT */}
       {layout !== "large" && (
         <div className="flex items-stretch gap-4 animate-section">
           <div className="w-8 h-8 bg-neutral-700">
@@ -127,11 +127,12 @@ const TopNavbar = ({
         </div>
       )}
 
+      {/* LARGE */}
       {layout === "large" && (
         <div className="flex w-full h-full items-stretch animate-section">
           <div className="w-71 h-full border-r border-neutral-800 flex items-center px-4">
             <h1 className="font-ibm-plex-mono text-secondary text-[12px]">
-              Blackbox
+              {t("brand")}
             </h1>
           </div>
 
@@ -164,7 +165,7 @@ const TopNavbar = ({
                 key={item}
                 className="font-ibm-plex-mono text-secondary text-[12px]"
               >
-                {item === "Open to new creation" ? (
+                {item === t("status.open") ? (
                   <span className="relative inline-flex items-center gap-2 bg-green/10 px-3 py-1 rounded-md">
                     <span className="relative flex justify-center items-center h-2 w-2">
                       <span className="absolute h-full w-full rounded-full bg-green opacity-40 animate-ping"></span>
@@ -172,8 +173,10 @@ const TopNavbar = ({
                     </span>
                     <span className="text-green">{item}</span>
                   </span>
-                ) : item === "My time:" ? (
-                  <span>My time: {currentTime}</span>
+                ) : item === t("status.time") ? (
+                  <span>
+                    {t("status.time")} {currentTime}
+                  </span>
                 ) : (
                   item
                 )}
@@ -190,28 +193,11 @@ const TopNavbar = ({
         </div>
       )}
 
-      {layout === "mobile" && (
-        <div className="flex items-center gap-4 animate-section px-4">
-          <button
-            onClick={toggleTheme}
-            className="text-secondary hover:text-primary transition-colors"
-          >
-            {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
-          </button>
-
-          <button
-            onClick={() => setAdminInfoOpen(!adminInfoOpen)}
-            className="text-secondary hover:text-primary transition-colors"
-          >
-            <GiHamburgerMenu className="text-secondary text-[18px]" />
-          </button>
-        </div>
-      )}
-
+      {/* MEDIUM */}
       {layout === "medium" && (
         <div className="flex items-center gap-6 animate-section px-4">
           <span className="font-ibm-plex-mono text-secondary text-[12px]">
-            Blackbox
+            {t("brand")}
           </span>
 
           <button
@@ -230,6 +216,7 @@ const TopNavbar = ({
         </div>
       )}
 
+      {/* INFO DROPDOWN */}
       {infoOpen && layout !== "large" && (
         <div
           ref={dropdownRef}
@@ -248,7 +235,7 @@ const TopNavbar = ({
                 Yamil Pedroso
               </h2>
               <p className="font-ibm-plex-mono text-secondary text-[14px]">
-                Creative Technologist
+                {t("profile.role")}
               </p>
             </div>
           </div>
@@ -257,6 +244,7 @@ const TopNavbar = ({
             {infoItems.map((item) => {
               const Icon = item.icon;
               const LanIcon = infoItems[1].icon;
+
               return (
                 <li
                   key={item.title}
@@ -275,6 +263,7 @@ const TopNavbar = ({
         </div>
       )}
 
+      {/* ADMIN DROPDOWN */}
       {adminInfoOpen && (layout === "medium" || layout === "mobile") && (
         <div
           ref={dropdownRef}

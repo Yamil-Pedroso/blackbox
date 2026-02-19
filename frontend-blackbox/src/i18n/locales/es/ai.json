@@ -1,0 +1,26 @@
+{
+  "label": "Capa de Inteligencia",
+  "hero": {
+    "title": "Sistemas de Inteligencia Artificial",
+    "description": "Este módulo explora la integración estructurada de IA, pipelines de streaming, sistemas de memoria y arquitecturas basadas en recuperación. La inteligencia se trata como una capa del sistema, no como una característica."
+  },
+  "explore": "Explorar →",
+  "modules": [
+    {
+      "title": "Motor de Streaming",
+      "description": "Pipeline de streaming a nivel de token con renderizado incremental e inyección de contexto."
+    },
+    {
+      "title": "Sistema de Memoria Contextual",
+      "description": "Gestión de memoria a corto y largo plazo mediante almacenamiento estructurado de contexto."
+    },
+    {
+      "title": "Prototipo RAG",
+      "description": "Sistema de Generación Aumentada por Recuperación con búsqueda por similitud vectorial."
+    },
+    {
+      "title": "Visualizador de Embeddings",
+      "description": "Visualización interactiva del espacio vectorial para comparación semántica."
+    }
+  ]
+}

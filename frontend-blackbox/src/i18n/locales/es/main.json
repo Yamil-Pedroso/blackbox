@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "label": "Sección Principal",
+    "title": "Bienvenido a Blackbox",
+    "description": "Un entorno sandbox para investigación en rendering, sistemas de movimiento y prototipos interactivos. Cada módulo representa una dimensión técnica del ecosistema Blackbox."
+  },
+  "modulesLabel": "Módulos de Blackbox",
+  "footer": "Blackbox es un entorno en evolución. Cada módulo representa una dimensión de la ingeniería: rendering, arquitectura, inteligencia, interacción y sistemas estructurados.",
+  "modules": {
+    "experiments": {
+      "title": "Experimentos",
+      "description": "Exploraciones de rendering, estudios de shaders y sistemas avanzados de animación."
+    },
+    "tools": {
+      "title": "Herramientas",
+      "description": "Sistemas utilitarios construidos con arquitectura limpia y diseño de experiencia de usuario práctico."
+    },
+    "ai": {
+      "title": "IA",
+      "description": "Integraciones de inteligencia aplicada, pipelines de streaming y sistemas de contexto."
+    },
+    "systems": {
+      "title": "Sistemas",
+      "description": "Arquitectura backend, flujos de autenticación y estructuras de datos en tiempo real."
+    },
+    "miniGames": {
+      "title": "Mini-Juegos",
+      "description": "Mecánicas interactivas y experimentos de gameplay basados en WebGL y Unity."
+    }
+  }
+}

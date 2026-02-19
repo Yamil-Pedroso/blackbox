@@ -1,0 +1,31 @@
+{
+  "label": "Interactive Playground",
+  "hero": {
+    "title": "Mini-Games Unity",
+    "description": "A collection of Unity WebGL prototypes demonstrating interactive mechanics and real-time physics."
+  },
+  "arcade": "ARCADE MODE",
+  "select": "> Select Game",
+  "launch": "▶ LAUNCH",
+  "unity": {
+    "title": "Unity WebGL Demo",
+    "description": "Embedded Unity WebGL prototype demonstrating real-time physics, collision detection and interactive mechanics inside the Blackbox environment."
+  },
+  "games": [
+    {
+      "id": 1,
+      "title": "Unity Micro Demo",
+      "description": "Short Unity WebGL prototype focused on mechanics."
+    },
+    {
+      "id": 2,
+      "title": "Asteroid Runner",
+      "description": "WebGL-based endless runner experiment."
+    },
+    {
+      "id": 3,
+      "title": "Memory Grid",
+      "description": "Pattern recognition challenge."
+    }
+  ]
+}

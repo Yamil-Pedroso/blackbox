@@ -3,30 +3,17 @@ import SectionHero from "../components/common/SectionHero";
 import { motion } from "framer-motion";
 import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
-
-const games = [
-  {
-    id: 1,
-    title: "Unity Micro Demo",
-    description: "Short Unity WebGL prototype focused on mechanics.",
-    type: "unity",
-  },
-  {
-    id: 2,
-    title: "Asteroid Runner",
-    description: "WebGL-based endless runner experiment.",
-    type: "web",
-  },
-  {
-    id: 3,
-    title: "Memory Grid",
-    description: "Pattern recognition challenge.",
-    type: "web",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const MiniGamesPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation("miniGames");
+
+  const games = t("games", { returnObjects: true }) as {
+    id: number;
+    title: string;
+    description: string;
+  }[];
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -78,18 +65,18 @@ const MiniGamesPage = () => {
 
       <section className="space-y-6 relative z-10">
         <div className="games-hero">
-          <SectionLabel text="Interactive Playground" />
+          <SectionLabel text={t("label")} />
         </div>
 
         <div className="games-hero">
           <SectionHero
-            title="Mini-Games Unity"
-            description="A collection of Unity WebGL prototypes demonstrating interactive mechanics and real-time physics."
+            title={t("hero.title")}
+            description={t("hero.description")}
           />
         </div>
 
         <div className="games-hero font-ibm-plex-mono text-green text-sm flex justify-center items-center gap-1">
-          <span>ARCADE MODE</span>
+          <span>{t("arcade")}</span>
           <motion.span
             animate={{ opacity: [0, 1, 0] }}
             transition={{ repeat: Infinity, duration: 1 }}
@@ -101,7 +88,7 @@ const MiniGamesPage = () => {
 
       <section className="mt-20 max-w-3xl mx-auto space-y-6 font-ibm-plex-mono relative z-10">
         <div className="games-hero text-secondary text-sm mb-6">
-          &gt; Select Game
+          {t("select")}
         </div>
 
         {games.map((game, index) => (
@@ -127,7 +114,7 @@ const MiniGamesPage = () => {
             </div>
 
             <span className="opacity-0 group-hover:opacity-100 text-green text-sm mt-4 md:mt-0 transition-opacity">
-              ▶ LAUNCH
+              {t("launch")}
             </span>
           </motion.div>
         ))}
@@ -135,21 +122,13 @@ const MiniGamesPage = () => {
 
       <section className="unity-block mt-28 max-w-5xl space-y-8 relative z-10">
         <h2 className="font-geist text-2xl md:text-3xl text-primary">
-          Unity WebGL Demo
+          {t("unity.title")}
         </h2>
 
-        <div className="border border-neutral-800 bg-secondary-bg aspect-video w-full flex items-center justify-center text-secondary font-ibm-plex-mono text-sm">
-          {/*<iframe
-            src="/unity-build/index.html"
-            title="Unity Mini Game"
-            className="w-full h-full"
-          />*/}
-        </div>
+        <div className="border border-neutral-800 bg-secondary-bg aspect-video w-full flex items-center justify-center text-secondary font-ibm-plex-mono text-sm" />
 
         <p className="text-secondary font-ibm-plex-mono text-sm leading-relaxed max-w-3xl">
-          Embedded Unity WebGL prototype demonstrating real-time physics,
-          collision detection and interactive mechanics inside the Blackbox
-          environment.
+          {t("unity.description")}
         </p>
       </section>
     </div>
