@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import type { Hotel } from "../types/booking.types"; // 👈 AÑADES ESTO
+import type { Hotel } from "../types/booking.types";
 
 import {
   bookingFlowReducer,

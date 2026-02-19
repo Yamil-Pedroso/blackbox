@@ -14,7 +14,8 @@
 ## Phase 3:
 [x] Pricing Engine
 
-## Phase 4: Multi-Step Booking Flow
+## Phase 4:
+[In process] Multi-Step Booking Flow
 
 ## Phase 5: Payment Simulation
 

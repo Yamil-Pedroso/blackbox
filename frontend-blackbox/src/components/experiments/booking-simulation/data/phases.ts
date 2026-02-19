@@ -16,13 +16,13 @@ export const phases: BookingSimulationPhase[] = [
   {
     id: 3,
     name: "Pricing Engine",
-    status: "active",
+    status: "done",
     goal: "Create a dynamic pricing engine that calculates hotel prices based on user-selected criteria and updates the URL accordingly.",
   },
   {
     id: 4,
     name: "Multi-Step Booking Flow",
-    status: "pending",
+    status: "active",
     goal: "Design and implement a multi-step booking process that guides users through hotel selection, date picking, and price confirmation, with state reflected in the URL.",
   },
   {
