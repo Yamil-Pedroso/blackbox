@@ -77,9 +77,13 @@ const ExperimentsPage = () => {
                 <span>{exp.tag}</span>
                 <span
                   className={`${
-                    exp.status === "Active"
+                    exp.status === "Active" ||
+                    exp.status === "Activo" ||
+                    exp.status === "Aktiv"
                       ? "text-green"
-                      : exp.status === "Prototype"
+                      : exp.status === "Prototype" ||
+                          exp.status === "Prototipo" ||
+                          exp.status === "Prototyp"
                         ? "text-yellow-400"
                         : "text-neutral-500"
                   }`}

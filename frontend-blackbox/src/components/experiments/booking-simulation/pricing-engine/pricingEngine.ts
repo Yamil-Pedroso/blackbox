@@ -12,6 +12,7 @@ import { guestRule } from "./rules/guestRule";
 import { cleaningFeeRule } from "./rules/cleaningFeeRule";
 import { taxRule } from "./rules/taxRule";
 import { serviceFeeRule } from "./rules/serviceFeeRule";
+import { seasonalRule } from "./rules/seasonalRule";
 
 export function calculatePricing(context: PricingContext): PricingResult {
   const nights = calculateNights(context.checkIn, context.checkOut);
@@ -23,6 +24,7 @@ export function calculatePricing(context: PricingContext): PricingResult {
     basePriceRule,
     weekendRule,
     guestRule,
+    seasonalRule,
     cleaningFeeRule,
     serviceFeeRule,
     taxRule,
