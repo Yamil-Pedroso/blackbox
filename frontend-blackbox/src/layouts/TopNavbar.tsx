@@ -3,7 +3,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BsInfoCircle } from "react-icons/bs";
 import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
-import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../lib/hooks/useTheme";
 import assets from "../assets";
 import gsap from "gsap";
@@ -187,7 +186,19 @@ const TopNavbar = () => {
               onClick={toggleTheme}
               className="text-secondary hover:text-primary transition-colors duration-300"
             >
-              {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
+              {theme === "dark" ? (
+                <img
+                  className="w-4 h-4 cursor-pointer"
+                  src={assets.sun_gray}
+                  alt="Sun"
+                />
+              ) : (
+                <img
+                  className="w-3 h-3 cursor-pointer"
+                  src={assets.moon_black}
+                  alt="Moon"
+                />
+              )}
             </button>
           </div>
         </div>
@@ -204,7 +215,19 @@ const TopNavbar = () => {
             onClick={toggleTheme}
             className="text-secondary hover:text-primary transition-colors"
           >
-            {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
+            {theme === "dark" ? (
+              <img
+                className="w-4 h-4 cursor-pointer"
+                src={assets.sun_gray}
+                alt="Sun"
+              />
+            ) : (
+              <img
+                className="w-3 h-3 cursor-pointer"
+                src={assets.moon_black}
+                alt="Moon"
+              />
+            )}
           </button>
 
           <button

@@ -109,15 +109,15 @@ const SystemsPage = () => {
         </div>
 
         <div className="pt-6 border-t border-neutral-800 flex flex-wrap gap-4">
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50 cursor-not-allowed">
+          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50">
             {t("actions.api")}
           </button>
 
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50 cursor-not-allowed">
+          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50">
             {t("actions.diagram")}
           </button>
 
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50 cursor-not-allowed">
+          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50">
             {t("actions.protected")}
           </button>
 

@@ -1,19 +1,31 @@
-import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import assets from "../assets";
 import Button from "../components/common/Button";
-import { LuLanguages } from "react-icons/lu";
 import { useTranslation } from "react-i18next";
 
 const LeftSidebar = () => {
   const { t } = useTranslation("leftSidebar");
+
   const defaultInfoItems = [
-    { title: t("info.location"), icon: FaMapMarkerAlt },
-    { title: t("info.languages"), icon: LuLanguages },
-    { title: t("+41 79 532 65 19"), icon: FaPhone },
+    {
+      title: t("info.location"),
+      icon: assets.map,
+      size: "w-4 h-4",
+    },
+    {
+      title: t("info.languages"),
+      icon: assets.lan_gray,
+      size: "w-6 h-6",
+    },
+    {
+      title: "+41 79 532 65 19",
+      icon: assets.phone_gray,
+      size: "w-4 h-4",
+    },
   ];
 
   return (
     <aside className="border-r border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
+      {/* Profile Header */}
       <div className="flex items-center gap-4">
         <div className="w-12.5 h-12.5 bg-neutral-700 flex items-center justify-center overflow-hidden">
           <img
@@ -33,36 +45,36 @@ const LeftSidebar = () => {
         </div>
       </div>
 
+      {/* Content */}
       <div className="mt-12 flex flex-col gap-12">
         <p className="font-ibm-plex-mono text-secondary text-[14px] leading-relaxed">
           {t("profile.description")}
         </p>
 
+        {/* Info List */}
         <nav>
           <ul className="space-y-4">
-            {defaultInfoItems.map((item) => {
-              const Icon = item.icon;
-              const LanIcon = defaultInfoItems[1].icon;
+            {defaultInfoItems.map((item) => (
+              <li
+                key={item.title}
+                className="font-ibm-plex-mono text-secondary text-sm flex items-center gap-3"
+              >
+                <div className="flex items-center justify-center">
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className={`${item.size} object-contain`}
+                    style={{ imageRendering: "pixelated" }}
+                  />
+                </div>
 
-              return (
-                <li
-                  key={item.title}
-                  className="font-ibm-plex-mono text-secondary text-sm flex items-center gap-3"
-                >
-                  <div className="">
-                    {Icon === LuLanguages ? (
-                      <LanIcon className="text-[1.2rem]" />
-                    ) : (
-                      <Icon className="text-[0.9rem]" />
-                    )}
-                  </div>
-                  <span className="">{item.title}</span>
-                </li>
-              );
-            })}
+                <span>{item.title}</span>
+              </li>
+            ))}
           </ul>
         </nav>
 
+        {/* Status Section */}
         <div className="border-t border-neutral-800 pt-6">
           <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest mb-4">
             {t("status.title")}
@@ -87,6 +99,7 @@ const LeftSidebar = () => {
         </div>
       </div>
 
+      {/* Bottom Buttons */}
       <div className="mt-auto pt-6 border-t border-neutral-800 flex flex-col gap-4 mb-3.5">
         <Button className="bg-white text-tertiary w-full" onClick={() => {}}>
           {t("buttons.schedule")}
