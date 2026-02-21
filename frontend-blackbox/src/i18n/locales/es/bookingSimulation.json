@@ -35,14 +35,14 @@
     {
       "id": 4,
       "name": "Flujo Multi-Paso de Reserva",
-      "status": "active",
+      "status": "done",
       "goal": "Diseñar e implementar un proceso de reserva guiado que refleje el estado en la URL."
     },
     {
       "id": 5,
       "name": "Simulación de Pago",
-      "status": "pending",
-      "goal": "Simular procesamiento de pagos para validar el flujo de reserva."
+      "status": "active",
+      "goal": "Simular procesamiento de pagos para validar el flujo de reserva (integración con Stripe)."
     },
     {
       "id": 6,

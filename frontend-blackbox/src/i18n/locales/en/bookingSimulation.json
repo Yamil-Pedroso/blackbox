@@ -35,14 +35,14 @@
     {
       "id": 4,
       "name": "Multi-Step Booking Flow",
-      "status": "active",
+      "status": "done",
       "goal": "Design and implement a multi-step booking process that guides users through hotel selection, date picking, and price confirmation, with state reflected in the URL."
     },
     {
       "id": 5,
       "name": "Payment Simulation",
-      "status": "pending",
-      "goal": "Simulate payment processing to ensure the booking flow handles transactions correctly."
+      "status": "active",
+      "goal": "Simulate payment processing to ensure the booking flow handles transactions correctly(Stripe integration)."
     },
     {
       "id": 6,

@@ -35,14 +35,14 @@
     {
       "id": 4,
       "name": "Multi-Step Buchungsprozess",
-      "status": "active",
+      "status": "done",
       "goal": "Mehrstufigen Buchungsprozess entwickeln, dessen Zustand in der URL reflektiert wird."
     },
     {
       "id": 5,
       "name": "Zahlungssimulation",
-      "status": "pending",
-      "goal": "Zahlungsabwicklung simulieren, um den Buchungsfluss zu validieren."
+      "status": "active",
+      "goal": "Zahlungsabwicklung simulieren, um den Buchungsfluss zu validieren (Stripe-Integration)."
     },
     {
       "id": 6,
