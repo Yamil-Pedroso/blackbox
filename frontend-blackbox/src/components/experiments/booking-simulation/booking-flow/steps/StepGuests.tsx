@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { BookingFlowState } from "../../types/booking.types";
+import type { Hotel } from "../../types/booking.types";
 
 interface Props {
   state: BookingFlowState;
   dispatch: React.Dispatch<any>;
+  hotel: Hotel;
 }
 
-export default function StepGuests({ state, dispatch }: Props) {
+export default function StepGuests({ state, dispatch, hotel }: Props) {
   return (
     <div className="flex flex-col gap-6">
       <h2 className="text-xl font-semibold text-primary">How many guests?</h2>
@@ -30,10 +32,11 @@ export default function StepGuests({ state, dispatch }: Props) {
           onClick={() =>
             dispatch({
               type: "SET_GUESTS",
-              payload: state.guests + 1,
+              payload: Math.min(hotel.maxGuests, state.guests + 1),
             })
           }
-          className="w-10 h-10 rounded-full border border-neutral-700 text-primary hover:bg-neutral-800 transition"
+          disabled={state.guests >= hotel.maxGuests}
+          className="w-10 h-10 rounded-full border border-neutral-700 text-primary hover:bg-neutral-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           +
         </button>

@@ -16,6 +16,7 @@ import { seasonalRule } from "./rules/seasonalRule";
 
 export function calculatePricing(context: PricingContext): PricingResult {
   const nights = calculateNights(context.checkIn, context.checkOut);
+  console.log("Calculating pricing with context:", context, { nights });
 
   let subtotal = 0;
   const lines: PricingLine[] = [];

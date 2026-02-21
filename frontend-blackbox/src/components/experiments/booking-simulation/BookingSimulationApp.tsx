@@ -311,7 +311,12 @@ const BookingSimulatorApp = () => {
               ✕
             </button>
 
-            <BookingFlow hotel={selectedHotel} />
+            <BookingFlow
+              hotel={selectedHotel}
+              initialCheckIn={search.checkInDate}
+              initialCheckOut={search.checkOutDate}
+              initialGuests={search.guests}
+            />
           </div>
         </div>
       )}

@@ -1,5 +1,3 @@
-// pricing-engine/rules/seasonalRule.ts
-
 import { isWithinInterval } from "date-fns";
 import type { PricingRule, PricingLine } from "../../types/booking.types";
 
