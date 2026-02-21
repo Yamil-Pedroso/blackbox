@@ -8,6 +8,7 @@ import assets from "../assets";
 import gsap from "gsap";
 import { LuLanguages } from "react-icons/lu";
 import { useTranslation } from "react-i18next";
+import Button from "../components/common/Button";
 
 /*interface TopNavbarProps {
   itemsMenu?: { name: string; to: string }[];
@@ -49,6 +50,24 @@ const TopNavbar = () => {
     { title: t("status.location"), icon: FaMapMarkerAlt },
     { title: t("profile.languages"), icon: LuLanguages },
     { title: "+41 79 532 65 19", icon: FaPhone },
+  ];
+
+  const defaultInfoItems = [
+    {
+      title: t("info.location"),
+      icon: assets.map,
+      size: "w-4 h-4",
+    },
+    {
+      title: t("info.languages"),
+      icon: assets.lan_gray,
+      size: "w-6 h-6",
+    },
+    {
+      title: "+41 79 532 65 19",
+      icon: assets.phone_gray,
+      size: "w-4 h-4",
+    },
   ];
 
   const currentTime = new Date().toLocaleTimeString([], {
@@ -205,7 +224,7 @@ const TopNavbar = () => {
       )}
 
       {/* MEDIUM */}
-      {layout === "medium" && (
+      {layout >= "medium" && (
         <div className="flex items-center gap-6 animate-section px-4">
           <span className="font-ibm-plex-mono text-secondary text-[12px]">
             {t("brand")}
@@ -243,7 +262,7 @@ const TopNavbar = () => {
       {infoOpen && layout !== "large" && (
         <div
           ref={dropdownRef}
-          className="absolute top-full left-0 w-full bg-secondary-bg border border-blue-600 p-6 z-50"
+          className="absolute top-full left-0 w-full bg-secondary-bg p-6 z-50"
         >
           <div className="flex items-center space-x-4 mb-6">
             <div className="w-10 h-10 bg-neutral-700">
@@ -254,35 +273,82 @@ const TopNavbar = () => {
               />
             </div>
             <div>
-              <h2 className="font-ibm-plex-mono text-secondary text-[18px]">
+              <h2 className="font-ibm-plex-mono text-secondary text-[17px]">
                 Yamil Pedroso
               </h2>
-              <p className="font-ibm-plex-mono text-secondary text-[14px]">
+              <p className="font-ibm-plex-mono text-secondary text-[13px]">
                 {t("profile.role")}
               </p>
             </div>
           </div>
 
-          <ul className="space-y-5">
-            {infoItems.map((item) => {
-              const Icon = item.icon;
-              const LanIcon = infoItems[1].icon;
+          <div className="mt-6 flex flex-col gap-4">
+            <p className="font-ibm-plex-mono text-secondary text-[14px] leading-relaxed">
+              {t("profile.description")}
+            </p>
 
-              return (
-                <li
-                  key={item.title}
-                  className="flex items-center gap-3 text-secondary font-ibm-plex-mono text-sm"
-                >
-                  {Icon === LuLanguages ? (
-                    <LanIcon className="text-[1.2rem]" />
-                  ) : (
-                    <Icon className="text-[0.9rem]" />
-                  )}
-                  {item.title}
-                </li>
-              );
-            })}
-          </ul>
+            {/* Info List */}
+            <nav>
+              <ul className="space-y-4">
+                {defaultInfoItems.map((item) => (
+                  <li
+                    key={item.title}
+                    className="font-ibm-plex-mono text-secondary text-[13px] flex items-center gap-3"
+                  >
+                    <div className="flex items-center justify-center">
+                      <img
+                        src={item.icon}
+                        alt={item.title}
+                        className={`${item.size} object-contain`}
+                        style={{ imageRendering: "pixelated" }}
+                      />
+                    </div>
+
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Status Section */}
+            <div className="border-t border-neutral-800 pt-6">
+              <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest mb-4">
+                {t("status.title")}
+              </h3>
+
+              <div className="space-y-2 font-ibm-plex-mono text-secondary text-sm">
+                <div className="flex justify-between">
+                  <span>{t("status.modules")}</span>
+                  <span>5</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span>{t("status.version")}</span>
+                  <span>v1.0</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span>{t("status.state")}</span>
+                  <span className="text-green">{t("status.active")}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-auto pt-6 border-t border-neutral-800 flex gap-4 mb-3.5">
+            <Button
+              className="bg-white text-tertiary text-[13px]"
+              onClick={() => {}}
+            >
+              {t("buttons.schedule")}
+            </Button>
+
+            <Button
+              className="border border-white text-white text-[13px]"
+              onClick={() => {}}
+            >
+              {t("buttons.journey")}
+            </Button>
+          </div>
         </div>
       )}
 
@@ -290,12 +356,12 @@ const TopNavbar = () => {
       {adminInfoOpen && (layout === "medium" || layout === "mobile") && (
         <div
           ref={dropdownRef}
-          className="absolute top-full right-0 w-48 bg-secondary-bg border border-blue-700 p-4 z-50"
+          className="absolute top-full right-0 w-48 bg-secondary-bg p-4 z-50"
         >
-          <ul className="space-y-3">
+          <ul className="flex flex-col border border-neutral-800 items-end">
             {itemsMenu.map((item) => (
               <Link key={item.name} to={item.to}>
-                <li className="text-secondary font-ibm-plex-mono text-sm hover:text-primary transition-colors">
+                <li className="text-secondary font-ibm-plex-mono text-[11px] hover:text-primary transition-colors mt-1.5 border border-transparent hover:border-primary rounded-sm px-2 py-1">
                   {item.name}
                 </li>
               </Link>

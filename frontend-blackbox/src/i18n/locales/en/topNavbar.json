@@ -8,13 +8,26 @@
     "experiments": "Experiments",
     "miniGames": "Mini-Games"
   },
+  "profile": {
+    "role": "Creative Technologist",
+    "description": "Focused on interactive systems, full-stack architecture and intelligent interfaces."
+  },
   "status": {
     "open": "Open to new creation",
     "location": "Switzerland, Zurich",
-    "time": "My time:"
+    "time": "My time:",
+    "title": "Blackbox Status",
+    "modules": "Modules",
+    "version": "Version",
+    "state": "Status",
+    "active": "Active"
   },
-  "profile": {
-    "role": "Creative Technologist",
-    "languages": "English, German"
+  "info": {
+    "location": "Switzerland, Zurich",
+    "languages": "English, German, Spanish, Italian, French"
+  },
+  "buttons": {
+    "schedule": "Schedule a call",
+    "journey": "View development journey"
   }
 }

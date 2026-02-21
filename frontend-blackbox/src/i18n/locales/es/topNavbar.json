@@ -8,13 +8,26 @@
     "experiments": "Experimentos",
     "miniGames": "Mini-Juegos"
   },
-  "status": {
-    "open": "Disponible para nuevas creaciones",
-    "location": "Suiza, Zúrich",
-    "time": "Mi hora:"
-  },
   "profile": {
     "role": "Tecnólogo Creativo",
-    "languages": "Inglés, Alemán"
+    "description": "Enfocado en sistemas interactivos, arquitectura full-stack e interfaces inteligentes."
+  },
+  "status": {
+    "open": "Abierto a nuevas creaciones",
+    "location": "Suiza, Zúrich",
+    "time": "Mi hora:",
+    "title": "Estado de Blackbox",
+    "modules": "Módulos",
+    "version": "Versión",
+    "state": "Estado",
+    "active": "Activo"
+  },
+  "info": {
+    "location": "Suiza, Zúrich",
+    "languages": "Inglés, Alemán, Español, Italiano, Francés"
+  },
+  "buttons": {
+    "schedule": "Agendar una llamada",
+    "journey": "Ver recorrido de desarrollo"
   }
 }

@@ -101,12 +101,15 @@ const LeftSidebar = () => {
 
       {/* Bottom Buttons */}
       <div className="mt-auto pt-6 border-t border-neutral-800 flex flex-col gap-4 mb-3.5">
-        <Button className="bg-white text-tertiary w-full" onClick={() => {}}>
+        <Button
+          className="bg-white text-tertiary w-full text-[13px]"
+          onClick={() => {}}
+        >
           {t("buttons.schedule")}
         </Button>
 
         <Button
-          className="border border-white text-white w-full"
+          className="border border-white text-white w-full text-[13px]"
           onClick={() => {}}
         >
           {t("buttons.journey")}

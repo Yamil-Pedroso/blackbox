@@ -1,20 +1,33 @@
 {
   "brand": "Blackbox",
   "menu": {
-    "home": "Start",
+    "home": "Startseite",
     "tools": "Werkzeuge",
     "ai": "KI",
     "systems": "Systeme",
     "experiments": "Experimente",
     "miniGames": "Mini-Spiele"
   },
+  "profile": {
+    "role": "Kreativer Technologe",
+    "description": "Fokussiert auf interaktive Systeme, Full-Stack-Architektur und intelligente Schnittstellen."
+  },
   "status": {
     "open": "Offen für neue Kreationen",
     "location": "Schweiz, Zürich",
-    "time": "Meine Zeit:"
+    "time": "Meine Zeit:",
+    "title": "Blackbox-Status",
+    "modules": "Module",
+    "version": "Version",
+    "state": "Status",
+    "active": "Aktiv"
   },
-  "profile": {
-    "role": "Kreativer Technologe",
-    "languages": "Englisch, Deutsch"
+  "info": {
+    "location": "Schweiz, Zürich",
+    "languages": "Englisch, Deutsch, Spanisch, Italienisch, Französisch"
+  },
+  "buttons": {
+    "schedule": "Gespräch vereinbaren",
+    "journey": "Entwicklungsreise ansehen"
   }
 }
