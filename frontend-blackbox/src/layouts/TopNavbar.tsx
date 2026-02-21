@@ -1,12 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsInfoCircle } from "react-icons/bs";
-import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../lib/hooks/useTheme";
 import assets from "../assets";
 import gsap from "gsap";
-import { LuLanguages } from "react-icons/lu";
 import { useTranslation } from "react-i18next";
 import Button from "../components/common/Button";
 
@@ -44,13 +42,6 @@ const TopNavbar = () => {
 
   // 🔹 Translated Status Items
   const itemsMenu2 = [t("status.open"), t("status.location"), t("status.time")];
-
-  // 🔹 Translated Info Items
-  const infoItems = [
-    { title: t("status.location"), icon: FaMapMarkerAlt },
-    { title: t("profile.languages"), icon: LuLanguages },
-    { title: "+41 79 532 65 19", icon: FaPhone },
-  ];
 
   const defaultInfoItems = [
     {
