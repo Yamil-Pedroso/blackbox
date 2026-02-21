@@ -347,9 +347,9 @@ const TopNavbar = () => {
       {adminInfoOpen && (layout === "medium" || layout === "mobile") && (
         <div
           ref={dropdownRef}
-          className="absolute top-full right-0 w-48 bg-secondary-bg p-4 z-50"
+          className="absolute top-full right-0 w-48 bg-secondary-bg p-4 z-50 border border-neutral-800"
         >
-          <ul className="flex flex-col border border-neutral-800 items-end">
+          <ul className="flex flex-col  items-end">
             {itemsMenu.map((item) => (
               <Link key={item.name} to={item.to}>
                 <li className="text-secondary font-ibm-plex-mono text-[11px] hover:text-primary transition-colors mt-1.5 border border-transparent hover:border-primary rounded-sm px-2 py-1">
