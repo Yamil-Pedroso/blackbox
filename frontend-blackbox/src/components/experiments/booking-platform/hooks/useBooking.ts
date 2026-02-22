@@ -1,4 +1,3 @@
-// src/hooks/useBooking.ts
 import { useQuery } from "@tanstack/react-query";
 import { getAllBookings, getBookingById } from "../services/booking.service";
 
