@@ -17,7 +17,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
 import { Route as ExperimentsBookingSimulationRouteImport } from './routes/experiments/booking-simulation'
 import { Route as ExperimentsBookingPlatformRouteImport } from './routes/experiments/booking-platform'
+import { Route as ExperimentsBookingPlatformIndexRouteImport } from './routes/experiments/booking-platform/index'
 import { Route as ExperimentsBookingSimulationAppRouteImport } from './routes/experiments/booking-simulation/app'
+import { Route as ExperimentsBookingPlatformSuccessRouteImport } from './routes/experiments/booking-platform/success'
 import { Route as ExperimentsBookingPlatformAppRouteImport } from './routes/experiments/booking-platform/app'
 
 const ToolsRoute = ToolsRouteImport.update({
@@ -62,11 +64,23 @@ const ExperimentsBookingPlatformRoute =
     path: '/experiments/booking-platform',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ExperimentsBookingPlatformIndexRoute =
+  ExperimentsBookingPlatformIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ExperimentsBookingPlatformRoute,
+  } as any)
 const ExperimentsBookingSimulationAppRoute =
   ExperimentsBookingSimulationAppRouteImport.update({
     id: '/app',
     path: '/app',
     getParentRoute: () => ExperimentsBookingSimulationRoute,
+  } as any)
+const ExperimentsBookingPlatformSuccessRoute =
+  ExperimentsBookingPlatformSuccessRouteImport.update({
+    id: '/success',
+    path: '/success',
+    getParentRoute: () => ExperimentsBookingPlatformRoute,
   } as any)
 const ExperimentsBookingPlatformAppRoute =
   ExperimentsBookingPlatformAppRouteImport.update({
@@ -85,7 +99,9 @@ export interface FileRoutesByFullPath {
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
+  '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
+  '/experiments/booking-platform/': typeof ExperimentsBookingPlatformIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -93,11 +109,12 @@ export interface FileRoutesByTo {
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/tools': typeof ToolsRoute
-  '/experiments/booking-platform': typeof ExperimentsBookingPlatformRouteWithChildren
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
   '/experiments': typeof ExperimentsIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
+  '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
+  '/experiments/booking-platform': typeof ExperimentsBookingPlatformIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -110,7 +127,9 @@ export interface FileRoutesById {
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
+  '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
+  '/experiments/booking-platform/': typeof ExperimentsBookingPlatformIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,7 +143,9 @@ export interface FileRouteTypes {
     | '/experiments/booking-simulation'
     | '/experiments/'
     | '/experiments/booking-platform/app'
+    | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
+    | '/experiments/booking-platform/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -132,11 +153,12 @@ export interface FileRouteTypes {
     | '/mini-games'
     | '/systems'
     | '/tools'
-    | '/experiments/booking-platform'
     | '/experiments/booking-simulation'
     | '/experiments'
     | '/experiments/booking-platform/app'
+    | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
+    | '/experiments/booking-platform'
   id:
     | '__root__'
     | '/'
@@ -148,7 +170,9 @@ export interface FileRouteTypes {
     | '/experiments/booking-simulation'
     | '/experiments/'
     | '/experiments/booking-platform/app'
+    | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
+    | '/experiments/booking-platform/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -220,12 +244,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExperimentsBookingPlatformRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiments/booking-platform/': {
+      id: '/experiments/booking-platform/'
+      path: '/'
+      fullPath: '/experiments/booking-platform/'
+      preLoaderRoute: typeof ExperimentsBookingPlatformIndexRouteImport
+      parentRoute: typeof ExperimentsBookingPlatformRoute
+    }
     '/experiments/booking-simulation/app': {
       id: '/experiments/booking-simulation/app'
       path: '/app'
       fullPath: '/experiments/booking-simulation/app'
       preLoaderRoute: typeof ExperimentsBookingSimulationAppRouteImport
       parentRoute: typeof ExperimentsBookingSimulationRoute
+    }
+    '/experiments/booking-platform/success': {
+      id: '/experiments/booking-platform/success'
+      path: '/success'
+      fullPath: '/experiments/booking-platform/success'
+      preLoaderRoute: typeof ExperimentsBookingPlatformSuccessRouteImport
+      parentRoute: typeof ExperimentsBookingPlatformRoute
     }
     '/experiments/booking-platform/app': {
       id: '/experiments/booking-platform/app'
@@ -239,11 +277,16 @@ declare module '@tanstack/react-router' {
 
 interface ExperimentsBookingPlatformRouteChildren {
   ExperimentsBookingPlatformAppRoute: typeof ExperimentsBookingPlatformAppRoute
+  ExperimentsBookingPlatformSuccessRoute: typeof ExperimentsBookingPlatformSuccessRoute
+  ExperimentsBookingPlatformIndexRoute: typeof ExperimentsBookingPlatformIndexRoute
 }
 
 const ExperimentsBookingPlatformRouteChildren: ExperimentsBookingPlatformRouteChildren =
   {
     ExperimentsBookingPlatformAppRoute: ExperimentsBookingPlatformAppRoute,
+    ExperimentsBookingPlatformSuccessRoute:
+      ExperimentsBookingPlatformSuccessRoute,
+    ExperimentsBookingPlatformIndexRoute: ExperimentsBookingPlatformIndexRoute,
   }
 
 const ExperimentsBookingPlatformRouteWithChildren =

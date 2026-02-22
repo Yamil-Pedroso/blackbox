@@ -8,8 +8,14 @@ import type {
 export const searchHotels = async (
   query: PlatformHotelQuery,
 ): Promise<PaginatedHotelResponse> => {
+  const cleanQuery = Object.fromEntries(
+    Object.entries(query).filter(
+      ([, value]) => value !== undefined && value !== "",
+    ),
+  );
+
   const { data } = await apiClient.get("/hotels", {
-    params: query,
+    params: cleanQuery,
   });
 
   return data;

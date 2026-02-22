@@ -1,15 +1,33 @@
 import { Request, Response } from "express";
 import stripe from "../services/stripe";
 import { Booking } from "../models/Booking";
+import { Hotel } from "../models/Hotel";
 
 export const createCheckoutSession = async (req: Request, res: Response) => {
   try {
     const { hotelId, checkIn, checkOut, guests } = req.body;
 
-    // 🔥 Aquí debes recalcular precio real (NO confiar en frontend)
-    const total = 500; // ejemplo, luego lo conectamos a pricing engine
+    // 1️⃣ Obtener hotel real desde DB
+    const hotel = await Hotel.findById(hotelId);
 
-    // 1️⃣ Crear booking pending
+    if (!hotel) {
+      return res.status(404).json({ error: "Hotel not found" });
+    }
+
+    // 2️⃣ Calcular noches
+    const start = new Date(checkIn);
+    const end = new Date(checkOut);
+
+    const nights = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+
+    if (nights <= 0) {
+      return res.status(400).json({ error: "Invalid dates" });
+    }
+
+    // 3️⃣ Calcular total real
+    const total = nights * hotel.pricePerNight;
+
+    // 4️⃣ Crear booking pending
     const booking = await Booking.create({
       hotelId,
       checkIn,
@@ -19,7 +37,7 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
       status: "pending",
     });
 
-    // 2️⃣ Crear sesión Stripe
+    // 5️⃣ Crear sesión Stripe
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
@@ -28,9 +46,9 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
           price_data: {
             currency: "chf",
             product_data: {
-              name: "Hotel Booking",
+              name: hotel.name,
             },
-            unit_amount: total * 100, // Stripe trabaja en centavos
+            unit_amount: total * 100,
           },
           quantity: 1,
         },
