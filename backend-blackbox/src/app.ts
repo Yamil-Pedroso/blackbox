@@ -11,6 +11,10 @@ const allowedOrigins = [
   "https://blackbox-one-olive.vercel.app",
 ];
 
+// 🔥 1️⃣ STRIPE WEBHOOK FIRST (raw body)
+app.use("/api/stripe/webhook", express.raw({ type: "application/json" }));
+
+// 2️⃣ CORS
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -24,8 +28,10 @@ app.use(
   }),
 );
 
+// 3️⃣ JSON parser AFTER webhook
 app.use(express.json());
 
+// 4️⃣ Routes
 app.use("/api", stripeRoutes);
 app.use("/api", bookingRoutes);
 app.use("/api", hotelRoutes);
