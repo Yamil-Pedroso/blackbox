@@ -37,6 +37,10 @@ import booking_en from "./locales/en/bookingSimulation.json";
 import booking_es from "./locales/es/bookingSimulation.json";
 import booking_de from "./locales/de/bookingSimulation.json";
 
+import booking_platform_en from "./locales/en/bookingPlatform.json";
+import booking_platform_es from "./locales/es/bookingPlatform.json";
+import booking_platform_de from "./locales/de/bookingPlatform.json";
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -53,6 +57,7 @@ i18n
         experiments: exp_en,
         miniGames: mini_en,
         bookingSimulation: booking_en,
+        bookingPlatform: booking_platform_en,
       },
       es: {
         topNavbar: esTopNavbar,
@@ -65,6 +70,7 @@ i18n
         experiments: exp_es,
         miniGames: mini_es,
         bookingSimulation: booking_es,
+        bookingPlatform: booking_platform_es,
       },
       de: {
         topNavbar: deTopNavbar,
@@ -77,6 +83,7 @@ i18n
         experiments: exp_de,
         miniGames: mini_de,
         bookingSimulation: booking_de,
+        bookingPlatform: booking_platform_de,
       },
     },
     defaultNS: "main",

@@ -8,17 +8,18 @@
   "comingSoon": "Demnächst",
   "items": [
     {
+      "title": "Buchungsplattform-Anwendung",
+      "description": "Full-Stack-Buchungsplattform mit dynamischer serverseitiger Filterung, sicheren Stripe-Zahlungen und MongoDB-gestützter Reservierungsverwaltung.",
+      "tag": "Full-Stack-System",
+      "status": "Aktiv",
+      "route": "/experiments/booking-platform"
+    },
+    {
       "title": "Buchungsplattform-Simulation",
       "description": "End-to-End Buchungs-UI-Simulation mit Suche, Verfügbarkeitskalender, Preislogik, Multi-Step-Flow und Zahlungsstatus.",
       "tag": "Produktsystem",
       "status": "Aktiv",
       "route": "/experiments/booking-simulation"
-    },
-    {
-      "title": "Scroll-Physik-Engine",
-      "description": "Benutzerdefiniertes Scroll-Verhalten mit Trägheit, Geschwindigkeits-Tracking und Frame-Interpolation.",
-      "tag": "Bewegung",
-      "status": "Aktiv"
     },
     {
       "title": "Shader-Rausch-Studie",

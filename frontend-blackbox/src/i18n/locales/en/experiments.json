@@ -8,17 +8,18 @@
   "comingSoon": "Coming Soon",
   "items": [
     {
+      "title": "Booking Platform App",
+      "description": "Full-stack booking platform with dynamic server-side filtering, secure Stripe payments and MongoDB-backed reservation management.",
+      "tag": "Full-Stack System",
+      "status": "Active",
+      "route": "/experiments/booking-platform"
+    },
+    {
       "title": "Booking Platform Simulation",
       "description": "End-to-end booking UI simulation including search, availability calendar, pricing logic, multi-step flow and payment states.",
       "tag": "Product System",
       "status": "Active",
       "route": "/experiments/booking-simulation"
-    },
-    {
-      "title": "Scroll Physics Engine",
-      "description": "Custom inertia-based scroll behavior using velocity tracking and frame interpolation.",
-      "tag": "Motion",
-      "status": "Active"
     },
     {
       "title": "Shader Noise Study",

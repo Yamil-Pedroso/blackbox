@@ -8,17 +8,18 @@
   "comingSoon": "Próximamente",
   "items": [
     {
+      "title": "Aplicación de Plataforma de Reservas",
+      "description": "Plataforma de reservas full-stack con filtrado dinámico del lado del servidor, pagos seguros mediante Stripe y gestión de reservas respaldada por MongoDB.",
+      "tag": "Sistema Full-Stack",
+      "status": "Activo",
+      "route": "/experiments/booking-platform"
+    },
+    {
       "title": "Simulación de Plataforma de Reservas",
       "description": "Simulación completa de interfaz de reservas incluyendo búsqueda, calendario de disponibilidad, lógica de precios, flujo multi-paso y estados de pago.",
       "tag": "Sistema de Producto",
       "status": "Activo",
       "route": "/experiments/booking-simulation"
-    },
-    {
-      "title": "Motor de Física de Scroll",
-      "description": "Comportamiento de scroll personalizado basado en inercia usando seguimiento de velocidad e interpolación por frames.",
-      "tag": "Movimiento",
-      "status": "Activo"
     },
     {
       "title": "Estudio de Ruido en Shaders",

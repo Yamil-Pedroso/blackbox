@@ -1,0 +1,66 @@
+{
+  "label": "Produkt",
+  "hero": {
+    "title": "Buchungsplattform-Anwendung",
+    "description": "Eine strukturierte Simulation einer realen Buchungsplattform zur Nachbildung produktionsnaher Frontend-Herausforderungen."
+  },
+  "developmentPhases": "Entwicklungsphasen",
+  "currentFocus": "Aktueller Fokus",
+  "enter": "Betreten →",
+  "noActivePhase": "Keine aktive Phase.",
+  "status": {
+    "active": "In Arbeit",
+    "done": "Abgeschlossen",
+    "pending": "Ausstehend"
+  },
+  "phases": [
+    {
+      "id": 1,
+      "name": "Suche & Filter",
+      "status": "done",
+      "goal": "URL-gesteuerte Filterarchitektur mit kontrollierten Inputs und strukturiertem State-Management implementieren."
+    },
+    {
+      "id": 2,
+      "name": "Verfügbarkeitskalender",
+      "status": "done",
+      "goal": "Interaktiven Kalender zur Auswahl von Check-in und Check-out mit URL-Integration entwickeln."
+    },
+    {
+      "id": 3,
+      "name": "Preis-Engine",
+      "status": "done",
+      "goal": "Dynamische Preisberechnung basierend auf Benutzerkriterien mit URL-Aktualisierung."
+    },
+    {
+      "id": 4,
+      "name": "Multi-Step Buchungsprozess",
+      "status": "done",
+      "goal": "Mehrstufigen Buchungsprozess entwickeln, dessen Zustand in der URL reflektiert wird."
+    },
+    {
+      "id": 5,
+      "name": "Zahlungssimulation",
+      "status": "active",
+      "goal": "Zahlungsabwicklung simulieren, um den Buchungsfluss zu validieren (Stripe-Integration)."
+    },
+    {
+      "id": 6,
+      "name": "Authentifizierungsintegration",
+      "status": "pending",
+      "goal": "Benutzerauthentifizierung integrieren und Sitzungen verwalten."
+    },
+    {
+      "id": 7,
+      "name": "Performance-Optimierung",
+      "status": "pending",
+      "goal": "Performance-Optimierung für große Datenmengen."
+    },
+    {
+      "id": 8,
+      "name": "Mobile UX",
+      "status": "pending",
+      "goal": "Mobile Benutzererfahrung mit responsive Design verbessern."
+    }
+  ]
+}

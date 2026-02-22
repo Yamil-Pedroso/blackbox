@@ -1,13 +1,13 @@
 type Status = "pending" | "active" | "done";
 export interface BookingSimulationPhase {
-  id: number;
+  id: string;
   name: string;
   status: Status;
   goal?: string;
 }
 
 export interface Hotel {
-  id: number | string;
+  id: string;
   name: string;
   location: string;
   pricePerNight: number;

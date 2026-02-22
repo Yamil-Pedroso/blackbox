@@ -15,7 +15,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     select: (state) => state.location.pathname,
   });
 
-  const isImmersive = pathname.includes("/experiments/booking-simulation/app");
+  const isImmersive =
+    pathname.includes("/experiments/booking-simulation/app") ||
+    pathname.includes("/experiments/booking-platform/app");
 
   useEffect(() => {
     if (mainRef.current) {
