@@ -3,7 +3,7 @@ import type { PlatformHotelQuery, PlatformHotel } from "./types/platform.types";
 import PlatformFilters from "./components/PlatformFilters";
 import PlatformHotelCard from "./components/PlatformHotelCard";
 import PlatformBookingFlow from "./booking-flow/PlatformBookingFlow";
-import { useHotel } from "./hooks/useHotels";
+import { useHotels } from "./hooks/useHotels";
 import { Link } from "@tanstack/react-router";
 import PlatformCalendar from "./components/PlatformCalendar";
 
@@ -23,10 +23,11 @@ export default function BookingPlatformApp() {
     null,
   );
 
-  const { data, isLoading, isError } = useHotel(filters);
+  const { data, isLoading, isError, fetchNextPage, hasNextPage } =
+    useHotels(filters);
 
-  const hotels = data?.data ?? [];
-  const hasMore = data?.hasMore ?? false;
+  const hotels = data?.pages.flatMap((page) => page.data) ?? [];
+  const hasMore = hasNextPage ?? false;
 
   return (
     <div className="h-full bg-secondary-bg overflow-scroll">
@@ -103,12 +104,7 @@ export default function BookingPlatformApp() {
             {hasMore && (
               <div className="flex justify-center mt-10">
                 <button
-                  onClick={() =>
-                    setFilters((prev) => ({
-                      ...prev,
-                      page: (prev.page ?? 1) + 1,
-                    }))
-                  }
+                  onClick={() => fetchNextPage()}
                   className="border border-neutral-700 px-6 py-2 text-sm text-secondary hover:text-primary"
                 >
                   Load More

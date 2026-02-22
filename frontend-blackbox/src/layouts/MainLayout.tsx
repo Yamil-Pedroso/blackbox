@@ -17,7 +17,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   const isImmersive =
     pathname.includes("/experiments/booking-simulation/app") ||
-    pathname.includes("/experiments/booking-platform/app");
+    pathname.includes("/experiments/booking-platform/app") ||
+    pathname.includes("/experiments/booking-platform/success");
 
   useEffect(() => {
     if (mainRef.current) {
