@@ -82,8 +82,6 @@ const BookingPlatform = () => {
               sort: "price_asc",
               checkInDate: undefined,
               checkOutDate: undefined,
-              page: 1,
-              limit: 6,
             }}
           >
             <button className="mt-8 border border-primary px-6 py-3 text-sm font-ibm-plex-mono text-primary hover:bg-primary hover:text-tertiary transition-colors duration-300 cursor-pointer">
