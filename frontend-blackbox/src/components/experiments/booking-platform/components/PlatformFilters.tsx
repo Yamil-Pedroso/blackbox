@@ -2,10 +2,10 @@ import type { PlatformHotelQuery } from "../types/platform.types";
 
 interface Props {
   filters: PlatformHotelQuery;
-  setFilters: React.Dispatch<React.SetStateAction<PlatformHotelQuery>>;
+  onChange: (updates: Partial<PlatformHotelQuery>) => void;
 }
 
-export default function PlatformFilters({ filters, setFilters }: Props) {
+export default function PlatformFilters({ filters, onChange }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 bg-main-bg p-6 rounded-xl border border-neutral-800">
       <input
@@ -13,11 +13,10 @@ export default function PlatformFilters({ filters, setFilters }: Props) {
         placeholder="Location"
         value={filters.location}
         onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
+          onChange({
             location: e.target.value,
             page: 1,
-          }))
+          })
         }
         className="bg-secondary-bg border border-neutral-700 px-4 py-2"
       />
@@ -26,11 +25,10 @@ export default function PlatformFilters({ filters, setFilters }: Props) {
         type="number"
         value={filters.guests}
         onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
+          onChange({
             guests: Number(e.target.value),
             page: 1,
-          }))
+          })
         }
         className="bg-secondary-bg border border-neutral-700 px-4 py-2"
       />
@@ -38,10 +36,10 @@ export default function PlatformFilters({ filters, setFilters }: Props) {
       <select
         value={filters.sort}
         onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
+          onChange({
             sort: e.target.value as PlatformHotelQuery["sort"],
-          }))
+            page: 1,
+          })
         }
         className="bg-secondary-bg border border-neutral-700 px-4 py-2"
       >
@@ -50,7 +48,10 @@ export default function PlatformFilters({ filters, setFilters }: Props) {
         <option value="rating">Rating</option>
       </select>
 
-      <button className="bg-primary text-black px-4 py-2 rounded-lg">
+      <button
+        onClick={() => onChange({ page: 1 })}
+        className="bg-primary text-black px-4 py-2 rounded-lg"
+      >
         Search
       </button>
     </div>

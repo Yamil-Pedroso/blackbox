@@ -20,18 +20,6 @@
       "tag": "Product System",
       "status": "Active",
       "route": "/experiments/booking-simulation"
-    },
-    {
-      "title": "Shader Noise Study",
-      "description": "Fragment shader experiment exploring procedural noise and dynamic color blending.",
-      "tag": "WebGL",
-      "status": "Prototype"
-    },
-    {
-      "title": "3D Layout Morph",
-      "description": "FLIP-based transformation system between grid and compact layouts.",
-      "tag": "Animation",
-      "status": "Archived"
     }
   ]
 }

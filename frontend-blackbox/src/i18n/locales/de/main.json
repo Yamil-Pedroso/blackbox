@@ -7,10 +7,6 @@
   "modulesLabel": "Blackbox Module",
   "footer": "Blackbox ist eine sich entwickelnde Umgebung. Jedes Modul repräsentiert eine Dimension der Ingenieurskunst: Rendering, Architektur, Intelligenz, Interaktion und strukturierte Systeme.",
   "modules": {
-    "experiments": {
-      "title": "Experimente",
-      "description": "Rendering-Explorationen, Shader-Studien und fortgeschrittene Bewegungssysteme."
-    },
     "tools": {
       "title": "Werkzeuge",
       "description": "Utility-Systeme, entwickelt mit sauberer Architektur und praxisorientiertem UX-Design."
@@ -22,6 +18,10 @@
     "systems": {
       "title": "Systeme",
       "description": "Backend-Architektur, Authentifizierungsabläufe und Echtzeit-Datenstrukturen."
+    },
+    "experiments": {
+      "title": "Experimente",
+      "description": "Rendering-Explorationen, Shader-Studien und fortgeschrittene Bewegungssysteme."
     },
     "miniGames": {
       "title": "Mini-Spiele",

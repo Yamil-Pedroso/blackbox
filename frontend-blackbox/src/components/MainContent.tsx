@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 const modules = [
-  { key: "experiments", to: "/experiments" },
   { key: "tools", to: "/tools" },
   { key: "ai", to: "/ai" },
   { key: "systems", to: "/systems" },
+  { key: "experiments", to: "/experiments" },
   { key: "miniGames", to: "/mini-games" },
 ];
 

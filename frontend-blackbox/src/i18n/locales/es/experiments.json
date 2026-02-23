@@ -20,18 +20,6 @@
       "tag": "Sistema de Producto",
       "status": "Activo",
       "route": "/experiments/booking-simulation"
-    },
-    {
-      "title": "Estudio de Ruido en Shaders",
-      "description": "Experimento con fragment shaders explorando ruido procedural y mezcla dinámica de colores.",
-      "tag": "WebGL",
-      "status": "Prototipo"
-    },
-    {
-      "title": "Transformación 3D de Layout",
-      "description": "Sistema de transformación basado en FLIP entre layouts en grid y compactos.",
-      "tag": "Animación",
-      "status": "Archivado"
     }
   ]
 }

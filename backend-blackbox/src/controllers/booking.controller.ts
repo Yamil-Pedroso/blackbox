@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { Booking } from "../models/Booking";
+import { asyncHandler } from "../middlewares/asyncHandler";
 
 // 🔹 Get booking by ID
-export const getBookingById = async (req: Request, res: Response) => {
-  try {
+export const getBookingById = asyncHandler(
+  async (req: Request, res: Response) => {
     const { id } = req.params;
 
     const booking = await Booking.findById(id);
@@ -13,19 +14,13 @@ export const getBookingById = async (req: Request, res: Response) => {
     }
 
     res.json(booking);
-  } catch (error) {
-    console.error("Get booking error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
+  },
+);
 
 // 🔹 Optional: list all bookings (for admin / debug)
-export const getAllBookings = async (_req: Request, res: Response) => {
-  try {
+export const getAllBookings = asyncHandler(
+  async (_req: Request, res: Response) => {
     const bookings = await Booking.find().sort({ createdAt: -1 });
     res.json(bookings);
-  } catch (error) {
-    console.error("Get bookings error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
+  },
+);

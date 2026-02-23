@@ -2,9 +2,11 @@ import { Request, Response } from "express";
 import stripe from "../services/stripe";
 import { Booking } from "../models/Booking";
 import { Hotel } from "../models/Hotel";
+import { asyncHandler } from "../middlewares/asyncHandler";
+import { calculateNights } from "../utils/calculateNights";
 
-export const createCheckoutSession = async (req: Request, res: Response) => {
-  try {
+export const createCheckoutSession = asyncHandler(
+  async (req: Request, res: Response) => {
     const { hotelId, checkIn, checkOut, guests } = req.body;
 
     // 1️⃣ Obtener hotel real desde DB
@@ -14,11 +16,12 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "Hotel not found" });
     }
 
-    // 2️⃣ Calcular noches
-    const start = new Date(checkIn);
-    const end = new Date(checkOut);
+    if (!checkIn || !checkOut) {
+      return res.status(400).json({ error: "Missing dates" });
+    }
 
-    const nights = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+    // 2️⃣ Calcular noches
+    const nights = calculateNights(checkIn, checkOut);
 
     if (nights <= 0) {
       return res.status(400).json({ error: "Invalid dates" });
@@ -64,8 +67,5 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
     await booking.save();
 
     res.json({ url: session.url });
-  } catch (error) {
-    console.error("Checkout error:", error);
-    res.status(500).json({ error: "Something went wrong" });
-  }
-};
+  },
+);

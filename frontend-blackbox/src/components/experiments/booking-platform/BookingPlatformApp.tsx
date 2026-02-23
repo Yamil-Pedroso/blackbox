@@ -4,27 +4,48 @@ import PlatformFilters from "./components/PlatformFilters";
 import PlatformHotelCard from "./components/PlatformHotelCard";
 import PlatformBookingFlow from "./booking-flow/PlatformBookingFlow";
 import { useHotels } from "./hooks/useHotels";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { Route } from "@/routes/experiments/booking-platform/app";
 import PlatformCalendar from "./components/PlatformCalendar";
 
 export default function BookingPlatformApp() {
-  const [filters, setFilters] = useState<PlatformHotelQuery>({
-    location: "",
-    guests: 1,
-    sort: "price_asc",
-    page: 1,
-    limit: 6,
-  });
+  const search = useSearch({ from: Route.fullPath });
+  const navigate = useNavigate({ from: Route.fullPath });
 
-  const [checkIn, setCheckIn] = useState<Date | null>(null);
-  const [checkOut, setCheckOut] = useState<Date | null>(null);
+  const checkIn = search.checkInDate ? new Date(search.checkInDate) : null;
+
+  const checkOut = search.checkOutDate ? new Date(search.checkOutDate) : null;
 
   const [selectedHotel, setSelectedHotel] = useState<PlatformHotel | null>(
     null,
   );
 
+  {
+    /*useEffect(() => {
+    navigate({
+      search: (prev) => {
+        const cleaned = { ...prev } as any;
+        delete cleaned.page;
+        delete cleaned.limit;
+        return cleaned;
+      },
+      replace: true,
+    });
+  }, []);*/
+  }
+
+  const updateQuery = (updates: Partial<PlatformHotelQuery>) => {
+    navigate({
+      search: (prev) => ({
+        ...prev,
+        ...updates,
+        page: 1,
+      }),
+    });
+  };
+
   const { data, isLoading, isError, fetchNextPage, hasNextPage } =
-    useHotels(filters);
+    useHotels(search);
 
   const hotels = data?.pages.flatMap((page) => page.data) ?? [];
   const hasMore = hasNextPage ?? false;
@@ -45,26 +66,21 @@ export default function BookingPlatformApp() {
       </header>
 
       <div className="p-8">
-        <PlatformFilters filters={filters} setFilters={setFilters} />
+        <PlatformFilters filters={search} onChange={updateQuery} />
 
         <div className="mt-6">
           <PlatformCalendar
             checkIn={checkIn}
             checkOut={checkOut}
             onChange={(range) => {
-              setCheckIn(range.checkIn);
-              setCheckOut(range.checkOut);
-
-              setFilters((prev) => ({
-                ...prev,
+              updateQuery({
                 checkInDate: range.checkIn
                   ? range.checkIn.toISOString().slice(0, 10)
                   : undefined,
                 checkOutDate: range.checkOut
                   ? range.checkOut.toISOString().slice(0, 10)
                   : undefined,
-                page: 1,
-              }));
+              });
             }}
           />
         </div>

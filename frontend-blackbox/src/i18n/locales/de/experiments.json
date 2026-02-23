@@ -20,18 +20,6 @@
       "tag": "Produktsystem",
       "status": "Aktiv",
       "route": "/experiments/booking-simulation"
-    },
-    {
-      "title": "Shader-Rausch-Studie",
-      "description": "Fragment-Shader-Experiment zur Untersuchung von prozeduralem Rauschen und dynamischer Farbüberblendung.",
-      "tag": "WebGL",
-      "status": "Prototyp"
-    },
-    {
-      "title": "3D-Layout-Morph",
-      "description": "FLIP-basiertes Transformationssystem zwischen Grid- und Kompaktlayouts.",
-      "tag": "Animation",
-      "status": "Archiviert"
     }
   ]
 }

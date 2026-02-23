@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { Hotel } from "../models/Hotel";
+import { asyncHandler } from "../middlewares/asyncHandler";
 
 // GET /api/hotels
-export const getAllHotels = async (req: Request, res: Response) => {
-  try {
+export const getAllHotels = asyncHandler(
+  async (req: Request, res: Response) => {
     const {
       location,
       guests,
@@ -47,6 +48,9 @@ export const getAllHotels = async (req: Request, res: Response) => {
     if (sort === "rating") sortOption.rating = -1;
 
     const pageNumber = Number(page);
+    console.log("Querying hotels with:", {
+      pageNumber,
+    });
     const limitNumber = Number(limit);
     const skip = (pageNumber - 1) * limitNumber;
 
@@ -62,15 +66,12 @@ export const getAllHotels = async (req: Request, res: Response) => {
       total,
       hasMore: skip + hotels.length < total,
     });
-  } catch (error) {
-    console.error("Get hotels error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
+  },
+);
 
 // GET /api/hotels/:id (usando tu id custom tipo "h1")
-export const getHotelByCustomId = async (req: Request, res: Response) => {
-  try {
+export const getHotelByCustomId = asyncHandler(
+  async (req: Request, res: Response) => {
     const { id } = req.params;
 
     const hotel = await Hotel.findOne({ id });
@@ -80,8 +81,5 @@ export const getHotelByCustomId = async (req: Request, res: Response) => {
     }
 
     res.json(hotel);
-  } catch (error) {
-    console.error("Get hotel error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
+  },
+);

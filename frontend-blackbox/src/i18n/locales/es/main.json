@@ -7,10 +7,6 @@
   "modulesLabel": "Módulos de Blackbox",
   "footer": "Blackbox es un entorno en evolución. Cada módulo representa una dimensión de la ingeniería: rendering, arquitectura, inteligencia, interacción y sistemas estructurados.",
   "modules": {
-    "experiments": {
-      "title": "Experimentos",
-      "description": "Exploraciones de rendering, estudios de shaders y sistemas avanzados de animación."
-    },
     "tools": {
       "title": "Herramientas",
       "description": "Sistemas utilitarios construidos con arquitectura limpia y diseño de experiencia de usuario práctico."
@@ -22,6 +18,10 @@
     "systems": {
       "title": "Sistemas",
       "description": "Arquitectura backend, flujos de autenticación y estructuras de datos en tiempo real."
+    },
+    "experiments": {
+      "title": "Experimentos",
+      "description": "Exploraciones de rendering, estudios de shaders y sistemas avanzados de animación."
     },
     "miniGames": {
       "title": "Mini-Juegos",
