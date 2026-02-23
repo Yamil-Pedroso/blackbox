@@ -57,7 +57,7 @@ export default function PlatformFilters({ filters, onChange }: Props) {
               page: 1,
             })
           }
-          className="flex-1 bg-secondary-bg border border-neutral-700 px-4 py-2 rounded-lg"
+          className="flex-1 bg-secondary-bg border border-neutral-700 px-4 py-2 rounded-lg focus:outline-none focus:ring-0"
         />
 
         <InsightTooltip
@@ -92,7 +92,7 @@ export default function PlatformFilters({ filters, onChange }: Props) {
               });
             }
           }}
-          className="flex-1 bg-secondary-bg border border-neutral-700 px-4 py-2 rounded-lg"
+          className="flex-1 bg-secondary-bg border border-neutral-700 px-4 py-2 rounded-lg focus-within:outline-none focus-within:ring-0"
         />
 
         <InsightTooltip
@@ -119,7 +119,7 @@ export default function PlatformFilters({ filters, onChange }: Props) {
               page: 1,
             })
           }
-          className="flex-1 bg-secondary-bg border border-neutral-700 px-4 py-2 rounded-lg"
+          className="flex-1 bg-secondary-bg border border-neutral-700 px-4 py-2 rounded-lg focus-within:outline-none focus-within:ring-0"
         >
           <option value="price_asc">Price: Low to High</option>
           <option value="price_desc">Price: High to Low</option>
