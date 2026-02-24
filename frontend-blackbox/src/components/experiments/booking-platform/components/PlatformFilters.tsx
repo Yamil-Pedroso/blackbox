@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { PlatformHotelQuery } from "../types/platform.types";
 import InsightTooltip from "./common/InsightTooltip";
 import { Search, Users, ArrowUpDown } from "lucide-react";
+import SearchPipelinePanel from "./common/SearchPipelinePanel";
 
 interface Props {
   filters: PlatformHotelQuery;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function PlatformFilters({ filters, onChange }: Props) {
+  const [showPipeline, setShowPipeline] = useState(false);
   const [activeField, setActiveField] = useState<
     "location" | "guests" | "sort" | null
   >(null);
@@ -138,11 +140,21 @@ export default function PlatformFilters({ filters, onChange }: Props) {
 
       {/* 🔎 SEARCH BUTTON */}
       <button
-        onClick={() => onChange({ page: 1 })}
-        className="bg-primary text-black px-4 py-2 rounded-lg"
+        onClick={() => {
+          onChange({ page: 1 });
+          setShowPipeline(true);
+        }}
+        className="bg-primary text-black px-4 py-2 rounded-lg cursor-pointer"
       >
         Search
       </button>
+
+      {/* Search Pipeline Panel */}
+      <SearchPipelinePanel
+        isOpen={showPipeline}
+        onClose={() => setShowPipeline(false)}
+        filters={filters}
+      />
     </div>
   );
 }

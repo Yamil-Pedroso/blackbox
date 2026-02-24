@@ -41,26 +41,8 @@
     {
       "id": 5,
       "name": "Payment Simulation",
-      "status": "active",
+      "status": "done",
       "goal": "Simulate payment processing to ensure the booking flow handles transactions correctly(Stripe integration)."
-    },
-    {
-      "id": 6,
-      "name": "Authentication Integration",
-      "status": "pending",
-      "goal": "Integrate user authentication to secure the booking process and manage user sessions."
-    },
-    {
-      "id": 7,
-      "name": "Performance Optimization",
-      "status": "pending",
-      "goal": "Optimize the application's performance to handle large datasets and high user traffic efficiently."
-    },
-    {
-      "id": 8,
-      "name": "Mobile UX",
-      "status": "pending",
-      "goal": "Enhance the mobile user experience with responsive design and touch-friendly interactions."
     }
   ]
 }

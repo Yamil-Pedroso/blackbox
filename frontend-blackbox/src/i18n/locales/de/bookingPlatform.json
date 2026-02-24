@@ -41,26 +41,8 @@
     {
       "id": 5,
       "name": "Zahlungssimulation",
-      "status": "active",
+      "status": "done",
       "goal": "Zahlungsabwicklung simulieren, um den Buchungsfluss zu validieren (Stripe-Integration)."
-    },
-    {
-      "id": 6,
-      "name": "Authentifizierungsintegration",
-      "status": "pending",
-      "goal": "Benutzerauthentifizierung integrieren und Sitzungen verwalten."
-    },
-    {
-      "id": 7,
-      "name": "Performance-Optimierung",
-      "status": "pending",
-      "goal": "Performance-Optimierung für große Datenmengen."
-    },
-    {
-      "id": 8,
-      "name": "Mobile UX",
-      "status": "pending",
-      "goal": "Mobile Benutzererfahrung mit responsive Design verbessern."
     }
   ]
 }

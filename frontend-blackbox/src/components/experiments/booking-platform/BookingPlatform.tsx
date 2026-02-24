@@ -22,7 +22,7 @@ const BookingPlatform = () => {
       </section>
 
       <section className="grid md:grid-cols-2 gap-12">
-        <div className="border border-neutral-800 p-6 bg-secondary-bg">
+        <div className="border border-neutral-800 p-6 bg-secondary-bg overflow-hidden">
           <h3 className="font-geist text-xl text-primary mb-6">
             {t("developmentPhases")}
           </h3>
@@ -50,7 +50,7 @@ const BookingPlatform = () => {
           </ul>
         </div>
 
-        <div className="border border-neutral-800 p-6 bg-secondary-bg flex flex-col justify-between max-h-96">
+        <div className="border border-neutral-800 p-6 bg-secondary-bg flex flex-col justify-between max-h-96 overflow-hidden">
           <div>
             <h3 className="font-geist text-xl text-primary mb-4">
               {t("currentFocus")}

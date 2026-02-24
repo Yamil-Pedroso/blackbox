@@ -62,16 +62,14 @@ export default function InsightTooltip({
             transition={{ duration: 0.18 }}
             className={`
               absolute ${positionClasses[position]}
-
               /* Responsive width */
               w-[90vw]
               max-w-[320px]
               sm:max-w-95
               md:max-w-105
-
               p-4
               rounded-2xl
-              bg-neutral-950
+               bg-neutral-900
               border border-neutral-800
               shadow-2xl
               z-50

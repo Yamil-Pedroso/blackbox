@@ -41,26 +41,8 @@
     {
       "id": 5,
       "name": "Simulación de Pago",
-      "status": "active",
+      "status": "done",
       "goal": "Simular procesamiento de pagos para validar el flujo de reserva (integración con Stripe)."
-    },
-    {
-      "id": 6,
-      "name": "Integración de Autenticación",
-      "status": "pending",
-      "goal": "Integrar autenticación para proteger el proceso de reserva y gestionar sesiones."
-    },
-    {
-      "id": 7,
-      "name": "Optimización de Rendimiento",
-      "status": "pending",
-      "goal": "Optimizar rendimiento para manejar grandes volúmenes de datos y tráfico."
-    },
-    {
-      "id": 8,
-      "name": "UX Móvil",
-      "status": "pending",
-      "goal": "Mejorar la experiencia móvil con diseño responsive e interacciones táctiles."
     }
   ]
 }
