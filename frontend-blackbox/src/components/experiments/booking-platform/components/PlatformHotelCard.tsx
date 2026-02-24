@@ -122,6 +122,9 @@ export default function PlatformHotelCard({
                   <li>• Create pending booking</li>
                   <li>• Initialize Stripe session</li>
                   <li>• Redirect to payment</li>
+                  <li>• Mark booking confirmed</li>
+                  <li>• Redirect to success page</li>
+                  <li>• Send confirmation email</li>
                 </ul>
 
                 {/* Arrow */}
