@@ -7,9 +7,12 @@ import { useHotels } from "./hooks/useHotels";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { Route } from "@/routes/experiments/booking-platform/app";
 import PlatformCalendar from "./components/PlatformCalendar";
+import { Layers } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function BookingPlatformApp() {
   const search = useSearch({ from: Route.fullPath });
+  const [loadHover, setLoadHover] = useState(false);
   const navigate = useNavigate({ from: Route.fullPath });
 
   const checkIn = search.checkInDate ? new Date(search.checkInDate) : null;
@@ -118,13 +121,47 @@ export default function BookingPlatformApp() {
             )}
 
             {hasMore && (
-              <div className="flex justify-center mt-10">
+              <div className="flex justify-center mt-10 relative">
                 <button
+                  onMouseEnter={() => setLoadHover(true)}
+                  onMouseLeave={() => setLoadHover(false)}
                   onClick={() => fetchNextPage()}
-                  className="border border-neutral-700 px-6 py-2 text-sm text-secondary hover:text-primary"
+                  className="border border-neutral-700 px-6 py-2 text-sm text-secondary hover:text-primary transition flex items-center gap-2"
                 >
+                  <Layers size={16} className="text-purple-400" />
                   Load More
                 </button>
+
+                <AnimatePresence>
+                  {loadHover && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.2 }}
+                      className=" absolute bottom-full mb-4 w-96 bg-secondary-bg border border-neutral-800 rounded-xl p-4 text-xs shadow-xl z-50"
+                    >
+                      {/* Header with icon */}
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-emerald-400 font-medium text-2xl">
+                          Infinite Pagination Trigger
+                        </p>
+                        <Layers size={24} className="text-purple-400" />
+                      </div>
+
+                      <ul className="space-y-1 text-neutral-400 text-[0.9rem]">
+                        <li>• Calls fetchNextPage()</li>
+                        <li>• Increments page parameter</li>
+                        <li>• Recalculates Mongo skip</li>
+                        <li>• Executes new GET request</li>
+                        <li>• Appends results to state</li>
+                      </ul>
+
+                      {/* Arrow */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-full w-3 h-3 bg-neutral-950 border-l border-b border-neutral-800 rotate-45" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             )}
           </>
