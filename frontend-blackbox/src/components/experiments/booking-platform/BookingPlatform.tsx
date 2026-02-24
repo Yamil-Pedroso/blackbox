@@ -8,7 +8,6 @@ const BookingPlatform = () => {
   const { t } = useTranslation("bookingPlatform");
 
   const phases = t("phases", { returnObjects: true }) as any[];
-
   const currentPhase = phases.find((p) => p.status === "active");
 
   return (
@@ -22,7 +21,8 @@ const BookingPlatform = () => {
       </section>
 
       <section className="grid md:grid-cols-2 gap-12">
-        <div className="border border-neutral-800 p-6 bg-secondary-bg overflow-hidden">
+        {/* LEFT CONTAINER */}
+        <div className="border border-neutral-800 p-6 bg-secondary-bg">
           <h3 className="font-geist text-xl text-primary mb-6">
             {t("developmentPhases")}
           </h3>
@@ -50,29 +50,30 @@ const BookingPlatform = () => {
           </ul>
         </div>
 
-        <div className="border border-neutral-800 p-6 bg-secondary-bg flex flex-col justify-between max-h-96 overflow-hidden">
+        {/* RIGHT CONTAINER */}
+        <div className="border border-neutral-800 p-6 bg-secondary-bg flex flex-col">
           <div>
             <h3 className="font-geist text-xl text-primary mb-4">
               {t("currentFocus")}
             </h3>
 
-            <div className="font-ibm-plex-mono text-sm text-secondary leading-relaxed overflow-y-auto h-50 pr-2">
-              {currentPhase ? (
-                <div className="mb-6">
-                  <h4 className="font-semibold text-secondary">
-                    Phase {currentPhase.id}: {currentPhase.name}
-                  </h4>
-                  <p className="text-secondary opacity-50 mt-1">
-                    Goal: {currentPhase.goal}
-                  </p>
-                </div>
-              ) : (
-                t("noActivePhase")
-              )}
-            </div>
+            {currentPhase ? (
+              <div>
+                <h4 className="font-semibold text-secondary">
+                  Phase {currentPhase.id}: {currentPhase.name}
+                </h4>
+                <p className="text-secondary opacity-50 mt-1">
+                  Goal: {currentPhase.goal}
+                </p>
+              </div>
+            ) : (
+              <p className="text-secondary">{t("noActivePhase")}</p>
+            )}
           </div>
 
+          {/* 🔥 CLAVE AQUÍ */}
           <Link
+            className="mt-auto"
             to="/experiments/booking-platform/app"
             search={{
               location: "",
@@ -84,7 +85,7 @@ const BookingPlatform = () => {
               checkOutDate: undefined,
             }}
           >
-            <button className="mt-8 border border-primary px-6 py-3 text-sm font-ibm-plex-mono text-primary hover:bg-primary hover:text-tertiary transition-colors duration-300 cursor-pointer">
+            <button className="mt-6 border border-primary px-6 py-3 text-sm font-ibm-plex-mono text-primary hover:bg-primary hover:text-tertiary transition-colors duration-300 cursor-pointer w-full">
               {t("enter")}
             </button>
           </Link>
