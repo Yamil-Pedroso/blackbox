@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
+import SystemsContainer from "@/components/systems/SystemsContainer";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 
@@ -76,56 +77,7 @@ const SystemsPage = () => {
         </div>
       </section>
 
-      <section className="systems-block border border-neutral-800 bg-secondary-bg p-8 space-y-8">
-        <div className="space-y-4">
-          <h2 className="text-primary font-geist text-3xl">
-            {t("engine.title")}
-          </h2>
-
-          <p className="text-secondary font-ibm-plex-mono text-sm leading-relaxed max-w-3xl">
-            {t("engine.description")}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 font-ibm-plex-mono text-sm text-secondary">
-          <div className="systems-meta">
-            <span className="block text-primary mb-2">
-              {t("meta.architecture")}
-            </span>
-            Controller → Service → Repository
-          </div>
-
-          <div className="systems-meta">
-            <span className="block text-primary mb-2">
-              {t("meta.security")}
-            </span>
-            JWT + Role Guards
-          </div>
-
-          <div className="systems-meta">
-            <span className="block text-primary mb-2">{t("meta.status")}</span>
-            <span className="text-green">{t("meta.statusValue")}</span>
-          </div>
-        </div>
-
-        <div className="pt-6 border-t border-neutral-800 flex flex-wrap gap-4">
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50">
-            {t("actions.api")}
-          </button>
-
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50">
-            {t("actions.diagram")}
-          </button>
-
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50">
-            {t("actions.protected")}
-          </button>
-
-          <button className="systems-actions border border-neutral-700 px-4 py-2 text-secondary font-ibm-plex-mono text-xs opacity-50 cursor-not-allowed">
-            {t("actions.logs")}
-          </button>
-        </div>
-      </section>
+      <SystemsContainer />
     </div>
   );
 };

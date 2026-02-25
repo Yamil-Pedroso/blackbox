@@ -4,20 +4,48 @@
     "title": "Systems Engineering",
     "description": "Backend architecture, secure authentication flows and structured service layers. This section demonstrates system-level thinking, not just CRUD applications."
   },
-  "engine": {
-    "title": "Access Control Engine",
-    "description": "A role-based authentication system built with Node.js, Express and PostgreSQL. Includes JWT access tokens, refresh tokens, middleware-based route protection and structured service layers."
-  },
-  "meta": {
-    "architecture": "Architecture",
-    "security": "Security",
-    "status": "Status",
-    "statusValue": "In Development"
-  },
-  "actions": {
-    "api": "Live API Explorer (Coming Soon)",
-    "diagram": "Architecture Diagram",
-    "protected": "Protected Route Demo",
-    "logs": "Real-time Logs"
-  }
+  "projectsEngine": [
+    {
+      "engine": {
+        "title": "Access Control Engine",
+        "description": "A role-based authentication system built with Node.js, Express and PostgreSQL. Includes JWT access tokens, refresh tokens, middleware-based route protection and structured service layers."
+      },
+      "meta": {
+        "architecture": "Architecture",
+        "security": "Security",
+        "status": "Status",
+        "statusValue": "In Development"
+      },
+      "actions": {
+        "api": "Live API Explorer (Coming Soon)",
+        "diagram": "Architecture Diagram",
+        "protected": "Protected Route Demo",
+        "logs": "Real-time Logs"
+      },
+      "platform": {
+        "type": "web"
+      }
+    },
+    {
+      "engine": {
+        "title": "Data Processing Engine",
+        "description": "A data processing pipeline built with Node.js and RabbitMQ. Demonstrates asynchronous task processing, message queuing and worker services for scalable data handling."
+      },
+      "meta": {
+        "architecture": "Architecture",
+        "security": "Security",
+        "status": "Status",
+        "statusValue": "In Development"
+      },
+      "actions": {
+        "api": "Live API Explorer (Coming Soon)",
+        "diagram": "Architecture Diagram",
+        "protected": "Protected Route Demo",
+        "logs": "Real-time Logs"
+      },
+      "platform": {
+        "type": "mobile"
+      }
+    }
+  ]
 }

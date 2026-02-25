@@ -4,20 +4,48 @@
     "title": "Ingeniería de Sistemas",
     "description": "Arquitectura backend, flujos de autenticación seguros y capas de servicio estructuradas. Esta sección demuestra pensamiento a nivel de sistema, no solo aplicaciones CRUD."
   },
-  "engine": {
-    "title": "Motor de Control de Acceso",
-    "description": "Sistema de autenticación basado en roles construido con Node.js, Express y PostgreSQL. Incluye tokens JWT, refresh tokens, protección de rutas mediante middleware y capas de servicio estructuradas."
-  },
-  "meta": {
-    "architecture": "Arquitectura",
-    "security": "Seguridad",
-    "status": "Estado",
-    "statusValue": "En Desarrollo"
-  },
-  "actions": {
-    "api": "Explorador de API (Próximamente)",
-    "diagram": "Diagrama de Arquitectura",
-    "protected": "Demo de Ruta Protegida",
-    "logs": "Logs en Tiempo Real"
-  }
+  "projectsEngine": [
+    {
+      "engine": {
+        "title": "Motor de Control de Acceso",
+        "description": "Un sistema de autenticación basado en roles construido con Node.js, Express y PostgreSQL. Incluye tokens de acceso JWT, refresh tokens, protección de rutas mediante middleware y capas de servicio estructuradas."
+      },
+      "meta": {
+        "architecture": "Arquitectura",
+        "security": "Seguridad",
+        "status": "Estado",
+        "statusValue": "En Desarrollo"
+      },
+      "actions": {
+        "api": "Explorador de API en Vivo (Próximamente)",
+        "diagram": "Diagrama de Arquitectura",
+        "protected": "Demostración de Ruta Protegida",
+        "logs": "Logs en Tiempo Real"
+      },
+      "platform": {
+        "type": "web"
+      }
+    },
+    {
+      "engine": {
+        "title": "Motor de Procesamiento de Datos",
+        "description": "Una canalización de procesamiento de datos construida con Node.js y RabbitMQ. Demuestra procesamiento asíncrono de tareas, colas de mensajes y servicios worker para el manejo escalable de datos."
+      },
+      "meta": {
+        "architecture": "Arquitectura",
+        "security": "Seguridad",
+        "status": "Estado",
+        "statusValue": "En Desarrollo"
+      },
+      "actions": {
+        "api": "Explorador de API en Vivo (Próximamente)",
+        "diagram": "Diagrama de Arquitectura",
+        "protected": "Demostración de Ruta Protegida",
+        "logs": "Logs en Tiempo Real"
+      },
+      "platform": {
+        "type": "mobile"
+      }
+    }
+  ]
 }

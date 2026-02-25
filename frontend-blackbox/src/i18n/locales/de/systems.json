@@ -2,22 +2,50 @@
   "label": "Backend-Architektur",
   "hero": {
     "title": "Systemtechnik",
-    "description": "Backend-Architektur, sichere Authentifizierungsprozesse und strukturierte Service-Schichten. Dieser Bereich demonstriert systemisches Denken, nicht nur CRUD-Anwendungen."
+    "description": "Backend-Architektur, sichere Authentifizierungsabläufe und strukturierte Service-Schichten. Dieser Abschnitt zeigt systemisches Denken auf Architekturebene und nicht nur CRUD-Anwendungen."
   },
-  "engine": {
-    "title": "Zugriffskontroll-Engine",
-    "description": "Rollenbasiertes Authentifizierungssystem mit Node.js, Express und PostgreSQL. Enthält JWT-Access-Tokens, Refresh-Tokens, Middleware-Routenschutz und strukturierte Service-Schichten."
-  },
-  "meta": {
-    "architecture": "Architektur",
-    "security": "Sicherheit",
-    "status": "Status",
-    "statusValue": "In Entwicklung"
-  },
-  "actions": {
-    "api": "Live API Explorer (Demnächst)",
-    "diagram": "Architekturdiagramm",
-    "protected": "Geschützte Route Demo",
-    "logs": "Echtzeit-Logs"
-  }
+  "projectsEngine": [
+    {
+      "engine": {
+        "title": "Zugriffskontroll-Engine",
+        "description": "Ein rollenbasiertes Authentifizierungssystem, entwickelt mit Node.js, Express und PostgreSQL. Beinhaltet JWT-Access-Tokens, Refresh-Tokens, middleware-basierte Routenabsicherung sowie strukturierte Service-Schichten."
+      },
+      "meta": {
+        "architecture": "Architektur",
+        "security": "Sicherheit",
+        "status": "Status",
+        "statusValue": "In Entwicklung"
+      },
+      "actions": {
+        "api": "Live-API-Explorer (Demnächst verfügbar)",
+        "diagram": "Architekturdiagramm",
+        "protected": "Demo einer geschützten Route",
+        "logs": "Echtzeit-Logs"
+      },
+      "platform": {
+        "type": "web"
+      }
+    },
+    {
+      "engine": {
+        "title": "Datenverarbeitungs-Engine",
+        "description": "Eine Datenverarbeitungspipeline, entwickelt mit Node.js und RabbitMQ. Demonstriert asynchrone Aufgabenverarbeitung, Message-Queues und Worker-Services für skalierbare Datenverarbeitung."
+      },
+      "meta": {
+        "architecture": "Architektur",
+        "security": "Sicherheit",
+        "status": "Status",
+        "statusValue": "In Entwicklung"
+      },
+      "actions": {
+        "api": "Live-API-Explorer (Demnächst verfügbar)",
+        "diagram": "Architekturdiagramm",
+        "protected": "Demo einer geschützten Route",
+        "logs": "Echtzeit-Logs"
+      },
+      "platform": {
+        "type": "mobile"
+      }
+    }
+  ]
 }

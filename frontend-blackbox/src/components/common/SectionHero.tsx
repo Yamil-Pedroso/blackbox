@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type JSX } from "react";
 import gsap from "gsap";
 
 interface SectionHeroProps {
   title: string;
-  description: string;
+  description: string | JSX.Element;
 }
 
 const SectionHero = ({ title, description }: SectionHeroProps) => {

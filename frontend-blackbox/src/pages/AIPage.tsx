@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
+import SplitType from "split-type";
 import { useTranslation } from "react-i18next";
 
 const AIPage = () => {
@@ -19,6 +20,7 @@ const AIPage = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
+      // Hero entrance animation
       tl.from(".ai-hero", {
         y: 60,
         opacity: 0,
@@ -27,6 +29,7 @@ const AIPage = () => {
         stagger: 0.15,
       });
 
+      // Modules entrance animation
       tl.from(
         ".ai-module",
         {
@@ -38,6 +41,61 @@ const AIPage = () => {
         },
         "-=0.4",
       );
+
+      // --- TEXT DISINTEGRATION EFFECT ---
+
+      const description = document.querySelector(".ai-description");
+
+      if (description) {
+        const split = new SplitType(description as HTMLElement, {
+          types: "words",
+        });
+
+        gsap.set(split.words, {
+          display: "inline-block",
+        });
+
+        gsap.delayedCall(5, () => {
+          const scatterTl = gsap.timeline();
+
+          // Disperse
+          scatterTl.to(split.words, {
+            x: () =>
+              gsap.utils.random(-window.innerWidth / 2, window.innerWidth / 2),
+            y: () =>
+              gsap.utils.random(
+                -window.innerHeight / 2,
+                window.innerHeight / 2,
+              ),
+            rotation: () => gsap.utils.random(-40, 40),
+            opacity: 0.3,
+            filter: "blur(4px)",
+            duration: 1.4,
+            ease: "power3.out",
+            stagger: {
+              amount: 0.8,
+            },
+          });
+
+          // Return to original state
+          scatterTl.to(
+            split.words,
+            {
+              x: 0,
+              y: 0,
+              rotation: 0,
+              opacity: 1,
+              filter: "blur(0px)",
+              duration: 1.4,
+              ease: "power3.inOut",
+              stagger: {
+                amount: 0.8,
+              },
+            },
+            "+=0.5",
+          );
+        });
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -56,7 +114,9 @@ const AIPage = () => {
         <div className="ai-hero">
           <SectionHero
             title={t("hero.title")}
-            description={t("hero.description")}
+            description={
+              <span className="ai-description">{t("hero.description")}</span>
+            }
           />
         </div>
       </section>

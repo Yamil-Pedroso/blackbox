@@ -33,6 +33,7 @@
     "react-i18next": "^16.5.4",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.13.0",
+    "split-type": "^0.3.4",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.1.18"
   },
