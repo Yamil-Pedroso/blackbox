@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
-import gsap from "gsap";
 import { useTranslation } from "react-i18next";
+import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
 
 const ExperimentsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,12 +17,9 @@ const ExperimentsPage = () => {
     route?: string;
   }[];
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
+  useGsapPageAnimation(
+    containerRef as React.RefObject<HTMLDivElement>,
+    (tl) => {
       tl.from(".exp-hero", {
         y: 60,
         opacity: 0,
@@ -42,10 +39,10 @@ const ExperimentsPage = () => {
         },
         "-=0.4",
       );
-    }, containerRef);
+    },
 
-    return () => ctx.revert();
-  }, []);
+    [],
+  );
 
   return (
     <div

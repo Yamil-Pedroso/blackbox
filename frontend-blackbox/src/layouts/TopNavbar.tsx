@@ -38,6 +38,7 @@ const TopNavbar = () => {
     { name: t("menu.systems"), to: "/systems" },
     { name: t("menu.experiments"), to: "/experiments" },
     { name: t("menu.miniGames"), to: "/mini-games" },
+    { name: t("menu.uiux"), to: "/uiux" },
   ];
 
   // 🔹 Translated Status Items

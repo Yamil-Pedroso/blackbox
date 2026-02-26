@@ -1,0 +1,39 @@
+{
+  "label": "Benutzererfahrung Design",
+  "hero": {
+    "title": "Interface- und Interaktionssysteme",
+    "description": "Nutzerzentrierte Interfaces, strukturierte User Flows und bewusst gestaltete Interaktionskonzepte. Dieser Bereich zeigt Experience-Architektur, Motion-Logik und visuelle Systeme."
+  },
+  "designPrinciples": [
+    { "title": "Linie", "color": "#4FA3D1" },
+    { "title": "Form", "color": "#F2B24D" },
+    { "title": "Farbe", "color": "#D9D9D9" },
+    { "title": "Wert", "color": "#7BCB5B" },
+    { "title": "Volumen", "color": "#8C5CC4" },
+    { "title": "Textur", "color": "#F28C52" },
+    { "title": "Raum", "color": "#F25CA2" },
+    { "title": "Balance", "color": "#F2524B" },
+    { "title": "Bewegung", "color": "#6BC7C1" },
+    { "title": "Muster", "color": "#B7E03C" },
+    { "title": "Proportion", "color": "#4A6CF7" },
+    { "title": "Skalierung", "color": "#FF3FA4" }
+  ],
+  "projectFlow": [
+    {
+      "title": "01. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "02. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "03. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "04. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    }
+  ]
+}

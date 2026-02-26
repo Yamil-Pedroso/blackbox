@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useTranslation } from "react-i18next";
+import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
 
 const AIPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,13 +15,9 @@ const AIPage = () => {
     description: string;
   }[];
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
-      // Hero entrance animation
+  useGsapPageAnimation(
+    containerRef as React.RefObject<HTMLDivElement>,
+    (tl) => {
       tl.from(".ai-hero", {
         y: 60,
         opacity: 0,
@@ -29,7 +26,6 @@ const AIPage = () => {
         stagger: 0.15,
       });
 
-      // Modules entrance animation
       tl.from(
         ".ai-module",
         {
@@ -41,8 +37,6 @@ const AIPage = () => {
         },
         "-=0.4",
       );
-
-      // --- TEXT DISINTEGRATION EFFECT ---
 
       const description = document.querySelector(".ai-description");
 
@@ -58,7 +52,6 @@ const AIPage = () => {
         gsap.delayedCall(5, () => {
           const scatterTl = gsap.timeline();
 
-          // Disperse
           scatterTl.to(split.words, {
             x: () =>
               gsap.utils.random(-window.innerWidth / 2, window.innerWidth / 2),
@@ -77,7 +70,6 @@ const AIPage = () => {
             },
           });
 
-          // Return to original state
           scatterTl.to(
             split.words,
             {
@@ -96,10 +88,9 @@ const AIPage = () => {
           );
         });
       }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    [],
+  );
 
   return (
     <div

@@ -1,20 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
 import SystemsContainer from "@/components/systems/SystemsContainer";
-import gsap from "gsap";
 import { useTranslation } from "react-i18next";
+import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
 
 const SystemsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation("systems");
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
+  useGsapPageAnimation(
+    containerRef as React.RefObject<HTMLDivElement>,
+    (tl) => {
       tl.from(".systems-hero", {
         y: 60,
         opacity: 0,
@@ -57,10 +54,9 @@ const SystemsPage = () => {
         },
         "-=0.4",
       );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    [],
+  );
 
   return (
     <div ref={containerRef} className="p-8 max-w-6xl space-y-20">

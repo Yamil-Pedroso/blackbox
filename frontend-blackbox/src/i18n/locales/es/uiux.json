@@ -1,0 +1,39 @@
+{
+  "label": "Diseño de Experiencia de Usuario",
+  "hero": {
+    "title": "Sistemas de Interfaz e Interacción",
+    "description": "Interfaces centradas en el usuario, flujos estructurados y diseño de interacción intencional. Esta sección demuestra arquitectura de experiencia, lógica de movimiento y sistemas visuales."
+  },
+  "designPrinciples": [
+    { "title": "Línea", "color": "#4FA3D1" },
+    { "title": "Forma", "color": "#F2B24D" },
+    { "title": "Color", "color": "#D9D9D9" },
+    { "title": "Valor", "color": "#7BCB5B" },
+    { "title": "Volumen", "color": "#8C5CC4" },
+    { "title": "Textura", "color": "#F28C52" },
+    { "title": "Espacio", "color": "#F25CA2" },
+    { "title": "Balance", "color": "#F2524B" },
+    { "title": "Movimiento", "color": "#6BC7C1" },
+    { "title": "Patrón", "color": "#B7E03C" },
+    { "title": "Proporción", "color": "#4A6CF7" },
+    { "title": "Escala", "color": "#FF3FA4" }
+  ],
+  "projectFlow": [
+    {
+      "title": "01. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "02. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "03. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "04. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    }
+  ]
+}

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import SectionLabel from "../components/common/SectionLabel";
-import gsap from "gsap";
+
 import { useTranslation } from "react-i18next";
+import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
 
 const ToolsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,12 +16,9 @@ const ToolsPage = () => {
     status: string;
   }[];
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
+  useGsapPageAnimation(
+    containerRef as React.RefObject<HTMLDivElement>,
+    (tl) => {
       tl.from(".tools-hero", {
         y: 60,
         opacity: 0,
@@ -40,10 +38,9 @@ const ToolsPage = () => {
         },
         "-=0.4",
       );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    [],
+  );
 
   const getStatusColor = (status: string) => {
     if (status === "active") return "text-green";

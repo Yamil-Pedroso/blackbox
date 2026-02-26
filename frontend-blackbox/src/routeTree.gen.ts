@@ -14,6 +14,7 @@ import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as MiniGamesRouteImport } from './routes/mini-games'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UiuxIndexRouteImport } from './routes/uiux/index'
 import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
 import { Route as ExperimentsBookingSimulationRouteImport } from './routes/experiments/booking-simulation'
 import { Route as ExperimentsBookingPlatformRouteImport } from './routes/experiments/booking-platform'
@@ -45,6 +46,11 @@ const AiRoute = AiRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UiuxIndexRoute = UiuxIndexRouteImport.update({
+  id: '/uiux/',
+  path: '/uiux/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperimentsIndexRoute = ExperimentsIndexRouteImport.update({
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/experiments/booking-platform': typeof ExperimentsBookingPlatformRouteWithChildren
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
+  '/uiux/': typeof UiuxIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/tools': typeof ToolsRoute
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
   '/experiments': typeof ExperimentsIndexRoute
+  '/uiux': typeof UiuxIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/experiments/booking-platform': typeof ExperimentsBookingPlatformRouteWithChildren
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
+  '/uiux/': typeof UiuxIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/experiments/booking-platform'
     | '/experiments/booking-simulation'
     | '/experiments/'
+    | '/uiux/'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/tools'
     | '/experiments/booking-simulation'
     | '/experiments'
+    | '/uiux'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/experiments/booking-platform'
     | '/experiments/booking-simulation'
     | '/experiments/'
+    | '/uiux/'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -184,6 +196,7 @@ export interface RootRouteChildren {
   ExperimentsBookingPlatformRoute: typeof ExperimentsBookingPlatformRouteWithChildren
   ExperimentsBookingSimulationRoute: typeof ExperimentsBookingSimulationRouteWithChildren
   ExperimentsIndexRoute: typeof ExperimentsIndexRoute
+  UiuxIndexRoute: typeof UiuxIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uiux/': {
+      id: '/uiux/'
+      path: '/uiux'
+      fullPath: '/uiux/'
+      preLoaderRoute: typeof UiuxIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/experiments/': {
@@ -318,6 +338,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExperimentsBookingSimulationRoute:
     ExperimentsBookingSimulationRouteWithChildren,
   ExperimentsIndexRoute: ExperimentsIndexRoute,
+  UiuxIndexRoute: UiuxIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

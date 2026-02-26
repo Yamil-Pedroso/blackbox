@@ -1,0 +1,39 @@
+{
+  "label": "User Experience Design",
+  "hero": {
+    "title": "Interface & Interaction Systems",
+    "description": "Human centered interfaces, structured user flows and intentional interaction design. This section demonstrates experience architecture, motion logic and visual systems."
+  },
+  "designPrinciples": [
+    { "title": "Line", "color": "#4FA3D1" },
+    { "title": "Shape", "color": "#F2B24D" },
+    { "title": "Colour", "color": "#D9D9D9" },
+    { "title": "Value", "color": "#7BCB5B" },
+    { "title": "Form", "color": "#8C5CC4" },
+    { "title": "Texture", "color": "#F28C52" },
+    { "title": "Space", "color": "#F25CA2" },
+    { "title": "Balance", "color": "#F2524B" },
+    { "title": "Movement", "color": "#6BC7C1" },
+    { "title": "Pattern", "color": "#B7E03C" },
+    { "title": "Proportion", "color": "#4A6CF7" },
+    { "title": "Scale", "color": "#FF3FA4" }
+  ],
+  "projectFlow": [
+    {
+      "title": "01. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "02. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "03. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    },
+    {
+      "title": "04. Lorem ipsum dolor",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+    }
+  ]
+}

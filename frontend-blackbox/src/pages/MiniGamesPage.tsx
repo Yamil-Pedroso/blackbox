@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import SectionHero from "../components/common/SectionHero";
 import { motion } from "framer-motion";
 import SectionLabel from "../components/common/SectionLabel";
-import gsap from "gsap";
 import { useTranslation } from "react-i18next";
+import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
 
 const MiniGamesPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,12 +15,9 @@ const MiniGamesPage = () => {
     description: string;
   }[];
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
+  useGsapPageAnimation(
+    containerRef as React.RefObject<HTMLDivElement>,
+    (tl) => {
       tl.from(".games-hero", {
         y: 60,
         opacity: 0,
@@ -51,10 +48,9 @@ const MiniGamesPage = () => {
         },
         "-=0.3",
       );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    [],
+  );
 
   return (
     <div
