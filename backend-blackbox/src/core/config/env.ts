@@ -11,7 +11,7 @@ function required(value: string | undefined, name: string): string {
 
 export const env = {
   app: {
-    port: Number(process.env.PORT ?? 3000),
+    port: Number(process.env.PORT ?? 3010),
     nodeEnv: process.env.NODE_ENV ?? "development",
   },
 

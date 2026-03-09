@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import stripe from "../../../core/config/stripe.client";
 import { StripeEventHandler } from "../services/stripe-event-handler.service";
 import Stripe from "stripe";
+import { env } from "../../../core/config/env";
 
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+const endpointSecret = env.stripe.webhookSecret;
 
 export const stripeWebhookController = async (req: Request, res: Response) => {
   const sig = req.headers["stripe-signature"] as string;

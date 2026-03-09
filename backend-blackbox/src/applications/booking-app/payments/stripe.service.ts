@@ -2,6 +2,7 @@ import stripe from "../../../core/config/stripe.client";
 import { Booking } from "../booking/booking.model";
 import { Hotel } from "../hotels/hotel.model";
 import { calculateNights } from "../utils/calculateNights";
+import { env } from "../../../core/config/env";
 
 interface CreateCheckoutInput {
   hotelId: string;
@@ -56,8 +57,8 @@ export class StripePaymentService {
       metadata: {
         bookingId: booking._id.toString(),
       },
-      success_url: `${process.env.STRIPE_SUCCESS_URL}?bookingId=${booking._id}`,
-      cancel_url: `${process.env.STRIPE_CANCEL_URL}`,
+      success_url: `${env.stripe.successUrl}?bookingId=${booking._id}`,
+      cancel_url: `${env.stripe.cancelUrl}`,
     });
 
     booking.stripeSessionId = session.id;
