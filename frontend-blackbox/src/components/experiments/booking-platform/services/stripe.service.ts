@@ -15,7 +15,7 @@ export const createCheckoutSession = async (
   payload: CreateCheckoutSessionPayload,
 ): Promise<CheckoutSessionResponse> => {
   const { data } = await apiClient.post(
-    "/stripe/create-checkout-session",
+    "/payments/create-checkout-session",
     payload,
   );
 

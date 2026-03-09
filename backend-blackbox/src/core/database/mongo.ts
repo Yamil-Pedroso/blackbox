@@ -1,11 +1,12 @@
 import mongoose, { ConnectOptions } from "mongoose";
 import colors from "colors";
+import { env } from "../config/env";
 
 colors.enable();
 
 export const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGO_URI || "";
+    const mongoURI = env.database.mongoUri;
     const conn = await mongoose.connect(mongoURI, {} as ConnectOptions);
     console.log(`MongoDB Connected: ${conn.connection.host}`.green.bold);
   } catch (error: any) {

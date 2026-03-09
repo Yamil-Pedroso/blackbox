@@ -1,9 +1,6 @@
 import express from "express";
 import cors from "cors";
-import stripeRoutes from "./routes/stripe.routes";
-import bookingRoutes from "./routes/booking.routes";
-import hotelRoutes from "./routes/hotel.routes";
-
+import bookingAppRoutes from "./applications/booking-app/index";
 export const app = express();
 
 const allowedOrigins = [
@@ -12,7 +9,7 @@ const allowedOrigins = [
 ];
 
 // 🔥 1️⃣ STRIPE WEBHOOK FIRST (raw body)
-app.use("/api/stripe/webhook", express.raw({ type: "application/json" }));
+app.use("/api/payments/webhook", express.raw({ type: "application/json" }));
 
 // 2️⃣ CORS
 app.use(
@@ -32,9 +29,7 @@ app.use(
 app.use(express.json());
 
 // 4️⃣ Routes
-app.use("/api", stripeRoutes);
-app.use("/api", bookingRoutes);
-app.use("/api", hotelRoutes);
+app.use("/api", bookingAppRoutes);
 
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello from the backend!" });

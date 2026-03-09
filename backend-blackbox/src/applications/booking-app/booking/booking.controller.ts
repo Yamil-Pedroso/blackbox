@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Booking } from "../models/Booking";
-import { asyncHandler } from "../middlewares/asyncHandler";
+import { Booking } from "./booking.model";
+import { asyncHandler } from "../../../core/middlewares/asyncHandler";
 
 // 🔹 Get booking by ID
 export const getBookingById = asyncHandler(

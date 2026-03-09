@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { Subscription } from "../../models/Subscription";
+import { Subscription } from "../../subscriptions/subscription.model";
 
 export async function handleSubscriptionDeleted(
   event: Stripe.Event,

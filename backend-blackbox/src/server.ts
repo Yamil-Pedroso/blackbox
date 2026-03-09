@@ -2,11 +2,11 @@ import path from "path";
 import dotenv from "dotenv";
 
 dotenv.config({
-  path: path.resolve(__dirname, "config", "config.env"),
+  path: path.resolve(__dirname, "core", "config", "config.env"),
 });
 
 import { app } from "./app";
-import { connectDB } from "./config/db";
+import { connectDB } from "./core/database/mongo";
 
 const startServer = async () => {
   try {

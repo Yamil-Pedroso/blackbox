@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Hotel } from "../models/Hotel";
-import { asyncHandler } from "../middlewares/asyncHandler";
+import { Hotel } from "./hotel.model";
+import { asyncHandler } from "../../../core/middlewares/asyncHandler";
 
 // GET /api/hotels
 export const getAllHotels = asyncHandler(

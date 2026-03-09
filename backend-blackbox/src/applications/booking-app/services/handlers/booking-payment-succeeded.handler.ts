@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { Booking } from "../../models/Booking";
+import { Booking } from "../../booking/booking.model";
 
 export const handleBookingPaymentSucceeded = async (event: Stripe.Event) => {
   const session = event.data.object as Stripe.Checkout.Session;

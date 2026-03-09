@@ -170,7 +170,7 @@ export const hotels = [
   },
   {
     id: "h15",
-    name: "Grindelwald Peak Lodge",
+    name: "Grindelwald Peak Lodge New",
     location: "Grindelwald",
     pricePerNight: 280,
     maxGuests: 4,

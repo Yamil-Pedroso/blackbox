@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import stripe from "../services/stripe";
+import stripe from "../../../core/config/stripe.client";
 import { StripeEventHandler } from "../services/stripe-event-handler.service";
 import Stripe from "stripe";
 

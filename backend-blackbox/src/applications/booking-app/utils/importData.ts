@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
-import { Hotel } from "../models/Hotel";
+import { Hotel } from "../hotels/hotel.model";
 import path from "path";
 import dotenv from "dotenv";
 import { hotels } from "../data/hotel";
 
-dotenv.config({ path: path.resolve(__dirname, "..", "config", "config.env") });
+dotenv.config({
+  path: path.resolve(__dirname, "../../../core/config/config.env"),
+});
 
 const seed = async () => {
   await mongoose.connect(process.env.MONGO_URI!);

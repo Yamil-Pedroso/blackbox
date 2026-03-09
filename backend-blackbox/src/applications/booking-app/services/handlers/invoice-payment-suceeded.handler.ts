@@ -1,7 +1,7 @@
 import Stripe from "stripe";
-import stripe from "../stripe";
-import { Subscription } from "../../models/Subscription";
-import { Transaction } from "../../models/Transaction";
+import stripe from "../../../../core/config/stripe.client";
+import { Subscription } from "../../subscriptions/subscription.model";
+import { Transaction } from "../../transactions/transaction.model";
 
 export async function handleInvoicePaymentSucceeded(
   event: Stripe.Event,

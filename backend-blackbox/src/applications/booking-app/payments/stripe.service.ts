@@ -1,33 +1,30 @@
-import { Request, Response } from "express";
-import stripe from "../services/stripe";
-import { Booking } from "../models/Booking";
-import { Hotel } from "../models/Hotel";
-import { asyncHandler } from "../middlewares/asyncHandler";
+import stripe from "../../../core/config/stripe.client";
+import { Booking } from "../booking/booking.model";
+import { Hotel } from "../hotels/hotel.model";
 import { calculateNights } from "../utils/calculateNights";
 
-export const createCheckoutSession = asyncHandler(
-  async (req: Request, res: Response) => {
-    const { hotelId, checkIn, checkOut, guests } = req.body;
+interface CreateCheckoutInput {
+  hotelId: string;
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+}
 
-    // 1️⃣ Obtener hotel real desde DB
+export class StripePaymentService {
+  static async createCheckoutSession(input: CreateCheckoutInput) {
+    const { hotelId, checkIn, checkOut, guests } = input;
+
+    // 1️⃣ Obtener hotel
     const hotel = await Hotel.findById(hotelId);
+    if (!hotel) throw new Error("Hotel not found");
 
-    if (!hotel) {
-      return res.status(404).json({ error: "Hotel not found" });
-    }
-
-    if (!checkIn || !checkOut) {
-      return res.status(400).json({ error: "Missing dates" });
-    }
+    if (!checkIn || !checkOut) throw new Error("Missing dates");
 
     // 2️⃣ Calcular noches
     const nights = calculateNights(checkIn, checkOut);
+    if (nights <= 0) throw new Error("Invalid dates");
 
-    if (nights <= 0) {
-      return res.status(400).json({ error: "Invalid dates" });
-    }
-
-    // 3️⃣ Calcular total real
+    // 3️⃣ Calcular total
     const total = nights * hotel.pricePerNight;
 
     // 4️⃣ Crear booking pending
@@ -66,6 +63,6 @@ export const createCheckoutSession = asyncHandler(
     booking.stripeSessionId = session.id;
     await booking.save();
 
-    res.json({ url: session.url });
-  },
-);
+    return session.url;
+  }
+}
