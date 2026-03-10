@@ -4,6 +4,7 @@
     "title": "Herramientas Aplicadas",
     "description": "Utilidades prácticas diseñadas para resolver problemas reales de desarrollo. Cada herramienta se centra en la usabilidad, claridad y calidad de ingeniería."
   },
+  "viewProcess": "Ver proceso →",
   "launch": "Abrir herramienta →",
   "status": {
     "active": "Activa",
@@ -11,30 +12,25 @@
     "prototype": "Prototipo",
     "planned": "Planificada"
   },
+  "stage": {
+    "idea": "Idea",
+    "problem": "Problema",
+    "solution": "Solución",
+    "features": "Características",
+    "uxFlow": "Flujo UX",
+    "architecture": "Arquitectura",
+    "implementation": "Implementación",
+    "testing": "Pruebas",
+    "release": "Lanzamiento"
+  },
   "items": [
     {
-      "title": "Visualizador de Esquemas API",
-      "description": "Genera documentación visual estructurada a partir de esquemas OpenAPI.",
-      "stack": "Node + React",
-      "status": "active"
-    },
-    {
-      "title": "Optimizador de Prompts",
-      "description": "Analiza y refina prompts para respuestas estructuradas de IA.",
-      "stack": "IA + Streaming",
-      "status": "inProgress"
-    },
-    {
-      "title": "Motor de Diferencias JSON",
-      "description": "Compara grandes estructuras JSON y visualiza diferencias estructurales.",
-      "stack": "TypeScript",
-      "status": "prototype"
-    },
-    {
-      "title": "Markdown → PDF Limpio",
-      "description": "Convierte markdown estructurado en PDFs listos para exportación.",
-      "stack": "Node + Rendering",
-      "status": "planned"
+      "title": "Generador de Paletas de Color",
+      "slug": "color-palette-generator",
+      "description": "Genera paletas de colores estructuradas y armoniosas para sistemas de interfaz, branding y flujos de trabajo de diseño.",
+      "stack": "React + TypeScript + Tailwind",
+      "status": "inProgress",
+      "stage": "problem"
     }
   ]
 }

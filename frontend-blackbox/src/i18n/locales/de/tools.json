@@ -4,6 +4,7 @@
     "title": "Angewandte Werkzeuge",
     "description": "Praktische Tools zur Lösung realer Entwicklungsprobleme. Jedes Werkzeug fokussiert sich auf Benutzerfreundlichkeit, Klarheit und technische Qualität."
   },
+  "viewProcess": "Prozess ansehen →",
   "launch": "Tool starten →",
   "status": {
     "active": "Aktiv",
@@ -11,30 +12,25 @@
     "prototype": "Prototyp",
     "planned": "Geplant"
   },
+  "stage": {
+    "idea": "Idee",
+    "problem": "Problem",
+    "solution": "Lösung",
+    "features": "Funktionen",
+    "uxFlow": "UX-Fluss",
+    "architecture": "Architektur",
+    "implementation": "Implementierung",
+    "testing": "Tests",
+    "release": "Veröffentlichung"
+  },
   "items": [
     {
-      "title": "API-Schema-Visualizer",
-      "description": "Erstellt strukturierte visuelle Dokumentation aus OpenAPI-Schemata.",
-      "stack": "Node + React",
-      "status": "active"
-    },
-    {
-      "title": "Prompt-Optimierer",
-      "description": "Analysiert und verfeinert Prompts für strukturierte KI-Antworten.",
-      "stack": "KI + Streaming",
-      "status": "inProgress"
-    },
-    {
-      "title": "JSON-Diff-Engine",
-      "description": "Vergleicht große JSON-Strukturen und visualisiert strukturelle Unterschiede.",
-      "stack": "TypeScript",
-      "status": "prototype"
-    },
-    {
-      "title": "Markdown → Sauberes PDF",
-      "description": "Konvertiert strukturiertes Markdown in exportfertige PDFs.",
-      "stack": "Node + Rendering",
-      "status": "planned"
+      "title": "Farbpaletten-Generator",
+      "slug": "color-palette-generator",
+      "description": "Erstellt strukturierte und harmonische Farbpaletten für UI-Systeme, Branding und Design-Workflows.",
+      "stack": "React + TypeScript + Tailwind",
+      "status": "inProgress",
+      "stage": "problem"
     }
   ]
 }
