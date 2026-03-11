@@ -2,6 +2,8 @@
 
 ![Blackbox Preview](docs/blackbox-preview.png)
 
+🚀 **Live Demo:** https://blackbox-one-olive.vercel.app/
+
 **Blackbox** is a creative software laboratory where tools, systems, experiments and interactive applications are designed and built from scratch.
 
 The project explores practical engineering, creative coding and applied software architecture through real implementations.
