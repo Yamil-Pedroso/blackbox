@@ -43,7 +43,7 @@ export default function ColorCard({ hex, rgb, hsl }: Props) {
            w-42
           shadow-lg
           transition-opacity duration-300
-          pointer-events-auto
+          pointer-events-none
           border
           ${open ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
         `}
