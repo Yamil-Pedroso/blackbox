@@ -8,7 +8,7 @@ type Props = {
 
 export default function PaletteGrid({ colors }: Props) {
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-5 gap-4 mt-20">
       {colors.map((color) => {
         const values = hslStringToValues(color);
 

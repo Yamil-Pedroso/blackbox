@@ -32,20 +32,21 @@ export default function ColorCard({ hex, rgb, hsl }: Props) {
       "
       style={{ background: hex }}
     >
-      {/* Tooltip */}
       <div
-        className={`
-          absolute bottom-full mb-2 left-1/2 -translate-x-1/2
-          bg-secondary-bg text-white
-          text-[10px] sm:text-xs
-          font-ibm-plex-mono
-           px-4 py-2 space-y-1
-           w-42
-          shadow-lg
-          transition-opacity duration-300
-          pointer-events-none
-          border
-          ${open ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
+        className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+    bg-secondary-bg text-white
+    text-[10px] sm:text-xs
+    font-ibm-plex-mono
+    px-4 py-2 space-y-1
+    w-42
+    shadow-lg
+    border
+    opacity-0
+    transition-opacity duration-200
+    pointer-events-auto
+    hover:opacity-100
+    group-hover:opacity-100
+    z-0
         `}
       >
         <div
