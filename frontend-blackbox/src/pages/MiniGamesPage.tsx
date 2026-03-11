@@ -1,9 +1,8 @@
 import { useRef } from "react";
-import SectionHero from "../components/common/SectionHero";
 import { motion } from "framer-motion";
-import SectionLabel from "../components/common/SectionLabel";
 import { useTranslation } from "react-i18next";
 import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
+import FeatureHeader from "../components/common/header/FeatureHeader";
 
 const MiniGamesPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,28 +58,7 @@ const MiniGamesPage = () => {
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[100%_3px] opacity-20" />
 
-      <section className="space-y-6 relative z-10">
-        <div className="games-hero">
-          <SectionLabel text={t("label")} />
-        </div>
-
-        <div className="games-hero">
-          <SectionHero
-            title={t("hero.title")}
-            description={t("hero.description")}
-          />
-        </div>
-
-        <div className="games-hero font-ibm-plex-mono text-green text-sm flex justify-center items-center gap-1">
-          <span>{t("arcade")}</span>
-          <motion.span
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 1 }}
-          >
-            _
-          </motion.span>
-        </div>
-      </section>
+      <FeatureHeader label="miniGames" content="miniGames" />
 
       <section className="mt-20 max-w-3xl mx-auto space-y-6 font-ibm-plex-mono relative z-10">
         <div className="games-hero text-secondary text-sm mb-6">

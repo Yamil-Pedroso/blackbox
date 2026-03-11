@@ -2,45 +2,72 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
+// Home
 import enMain from "./locales/en/main.json";
 import esMain from "./locales/es/main.json";
 import deMain from "./locales/de/main.json";
+
+// Features Header
+import enHeaderFeatures from "./locales/en/features.json";
+import esHeaderFeatures from "./locales/es/features.json";
+import deHeaderFeatures from "./locales/de/features.json";
+
+// Left Sidebar
 import enLeftSidebar from "./locales/en/leftSidebar.json";
 import esLeftSidebar from "./locales/es/leftSidebar.json";
 import deLeftSidebar from "./locales/de/leftSidebar.json";
+
+// Right Sidebar
 import enRightSidebar from "./locales/en/rightSidebar.json";
 import esRightSidebar from "./locales/es/rightSidebar.json";
 import deRightSidebar from "./locales/de/rightSidebar.json";
+
+// Top Navbar
 import enTopNavbar from "./locales/en/topNavbar.json";
 import esTopNavbar from "./locales/es/topNavbar.json";
 import deTopNavbar from "./locales/de/topNavbar.json";
-import enTools from "./locales/en/tools.json";
-import esTools from "./locales/es/tools.json";
-import deTools from "./locales/de/tools.json";
+
+// --- Feature-specific translations ---
+// Tools
+import enTools from "./locales/en/tools/tools.json";
+import esTools from "./locales/es/tools/tools.json";
+import deTools from "./locales/de/tools/tools.json";
+
+// Color Palette Generator - Tool
+import colorPaletteGenerator_en from "./locales/en/tools/colorPaletteGenerator.json";
+import colorPaletteGenerator_es from "./locales/es/tools/colorPaletteGenerator.json";
+import colorPaletteGenerator_de from "./locales/de/tools/colorPaletteGenerator.json";
+
+// AI
 import ai_en from "./locales/en/ai.json";
 import ai_es from "./locales/es/ai.json";
 import ai_de from "./locales/de/ai.json";
 
+// Systems
 import systems_en from "./locales/en/systems.json";
 import systems_es from "./locales/es/systems.json";
 import systems_de from "./locales/de/systems.json";
 
+// Experiments
 import exp_en from "./locales/en/experiments.json";
 import exp_es from "./locales/es/experiments.json";
 import exp_de from "./locales/de/experiments.json";
 
+// Mini Games
 import mini_en from "./locales/en/miniGames.json";
 import mini_es from "./locales/es/miniGames.json";
 import mini_de from "./locales/de/miniGames.json";
 
+// Pending to Refactoring
 import booking_en from "./locales/en/bookingSimulation.json";
 import booking_es from "./locales/es/bookingSimulation.json";
 import booking_de from "./locales/de/bookingSimulation.json";
-
+// Pending to Refactoring
 import booking_platform_en from "./locales/en/bookingPlatform.json";
 import booking_platform_es from "./locales/es/bookingPlatform.json";
 import booking_platform_de from "./locales/de/bookingPlatform.json";
 
+// Pending to Refactoring
 import uiux_en from "./locales/en/uiux.json";
 import uiux_es from "./locales/es/uiux.json";
 import uiux_de from "./locales/de/uiux.json";
@@ -53,9 +80,11 @@ i18n
       en: {
         topNavbar: enTopNavbar,
         main: enMain,
+        headerFeatures: enHeaderFeatures,
         leftSidebar: enLeftSidebar,
         rightSidebar: enRightSidebar,
         tools: enTools,
+        colorPaletteGenerator: colorPaletteGenerator_en,
         ai: ai_en,
         systems: systems_en,
         experiments: exp_en,
@@ -67,9 +96,11 @@ i18n
       es: {
         topNavbar: esTopNavbar,
         main: esMain,
+        headerFeatures: esHeaderFeatures,
         leftSidebar: esLeftSidebar,
         rightSidebar: esRightSidebar,
         tools: esTools,
+        colorPaletteGenerator: colorPaletteGenerator_es,
         ai: ai_es,
         systems: systems_es,
         experiments: exp_es,
@@ -81,9 +112,11 @@ i18n
       de: {
         topNavbar: deTopNavbar,
         main: deMain,
+        headerFeatures: deHeaderFeatures,
         leftSidebar: deLeftSidebar,
         rightSidebar: deRightSidebar,
         tools: deTools,
+        colorPaletteGenerator: colorPaletteGenerator_de,
         ai: ai_de,
         systems: systems_de,
         experiments: exp_de,

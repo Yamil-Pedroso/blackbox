@@ -1,0 +1,70 @@
+{
+  "title": "Farbpaletten-Generator",
+  "description": "Ein Werkzeug zur Erzeugung strukturierter Farbskalen aus einer Basisfarbe mithilfe von HSL-Transformationen.",
+
+  "overview": "Der Farbpaletten-Generator ist ein Werkzeug, das Entwicklern und Designern hilft, schnell strukturierte Farbpaletten aus einer Basisfarbe zu erstellen. Er vereinfacht den Prozess der Erstellung harmonischer Farbskalen, die in UI-Systemen, Design-Experimenten oder Komponentenbibliotheken verwendet werden können.",
+
+  "problem": "Entwickler und Designer benötigen häufig konsistente Farbpaletten beim Erstellen von Benutzeroberflächen. Diese Paletten manuell zu erstellen ist zeitaufwendig und führt oft zu inkonsistenten Ergebnissen, insbesondere wenn ein visuelles Gleichgewicht über mehrere UI-Komponenten hinweg gewährleistet werden soll.",
+
+  "solution": "Das Tool konvertiert eine Basisfarbe in das HSL-Format und erzeugt Farbvariationen, indem der Helligkeitswert angepasst wird, während Farbton und Sättigung konstant bleiben. Dieser Ansatz sorgt für visuelle Harmonie und erzeugt vorhersehbare Farbvariationen.",
+
+  "features": [
+    {
+      "title": "Farbwähler",
+      "description": "Wähle eine Basisfarbe, aus der die Palette generiert wird."
+    },
+    {
+      "title": "Palettengenerierung",
+      "description": "Erzeuge automatisch mehrere Farbvariationen aus der ausgewählten Basisfarbe."
+    },
+    {
+      "title": "Interaktive Farbkarten",
+      "description": "Bewege den Mauszeiger über eine Farbe, um HEX-, RGB- und HSL-Werte anzuzeigen."
+    },
+    {
+      "title": "In Zwischenablage kopieren",
+      "description": "Klicke auf ein Farbformat, um den Wert sofort zu kopieren."
+    }
+  ],
+
+  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── PaletteGrid\n│    └── ColorCard\n│\n├── usePalette (Hook)\n│\n└── generateShades (Farblogik)",
+
+  "implementation": "for (let i = 90; i >= 10; i -= 10) {\n  shades.push(`hsl(${h}, ${s}%, ${i}%)`)\n}",
+
+  "developmentFlow": [
+    {
+      "title": "Idee",
+      "description": "Ein kleines Tool zur Generierung strukturierter Farbpaletten entwickeln."
+    },
+    {
+      "title": "Algorithmus",
+      "description": "Einen Algorithmus entwickeln, der Farbvariationen durch Anpassung der HSL-Helligkeit erzeugt."
+    },
+    {
+      "title": "UI-Design",
+      "description": "Ein responsives Grid erstellen, um die generierten Paletten visuell darzustellen."
+    },
+    {
+      "title": "Interaktion",
+      "description": "Tooltip-Interaktionen und Copy-to-Clipboard-Funktionalität implementieren."
+    },
+    {
+      "title": "Tests",
+      "description": "Sicherstellen, dass Farbgenerierung und Interaktionen auf verschiedenen Geräten korrekt funktionieren."
+    }
+  ],
+
+  "lessons": [
+    "Tooltip-Interaktionen zwischen Hover- und Klickzuständen verwalten.",
+    "Farbumwandlungen zwischen HEX-, RGB- und HSL-Formaten implementieren.",
+    "Wiederverwendbare React-Hooks für die Palettengenerierung entwickeln.",
+    "Stacking-Kontexte und z-index bei absolut positionierten Elementen korrekt handhaben."
+  ],
+
+  "nextSteps": [
+    "Farb-Harmonien wie komplementäre, triadische und analoge Paletten generieren.",
+    "Tailwind-ähnliche Farbskalen erstellen.",
+    "Paletten als JSON oder CSS-Variablen exportieren.",
+    "KI-basierte Farbempfehlungen basierend auf Themen oder Stimmungen integrieren."
+  ]
+}

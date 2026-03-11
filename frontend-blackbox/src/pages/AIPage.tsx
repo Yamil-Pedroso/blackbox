@@ -1,10 +1,9 @@
 import { useRef } from "react";
-import SectionHero from "../components/common/SectionHero";
-import SectionLabel from "../components/common/SectionLabel";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useTranslation } from "react-i18next";
 import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
+import FeatureHeader from "../components/common/header/FeatureHeader";
 
 const AIPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -97,20 +96,7 @@ const AIPage = () => {
       ref={containerRef}
       className="px-6 md:px-10 xl:px-8 py-8 max-w-6xl space-y-24"
     >
-      <section className="space-y-6">
-        <div className="ai-hero">
-          <SectionLabel text={t("label")} />
-        </div>
-
-        <div className="ai-hero">
-          <SectionHero
-            title={t("hero.title")}
-            description={
-              <span className="ai-description">{t("hero.description")}</span>
-            }
-          />
-        </div>
-      </section>
+      <FeatureHeader label="ai" content="ai" />
 
       <section className="grid md:grid-cols-2 gap-16">
         {aiModules.map((module) => (

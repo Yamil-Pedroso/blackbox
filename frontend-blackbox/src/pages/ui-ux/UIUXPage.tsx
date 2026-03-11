@@ -1,9 +1,8 @@
 import { useRef } from "react";
-import SectionHero from "../../components/common/SectionHero";
-import SectionLabel from "../../components/common/SectionLabel";
 import { useTranslation } from "react-i18next";
 //import UIUXComparisonPhone from "../../components/ui-ux/UIUXComparisonPhone";
 import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
+import FeatureHeader from "../../components/common/header/FeatureHeader";
 
 interface DesignPrinciple {
   title: string;
@@ -71,16 +70,7 @@ const UIUXPage = () => {
       ref={containerRef}
       className="relative min-h-screen px-6 md:px-10 xl:px-8 py-12 text-primary overflow-hidden"
     >
-      <div className="uiux-hero">
-        <SectionLabel text={t("label")} />
-      </div>
-
-      <div className="uiux-hero mt-6">
-        <SectionHero
-          title={t("hero.title")}
-          description={t("hero.description")}
-        />
-      </div>
+      <FeatureHeader label="uiux" content="uiux" />
 
       <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {designPrinciples.map((item, index) => (

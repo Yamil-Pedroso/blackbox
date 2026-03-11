@@ -1,13 +1,10 @@
 import { useRef } from "react";
-import SectionHero from "../components/common/SectionHero";
-import SectionLabel from "../components/common/SectionLabel";
 import SystemsContainer from "@/components/systems/SystemsContainer";
-import { useTranslation } from "react-i18next";
 import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
+import FeatureHeader from "../components/common/header/FeatureHeader";
 
 const SystemsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation("systems");
 
   useGsapPageAnimation(
     containerRef as React.RefObject<HTMLDivElement>,
@@ -60,18 +57,7 @@ const SystemsPage = () => {
 
   return (
     <div ref={containerRef} className="p-8 max-w-6xl space-y-20">
-      <section className="space-y-6">
-        <div className="systems-hero">
-          <SectionLabel text={t("label")} />
-        </div>
-
-        <div className="systems-hero">
-          <SectionHero
-            title={t("hero.title")}
-            description={t("hero.description")}
-          />
-        </div>
-      </section>
+      <FeatureHeader label="systems" content="systems" />
 
       <SystemsContainer />
     </div>

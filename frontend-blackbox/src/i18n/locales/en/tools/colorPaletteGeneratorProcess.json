@@ -1,0 +1,70 @@
+{
+  "title": "Color Palette Generator",
+  "description": "A utility for generating structured color scales from a base color using HSL transformations.",
+
+  "overview": "The Color Palette Generator is a utility designed to help developers and designers quickly create structured color palettes from a base color. It simplifies the process of generating harmonious color scales that can be used in UI systems, design explorations and component libraries.",
+
+  "problem": "Developers and designers frequently need consistent color palettes when building interfaces. Creating these palettes manually is slow and often produces inconsistent results, especially when trying to maintain proper visual balance across multiple UI components.",
+
+  "solution": "The tool converts a base color into HSL format and generates shades by modifying the lightness value while keeping the hue and saturation constant. This approach ensures visual harmony while producing predictable variations of the same color.",
+
+  "features": [
+    {
+      "title": "Color Picker",
+      "description": "Select a base color that will be used to generate the palette."
+    },
+    {
+      "title": "Palette Generation",
+      "description": "Automatically generate multiple shades derived from the selected base color."
+    },
+    {
+      "title": "Interactive Color Cards",
+      "description": "Hover over each color to reveal HEX, RGB and HSL values."
+    },
+    {
+      "title": "Copy to Clipboard",
+      "description": "Click any color format to instantly copy the value to the clipboard."
+    }
+  ],
+
+  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── PaletteGrid\n│    └── ColorCard\n│\n├── usePalette (hook)\n│\n└── generateShades (color logic)",
+
+  "implementation": "for (let i = 90; i >= 10; i -= 10) {\n  shades.push(`hsl(${h}, ${s}%, ${i}%)`)\n}",
+
+  "developmentFlow": [
+    {
+      "title": "Idea",
+      "description": "Create a small utility for generating structured color palettes."
+    },
+    {
+      "title": "Algorithm Design",
+      "description": "Develop an algorithm that generates shades by adjusting HSL lightness."
+    },
+    {
+      "title": "UI Design",
+      "description": "Design a responsive grid to visually represent generated palettes."
+    },
+    {
+      "title": "Interaction",
+      "description": "Implement tooltip interaction and copy-to-clipboard functionality."
+    },
+    {
+      "title": "Testing",
+      "description": "Ensure color generation and interactions behave correctly across devices."
+    }
+  ],
+
+  "lessons": [
+    "Managing tooltip interactions between hover and click states.",
+    "Handling color conversions between HEX, RGB and HSL formats.",
+    "Designing reusable React hooks for palette generation.",
+    "Handling UI layering and stacking contexts when using absolute elements."
+  ],
+
+  "nextSteps": [
+    "Generate color harmonies such as complementary, triadic and analogous palettes.",
+    "Create Tailwind-like color scales with structured shade systems.",
+    "Allow palette export as JSON, CSS variables or Tailwind configuration.",
+    "Integrate AI-based palette recommendations based on themes or moods."
+  ]
+}

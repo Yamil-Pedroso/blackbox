@@ -1,15 +1,14 @@
 import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
-import SectionHero from "../../components/common/SectionHero";
-import SectionLabel from "../../components/common/SectionLabel";
 import AppCreationFlow from "@/components/tools/AppCreationFlow";
 import { useTranslation } from "react-i18next";
 import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
 import { getStageInfo, getStatusColor } from "../../lib/utils/toolStage";
+import FeatureHeader from "../../components/common/header/FeatureHeader";
 
 const ToolsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation("tools");
+  const { t } = useTranslation("colorPaletteGenerator");
 
   const tools = t("items", { returnObjects: true }) as {
     title: string;
@@ -62,19 +61,7 @@ const ToolsPage = () => {
       ref={containerRef}
       className="px-6 md:px-10 xl:px-8 py-8 max-w-6xl space-y-20"
     >
-      <section className="space-y-6">
-        <div className="tools-hero">
-          <SectionLabel text={t("label")} />
-        </div>
-
-        <div className="tools-hero">
-          <SectionHero
-            title={t("hero.title")}
-            description={t("hero.description")}
-          />
-        </div>
-      </section>
-
+      <FeatureHeader label="tools" content="tools" />
       <AppCreationFlow className="app-creation-flow" />
 
       <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-10">
@@ -95,13 +82,13 @@ const ToolsPage = () => {
               <div className="flex flex-wrap flex-col gap-3 text-xs font-ibm-plex-mono text-secondary pt-2">
                 <span>{tool.stack}</span>
                 <span className={getStatusColor(tool.status)}>
-                  {t(`status.${tool.status}`)}
+                  {t(`${tool.status}`)}
                 </span>
 
                 <span
                   className={`${getStageInfo(tool.stage).color} flex items-center`}
                 >
-                  {t(`stage.${tool.stage}`)}
+                  {t(`${tool.stage}`.toUpperCase())}
                   {(() => {
                     const IconComponent = getStageInfo(tool.stage).icon;
                     return <IconComponent className="inline-block ml-2" />;

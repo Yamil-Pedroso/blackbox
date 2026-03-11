@@ -1,0 +1,70 @@
+{
+  "title": "Generador de Paletas de Color",
+  "description": "Una herramienta para generar escalas de color estructuradas a partir de un color base utilizando transformaciones HSL.",
+
+  "overview": "El Generador de Paletas de Color es una utilidad diseñada para ayudar a desarrolladores y diseñadores a crear rápidamente paletas de color estructuradas a partir de un color base. Simplifica el proceso de generar escalas de color armoniosas que pueden utilizarse en sistemas de interfaz, exploraciones de diseño y bibliotecas de componentes.",
+
+  "problem": "Los desarrolladores y diseñadores necesitan con frecuencia paletas de color consistentes al construir interfaces. Crear estas paletas manualmente es lento y a menudo produce resultados inconsistentes, especialmente cuando se intenta mantener un equilibrio visual adecuado entre múltiples componentes de la interfaz.",
+
+  "solution": "La herramienta convierte un color base al formato HSL y genera diferentes tonalidades modificando el valor de luminosidad mientras mantiene constantes el tono y la saturación. Este enfoque garantiza armonía visual mientras produce variaciones predecibles del mismo color.",
+
+  "features": [
+    {
+      "title": "Selector de Color",
+      "description": "Selecciona un color base que será utilizado para generar la paleta."
+    },
+    {
+      "title": "Generación de Paleta",
+      "description": "Genera automáticamente múltiples tonalidades derivadas del color base seleccionado."
+    },
+    {
+      "title": "Tarjetas de Color Interactivas",
+      "description": "Pasa el cursor sobre cada color para revelar los valores HEX, RGB y HSL."
+    },
+    {
+      "title": "Copiar al Portapapeles",
+      "description": "Haz clic en cualquier formato de color para copiar el valor instantáneamente."
+    }
+  ],
+
+  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── PaletteGrid\n│    └── ColorCard\n│\n├── usePalette (hook)\n│\n└── generateShades (lógica de color)",
+
+  "implementation": "for (let i = 90; i >= 10; i -= 10) {\n  shades.push(`hsl(${h}, ${s}%, ${i}%)`)\n}",
+
+  "developmentFlow": [
+    {
+      "title": "Idea",
+      "description": "Crear una pequeña utilidad para generar paletas de color estructuradas."
+    },
+    {
+      "title": "Diseño del Algoritmo",
+      "description": "Desarrollar un algoritmo que genere tonalidades ajustando la luminosidad en HSL."
+    },
+    {
+      "title": "Diseño de la Interfaz",
+      "description": "Diseñar una cuadrícula responsiva para representar visualmente las paletas generadas."
+    },
+    {
+      "title": "Interacción",
+      "description": "Implementar interacción mediante tooltip y funcionalidad de copiar al portapapeles."
+    },
+    {
+      "title": "Pruebas",
+      "description": "Verificar que la generación de colores y las interacciones funcionen correctamente en distintos dispositivos."
+    }
+  ],
+
+  "lessons": [
+    "Gestionar la interacción de tooltips entre estados de hover y click.",
+    "Manejar conversiones de color entre formatos HEX, RGB y HSL.",
+    "Diseñar hooks reutilizables en React para la generación de paletas.",
+    "Gestionar correctamente el stacking context y el z-index en elementos posicionados."
+  ],
+
+  "nextSteps": [
+    "Generar armonías de color como paletas complementarias, triádicas y análogas.",
+    "Crear escalas de color similares al sistema de Tailwind.",
+    "Permitir exportar paletas como JSON o variables CSS.",
+    "Integrar recomendaciones de paletas basadas en IA según temas o estilos."
+  ]
+}

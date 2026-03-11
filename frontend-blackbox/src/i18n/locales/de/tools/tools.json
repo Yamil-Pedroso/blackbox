@@ -22,15 +22,5 @@
     "implementation": "Implementierung",
     "testing": "Tests",
     "release": "Veröffentlichung"
-  },
-  "items": [
-    {
-      "title": "Farbpaletten-Generator",
-      "slug": "color-palette-generator",
-      "description": "Erstellt strukturierte und harmonische Farbpaletten für UI-Systeme, Branding und Design-Workflows.",
-      "stack": "React + TypeScript + Tailwind",
-      "status": "inProgress",
-      "stage": "problem"
-    }
-  ]
+  }
 }

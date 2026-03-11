@@ -12,7 +12,7 @@ import {
 
 export const getStatusColor = (status: string) => {
   if (status === "active") return "text-green-400";
-  if (status === "inProgress") return "text-yellow-400";
+  if (status === "In Progress") return "text-yellow-400";
   if (status === "prototype") return "text-neutral-400";
   return "text-neutral-500";
 };

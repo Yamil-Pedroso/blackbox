@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
-import SectionHero from "./common/SectionHero";
 import SectionLabel from "./common/SectionLabel";
 import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import FeatureHeader from "./common/header/FeatureHeader";
 
 const modules = [
   { key: "tools", to: "/tools" },
@@ -65,18 +65,7 @@ const MainContent = () => {
   return (
     <div ref={containerRef} className="bg-main-bg">
       <div className="px-6 sm:px-8 md:px-12 xl:px-8 py-8 md:py-16 xl:py-8 space-y-8 max-w-7xl mx-auto">
-        <section className="space-y-8">
-          <div className="hero-animate">
-            <SectionLabel text={t("hero.label")} />
-          </div>
-
-          <div className="hero-animate">
-            <SectionHero
-              title={t("hero.title")}
-              description={t("hero.description")}
-            />
-          </div>
-        </section>
+        <FeatureHeader label="home" content="home" />
 
         <section className="space-y-10">
           <div className="hero-animate">

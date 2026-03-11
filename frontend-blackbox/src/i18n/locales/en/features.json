@@ -1,0 +1,41 @@
+{
+  "label": {
+    "home": "Hero Section",
+    "tools": "Tools",
+    "ai": "Inteligence Layer",
+    "systems": "Backend Architecture",
+    "experiments": "Research & Exploration",
+    "miniGames": "Interactive Playground",
+    "uiux": "User Experience & Design"
+  },
+  "hero": {
+    "home": {
+      "title": "Welcome to Blackbox",
+      "description": "A sandbox environment for rendering research, motion systems and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
+    },
+    "tools": {
+      "title": "Applied Tools",
+      "description": "Practical utilities designed to solve real development problems. Each tool focuses on usability, clarity and engineering quality."
+    },
+    "ai": {
+      "title": "Artificial Intelligence Systems",
+      "description": "This module explores structured AI integration, streaming pipelines, memory systems and retrieval-based architectures. Intelligence is treated as a system layer, not a feature."
+    },
+    "systems": {
+      "title": "Backend Architecture",
+      "description": "Backend architecture, secure authentication flows and structured service layers. This section demonstrates system-level thinking, not just CRUD applications."
+    },
+    "experiments": {
+      "title": "Research & Exploration",
+      "description": "A controlled environment for rendering research, motion systems and interactive prototypes. Each entry represents a technical study."
+    },
+    "miniGames": {
+      "title": "Interactive Playground",
+      "description": "A collection of Unity WebGL prototypes demonstrating interactive mechanics and real-time physics."
+    },
+    "uiux": {
+      "title": "User Experience & Design",
+      "description": "Human centered interfaces, structured user flows and intentional interaction design. This section demonstrates experience architecture, motion logic and visual systems."
+    }
+  }
+}

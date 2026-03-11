@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
-import SectionHero from "../components/common/SectionHero";
-import SectionLabel from "../components/common/SectionLabel";
 import { useTranslation } from "react-i18next";
 import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
+import FeatureHeader from "../components/common/header/FeatureHeader";
 
 const ExperimentsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,18 +48,7 @@ const ExperimentsPage = () => {
       ref={containerRef}
       className="px-6 md:px-10 xl:px-8 py-8 max-w-6xl space-y-24"
     >
-      <section className="space-y-6">
-        <div className="exp-hero">
-          <SectionLabel text={t("label")} />
-        </div>
-
-        <div className="exp-hero">
-          <SectionHero
-            title={t("hero.title")}
-            description={t("hero.description")}
-          />
-        </div>
-      </section>
+      <FeatureHeader label="experiments" content="experiments" />
 
       <section className="relative">
         <div className="hidden md:block absolute left-3 top-0 bottom-0 w-px bg-neutral-800" />
