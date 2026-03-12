@@ -50,7 +50,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         >
           <div className="grid grid-cols-[40px_1fr] min-h-full">
             <div className="text-right pr-3 border-r border-neutral-800 font-ibm-plex-mono text-[11px] text-secondary select-none">
-              {Array.from({ length: 100 }, (_, i) => (
+              {Array.from({ length: 150 }, (_, i) => (
                 <div key={i + 1} className="leading-6">
                   {i + 1}
                 </div>

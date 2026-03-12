@@ -6,7 +6,9 @@
       "description": "Generate structured and harmonious color palettes for UI systems, branding and design workflows.",
       "stack": "React + TypeScript + Tailwind",
       "status": "In Progress",
-      "stage": "solution"
+      "stage": "solution",
+      "viewProcess": "View Process →",
+      "launch": "Launch Tool →"
     }
   ]
 }

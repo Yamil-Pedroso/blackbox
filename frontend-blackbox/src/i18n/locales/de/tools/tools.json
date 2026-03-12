@@ -4,8 +4,7 @@
     "title": "Angewandte Werkzeuge",
     "description": "Praktische Tools zur Lösung realer Entwicklungsprobleme. Jedes Werkzeug fokussiert sich auf Benutzerfreundlichkeit, Klarheit und technische Qualität."
   },
-  "viewProcess": "Prozess ansehen →",
-  "launch": "Tool starten →",
+
   "status": {
     "active": "Aktiv",
     "inProgress": "In Bearbeitung",

@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "title": "Regex Visualizer",
+      "slug": "regex-visualizer",
+      "description": "Visualize how regular expressions work through interactive diagrams and live test inputs.",
+      "stack": "React + TypeScript + Regex Engine",
+      "status": "planned",
+      "stage": "idea",
+      "viewProcess": "View Process →",
+      "launch": "Launch Tool →"
+    }
+  ]
+}

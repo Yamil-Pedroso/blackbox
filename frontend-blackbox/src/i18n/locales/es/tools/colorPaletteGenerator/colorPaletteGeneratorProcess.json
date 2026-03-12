@@ -1,12 +1,12 @@
 {
   "title": "Generador de Paletas de Color",
-  "description": "Una herramienta para generar escalas de color estructuradas a partir de un color base utilizando transformaciones HSL.",
+  "description": "Una herramienta para generar escalas de color estructuradas a partir de un color base utilizando transformaciones HSL, RGB y REX.",
 
   "overview": "El Generador de Paletas de Color es una utilidad diseñada para ayudar a desarrolladores y diseñadores a crear rápidamente paletas de color estructuradas a partir de un color base. Simplifica el proceso de generar escalas de color armoniosas que pueden utilizarse en sistemas de interfaz, exploraciones de diseño y bibliotecas de componentes.",
 
   "problem": "Los desarrolladores y diseñadores necesitan con frecuencia paletas de color consistentes al construir interfaces. Crear estas paletas manualmente es lento y a menudo produce resultados inconsistentes, especialmente cuando se intenta mantener un equilibrio visual adecuado entre múltiples componentes de la interfaz.",
 
-  "solution": "La herramienta convierte un color base al formato HSL y genera diferentes tonalidades modificando el valor de luminosidad mientras mantiene constantes el tono y la saturación. Este enfoque garantiza armonía visual mientras produce variaciones predecibles del mismo color.",
+  "solution": "La herramienta convierte un color base a los formatos HSL, RGB y REX y genera diferentes tonalidades modificando el valor de luminosidad mientras mantiene constantes el tono y la saturación. Este enfoque garantiza armonía visual mientras produce variaciones predecibles del mismo color.",
 
   "features": [
     {

@@ -6,7 +6,9 @@
       "description": "Genera paletas de colores estructuradas y armoniosas para sistemas de interfaz, branding y flujos de trabajo de diseño.",
       "stack": "React + TypeScript + Tailwind",
       "status": "inProgress",
-      "stage": "problem"
+      "stage": "problem",
+      "viewProcess": "Ver proceso →",
+      "launch": "Abrir herramienta →"
     }
   ]
 }

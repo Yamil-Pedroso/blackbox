@@ -4,8 +4,7 @@
     "title": "Herramientas Aplicadas",
     "description": "Utilidades prácticas diseñadas para resolver problemas reales de desarrollo. Cada herramienta se centra en la usabilidad, claridad y calidad de ingeniería."
   },
-  "viewProcess": "Ver proceso →",
-  "launch": "Abrir herramienta →",
+
   "status": {
     "active": "Activa",
     "inProgress": "En progreso",

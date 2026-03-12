@@ -4,8 +4,7 @@
     "title": "Applied Tools",
     "description": "Practical utilities designed to solve real development problems. Each tool focuses on usability, clarity and engineering quality."
   },
-  "viewProcess": "View Process →",
-  "launch": "Launch Tool →",
+
   "status": {
     "active": "Active",
     "inProgress": "In Progress",

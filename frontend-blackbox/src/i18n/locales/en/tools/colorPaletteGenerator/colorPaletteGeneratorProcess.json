@@ -1,12 +1,12 @@
 {
   "title": "Color Palette Generator",
-  "description": "A utility for generating structured color scales from a base color using HSL transformations.",
+  "description": "A utility for generating structured color scales from a base color using HSL, RGB and REX transformations.",
 
   "overview": "The Color Palette Generator is a utility designed to help developers and designers quickly create structured color palettes from a base color. It simplifies the process of generating harmonious color scales that can be used in UI systems, design explorations and component libraries.",
 
   "problem": "Developers and designers frequently need consistent color palettes when building interfaces. Creating these palettes manually is slow and often produces inconsistent results, especially when trying to maintain proper visual balance across multiple UI components.",
 
-  "solution": "The tool converts a base color into HSL format and generates shades by modifying the lightness value while keeping the hue and saturation constant. This approach ensures visual harmony while producing predictable variations of the same color.",
+  "solution": "The tool converts a base color into HSL, RGB and REX formats and generates shades by modifying the lightness value while keeping the hue and saturation constant. This approach ensures visual harmony while producing predictable variations of the same color.",
 
   "features": [
     {

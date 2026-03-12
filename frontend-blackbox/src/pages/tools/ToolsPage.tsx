@@ -1,23 +1,23 @@
 import { useRef } from "react";
-import { Link } from "@tanstack/react-router";
 import AppCreationFlow from "@/components/tools/AppCreationFlow";
+import { useGsapPageAnimation } from "@/lib/hooks/useGSAPAanimation";
 import { useTranslation } from "react-i18next";
-import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
-import { getStageInfo, getStatusColor } from "../../lib/utils/toolStage";
-import FeatureHeader from "../../components/common/header/FeatureHeader";
+import FeatureHeader from "@/components/common/header/FeatureHeader";
+import PresentationCard from "@/components/tools/common/layouts/PresentationCard";
+import type { ToolTypes } from "@/components/tools/common/types/toolTypes";
 
 const ToolsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation("colorPaletteGenerator");
 
-  const tools = t("items", { returnObjects: true }) as {
-    title: string;
-    slug: string;
-    description: string;
-    stack: string;
-    status: string;
-    stage: string;
-  }[];
+  const { t: tPalette } = useTranslation("colorPaletteGenerator");
+  const { t: tRegex } = useTranslation("regexVisualizer");
+
+  const paletteTools = tPalette("items", {
+    returnObjects: true,
+  }) as ToolTypes[];
+  const regexTools = tRegex("items", { returnObjects: true }) as ToolTypes[];
+
+  const tools = [...paletteTools, ...regexTools];
 
   useGsapPageAnimation(
     containerRef as React.RefObject<HTMLDivElement>,
@@ -64,64 +64,11 @@ const ToolsPage = () => {
       <FeatureHeader label="tools" content="tools" />
       <AppCreationFlow className="app-creation-flow" />
 
-      <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-10">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-10">
         {tools.map((tool) => (
-          <div
-            key={tool.title}
-            className="tool-card group border border-neutral-800 bg-secondary-bg p-6 flex flex-col justify-between hover:border-primary transition-colors duration-300"
-          >
-            <div className="space-y-4">
-              <h2 className="text-primary font-geist text-xl md:text-2xl">
-                {tool.title}
-              </h2>
-
-              <p className="text-secondary font-ibm-plex-mono text-sm leading-relaxed">
-                {tool.description}
-              </p>
-
-              <div className="flex flex-wrap flex-col gap-3 text-xs font-ibm-plex-mono text-secondary pt-2">
-                <span>{tool.stack}</span>
-                <span className={getStatusColor(tool.status)}>
-                  {t(`${tool.status}`)}
-                </span>
-
-                <span
-                  className={`${getStageInfo(tool.stage).color} flex items-center`}
-                >
-                  {t(`${tool.stage}`.toUpperCase())}
-                  {(() => {
-                    const IconComponent = getStageInfo(tool.stage).icon;
-                    return <IconComponent className="inline-block ml-2" />;
-                  })()}
-                </span>
-              </div>
-            </div>
-            <Link
-              to="/tools/$slug/process"
-              params={{ slug: tool.slug }}
-              className="relative mt-6 border border-neutral-700 px-4 py-2 text-center text-xs font-ibm-plex-mono text-secondary overflow-hidden group/process"
-            >
-              <span className="absolute inset-0 bg-secondary origin-left scale-x-0 transition-transform duration-300 ease-out group-hover/process:scale-x-100"></span>
-
-              <span className="relative z-10 group-hover/process:text-black transition-colors duration-300">
-                {t("viewProcess")}
-              </span>
-            </Link>
-
-            <Link
-              to="/tools/$slug/launch"
-              params={{ slug: tool.slug }}
-              className="relative mt-6 border border-neutral-700 px-4 py-2 text-center text-xs font-ibm-plex-mono text-secondary overflow-hidden group/launch"
-            >
-              <span className="absolute inset-0 bg-secondary origin-left scale-x-0 transition-transform duration-300 ease-out group-hover/launch:scale-x-100"></span>
-
-              <span className="relative z-10 group-hover/launch:text-black transition-colors duration-300">
-                {t("launch")}
-              </span>
-            </Link>
-          </div>
+          <PresentationCard key={tool.slug} tool={tool} />
         ))}
-      </section>
+      </div>
     </div>
   );
 };

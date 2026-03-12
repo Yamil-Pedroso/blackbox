@@ -34,9 +34,24 @@ import esTools from "./locales/es/tools/tools.json";
 import deTools from "./locales/de/tools/tools.json";
 
 // Color Palette Generator - Tool
-import colorPaletteGenerator_en from "./locales/en/tools/colorPaletteGenerator.json";
-import colorPaletteGenerator_es from "./locales/es/tools/colorPaletteGenerator.json";
-import colorPaletteGenerator_de from "./locales/de/tools/colorPaletteGenerator.json";
+import colorPaletteGenerator_en from "./locales/en/tools/colorPaletteGenerator/colorPaletteGenerator.json";
+import colorPaletteGenerator_es from "./locales/es/tools/colorPaletteGenerator/colorPaletteGenerator.json";
+import colorPaletteGenerator_de from "./locales/de/tools/colorPaletteGenerator/colorPaletteGenerator.json";
+
+// Color Palette Generator - Process - Tool
+import colorPaletteGeneratorProcess_en from "./locales/en/tools/colorPaletteGenerator/colorPaletteGeneratorProcess.json";
+import colorPaletteGeneratorProcess_es from "./locales/es/tools/colorPaletteGenerator/colorPaletteGeneratorProcess.json";
+import colorPaletteGeneratorProcess_de from "./locales/de/tools/colorPaletteGenerator/colorPaletteGeneratorProcess.json";
+
+// Regex Visualizer - Tool
+import regexVisualizer_en from "./locales/en/tools/regexVisualizer/regexVisualizer.json";
+import regexVisualizer_es from "./locales/es/tools/regexVisualizer/regexVisualizer.json";
+import regexVisualizer_de from "./locales/de/tools/regexVisualizer/regexVisualizer.json";
+
+// Regex Visualizer - Process - Tool
+import regexVisualizerProcess_en from "./locales/en/tools/regexVisualizer/regexVisualizerProcess.json";
+import regexVisualizerProcess_es from "./locales/es/tools/regexVisualizer/regexVisualizerProcess.json";
+import regexVisualizerProcess_de from "./locales/de/tools/regexVisualizer/regexVisualizerProcess.json";
 
 // AI
 import ai_en from "./locales/en/ai.json";
@@ -85,6 +100,9 @@ i18n
         rightSidebar: enRightSidebar,
         tools: enTools,
         colorPaletteGenerator: colorPaletteGenerator_en,
+        colorPaletteGeneratorProcess: colorPaletteGeneratorProcess_en,
+        regexVisualizer: regexVisualizer_en,
+        regexVisualizerProcess: regexVisualizerProcess_en,
         ai: ai_en,
         systems: systems_en,
         experiments: exp_en,
@@ -101,6 +119,9 @@ i18n
         rightSidebar: esRightSidebar,
         tools: esTools,
         colorPaletteGenerator: colorPaletteGenerator_es,
+        colorPaletteGeneratorProcess: colorPaletteGeneratorProcess_es,
+        regexVisualizer: regexVisualizer_es,
+        regexVisualizerProcess: regexVisualizerProcess_es,
         ai: ai_es,
         systems: systems_es,
         experiments: exp_es,
@@ -117,6 +138,9 @@ i18n
         rightSidebar: deRightSidebar,
         tools: deTools,
         colorPaletteGenerator: colorPaletteGenerator_de,
+        colorPaletteGeneratorProcess: colorPaletteGeneratorProcess_de,
+        regexVisualizer: regexVisualizer_de,
+        regexVisualizerProcess: regexVisualizerProcess_de,
         ai: ai_de,
         systems: systems_de,
         experiments: exp_de,

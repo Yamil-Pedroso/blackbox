@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "title": "Visualizador de Regex",
+      "slug": "regex-visualizer",
+      "description": "Visualiza cómo funcionan las expresiones regulares mediante diagramas interactivos y pruebas en tiempo real.",
+      "stack": "React + TypeScript + Motor de Regex",
+      "status": "planned",
+      "stage": "idea",
+      "viewProcess": "Ver proceso →",
+      "launch": "Abrir herramienta →"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "title": "Visualizador de Regex",
+  "description": "Una herramienta para visualizar cómo funcionan las expresiones regulares mediante diagramas interactivos y pruebas en tiempo real.",
+
+  "overview": "Regex Visualizer es una herramienta para desarrolladores diseñada para entender y depurar expresiones regulares mediante representaciones visuales. En lugar de leer patrones complejos línea por línea, los desarrolladores pueden ver cómo el motor de regex interpreta cada token en un flujo visual estructurado.",
+
+  "problem": "Las expresiones regulares son muy potentes pero también difíciles de leer y depurar. Muchos desarrolladores tienen dificultades para entender patrones complejos, especialmente cuando contienen múltiples grupos, cuantificadores y condiciones.",
+
+  "solution": "La herramienta analiza una expresión regular y la divide en tokens individuales. Luego convierte estos tokens en una representación visual en forma de flujo, donde cada parte del patrón se representa como un nodo dentro de un diagrama.",
+
+  "features": [
+    {
+      "title": "Entrada de Regex",
+      "description": "Escribe o pega una expresión regular para analizarla y visualizarla."
+    },
+    {
+      "title": "Parser de Patrones",
+      "description": "Divide la expresión regular en tokens y grupos estructurados."
+    },
+    {
+      "title": "Diagrama Visual",
+      "description": "Genera un flujo visual que representa cómo el motor de regex evalúa el patrón."
+    },
+    {
+      "title": "Prueba de Cadenas",
+      "description": "Permite probar textos contra el regex y resaltar coincidencias en tiempo real."
+    }
+  ],
+
+  "architecture": "RegexVisualizer\n│\n├── RegexInput\n├── TestStringInput\n├── RegexDiagram\n│    └── RegexNode\n│\n├── useRegexParser (hook)\n│\n└── parseRegex (lógica)",
+
+  "implementation": "const tokens = regex.split(/(\\(|\\)|\\+|\\*|\\?|\\|)/)\n\nreturn tokens.map(token => ({ type: 'token', value: token }))",
+
+  "developmentFlow": [
+    {
+      "title": "Idea",
+      "description": "Crear una herramienta para visualizar cómo funcionan los patrones regex."
+    },
+    {
+      "title": "Diseño del Parser",
+      "description": "Construir un parser que convierta los patrones regex en tokens."
+    },
+    {
+      "title": "Sistema de Diagramas",
+      "description": "Diseñar un diagrama basado en nodos que represente el flujo de ejecución del regex."
+    },
+    {
+      "title": "Interacción",
+      "description": "Permitir probar cadenas y resaltar coincidencias dinámicamente."
+    },
+    {
+      "title": "Pruebas",
+      "description": "Validar la precisión del parser y la correcta visualización de los patrones."
+    }
+  ],
+
+  "lessons": [
+    "Comprender cómo los motores regex procesan tokens secuencialmente.",
+    "Diseñar representaciones visuales para conceptos abstractos de programación.",
+    "Construir lógica de parsing para interpretar patrones.",
+    "Gestionar diagramas interactivos dentro de una interfaz React."
+  ],
+
+  "nextSteps": [
+    "Soportar funciones avanzadas de regex como lookaheads y lookbehinds.",
+    "Añadir visualización paso a paso de la ejecución del regex.",
+    "Permitir exportar diagramas como SVG.",
+    "Integrar explicaciones generadas por IA para patrones regex."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "title": "Regex Visualizer",
+  "description": "Ein Tool zur Visualisierung der Funktionsweise von regulären Ausdrücken durch interaktive Diagramme und Live-Tests.",
+
+  "overview": "Regex Visualizer ist ein Entwicklerwerkzeug, das hilft, reguläre Ausdrücke durch visuelle Darstellungen besser zu verstehen und zu debuggen. Anstatt komplexe Muster Zeile für Zeile zu lesen, können Entwickler sehen, wie die Regex-Engine jedes Token interpretiert.",
+
+  "problem": "Reguläre Ausdrücke sind leistungsstark, aber schwer zu lesen und zu debuggen. Viele Entwickler haben Schwierigkeiten, komplexe Muster zu verstehen, insbesondere wenn sie mehrere Gruppen, Quantifizierer und Bedingungen enthalten.",
+
+  "solution": "Das Tool analysiert einen regulären Ausdruck und zerlegt ihn in einzelne Tokens. Diese Tokens werden anschließend in ein visuelles Flussdiagramm umgewandelt, sodass Entwickler nachvollziehen können, wie der Regex ausgeführt wird.",
+
+  "features": [
+    {
+      "title": "Regex Eingabe",
+      "description": "Schreibe oder füge einen regulären Ausdruck ein, um ihn zu analysieren."
+    },
+    {
+      "title": "Pattern Parser",
+      "description": "Zerlegt den regulären Ausdruck in strukturierte Tokens und Gruppen."
+    },
+    {
+      "title": "Visuelles Diagramm",
+      "description": "Erzeugt ein Diagramm, das zeigt, wie die Regex-Engine das Muster auswertet."
+    },
+    {
+      "title": "Live String Tests",
+      "description": "Teste Texte gegen den Regex und sehe passende Segmente in Echtzeit."
+    }
+  ],
+
+  "architecture": "RegexVisualizer\n│\n├── RegexInput\n├── TestStringInput\n├── RegexDiagram\n│    └── RegexNode\n│\n├── useRegexParser (Hook)\n│\n└── parseRegex (Logik)",
+
+  "implementation": "const tokens = regex.split(/(\\(|\\)|\\+|\\*|\\?|\\|)/)\n\nreturn tokens.map(token => ({ type: 'token', value: token }))",
+
+  "developmentFlow": [
+    {
+      "title": "Idee",
+      "description": "Ein Tool entwickeln, um Regex-Muster visuell darzustellen."
+    },
+    {
+      "title": "Parser Design",
+      "description": "Einen Parser erstellen, der Regex-Muster in Tokens zerlegt."
+    },
+    {
+      "title": "Diagramm System",
+      "description": "Ein Node-basiertes Diagramm entwerfen, das den Regex-Fluss darstellt."
+    },
+    {
+      "title": "Interaktion",
+      "description": "Benutzern ermöglichen, Strings zu testen und Matches hervorzuheben."
+    },
+    {
+      "title": "Tests",
+      "description": "Sicherstellen, dass Parsing und Visualisierung korrekt funktionieren."
+    }
+  ],
+
+  "lessons": [
+    "Verstehen, wie Regex-Engines Tokens sequenziell verarbeiten.",
+    "Visuelle Darstellungen für abstrakte Programmierkonzepte entwickeln.",
+    "Parser-Logik für Pattern-Interpretation erstellen.",
+    "Interaktive Diagramme innerhalb einer React UI verwalten."
+  ],
+
+  "nextSteps": [
+    "Unterstützung für fortgeschrittene Regex-Funktionen wie Lookaheads und Lookbehinds.",
+    "Schrittweise Visualisierung der Regex-Ausführung hinzufügen.",
+    "Diagramme als SVG exportieren.",
+    "KI-generierte Erklärungen für Regex-Muster integrieren."
+  ]
+}

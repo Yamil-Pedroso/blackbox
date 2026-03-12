@@ -1,12 +1,12 @@
 {
   "title": "Farbpaletten-Generator",
-  "description": "Ein Werkzeug zur Erzeugung strukturierter Farbskalen aus einer Basisfarbe mithilfe von HSL-Transformationen.",
+  "description": "Ein Werkzeug zur Erzeugung strukturierter Farbskalen aus einer Basisfarbe mithilfe von HSL, RGB und REX-Transformationen.",
 
   "overview": "Der Farbpaletten-Generator ist ein Werkzeug, das Entwicklern und Designern hilft, schnell strukturierte Farbpaletten aus einer Basisfarbe zu erstellen. Er vereinfacht den Prozess der Erstellung harmonischer Farbskalen, die in UI-Systemen, Design-Experimenten oder Komponentenbibliotheken verwendet werden können.",
 
   "problem": "Entwickler und Designer benötigen häufig konsistente Farbpaletten beim Erstellen von Benutzeroberflächen. Diese Paletten manuell zu erstellen ist zeitaufwendig und führt oft zu inkonsistenten Ergebnissen, insbesondere wenn ein visuelles Gleichgewicht über mehrere UI-Komponenten hinweg gewährleistet werden soll.",
 
-  "solution": "Das Tool konvertiert eine Basisfarbe in das HSL-Format und erzeugt Farbvariationen, indem der Helligkeitswert angepasst wird, während Farbton und Sättigung konstant bleiben. Dieser Ansatz sorgt für visuelle Harmonie und erzeugt vorhersehbare Farbvariationen.",
+  "solution": "Das Tool konvertiert eine Basisfarbe in HSL, RGB und REX-Formate und erzeugt Farbvariationen, indem der Helligkeitswert angepasst wird, während Farbton und Sättigung konstant bleiben. Dieser Ansatz sorgt für visuelle Harmonie und erzeugt vorhersehbare Farbvariationen.",
 
   "features": [
     {
