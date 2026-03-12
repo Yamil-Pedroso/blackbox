@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ColorPaletteProcess from "../../../components/tools/color-palette-generator/ColorPaletteProcess";
+import ColorPaletteGeratorCaseStudy from "../../../components/tools/color-palette-generator/ColorPaletteGeneratorCaseStudy";
+import RegexVisualizerCaseStudy from "../../../components/tools/regex-visualizer/RegexVisualizerCaseStudy";
 
 export const Route = createFileRoute("/tools/$slug/process")({
   component: RouteComponent,
 });
 
 const processRegistry: Record<string, React.FC> = {
-  "color-palette-generator": ColorPaletteProcess,
+  "color-palette-generator": ColorPaletteGeratorCaseStudy,
+  "regex-visualizer": RegexVisualizerCaseStudy,
 };
 
 function RouteComponent() {
