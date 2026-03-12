@@ -15,10 +15,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     select: (state) => state.location.pathname,
   });
 
+  console.log(pathname);
+
   const isImmersive =
     pathname.includes("/experiments/booking-simulation/app") ||
     pathname.includes("/experiments/booking-platform/app") ||
-    pathname.includes("/experiments/booking-platform/success");
+    pathname.includes("/experiments/booking-platform/success") ||
+    pathname.includes("/tools/color-palette-generator/launch") ||
+    pathname.includes("/tools/regex-visualizer/launch");
 
   useEffect(() => {
     if (mainRef.current) {

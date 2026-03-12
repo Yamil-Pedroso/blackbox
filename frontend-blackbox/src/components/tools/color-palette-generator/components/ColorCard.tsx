@@ -24,11 +24,9 @@ export default function ColorCard({ hex, rgb, hsl }: Props) {
       className="
         relative
         h-16 sm:h-20 md:h-24
-
         cursor-pointer
         group
         transition-transform
-
       "
       style={{ background: hex }}
     >
