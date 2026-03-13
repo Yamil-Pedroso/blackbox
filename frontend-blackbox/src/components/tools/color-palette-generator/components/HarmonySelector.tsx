@@ -1,3 +1,5 @@
+import Tooltip from "./ui/Tooltip";
+
 type Props = {
   harmony: string;
   setHarmony: (value: string) => void;
@@ -9,15 +11,16 @@ export default function HarmonySelector({ harmony, setHarmony }: Props) {
   return (
     <div className="flex gap-3 flex-wrap">
       {modes.map((mode) => (
-        <button
-          key={mode}
-          onClick={() => setHarmony(mode)}
-          className={`px-3 py-1 text-xs border transition-colors
+        <Tooltip key={mode} text={`Set harmony to ${mode}`}>
+          <button
+            onClick={() => setHarmony(mode)}
+            className={`px-3 py-1 text-xs border transition-colors
             ${harmony === mode ? "border-primary text-primary" : "border-neutral-700"}
           `}
-        >
-          {mode}
-        </button>
+          >
+            {mode}
+          </button>
+        </Tooltip>
       ))}
     </div>
   );

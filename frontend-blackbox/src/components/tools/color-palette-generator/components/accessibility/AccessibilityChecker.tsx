@@ -61,10 +61,7 @@ export default function AccessibilityChecker({ palette }: Props) {
         </select>
       </div>
 
-      <div
-        className="p-6 rounded-md"
-        style={{ background: bgHex, color: textHex }}
-      >
+      <div className="p-6" style={{ background: bgHex, color: textHex }}>
         Example Text Preview
       </div>
 

@@ -8,7 +8,7 @@ type Props = {
 
 export default function PaletteGrid({ colors }: Props) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-11 gap-0 mt-12 ">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-11 gap-0 mt-12">
       {colors.map((color) => {
         // Si ya es HEX (AI palette)
         if (color.startsWith("#")) {

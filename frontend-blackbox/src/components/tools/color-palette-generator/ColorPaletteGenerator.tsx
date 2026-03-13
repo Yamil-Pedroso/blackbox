@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import ColorPicker from "./components/ColorPicker";
 import PaletteGrid from "./components/PaletteGrid";
@@ -13,7 +14,8 @@ import AccessibilityChecker from "./components/accessibility/AccessibilityChecke
 import AIPaletteGenerator from "./components/ai/AIPaletteGenerator";
 import ToolsSidePanel from "./components/sidepanel/ToolsSidePanel";
 import SidePanelToggle from "./components/sidepanel/SidePanelToggle";
-import { useState } from "react";
+import Tooltip from "./components/ui/Tooltip";
+import { motion } from "framer-motion";
 
 export default function ColorPaletteGenerator() {
   const [panelOpen, setPanelOpen] = useState(false);
@@ -33,47 +35,97 @@ export default function ColorPaletteGenerator() {
     setPanelOpen((prev) => !prev);
   };
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  } as const;
+
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  } as const;
+
   return (
-    <div className="min-h-screen overflow-y-auto bg-secondary-bg">
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="h-screen bg-secondary-bg overflow-x-hidden overflow-y-auto"
+    >
       <div className="max-w-425 mx-auto px-6 py-8 space-y-8">
-        <Link
-          to="/tools"
-          className="text-sm text-secondary hover:text-primary transition-colors"
+        <motion.div variants={item}>
+          <Link
+            to="/tools"
+            className="text-sm text-secondary hover:text-primary transition-colors"
+          >
+            ← Back to Tools
+          </Link>
+        </motion.div>
+
+        <motion.h1
+          variants={item}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold"
         >
-          ← Back to Tools
-        </Link>
-
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
           Color Palette Generator
-        </h1>
+        </motion.h1>
 
-        <div className="bg-neutral-900/40 border border-neutral-800 rounded-xl px-6 py-4">
+        <motion.div
+          variants={item}
+          className="border border-neutral-800 px-6 py-4"
+        >
           <div className="grid gap-4 lg:grid-cols-3">
             <div className="flex flex-wrap gap-3 items-center">
-              <ColorPicker value={baseColor} onChange={generatePalette} />
-              <ShadeControl
-                shadeCount={shadeCount}
-                onChange={changeShadeCount}
-              />
+              <Tooltip text="Select a base color for the palette">
+                <ColorPicker value={baseColor} onChange={generatePalette} />
+              </Tooltip>
+              <Tooltip text="Change how many shades the palette contains">
+                <ShadeControl
+                  shadeCount={shadeCount}
+                  onChange={changeShadeCount}
+                />
+              </Tooltip>
             </div>
 
             <div className="flex flex-wrap gap-3 items-center">
               <HarmonySelector harmony={harmony} setHarmony={setHarmony} />
-              <RandomPalette onGenerate={generatePalette} />
-              <AIPaletteGenerator setPalette={applyExternalPalette} />
+
+              <Tooltip text="Generate a completely random palette">
+                <RandomPalette onGenerate={generatePalette} />
+              </Tooltip>
+              <Tooltip text="Generate a palette using AI from a text prompt">
+                <AIPaletteGenerator setPalette={applyExternalPalette} />
+              </Tooltip>
             </div>
 
             <div className="flex flex-wrap gap-3 items-center lg:justify-end">
-              <CopyPalette palette={palette} />
-              <ExportCSSVariables palette={palette} />
-              <ExportTailwindPalette palette={palette} />
+              <Tooltip text="Copy the entire palette to clipboard">
+                <CopyPalette palette={palette} />
+              </Tooltip>
+              <Tooltip text="Export palette as CSS variables">
+                <ExportCSSVariables palette={palette} />
+              </Tooltip>
+              <Tooltip text="Export palette as Tailwind config">
+                <ExportTailwindPalette palette={palette} />
+              </Tooltip>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="mt-6">
+        <motion.div variants={item} className="mt-6">
           <PaletteGrid colors={palette} />
-        </div>
+        </motion.div>
 
         <ToolsSidePanel open={panelOpen}>
           <UIPreview palette={palette} />
@@ -82,6 +134,6 @@ export default function ColorPaletteGenerator() {
 
         <SidePanelToggle open={panelOpen} toggle={togglePanel} />
       </div>
-    </div>
+    </motion.div>
   );
 }

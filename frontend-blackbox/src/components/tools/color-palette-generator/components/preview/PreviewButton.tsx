@@ -6,7 +6,7 @@ type Props = {
 export default function PreviewButton({ color, children }: Props) {
   return (
     <button
-      className="px-5 py-2 rounded text-white font-medium transition-transform hover:scale-105"
+      className="px-5 py-2 text-white font-medium transition-transform hover:scale-105"
       style={{ background: color }}
     >
       {children}
