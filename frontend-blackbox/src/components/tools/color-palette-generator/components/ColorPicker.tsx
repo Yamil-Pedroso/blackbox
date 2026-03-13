@@ -9,7 +9,7 @@ export default function ColorPicker({ value, onChange }: Props) {
       type="color"
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="m-auto block h-10 border-2 border-gray-300 cursor-pointer z-20"
+      className=" h-10 border-2 border-gray-300 cursor-pointer z-20"
     />
   );
 }
