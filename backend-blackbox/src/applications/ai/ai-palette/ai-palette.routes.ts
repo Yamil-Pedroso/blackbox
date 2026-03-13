@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { generatePalette } from "./aiPalette.controller";
+import { generatePalette } from "./ai-palette.controller";
 
 const router = Router();
 

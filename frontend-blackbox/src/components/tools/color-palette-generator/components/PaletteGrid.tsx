@@ -12,7 +12,15 @@ export default function PaletteGrid({ colors }: Props) {
       {colors.map((color) => {
         // Si ya es HEX (AI palette)
         if (color.startsWith("#")) {
-          return <ColorCard key={color} hex={color} rgb="" hsl="" />;
+          return (
+            <ColorCard
+              key={color}
+              hex={color}
+              rgb=""
+              hsl=""
+              index={colors.indexOf(color)}
+            />
+          );
         }
 
         // Si es HSL (paleta normal)
@@ -26,7 +34,15 @@ export default function PaletteGrid({ colors }: Props) {
 
         const hex = rgbToHex(rgbNumbers[0], rgbNumbers[1], rgbNumbers[2]);
 
-        return <ColorCard key={color} hex={hex} rgb={rgb} hsl={color} />;
+        return (
+          <ColorCard
+            key={color}
+            hex={hex}
+            rgb={rgb}
+            hsl={color}
+            index={colors.indexOf(color)}
+          />
+        );
       })}
     </div>
   );

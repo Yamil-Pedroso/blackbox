@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { openai } from "../../core/config/openai.client";
+import { openai } from "../../../core/config/openai.client";
 
 export const generatePalette = async (req: Request, res: Response) => {
   try {
