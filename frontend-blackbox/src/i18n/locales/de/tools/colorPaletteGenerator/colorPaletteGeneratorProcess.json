@@ -1,70 +1,109 @@
 {
-  "title": "Farbpaletten-Generator",
-  "description": "Ein Werkzeug zur Erzeugung strukturierter Farbskalen aus einer Basisfarbe mithilfe von HSL, RGB und REX-Transformationen.",
+  "title": "Chromita",
+  "description": "Ein Tool zur Generierung strukturierter Farbpaletten und Farbharmonien für UI-Systeme, Design-Workflows und Komponentenbibliotheken.",
 
-  "overview": "Der Farbpaletten-Generator ist ein Werkzeug, das Entwicklern und Designern hilft, schnell strukturierte Farbpaletten aus einer Basisfarbe zu erstellen. Er vereinfacht den Prozess der Erstellung harmonischer Farbskalen, die in UI-Systemen, Design-Experimenten oder Komponentenbibliotheken verwendet werden können.",
+  "overview": "Der Color Palette Generator ist ein Tool, das Entwicklern und Designern hilft, schnell strukturierte Farbpaletten zu erstellen. Ausgehend von einer Basisfarbe kann das System Farbtöne, Harmonien und komplette Paletten generieren, die in CSS oder Tailwind-Konfigurationen exportiert werden können. Die Anwendung enthält außerdem Accessibility-Checks, UI-Vorschauen und KI-generierte Paletten zur Unterstützung von Design-Explorationen.",
 
-  "problem": "Entwickler und Designer benötigen häufig konsistente Farbpaletten beim Erstellen von Benutzeroberflächen. Diese Paletten manuell zu erstellen ist zeitaufwendig und führt oft zu inkonsistenten Ergebnissen, insbesondere wenn ein visuelles Gleichgewicht über mehrere UI-Komponenten hinweg gewährleistet werden soll.",
+  "problem": "Konsistente Farbpaletten zu entwerfen ist oft zeitaufwendig. Entwickler benötigen ausgewogene Farbskalen für UI-Komponenten, zugängliche Kontrastverhältnisse und schnelle Möglichkeiten, Paletten in ihren Code zu exportieren. Manuelles Erstellen solcher Paletten führt häufig zu inkonsistenten Ergebnissen und ineffizienten Workflows.",
 
-  "solution": "Das Tool konvertiert eine Basisfarbe in HSL, RGB und REX-Formate und erzeugt Farbvariationen, indem der Helligkeitswert angepasst wird, während Farbton und Sättigung konstant bleiben. Dieser Ansatz sorgt für visuelle Harmonie und erzeugt vorhersehbare Farbvariationen.",
+  "solution": "Das Tool generiert Farbpaletten programmatisch durch Transformation von Farbwerten und Berechnung von Farbtonvariationen. Es unterstützt außerdem Farbharmonien, Exportfunktionen und Accessibility-Validierung, sodass Entwickler und Designer mit Farben experimentieren können, während visuelle Konsistenz und Accessibility-Standards eingehalten werden.",
 
   "features": [
     {
-      "title": "Farbwähler",
+      "title": "Color Picker",
       "description": "Wähle eine Basisfarbe, aus der die Palette generiert wird."
     },
     {
-      "title": "Palettengenerierung",
-      "description": "Erzeuge automatisch mehrere Farbvariationen aus der ausgewählten Basisfarbe."
+      "title": "Shade Control",
+      "description": "Bestimme, wie viele Farbtöne die Palette enthalten soll."
     },
     {
-      "title": "Interaktive Farbkarten",
+      "title": "Harmony Generator",
+      "description": "Erzeuge Paletten basierend auf Farbharmonien wie monochromatisch, komplementär oder triadisch."
+    },
+    {
+      "title": "Random Palette",
+      "description": "Erzeuge sofort eine komplett zufällige Palette zur Exploration."
+    },
+    {
+      "title": "Interactive Color Cards",
       "description": "Bewege den Mauszeiger über eine Farbe, um HEX-, RGB- und HSL-Werte anzuzeigen."
     },
     {
-      "title": "In Zwischenablage kopieren",
-      "description": "Klicke auf ein Farbformat, um den Wert sofort zu kopieren."
+      "title": "Copy to Clipboard",
+      "description": "Kopiere einzelne Farben oder die gesamte Palette in die Zwischenablage."
+    },
+    {
+      "title": "Export CSS Variables",
+      "description": "Exportiere die Palette als CSS-Variablen für Designsysteme."
+    },
+    {
+      "title": "Export Tailwind Palette",
+      "description": "Erzeuge eine Tailwind-kompatible Farbkonfiguration."
+    },
+    {
+      "title": "UI Preview",
+      "description": "Zeige eine Vorschau, wie die Palette auf UI-Komponenten angewendet aussieht."
+    },
+    {
+      "title": "Accessibility Checker",
+      "description": "Überprüfe Kontrastverhältnisse und WCAG-Konformität."
+    },
+    {
+      "title": "AI Palette Generator",
+      "description": "Erzeuge Farbpaletten mithilfe von KI aus Designbeschreibungen oder Themen."
     }
   ],
 
-  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── PaletteGrid\n│    └── ColorCard\n│\n├── usePalette (Hook)\n│\n└── generateShades (Farblogik)",
+  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── ShadeControl\n├── HarmonySelector\n├── RandomPalette\n│\n├── PaletteGrid\n│    └── ColorCard\n│\n├── UIPreview\n├── AccessibilityChecker\n│\n├── CopyPalette\n├── ExportCSSVariables\n├── ExportTailwindPalette\n│\n├── AIPaletteGenerator\n│\n├── usePalette (State-Management Hook)\n│\n├── generateShades (Farbton-Logik)\n└── generateHarmony (Farbharmonie-Logik)",
 
-  "implementation": "for (let i = 90; i >= 10; i -= 10) {\n  shades.push(`hsl(${h}, ${s}%, ${i}%)`)\n}",
+  "implementation": "const palette = useMemo(() => {\n  if (externalPalette) return externalPalette\n\n  if (harmony === \"monochrome\") {\n    return generateShades(baseColor, shadeCount)\n  }\n\n  return generateHarmony(baseColor, harmony)\n}, [baseColor, shadeCount, harmony, externalPalette])",
 
   "developmentFlow": [
     {
       "title": "Idee",
-      "description": "Ein kleines Tool zur Generierung strukturierter Farbpaletten entwickeln."
+      "description": "Ein Tool zur Generierung strukturierter Farbpaletten entwickeln."
     },
     {
-      "title": "Algorithmus",
-      "description": "Einen Algorithmus entwickeln, der Farbvariationen durch Anpassung der HSL-Helligkeit erzeugt."
+      "title": "Farbalgorithmus",
+      "description": "Farbtongenerierung basierend auf HSL-Transformation implementieren."
     },
     {
-      "title": "UI-Design",
-      "description": "Ein responsives Grid erstellen, um die generierten Paletten visuell darzustellen."
+      "title": "Palette Interaction",
+      "description": "Interaktive Farbkarten mit Copy-Funktion erstellen."
     },
     {
-      "title": "Interaktion",
-      "description": "Tooltip-Interaktionen und Copy-to-Clipboard-Funktionalität implementieren."
+      "title": "Advanced Features",
+      "description": "Farbharmonien, zufällige Paletten und Exportfunktionen hinzufügen."
     },
     {
-      "title": "Tests",
-      "description": "Sicherstellen, dass Farbgenerierung und Interaktionen auf verschiedenen Geräten korrekt funktionieren."
+      "title": "Design Utilities",
+      "description": "UI-Vorschau und Accessibility-Checks integrieren."
+    },
+    {
+      "title": "AI Integration",
+      "description": "Palette-Generierung über KI-Prompts ermöglichen."
+    },
+    {
+      "title": "Testing",
+      "description": "Interaktionen, Palettengenerierung und Accessibility-Berechnungen validieren."
     }
   ],
 
   "lessons": [
-    "Tooltip-Interaktionen zwischen Hover- und Klickzuständen verwalten.",
-    "Farbumwandlungen zwischen HEX-, RGB- und HSL-Formaten implementieren.",
-    "Wiederverwendbare React-Hooks für die Palettengenerierung entwickeln.",
-    "Stacking-Kontexte und z-index bei absolut positionierten Elementen korrekt handhaben."
+    "Wiederverwendbare UI-Komponenten für Tool-Interfaces entwerfen.",
+    "Palettenzustand und externe Paletten verwalten.",
+    "Farbkonvertierungen zwischen HEX, RGB und HSL implementieren.",
+    "Accessibility-Checks mit Kontrastalgorithmen entwickeln.",
+    "Exportfunktionen für CSS-Variablen und Tailwind erstellen.",
+    "KI-Services in Frontend-Tools integrieren."
   ],
 
   "nextSteps": [
-    "Farb-Harmonien wie komplementäre, triadische und analoge Paletten generieren.",
-    "Tailwind-ähnliche Farbskalen erstellen.",
-    "Paletten als JSON oder CSS-Variablen exportieren.",
-    "KI-basierte Farbempfehlungen basierend auf Themen oder Stimmungen integrieren."
+    "Farben sperren können wie in professionellen Tools.",
+    "Palettenhistorie und Undo-Funktion hinzufügen.",
+    "Paletten über URL teilen.",
+    "Paletten aus Bildern importieren.",
+    "Keyboard Shortcuts für schnellere Exploration hinzufügen."
   ]
 }

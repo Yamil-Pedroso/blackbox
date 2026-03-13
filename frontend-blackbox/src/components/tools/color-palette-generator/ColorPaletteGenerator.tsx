@@ -78,7 +78,7 @@ export default function ColorPaletteGenerator() {
           variants={item}
           className="text-4xl md:text-5xl lg:text-6xl font-bold"
         >
-          Color Palette Generator
+          CHROMITA
         </motion.h1>
 
         <motion.div

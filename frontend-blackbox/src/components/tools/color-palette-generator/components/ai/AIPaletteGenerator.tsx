@@ -27,13 +27,13 @@ export default function AIPaletteGenerator({ setPalette }: Props) {
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="cyberpunk, forest, sunset..."
-        className="border border-neutral-700 px-3 py-2 w-full max-w-md"
+        className="border border-neutral-700 px-3 py-2 w-full max-w-md bg-transparent outline-0"
       />
 
       <button
         onClick={generate}
         disabled={loading}
-        className="px-4 py-2 border border-neutral-700 hover:border-primary"
+        className="px-4 py-2 border border-neutral-700 hover:border-primary bg-transparent "
       >
         {loading ? "Generating..." : "Generate Palette"}
       </button>

@@ -1,12 +1,12 @@
 {
-  "title": "Color Palette Generator",
-  "description": "A utility for generating structured color scales from a base color using HSL, RGB and REX transformations.",
+  "title": "Chromita",
+  "description": "A utility for generating structured color palettes and harmonies for UI systems, design workflows and component libraries.",
 
-  "overview": "The Color Palette Generator is a utility designed to help developers and designers quickly create structured color palettes from a base color. It simplifies the process of generating harmonious color scales that can be used in UI systems, design explorations and component libraries.",
+  "overview": "The Color Palette Generator is a tool designed to help developers and designers create structured color palettes quickly. Starting from a base color, the system can generate shades, harmonies and complete palettes that can be exported to CSS or Tailwind configurations. The application also includes accessibility checks, UI previews and AI-generated palettes to assist with design exploration.",
 
-  "problem": "Developers and designers frequently need consistent color palettes when building interfaces. Creating these palettes manually is slow and often produces inconsistent results, especially when trying to maintain proper visual balance across multiple UI components.",
+  "problem": "Designing consistent color palettes is often time-consuming. Developers need balanced color scales for UI components, accessible contrast ratios and quick ways to export palettes to their codebases. Creating these palettes manually frequently leads to inconsistent results and inefficient workflows.",
 
-  "solution": "The tool converts a base color into HSL, RGB and REX formats and generates shades by modifying the lightness value while keeping the hue and saturation constant. This approach ensures visual harmony while producing predictable variations of the same color.",
+  "solution": "The tool generates color palettes programmatically by transforming color values and calculating shade variations. It also supports harmony generation, palette exports and accessibility validation, allowing developers and designers to experiment with palettes while maintaining visual consistency and accessibility standards.",
 
   "features": [
     {
@@ -14,57 +14,96 @@
       "description": "Select a base color that will be used to generate the palette."
     },
     {
-      "title": "Palette Generation",
-      "description": "Automatically generate multiple shades derived from the selected base color."
+      "title": "Shade Control",
+      "description": "Adjust how many shades the palette should generate."
+    },
+    {
+      "title": "Harmony Generator",
+      "description": "Generate palettes based on color harmony systems such as monochrome, complementary or triadic."
+    },
+    {
+      "title": "Random Palette",
+      "description": "Instantly generate a completely random palette for exploration."
     },
     {
       "title": "Interactive Color Cards",
-      "description": "Hover over each color to reveal HEX, RGB and HSL values."
+      "description": "Hover each color to reveal HEX, RGB and HSL values."
     },
     {
       "title": "Copy to Clipboard",
-      "description": "Click any color format to instantly copy the value to the clipboard."
+      "description": "Copy individual colors or the entire palette to the clipboard."
+    },
+    {
+      "title": "Export CSS Variables",
+      "description": "Export the palette as CSS variables ready to use in a design system."
+    },
+    {
+      "title": "Export Tailwind Palette",
+      "description": "Generate a Tailwind-compatible color configuration."
+    },
+    {
+      "title": "UI Preview",
+      "description": "Preview how the palette looks applied to UI components."
+    },
+    {
+      "title": "Accessibility Checker",
+      "description": "Evaluate contrast ratios and WCAG compliance for color combinations."
+    },
+    {
+      "title": "AI Palette Generator",
+      "description": "Generate palettes using AI from descriptive prompts or design themes."
     }
   ],
 
-  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── PaletteGrid\n│    └── ColorCard\n│\n├── usePalette (hook)\n│\n└── generateShades (color logic)",
+  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── ShadeControl\n├── HarmonySelector\n├── RandomPalette\n│\n├── PaletteGrid\n│    └── ColorCard\n│\n├── UIPreview\n├── AccessibilityChecker\n│\n├── CopyPalette\n├── ExportCSSVariables\n├── ExportTailwindPalette\n│\n├── AIPaletteGenerator\n│\n├── usePalette (state management hook)\n│\n├── generateShades (shade generation logic)\n└── generateHarmony (color harmony logic)",
 
-  "implementation": "for (let i = 90; i >= 10; i -= 10) {\n  shades.push(`hsl(${h}, ${s}%, ${i}%)`)\n}",
+  "implementation": "const palette = useMemo(() => {\n  if (externalPalette) return externalPalette\n\n  if (harmony === \"monochrome\") {\n    return generateShades(baseColor, shadeCount)\n  }\n\n  return generateHarmony(baseColor, harmony)\n}, [baseColor, shadeCount, harmony, externalPalette])",
 
   "developmentFlow": [
     {
       "title": "Idea",
-      "description": "Create a small utility for generating structured color palettes."
+      "description": "Create a tool for generating structured color palettes."
     },
     {
-      "title": "Algorithm Design",
-      "description": "Develop an algorithm that generates shades by adjusting HSL lightness."
+      "title": "Color Algorithm",
+      "description": "Implement shade generation based on HSL transformations."
     },
     {
-      "title": "UI Design",
-      "description": "Design a responsive grid to visually represent generated palettes."
+      "title": "Palette Interaction",
+      "description": "Build interactive color cards with copy functionality."
     },
     {
-      "title": "Interaction",
-      "description": "Implement tooltip interaction and copy-to-clipboard functionality."
+      "title": "Advanced Features",
+      "description": "Add harmony generation, random palettes and export utilities."
+    },
+    {
+      "title": "Design Utilities",
+      "description": "Integrate UI preview and accessibility checking tools."
+    },
+    {
+      "title": "AI Integration",
+      "description": "Allow palette generation through AI prompts."
     },
     {
       "title": "Testing",
-      "description": "Ensure color generation and interactions behave correctly across devices."
+      "description": "Validate interactions, palette generation and accessibility calculations."
     }
   ],
 
   "lessons": [
-    "Managing tooltip interactions between hover and click states.",
+    "Designing reusable UI components for tool interfaces.",
+    "Managing palette state and external palette injections.",
     "Handling color conversions between HEX, RGB and HSL formats.",
-    "Designing reusable React hooks for palette generation.",
-    "Handling UI layering and stacking contexts when using absolute elements."
+    "Implementing accessibility checks using contrast ratio algorithms.",
+    "Building export utilities for CSS variables and Tailwind configurations.",
+    "Integrating AI services into frontend tools."
   ],
 
   "nextSteps": [
-    "Generate color harmonies such as complementary, triadic and analogous palettes.",
-    "Create Tailwind-like color scales with structured shade systems.",
-    "Allow palette export as JSON, CSS variables or Tailwind configuration.",
-    "Integrate AI-based palette recommendations based on themes or moods."
+    "Allow palette locking similar to professional color tools.",
+    "Add palette history and undo functionality.",
+    "Enable palette sharing via URL.",
+    "Support importing palettes from images.",
+    "Add keyboard shortcuts for faster palette exploration."
   ]
 }

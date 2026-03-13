@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "title": "Color Palette Generator",
+      "title": "Chromita",
       "slug": "color-palette-generator",
       "description": "Generate structured and harmonious color palettes for UI systems, branding and design workflows.",
       "stack": "React + TypeScript + Tailwind",

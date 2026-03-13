@@ -1,70 +1,109 @@
 {
-  "title": "Generador de Paletas de Color",
-  "description": "Una herramienta para generar escalas de color estructuradas a partir de un color base utilizando transformaciones HSL, RGB y REX.",
+  "title": "Chromita",
+  "description": "Una herramienta para generar paletas de colores estructuradas y armonías para sistemas de UI, flujos de diseño y librerías de componentes.",
 
-  "overview": "El Generador de Paletas de Color es una utilidad diseñada para ayudar a desarrolladores y diseñadores a crear rápidamente paletas de color estructuradas a partir de un color base. Simplifica el proceso de generar escalas de color armoniosas que pueden utilizarse en sistemas de interfaz, exploraciones de diseño y bibliotecas de componentes.",
+  "overview": "El Color Palette Generator es una herramienta diseñada para ayudar a desarrolladores y diseñadores a crear paletas de colores estructuradas rápidamente. A partir de un color base, el sistema puede generar tonos, armonías y paletas completas que pueden exportarse a configuraciones de CSS o Tailwind. La aplicación también incluye verificaciones de accesibilidad, previsualización de UI y generación de paletas mediante IA para apoyar la exploración de diseño.",
 
-  "problem": "Los desarrolladores y diseñadores necesitan con frecuencia paletas de color consistentes al construir interfaces. Crear estas paletas manualmente es lento y a menudo produce resultados inconsistentes, especialmente cuando se intenta mantener un equilibrio visual adecuado entre múltiples componentes de la interfaz.",
+  "problem": "Diseñar paletas de colores consistentes suele ser un proceso que consume tiempo. Los desarrolladores necesitan escalas de color equilibradas para componentes de interfaz, ratios de contraste accesibles y formas rápidas de exportar paletas a sus proyectos. Crear estas paletas manualmente suele producir resultados inconsistentes y flujos de trabajo ineficientes.",
 
-  "solution": "La herramienta convierte un color base a los formatos HSL, RGB y REX y genera diferentes tonalidades modificando el valor de luminosidad mientras mantiene constantes el tono y la saturación. Este enfoque garantiza armonía visual mientras produce variaciones predecibles del mismo color.",
+  "solution": "La herramienta genera paletas de colores de forma programática transformando valores de color y calculando variaciones de tonos. También permite generar armonías, exportar paletas y validar accesibilidad, permitiendo a desarrolladores y diseñadores experimentar con colores manteniendo consistencia visual y estándares de accesibilidad.",
 
   "features": [
     {
-      "title": "Selector de Color",
-      "description": "Selecciona un color base que será utilizado para generar la paleta."
+      "title": "Color Picker",
+      "description": "Selecciona un color base que se usará para generar la paleta."
     },
     {
-      "title": "Generación de Paleta",
-      "description": "Genera automáticamente múltiples tonalidades derivadas del color base seleccionado."
+      "title": "Control de Tonos",
+      "description": "Ajusta cuántos tonos debe generar la paleta."
+    },
+    {
+      "title": "Generador de Armonías",
+      "description": "Genera paletas basadas en sistemas de armonía de color como monocromático, complementario o triádico."
+    },
+    {
+      "title": "Paleta Aleatoria",
+      "description": "Genera instantáneamente una paleta completamente aleatoria para exploración."
     },
     {
       "title": "Tarjetas de Color Interactivas",
-      "description": "Pasa el cursor sobre cada color para revelar los valores HEX, RGB y HSL."
+      "description": "Pasa el cursor sobre cada color para ver los valores HEX, RGB y HSL."
     },
     {
       "title": "Copiar al Portapapeles",
-      "description": "Haz clic en cualquier formato de color para copiar el valor instantáneamente."
+      "description": "Copia colores individuales o toda la paleta al portapapeles."
+    },
+    {
+      "title": "Exportar Variables CSS",
+      "description": "Exporta la paleta como variables CSS listas para usar en un sistema de diseño."
+    },
+    {
+      "title": "Exportar Paleta para Tailwind",
+      "description": "Genera una configuración de colores compatible con Tailwind."
+    },
+    {
+      "title": "Previsualización de UI",
+      "description": "Visualiza cómo se ve la paleta aplicada a componentes de interfaz."
+    },
+    {
+      "title": "Verificador de Accesibilidad",
+      "description": "Evalúa ratios de contraste y cumplimiento WCAG entre combinaciones de colores."
+    },
+    {
+      "title": "Generador de Paletas con IA",
+      "description": "Genera paletas mediante IA usando descripciones o temas de diseño."
     }
   ],
 
-  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── PaletteGrid\n│    └── ColorCard\n│\n├── usePalette (hook)\n│\n└── generateShades (lógica de color)",
+  "architecture": "ColorPaletteGenerator\n│\n├── ColorPicker\n├── ShadeControl\n├── HarmonySelector\n├── RandomPalette\n│\n├── PaletteGrid\n│    └── ColorCard\n│\n├── UIPreview\n├── AccessibilityChecker\n│\n├── CopyPalette\n├── ExportCSSVariables\n├── ExportTailwindPalette\n│\n├── AIPaletteGenerator\n│\n├── usePalette (hook de gestión de estado)\n│\n├── generateShades (lógica de generación de tonos)\n└── generateHarmony (lógica de armonía de color)",
 
-  "implementation": "for (let i = 90; i >= 10; i -= 10) {\n  shades.push(`hsl(${h}, ${s}%, ${i}%)`)\n}",
+  "implementation": "const palette = useMemo(() => {\n  if (externalPalette) return externalPalette\n\n  if (harmony === \"monochrome\") {\n    return generateShades(baseColor, shadeCount)\n  }\n\n  return generateHarmony(baseColor, harmony)\n}, [baseColor, shadeCount, harmony, externalPalette])",
 
   "developmentFlow": [
     {
       "title": "Idea",
-      "description": "Crear una pequeña utilidad para generar paletas de color estructuradas."
+      "description": "Crear una herramienta para generar paletas de colores estructuradas."
     },
     {
-      "title": "Diseño del Algoritmo",
-      "description": "Desarrollar un algoritmo que genere tonalidades ajustando la luminosidad en HSL."
+      "title": "Algoritmo de Color",
+      "description": "Implementar generación de tonos basada en transformaciones HSL."
     },
     {
-      "title": "Diseño de la Interfaz",
-      "description": "Diseñar una cuadrícula responsiva para representar visualmente las paletas generadas."
+      "title": "Interacción de Paleta",
+      "description": "Construir tarjetas de color interactivas con funcionalidad de copia."
     },
     {
-      "title": "Interacción",
-      "description": "Implementar interacción mediante tooltip y funcionalidad de copiar al portapapeles."
+      "title": "Funciones Avanzadas",
+      "description": "Añadir generación de armonías, paletas aleatorias y utilidades de exportación."
     },
     {
-      "title": "Pruebas",
-      "description": "Verificar que la generación de colores y las interacciones funcionen correctamente en distintos dispositivos."
+      "title": "Herramientas de Diseño",
+      "description": "Integrar previsualización de UI y verificación de accesibilidad."
+    },
+    {
+      "title": "Integración de IA",
+      "description": "Permitir generación de paletas mediante prompts de IA."
+    },
+    {
+      "title": "Testing",
+      "description": "Validar interacciones, generación de paletas y cálculos de accesibilidad."
     }
   ],
 
   "lessons": [
-    "Gestionar la interacción de tooltips entre estados de hover y click.",
-    "Manejar conversiones de color entre formatos HEX, RGB y HSL.",
-    "Diseñar hooks reutilizables en React para la generación de paletas.",
-    "Gestionar correctamente el stacking context y el z-index en elementos posicionados."
+    "Diseñar componentes reutilizables para interfaces de herramientas.",
+    "Gestionar el estado de la paleta y paletas externas generadas.",
+    "Manejar conversiones entre formatos HEX, RGB y HSL.",
+    "Implementar verificación de accesibilidad mediante algoritmos de contraste.",
+    "Construir utilidades de exportación para CSS variables y Tailwind.",
+    "Integrar servicios de IA dentro de herramientas frontend."
   ],
 
   "nextSteps": [
-    "Generar armonías de color como paletas complementarias, triádicas y análogas.",
-    "Crear escalas de color similares al sistema de Tailwind.",
-    "Permitir exportar paletas como JSON o variables CSS.",
-    "Integrar recomendaciones de paletas basadas en IA según temas o estilos."
+    "Permitir bloqueo de colores como en herramientas profesionales.",
+    "Añadir historial de paletas y función de deshacer.",
+    "Permitir compartir paletas mediante URL.",
+    "Soportar importación de paletas desde imágenes.",
+    "Añadir atajos de teclado para explorar paletas más rápido."
   ]
 }
