@@ -23,7 +23,7 @@ export default function ColorCard({ hex, rgb, hsl }: Props) {
       onMouseLeave={() => setOpen(false)}
       className="
         relative
-        h-16 sm:h-20 md:h-24
+        h-24 sm:h-32 md:h-40 lg:h-56 xl:h-96
         cursor-pointer
         group
         transition-transform

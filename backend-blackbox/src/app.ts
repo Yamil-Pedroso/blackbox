@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import bookingAppRoutes from "./applications/booking-app/index";
+import aiPaletteRoutes from "./applications/ai/aiPalette.routes";
 export const app = express();
 
 const allowedOrigins = [
@@ -30,7 +31,7 @@ app.use(express.json());
 
 // 4️⃣ Routes
 app.use("/api", bookingAppRoutes);
-
+app.use("/api/ai", aiPaletteRoutes);
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });

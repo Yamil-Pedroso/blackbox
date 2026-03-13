@@ -1,15 +1,30 @@
 import { useState } from "react";
 import { contrastRatio } from "../../logic/contrastRatio";
+import { hslStringToValues } from "../../logic/convertColor";
+import { hslToRgb, rgbToHex } from "../../logic/colorFormat";
 
 type Props = {
   palette: string[];
 };
 
+function hslToHex(hsl: string) {
+  const values = hslStringToValues(hsl);
+  if (!values) return "#000000";
+
+  const rgb = hslToRgb(values.h, values.s, values.l);
+  const nums = rgb.match(/\d+/g)?.map(Number) || [0, 0, 0];
+
+  return rgbToHex(nums[0], nums[1], nums[2]);
+}
+
 export default function AccessibilityChecker({ palette }: Props) {
   const [bg, setBg] = useState(palette[0]);
   const [text, setText] = useState(palette[4]);
 
-  const ratio = contrastRatio(bg, text);
+  const bgHex = hslToHex(bg);
+  const textHex = hslToHex(text);
+
+  const ratio = contrastRatio(bgHex, textHex);
 
   let level = "Fail";
 
@@ -20,7 +35,7 @@ export default function AccessibilityChecker({ palette }: Props) {
     <div className="mt-16 space-y-4">
       <h2 className="text-2xl font-semibold">Accessibility Checker</h2>
 
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4">
         <select
           value={bg}
           onChange={(e) => setBg(e.target.value)}
@@ -46,13 +61,29 @@ export default function AccessibilityChecker({ palette }: Props) {
         </select>
       </div>
 
-      <div className="p-6 rounded-md" style={{ background: bg, color: text }}>
+      <div
+        className="p-6 rounded-md"
+        style={{ background: bgHex, color: textHex }}
+      >
         Example Text Preview
       </div>
 
       <p>Contrast Ratio: {ratio.toFixed(2)}</p>
 
-      <p>WCAG Level: {level}</p>
+      <div className="flex items-center gap-3">
+        <p>WCAG Level:</p>
+
+        <span
+          className={`
+      px-2 py-1 rounded text-xs font-semibold
+      ${level === "AAA" ? "bg-green-600 text-white" : ""}
+      ${level === "AA" ? "bg-yellow-500 text-black" : ""}
+      ${level === "Fail" ? "bg-red-600 text-white" : ""}
+    `}
+        >
+          {level}
+        </span>
+      </div>
     </div>
   );
 }
