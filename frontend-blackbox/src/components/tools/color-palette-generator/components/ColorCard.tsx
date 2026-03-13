@@ -24,10 +24,13 @@ export default function ColorCard({ hex, rgb, hsl }: Props) {
       className="
         relative
         aspect-square
-        h-24 sm:h-32 md:h-40 lg:h-56 xl:h-96
+        h-24 sm:h-32 md:h-40 lg:h-56 xl:h-96 w-20
         cursor-pointer
         group
         transition-transform
+        hover:scale-y-105
+        duration-300
+
       "
       style={{ background: hex }}
     >
@@ -49,7 +52,7 @@ export default function ColorCard({ hex, rgb, hsl }: Props) {
         `}
       >
         <div
-          className="cursor-pointer hover:text-primary hover:font-bold"
+          className="cursor-pointer hover:text-primary hover:font-bold flex items-center gap-2"
           onClick={() => copy(hex)}
         >
           {copied === hex ? "Copied!" : hex}

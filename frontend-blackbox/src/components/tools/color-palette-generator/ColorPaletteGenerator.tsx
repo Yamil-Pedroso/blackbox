@@ -39,9 +39,7 @@ export default function ColorPaletteGenerator() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
+      transition: { staggerChildren: 0.15 },
     },
   } as const;
 
@@ -50,10 +48,7 @@ export default function ColorPaletteGenerator() {
     show: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   } as const;
 
@@ -62,9 +57,10 @@ export default function ColorPaletteGenerator() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="h-screen bg-secondary-bg overflow-x-hidden overflow-y-auto"
+      className=" h-screen bg-secondary-bg overflow-x-hidden overflow-y-auto"
     >
-      <div className="max-w-425 mx-auto px-6 py-8 space-y-8">
+      <div className="max-w-375 mx-auto mt-6  space-y-6">
+        {/* Back */}
         <motion.div variants={item}>
           <Link
             to="/tools"
@@ -74,59 +70,86 @@ export default function ColorPaletteGenerator() {
           </Link>
         </motion.div>
 
-        <motion.h1
-          variants={item}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold"
-        >
-          CHROMITA
-        </motion.h1>
+        {/* Title */}
+        <motion.div variants={item} className="space-y-2">
+          <h1 className="text-5xl md:text-6xl font-bold">CHROMITA</h1>
+          <p className="text-neutral-400 text-sm">
+            Generate, customize and export beautiful color palettes.
+          </p>
+        </motion.div>
 
+        {/* Controls Panel */}
         <motion.div
           variants={item}
-          className="border border-neutral-800 px-6 py-4"
+          className="border border-neutral-800 rounded-xl p-6 space-y-6 bg-neutral-900/30 backdrop-blur"
         >
-          <div className="grid gap-4 lg:grid-cols-3">
-            <div className="flex flex-wrap gap-3 items-center">
-              <Tooltip text="Select a base color for the palette">
-                <ColorPicker value={baseColor} onChange={generatePalette} />
-              </Tooltip>
-              <Tooltip text="Change how many shades the palette contains">
-                <ShadeControl
-                  shadeCount={shadeCount}
-                  onChange={changeShadeCount}
-                />
-              </Tooltip>
-            </div>
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Palette Creation */}
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-widest text-neutral-500">
+                Create Palette
+              </p>
 
-            <div className="flex flex-wrap gap-3 items-center">
-              <HarmonySelector harmony={harmony} setHarmony={setHarmony} />
+              <div className="flex flex-wrap gap-3">
+                <Tooltip text="Generate a completely random palette">
+                  <RandomPalette onGenerate={generatePalette} />
+                </Tooltip>
 
-              <Tooltip text="Generate a completely random palette">
-                <RandomPalette onGenerate={generatePalette} />
-              </Tooltip>
-              <Tooltip text="Generate a palette using AI from a text prompt">
+                <Tooltip text="Select a base color for the palette">
+                  <ColorPicker value={baseColor} onChange={generatePalette} />
+                </Tooltip>
+
                 <AIPaletteGenerator setPalette={applyExternalPalette} />
-              </Tooltip>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-3 items-center lg:justify-end">
-              <Tooltip text="Copy the entire palette to clipboard">
-                <CopyPalette palette={palette} />
-              </Tooltip>
-              <Tooltip text="Export palette as CSS variables">
-                <ExportCSSVariables palette={palette} />
-              </Tooltip>
-              <Tooltip text="Export palette as Tailwind config">
-                <ExportTailwindPalette palette={palette} />
-              </Tooltip>
+            {/* Palette Controls */}
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-widest text-neutral-500">
+                Adjust Palette
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <HarmonySelector harmony={harmony} setHarmony={setHarmony} />
+
+                <Tooltip text="Change how many shades the palette contains">
+                  <ShadeControl
+                    shadeCount={shadeCount}
+                    onChange={changeShadeCount}
+                  />
+                </Tooltip>
+              </div>
+            </div>
+
+            {/* Export Actions */}
+            <div className="space-y-4 lg:text-right">
+              <p className="text-xs uppercase tracking-widest text-neutral-500">
+                Export
+              </p>
+
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <Tooltip text="Copy the entire palette to clipboard">
+                  <CopyPalette palette={palette} />
+                </Tooltip>
+
+                <Tooltip text="Export palette as CSS variables">
+                  <ExportCSSVariables palette={palette} />
+                </Tooltip>
+
+                <Tooltip text="Export palette as Tailwind config">
+                  <ExportTailwindPalette palette={palette} />
+                </Tooltip>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="mt-6">
+        {/* Palette */}
+        <motion.div variants={item} className="mx-auto">
           <PaletteGrid colors={palette} />
         </motion.div>
 
+        {/* Side Panel */}
         <ToolsSidePanel open={panelOpen}>
           <UIPreview palette={palette} />
           <AccessibilityChecker palette={palette} />

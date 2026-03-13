@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { exportCSSVariables } from "../logic/exportCSSVariables";
+import { CgExport } from "react-icons/cg";
+import { RiEmotionHappyLine } from "react-icons/ri";
 
 type Props = {
   palette: string[];
@@ -23,9 +25,12 @@ export default function ExportCSSVariables({ palette }: Props) {
   return (
     <button
       onClick={handleExport}
-      className="px-4 py-2 text-sm border border-neutral-700 hover:border-primary transition-colors"
+      className="px-4 py-2 text-sm border border-neutral-700 hover:border-primary transition-colors "
     >
-      {copied ? "Copied CSS!" : "Export CSS Variables"}
+      <div className="flex items-center gap-2">
+        {copied ? <RiEmotionHappyLine /> : <CgExport />}
+        {copied ? "Copied CSS!" : "Export"}{" "}
+      </div>
     </button>
   );
 }

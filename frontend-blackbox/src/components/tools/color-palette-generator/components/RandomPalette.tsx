@@ -13,7 +13,7 @@ export default function RandomPalette({ onGenerate }: Props) {
   return (
     <button
       onClick={handleRandom}
-      className="px-4 py-2 text-sm border border-neutral-700 hover:border-primary transition-colors"
+      className="px-4 py-2 text-sm border border-neutral-700 hover:border-primary transition-colors whitespace-nowrap"
     >
       Random Palette
     </button>
