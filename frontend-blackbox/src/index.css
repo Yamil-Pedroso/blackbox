@@ -120,11 +120,11 @@ body {
 }
 
 .loader {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   display: block;
-  margin: 15px auto;
+  margin: 8px auto;
   position: relative;
   background: #fff;
   box-shadow:

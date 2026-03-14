@@ -8,9 +8,13 @@ export default function ExtractPaletteButton({ onClick, loading }: Props) {
     <button
       onClick={onClick}
       disabled={loading}
-      className="px-4 py-2 border border-neutral-700 hover:border-primary transition-colors"
+      className={`px-4 py-2 transition-colors" ${
+        loading
+          ? "border-transparent hover:border-transparent"
+          : "border border-neutral-700 hover:border-primary"
+      }`}
     >
-      {loading ? "Extracting..." : "Extract Palette"}
+      {loading ? <span className="loader"></span> : "Extract Palette"}
     </button>
   );
 }

@@ -47,7 +47,7 @@ export default function ColorCard({ hex, rgb, hsl, index }: Props) {
         bg-secondary-bg text-white
         text-[10px] sm:text-xs
         font-ibm-plex-mono
-        px-4 py-2 space-y-1
+        p-4 space-y-1
         w-42
         shadow-lg
         border

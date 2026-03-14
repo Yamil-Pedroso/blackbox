@@ -42,7 +42,7 @@ export default function AIPaletteGenerator({ setPalette }: Props) {
         disabled={loading}
         className={` px-4 py-2 bg-transparent flex items-center justify-center w-40 transition ${
           loading
-            ? "border-transparent"
+            ? "border-transparent *:hover:border-transparent"
             : "border border-neutral-700 hover:border-primary"
         }`}
       >
