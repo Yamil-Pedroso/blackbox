@@ -1,4 +1,4 @@
-export function exportCSSVariables(palette: string[]) {
+export function copyCSSVariables(palette: string[]) {
   const steps = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
   const variables = palette

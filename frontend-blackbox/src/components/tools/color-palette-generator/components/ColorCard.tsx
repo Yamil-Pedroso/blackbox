@@ -33,7 +33,7 @@ export default function ColorCard({ hex, rgb, hsl, index }: Props) {
       className="
         relative
         aspect-square
-        h-24 sm:h-32 md:h-40 lg:h-56 xl:h-80 w-20
+        h-24 sm:h-32 md:h-40 lg:h-56 xl:h-80 w-25
         cursor-pointer
         group
         transition-transform

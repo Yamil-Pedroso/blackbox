@@ -5,8 +5,8 @@ import PaletteGrid from "./components/PaletteGrid";
 import { usePalette } from "./hooks/usePalette";
 import CopyPalette from "./components/CopyPalette";
 import ShadeControl from "./components/ShadeControl";
-import ExportCSSVariables from "./components/ExportCSSVariables";
-import ExportTailwindPalette from "./components/ExportTailwindPalette";
+import CopyCSSVariables from "./components/CopyCSSVariables";
+import CopyTailwindPalette from "./components/CopyTailwindPalette";
 import ExportPalettePNG from "./components/ExportPalettePNG";
 import ExportPaletteJSON from "./components/ExportPaletteJSON";
 import HarmonySelector from "./components/HarmonySelector";
@@ -40,7 +40,7 @@ export default function ColorPaletteGenerator() {
   useEffect(() => {
     const interval = setInterval(() => {
       setTitleGradient(getRandomGradient());
-    }, 60000); // 1 minute
+    }, 60000);
 
     return () => clearInterval(interval);
   }, []);
@@ -71,9 +71,9 @@ export default function ColorPaletteGenerator() {
       variants={container}
       initial="hidden"
       animate="show"
-      className=" h-screen bg-secondary-bg overflow-x-hidden overflow-y-auto"
+      className="h-screen bg-secondary-bg overflow-x-hidden overflow-y-auto px-10"
     >
-      <div className="max-w-375 mx-auto mt-6  space-y-6">
+      <div className=" max-w-375 mx-auto mt-6  space-y-6">
         {/* Back */}
         <motion.div variants={item}>
           <Link
@@ -85,7 +85,10 @@ export default function ColorPaletteGenerator() {
         </motion.div>
 
         {/* Title */}
-        <motion.div variants={item} className="space-y-2">
+        <motion.div
+          variants={item}
+          className="space-y-2 text-center xl:text-left"
+        >
           <h1
             className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent"
             style={{ backgroundImage: titleGradient }}
@@ -155,11 +158,11 @@ export default function ColorPaletteGenerator() {
                     </Tooltip>
 
                     <Tooltip text="Copy palette as CSS variables">
-                      <ExportCSSVariables palette={palette} />
+                      <CopyCSSVariables palette={palette} />
                     </Tooltip>
 
                     <Tooltip text="Copy palette as Tailwind config">
-                      <ExportTailwindPalette palette={palette} />
+                      <CopyTailwindPalette palette={palette} />
                     </Tooltip>
                   </div>
                 </div>
@@ -167,7 +170,7 @@ export default function ColorPaletteGenerator() {
 
               {/* Export Actions */}
               <div className="space-y-4 lg:text-right">
-                <p className="text-xs uppercase tracking-widest text-neutral-500">
+                <p className="text-xs text-right uppercase tracking-widest text-neutral-500">
                   Export
                 </p>
 
@@ -183,13 +186,16 @@ export default function ColorPaletteGenerator() {
               </div>
             </div>
           </motion.div>
-          <div className="flex justify-items-end">
+          <div className="flex justify-center">
             <ImagePaletteExtractor setPalette={applyExternalPalette} />
           </div>
         </div>
 
         {/* Palette */}
-        <motion.div variants={item} className="mx-auto">
+        <motion.div
+          variants={item}
+          className="flex justify-center xl:justify-start"
+        >
           <PaletteGrid colors={palette} />
         </motion.div>
 

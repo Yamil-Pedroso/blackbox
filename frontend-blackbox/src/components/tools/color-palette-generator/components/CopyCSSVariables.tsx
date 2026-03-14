@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { exportCSSVariables } from "../logic/exportCSSVariables";
+import { copyCSSVariables } from "../logic/copyCSSVariables";
 import { FaCopy } from "react-icons/fa";
 import { RiEmotionHappyLine } from "react-icons/ri";
 
@@ -7,11 +7,11 @@ type Props = {
   palette: string[];
 };
 
-export default function ExportCSSVariables({ palette }: Props) {
+export default function CopyCSSVariables({ palette }: Props) {
   const [copied, setCopied] = useState(false);
 
-  const handleExport = async () => {
-    const css = exportCSSVariables(palette);
+  const handleCopy = async () => {
+    const css = copyCSSVariables(palette);
 
     await navigator.clipboard.writeText(css);
 
@@ -24,7 +24,7 @@ export default function ExportCSSVariables({ palette }: Props) {
 
   return (
     <button
-      onClick={handleExport}
+      onClick={handleCopy}
       className="px-4 py-2 text-sm border border-neutral-700 hover:border-primary transition-colors "
     >
       <div className="flex items-center gap-2">
