@@ -2,16 +2,17 @@
   "label": {
     "home": "Hero Section",
     "tools": "Tools",
-    "ai": "Inteligence Layer",
+    "ai": "Intelligence Layer",
     "systems": "Backend Architecture",
     "experiments": "Research & Exploration",
     "miniGames": "Interactive Playground",
-    "uiux": "User Experience & Design"
+    "uiux": "User Experience & Design",
+    "webProjects": "FS Web Projects"
   },
   "hero": {
     "home": {
       "title": "Welcome to Blackbox",
-      "description": "A sandbox environment for rendering research, motion systems and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
+      "description": "A sandbox environment for rendering research, motion systems, design, full-stack development and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
     },
     "tools": {
       "title": "Applied Tools",
@@ -36,6 +37,10 @@
     "uiux": {
       "title": "User Experience & Design",
       "description": "Human centered interfaces, structured user flows and intentional interaction design. This section demonstrates experience architecture, motion logic and visual systems."
+    },
+    "webProjects": {
+      "title": "Full-Stack Web Projects",
+      "description": "A collection of full-stack web projects demonstrating various technologies and best practices. Each project showcases a different aspect of web development."
     }
   }
 }

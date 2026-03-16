@@ -5,7 +5,7 @@
     "description": "Eine Sandbox-Umgebung für Rendering-Forschung, Bewegungssysteme und interaktive Prototypen. Jedes Modul repräsentiert eine technische Dimension des Blackbox-Ökosystems."
   },
   "modulesLabel": "Blackbox Module",
-  "footer": "Blackbox ist eine sich entwickelnde Umgebung. Jedes Modul repräsentiert eine Dimension der Ingenieurskunst: Rendering, Architektur, Intelligenz, Interaktion und strukturierte Systeme.",
+  "footer": "Eine Sandbox-Umgebung zur Darstellung von Forschung, Motion-Systemen, Design, Full-Stack-Entwicklung und interaktiven Prototypen. Jedes Modul repräsentiert eine technische Dimension des Blackbox-Ökosystems.",
   "modules": {
     "tools": {
       "title": "Werkzeuge",
@@ -23,9 +23,13 @@
       "title": "Experimente",
       "description": "Rendering-Explorationen, Shader-Studien und fortgeschrittene Bewegungssysteme."
     },
-    "miniGames": {
-      "title": "Mini-Spiele",
-      "description": "Interaktive Mechaniken und Gameplay-Experimente auf Basis von WebGL und Unity."
+    "uiux": {
+      "title": "UI/UX",
+      "description": "Interface-Design, Mikro-Interaktionen und Benutzererfahrungsforschung."
+    },
+    "webProjects": {
+      "title": "FS Web Projekte",
+      "description": "Eine Sammlung von Webprojekten, die Full-Stack-Entwicklung, interaktives Design und kreatives Codieren zeigen."
     }
   }
 }

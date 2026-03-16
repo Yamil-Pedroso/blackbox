@@ -1,0 +1,113 @@
+{
+  "stackOverview": {
+    "title": "Technologie-Stack",
+    "items": [
+      {
+        "icon": "react",
+        "name": "React",
+        "description": "Moderne UI-Architektur mit wiederverwendbaren Komponenten und Hooks."
+      },
+      {
+        "icon": "typescript",
+        "name": "TypeScript",
+        "description": "Starke Typisierung für skalierbare und wartbare Codebasen."
+      },
+      {
+        "icon": "node",
+        "name": "Node.js",
+        "description": "Backend-APIs und Services entwickelt mit Express."
+      },
+      {
+        "icon": "postgresql",
+        "name": "PostgreSQL",
+        "description": "Relationale Datenmodellierung und optimierte Datenbankabfragen."
+      },
+      {
+        "icon": "api",
+        "name": "REST APIs",
+        "description": "Robuste Endpunkte für Full-Stack-Anwendungen."
+      },
+      {
+        "icon": "tailwind",
+        "name": "Tailwind",
+        "description": "Utility-First CSS-Framework für schnelle UI-Entwicklung."
+      }
+    ]
+  },
+
+  "engineeringFocus": {
+    "title": "Engineering-Fokus",
+    "items": [
+      {
+        "icon": "architecture",
+        "title": "Skalierbare Architektur",
+        "description": "Entwicklung modularer Full-Stack-Anwendungen, bei denen Frontend, Backend und Datenebene unabhängig weiterentwickelt werden können."
+      },
+      {
+        "icon": "code",
+        "title": "Sauberer Code",
+        "description": "Schreiben von wartbarem Code mit klaren Bezeichnungen, wiederverwendbaren Mustern und modularen Komponenten."
+      },
+      {
+        "icon": "performance",
+        "title": "Performance",
+        "description": "Optimierung von Rendering, API-Anfragen und Datenbankabfragen für schnelle Benutzererlebnisse."
+      },
+      {
+        "icon": "ux",
+        "title": "Benutzererfahrung",
+        "description": "Kombination aus technischer Präzision und durchdachtem Design für intuitive Benutzeroberflächen."
+      }
+    ]
+  },
+
+  "projectsGrid": {
+    "title": "Full-Stack-Projekte",
+    "buttons": {
+      "caseStudy": "Fallstudie",
+      "liveDemo": "Live-Demo"
+    },
+    "projects": [
+      {
+        "title": "Notion-ähnliche Anwendung",
+        "description": "Full-Stack-Produktivitätsplattform mit dynamischen Blöcken und kollaborativer Bearbeitung.",
+        "stack": ["React", "Node.js", "PostgreSQL"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/notion-app",
+        "demo": "https://demo-app.com"
+      },
+      {
+        "title": "KI-Buchleser",
+        "description": "Interaktiver Reader mit KI-Assistent, der Fragen zum Buchinhalt beantworten kann.",
+        "stack": ["React", "Supabase", "OpenAI"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/ai-reader",
+        "demo": "https://demo-ai-reader.com"
+      },
+      {
+        "title": "Snippet-Manager",
+        "description": "Tool für Entwickler zum Speichern und Organisieren wiederverwendbarer Code-Snippets.",
+        "stack": ["React", "MongoDB", "Express"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/snippets",
+        "demo": "https://demo-snippets.com"
+      },
+      {
+        "title": "Fitness- und Ernährungs-App",
+        "description": "Full-Stack-Anwendung zur Verwaltung von Trainingsplänen, Ernährung und Fortschrittsanalysen.",
+        "stack": ["React", "Node", "Postgres"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/fitness-app",
+        "demo": "https://demo-fitness.com"
+      },
+      {
+        "title": "Realtime-Chat-Plattform",
+        "description": "Chat-System in Echtzeit mit Authentifizierung und WebSocket-Messaging.",
+        "stack": ["React", "Node", "Socket.io"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/chat",
+        "demo": "https://demo-chat.com"
+      }
+    ]
+  }
+}

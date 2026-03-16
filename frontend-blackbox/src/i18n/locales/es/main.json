@@ -2,7 +2,7 @@
   "hero": {
     "label": "Sección Principal",
     "title": "Bienvenido a Blackbox",
-    "description": "Un entorno sandbox para investigación en rendering, sistemas de movimiento y prototipos interactivos. Cada módulo representa una dimensión técnica del ecosistema Blackbox."
+    "description": "Un entorno sandbox para mostrar investigación, sistemas de movimiento, diseño, desarrollo full-stack y prototipos interactivos. Cada módulo representa una dimensión técnica del ecosistema Blackbox."
   },
   "modulesLabel": "Módulos de Blackbox",
   "footer": "Blackbox es un entorno en evolución. Cada módulo representa una dimensión de la ingeniería: rendering, arquitectura, inteligencia, interacción y sistemas estructurados.",
@@ -23,9 +23,13 @@
       "title": "Experimentos",
       "description": "Exploraciones de rendering, estudios de shaders y sistemas avanzados de animación."
     },
-    "miniGames": {
-      "title": "Mini-Juegos",
-      "description": "Mecánicas interactivas y experimentos de gameplay basados en WebGL y Unity."
+    "uiux": {
+      "title": "UI/UX",
+      "description": "Diseño de interfaces, micro-interacciones e investigación de experiencia de usuario."
+    },
+    "webProjects": {
+      "title": "FS Proyectos Web",
+      "description": "Una colección de proyectos web que muestran desarrollo full-stack, diseño interactivo y codificación creativa."
     }
   }
 }

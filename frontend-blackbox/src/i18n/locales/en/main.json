@@ -2,7 +2,7 @@
   "hero": {
     "label": "Hero Section",
     "title": "Welcome to the Blackbox",
-    "description": "A sandbox environment for rendering research, motion systems and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
+    "description": "A sandbox environment for rendering research, motion systems, design, full-stack development and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
   },
   "modulesLabel": "Blackbox Modules",
   "footer": "Blackbox is an evolving environment. Each module represents a dimension of engineering: rendering, architecture, intelligence, interaction and structured systems.",
@@ -23,9 +23,13 @@
       "title": "Experiments",
       "description": "Rendering explorations, shader studies and advanced motion systems."
     },
-    "miniGames": {
-      "title": "Mini-Games",
-      "description": "Interactive mechanics and WebGL / Unity based gameplay experiments."
+    "uiux": {
+      "title": "UI/UX",
+      "description": "Interface design, micro-interactions and user experience research."
+    },
+    "webProjects": {
+      "title": "FS Web Projects",
+      "description": "A collection of web-based projects showcasing full-stack development, interactive design and creative coding."
     }
   }
 }

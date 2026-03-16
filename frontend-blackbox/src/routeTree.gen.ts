@@ -13,6 +13,7 @@ import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as MiniGamesRouteImport } from './routes/mini-games'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WebProjectsIndexRouteImport } from './routes/web-projects/index'
 import { Route as UiuxIndexRouteImport } from './routes/uiux/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
@@ -43,6 +44,11 @@ const AiRoute = AiRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebProjectsIndexRoute = WebProjectsIndexRouteImport.update({
+  id: '/web-projects/',
+  path: '/web-projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UiuxIndexRoute = UiuxIndexRouteImport.update({
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/experiments/': typeof ExperimentsIndexRoute
   '/tools/': typeof ToolsIndexRoute
   '/uiux/': typeof UiuxIndexRoute
+  '/web-projects/': typeof WebProjectsIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/experiments': typeof ExperimentsIndexRoute
   '/tools': typeof ToolsIndexRoute
   '/uiux': typeof UiuxIndexRoute
+  '/web-projects': typeof WebProjectsIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/experiments/': typeof ExperimentsIndexRoute
   '/tools/': typeof ToolsIndexRoute
   '/uiux/': typeof UiuxIndexRoute
+  '/web-projects/': typeof WebProjectsIndexRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/experiments/'
     | '/tools/'
     | '/uiux/'
+    | '/web-projects/'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/experiments'
     | '/tools'
     | '/uiux'
+    | '/web-projects'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/experiments/'
     | '/tools/'
     | '/uiux/'
+    | '/web-projects/'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -221,6 +233,7 @@ export interface RootRouteChildren {
   ExperimentsIndexRoute: typeof ExperimentsIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
   UiuxIndexRoute: typeof UiuxIndexRoute
+  WebProjectsIndexRoute: typeof WebProjectsIndexRoute
   ToolsSlugLaunchRoute: typeof ToolsSlugLaunchRoute
   ToolsSlugProcessRoute: typeof ToolsSlugProcessRoute
 }
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/web-projects/': {
+      id: '/web-projects/'
+      path: '/web-projects'
+      fullPath: '/web-projects/'
+      preLoaderRoute: typeof WebProjectsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/uiux/': {
@@ -379,6 +399,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExperimentsIndexRoute: ExperimentsIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
   UiuxIndexRoute: UiuxIndexRoute,
+  WebProjectsIndexRoute: WebProjectsIndexRoute,
   ToolsSlugLaunchRoute: ToolsSlugLaunchRoute,
   ToolsSlugProcessRoute: ToolsSlugProcessRoute,
 }

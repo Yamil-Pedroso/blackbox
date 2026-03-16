@@ -11,7 +11,9 @@ const modules = [
   { key: "ai", to: "/ai" },
   { key: "systems", to: "/systems" },
   { key: "experiments", to: "/experiments" },
-  { key: "miniGames", to: "/mini-games" },
+  { key: "uiux", to: "/uiux" },
+  { key: "webProjects", to: "/web-projects" },
+  /*{ key: "miniGames", to: "/mini-games" },*/
 ];
 
 const MainContent = () => {

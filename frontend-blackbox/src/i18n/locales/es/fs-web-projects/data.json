@@ -1,0 +1,113 @@
+{
+  "stackOverview": {
+    "title": "Tecnologías Utilizadas",
+    "items": [
+      {
+        "icon": "react",
+        "name": "React",
+        "description": "Arquitectura moderna de interfaces con componentes reutilizables y hooks."
+      },
+      {
+        "icon": "typescript",
+        "name": "TypeScript",
+        "description": "Tipado fuerte para bases de código escalables y mantenibles."
+      },
+      {
+        "icon": "node",
+        "name": "Node.js",
+        "description": "APIs y servicios backend desarrollados con Express."
+      },
+      {
+        "icon": "postgresql",
+        "name": "PostgreSQL",
+        "description": "Modelado de datos relacionales y consultas optimizadas."
+      },
+      {
+        "icon": "api",
+        "name": "APIs REST",
+        "description": "Endpoints robustos para aplicaciones full stack."
+      },
+      {
+        "icon": "tailwind",
+        "name": "Tailwind",
+        "description": "Framework de estilos utility-first para desarrollo rápido de interfaces."
+      }
+    ]
+  },
+
+  "engineeringFocus": {
+    "title": "Enfoque de Ingeniería",
+    "items": [
+      {
+        "icon": "architecture",
+        "title": "Arquitectura Escalable",
+        "description": "Diseño de aplicaciones full-stack modulares donde frontend, backend y capa de datos pueden evolucionar de forma independiente."
+      },
+      {
+        "icon": "code",
+        "title": "Código Limpio",
+        "description": "Escritura de código mantenible utilizando nombres claros, patrones reutilizables y componentes modulares."
+      },
+      {
+        "icon": "performance",
+        "title": "Rendimiento",
+        "description": "Optimización del renderizado, las solicitudes a APIs y las consultas a bases de datos para ofrecer experiencias rápidas."
+      },
+      {
+        "icon": "ux",
+        "title": "Experiencia de Usuario",
+        "description": "Combinación de precisión técnica con diseño cuidadoso para crear interfaces intuitivas."
+      }
+    ]
+  },
+
+  "projectsGrid": {
+    "title": "Proyectos Full Stack",
+    "buttons": {
+      "caseStudy": "Caso de Estudio",
+      "liveDemo": "Demo en Vivo"
+    },
+    "projects": [
+      {
+        "title": "Aplicación tipo Notion",
+        "description": "Plataforma de productividad full stack con bloques dinámicos y edición colaborativa.",
+        "stack": ["React", "Node.js", "PostgreSQL"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/notion-app",
+        "demo": "https://demo-app.com"
+      },
+      {
+        "title": "Lector de Libros con IA",
+        "description": "Lector interactivo con asistente de IA capaz de responder preguntas sobre el contenido del libro.",
+        "stack": ["React", "Supabase", "OpenAI"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/ai-reader",
+        "demo": "https://demo-ai-reader.com"
+      },
+      {
+        "title": "Gestor de Snippets",
+        "description": "Herramienta para desarrolladores para almacenar y organizar fragmentos de código reutilizables.",
+        "stack": ["React", "MongoDB", "Express"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/snippets",
+        "demo": "https://demo-snippets.com"
+      },
+      {
+        "title": "Aplicación de Fitness y Nutrición",
+        "description": "Aplicación full stack para seguimiento de entrenamientos, planes nutricionales y análisis de progreso.",
+        "stack": ["React", "Node", "Postgres"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/fitness-app",
+        "demo": "https://demo-fitness.com"
+      },
+      {
+        "title": "Plataforma de Chat en Tiempo Real",
+        "description": "Sistema de chat en tiempo real con autenticación y mensajería mediante WebSockets.",
+        "stack": ["React", "Node", "Socket.io"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/chat",
+        "demo": "https://demo-chat.com"
+      }
+    ]
+  }
+}

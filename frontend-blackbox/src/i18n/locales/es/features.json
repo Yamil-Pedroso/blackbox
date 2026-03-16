@@ -6,12 +6,13 @@
     "systems": "Arquitectura Backend",
     "experiments": "Investigación y Exploración",
     "miniGames": "Zona Interactiva",
-    "uiux": "Experiencia de Usuario y Diseño"
+    "uiux": "Experiencia de Usuario y Diseño",
+    "webProjects": "FS Proyectos Web"
   },
   "hero": {
     "home": {
       "title": "Bienvenido a Blackbox",
-      "description": "Un entorno tipo sandbox para investigación de renderizado, sistemas de movimiento y prototipos interactivos. Cada módulo representa una dimensión técnica del ecosistema Blackbox."
+      "description": "Un entorno sandbox para mostrar investigación, sistemas de movimiento, diseño, desarrollo full-stack y prototipos interactivos. Cada módulo representa una dimensión técnica del ecosistema Blackbox."
     },
     "tools": {
       "title": "Herramientas Aplicadas",
@@ -36,6 +37,10 @@
     "uiux": {
       "title": "Experiencia de Usuario y Diseño",
       "description": "Interfaces centradas en el ser humano, flujos de usuario estructurados y diseño de interacción intencional. Esta sección demuestra arquitectura de experiencia, lógica de movimiento y sistemas visuales."
+    },
+    "webProjects": {
+      "title": "Full-Stack Proyectos Web",
+      "description": "Una colección de proyectos web de full-stack que demuestran varias tecnologías y mejores prácticas. Cada proyecto muestra un aspecto diferente del desarrollo web."
     }
   }
 }

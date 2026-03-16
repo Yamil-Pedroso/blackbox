@@ -6,12 +6,13 @@
     "systems": "Backend-Architektur",
     "experiments": "Forschung & Exploration",
     "miniGames": "Interaktiver Spielbereich",
-    "uiux": "User Experience & Design"
+    "uiux": "User Experience & Design",
+    "webProjects": "FS Web Projekte"
   },
   "hero": {
     "home": {
       "title": "Willkommen bei Blackbox",
-      "description": "Eine Sandbox-Umgebung für Rendering-Forschung, Bewegungssysteme und interaktive Prototypen. Jedes Modul repräsentiert eine technische Dimension des Blackbox-Ökosystems."
+      "description": "Eine Sandbox-Umgebung zur Darstellung von Forschung, Motion-Systemen, Design, Full-Stack-Entwicklung und interaktiven Prototypen. Jedes Modul repräsentiert eine technische Dimension des Blackbox-Ökosystems."
     },
     "tools": {
       "title": "Angewandte Werkzeuge",
@@ -36,6 +37,10 @@
     "uiux": {
       "title": "User Experience & Design",
       "description": "Menschzentrierte Interfaces, strukturierte Nutzerflüsse und bewusst gestaltete Interaktionsdesigns. Dieser Bereich zeigt Experience-Architektur, Bewegungslogik und visuelle Systeme."
+    },
+    "webProjects": {
+      "title": "Full-Stack Web Projekte",
+      "description": "Eine Sammlung von Full-Stack-Webprojekten, die verschiedene Technologien und Best Practices demonstrieren. Jedes Projekt zeigt einen anderen Aspekt der Webentwicklung."
     }
   }
 }

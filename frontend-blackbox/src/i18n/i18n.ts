@@ -87,6 +87,11 @@ import uiux_en from "./locales/en/uiux.json";
 import uiux_es from "./locales/es/uiux.json";
 import uiux_de from "./locales/de/uiux.json";
 
+// Full stack projects data
+import fullStackData_en from "./locales/en/fs-web-projects/data.json";
+import fullStackData_es from "./locales/es/fs-web-projects/data.json";
+import fullStackData_de from "./locales/de/fs-web-projects/data.json";
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -110,6 +115,7 @@ i18n
         bookingSimulation: booking_en,
         bookingPlatform: booking_platform_en,
         uiux: uiux_en,
+        fullStackProjects: fullStackData_en,
       },
       es: {
         topNavbar: esTopNavbar,
@@ -129,6 +135,7 @@ i18n
         bookingSimulation: booking_es,
         bookingPlatform: booking_platform_es,
         uiux: uiux_es,
+        fullStackProjects: fullStackData_es,
       },
       de: {
         topNavbar: deTopNavbar,
@@ -148,6 +155,7 @@ i18n
         bookingSimulation: booking_de,
         bookingPlatform: booking_platform_de,
         uiux: uiux_de,
+        fullStackProjects: fullStackData_de,
       },
     },
     defaultNS: "main",

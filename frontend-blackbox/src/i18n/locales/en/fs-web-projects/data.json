@@ -1,0 +1,113 @@
+{
+  "stackOverview": {
+    "title": "Technology Stack",
+    "items": [
+      {
+        "icon": "react",
+        "name": "React",
+        "description": "Modern UI architecture with reusable components and hooks."
+      },
+      {
+        "icon": "typescript",
+        "name": "TypeScript",
+        "description": "Strong typing for scalable and maintainable codebases."
+      },
+      {
+        "icon": "node",
+        "name": "Node.js",
+        "description": "Backend APIs and services built with Express."
+      },
+      {
+        "icon": "postgresql",
+        "name": "PostgreSQL",
+        "description": "Relational data modeling and optimized queries."
+      },
+      {
+        "icon": "api",
+        "name": "REST APIs",
+        "description": "Robust backend endpoints for full stack apps."
+      },
+      {
+        "icon": "tailwind",
+        "name": "Tailwind",
+        "description": "Utility-first styling for fast UI development."
+      }
+    ]
+  },
+
+  "engineeringFocus": {
+    "title": "Engineering Focus",
+    "items": [
+      {
+        "icon": "architecture",
+        "title": "Scalable Architecture",
+        "description": "Designing modular full-stack applications where frontend, backend and data layers evolve independently."
+      },
+      {
+        "icon": "code",
+        "title": "Clean Code",
+        "description": "Writing maintainable code using clear naming, reusable patterns and modular components."
+      },
+      {
+        "icon": "performance",
+        "title": "Performance",
+        "description": "Optimizing rendering, API requests and database queries for responsive user experiences."
+      },
+      {
+        "icon": "ux",
+        "title": "User Experience",
+        "description": "Combining engineering precision with thoughtful design to build intuitive interfaces."
+      }
+    ]
+  },
+
+  "projectsGrid": {
+    "title": "Full Stack Projects",
+    "buttons": {
+      "caseStudy": "Case Study",
+      "liveDemo": "Live Demo"
+    },
+    "projects": [
+      {
+        "title": "Notion Style App",
+        "description": "Full stack productivity platform with dynamic blocks and collaborative editing.",
+        "stack": ["React", "Node.js", "PostgreSQL"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/notion-app",
+        "demo": "https://demo-app.com"
+      },
+      {
+        "title": "AI Book Reader",
+        "description": "Interactive book reader with AI assistant capable of answering questions about content.",
+        "stack": ["React", "Supabase", "OpenAI"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/ai-reader",
+        "demo": "https://demo-ai-reader.com"
+      },
+      {
+        "title": "Snippets Manager",
+        "description": "Developer platform to store and organize reusable code snippets.",
+        "stack": ["React", "MongoDB", "Express"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/snippets",
+        "demo": "https://demo-snippets.com"
+      },
+      {
+        "title": "Fitness & Nutrition App",
+        "description": "Full stack health tracker with workouts, nutrition plans and analytics.",
+        "stack": ["React", "Node", "Postgres"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/fitness-app",
+        "demo": "https://demo-fitness.com"
+      },
+      {
+        "title": "Realtime Chat Platform",
+        "description": "Realtime chat system with authentication and websocket messaging.",
+        "stack": ["React", "Node", "Socket.io"],
+        "image": "PROJECT_IMAGE",
+        "caseStudy": "/blackbox/projects/chat",
+        "demo": "https://demo-chat.com"
+      }
+    ]
+  }
+}
