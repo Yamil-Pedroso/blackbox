@@ -53,6 +53,11 @@ import regexVisualizerProcess_en from "./locales/en/tools/regexVisualizer/regexV
 import regexVisualizerProcess_es from "./locales/es/tools/regexVisualizer/regexVisualizerProcess.json";
 import regexVisualizerProcess_de from "./locales/de/tools/regexVisualizer/regexVisualizerProcess.json";
 
+// Accessibility Playground - Tool
+import accessibilityPlayground_en from "./locales/en/tools/accessibilityPlayground/accessibilityPlayground.json";
+import accessibilityPlayground_es from "./locales/es/tools/accessibilityPlayground/accessibilityPlayground.json";
+import accessibilityPlayground_de from "./locales/de/tools/accessibilityPlayground/accessibilityPlayground.json";
+
 // AI
 import ai_en from "./locales/en/ai.json";
 import ai_es from "./locales/es/ai.json";
@@ -108,6 +113,7 @@ i18n
         colorPaletteGeneratorProcess: colorPaletteGeneratorProcess_en,
         regexVisualizer: regexVisualizer_en,
         regexVisualizerProcess: regexVisualizerProcess_en,
+        accessibilityPlayground: accessibilityPlayground_en,
         ai: ai_en,
         systems: systems_en,
         experiments: exp_en,
@@ -128,6 +134,7 @@ i18n
         colorPaletteGeneratorProcess: colorPaletteGeneratorProcess_es,
         regexVisualizer: regexVisualizer_es,
         regexVisualizerProcess: regexVisualizerProcess_es,
+        accessibilityPlayground: accessibilityPlayground_es,
         ai: ai_es,
         systems: systems_es,
         experiments: exp_es,
@@ -148,6 +155,7 @@ i18n
         colorPaletteGeneratorProcess: colorPaletteGeneratorProcess_de,
         regexVisualizer: regexVisualizer_de,
         regexVisualizerProcess: regexVisualizerProcess_de,
+        accessibilityPlayground: accessibilityPlayground_de,
         ai: ai_de,
         systems: systems_de,
         experiments: exp_de,

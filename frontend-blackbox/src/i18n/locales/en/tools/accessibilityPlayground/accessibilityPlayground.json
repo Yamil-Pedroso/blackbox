@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "title": "Accessibility Playground (WCAG Concepts)",
+      "slug": "accessibility-playground",
+      "description": "Interactive laboratory to explore web accessibility concepts including keyboard navigation, screen readers, ARIA roles, focus management and WCAG principles.",
+      "stack": "React + TypeScript + TailwindCSS + ARIA",
+      "status": "planned",
+      "stage": "features",
+      "viewProcess": "View Process →",
+      "launch": "Launch Tool →"
+    }
+  ]
+}

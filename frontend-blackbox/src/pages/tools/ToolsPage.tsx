@@ -11,13 +11,17 @@ const ToolsPage = () => {
 
   const { t: tPalette } = useTranslation("colorPaletteGenerator");
   const { t: tRegex } = useTranslation("regexVisualizer");
+  const { t: tAccessibility } = useTranslation("accessibilityPlayground");
 
   const paletteTools = tPalette("items", {
     returnObjects: true,
   }) as ToolTypes[];
   const regexTools = tRegex("items", { returnObjects: true }) as ToolTypes[];
+  const accessibilityTools = tAccessibility("items", {
+    returnObjects: true,
+  }) as ToolTypes[];
 
-  const tools = [...paletteTools, ...regexTools];
+  const tools = [...paletteTools, ...regexTools, ...accessibilityTools];
 
   useGsapPageAnimation(
     containerRef as React.RefObject<HTMLDivElement>,
