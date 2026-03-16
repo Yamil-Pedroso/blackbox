@@ -1,70 +1,104 @@
 {
   "title": "Regex Visualizer",
-  "description": "A utility for visualizing how regular expressions work through interactive diagrams and live pattern testing.",
+  "description": "A developer utility for exploring, testing and understanding regular expressions through visualization, pattern explanation and live testing.",
 
-  "overview": "Regex Visualizer is a developer tool designed to help understand and debug regular expressions through visual representations. Instead of reading complex patterns line by line, developers can see how the regex engine interprets each token in a structured visual flow.",
+  "overview": "Regex Visualizer is a developer tool designed to help understand and debug regular expressions through visual representations, explanations and interactive testing. Instead of reading complex patterns line by line, developers can explore how the regex engine interprets each token and see matches highlighted directly in the text.",
 
-  "problem": "Regular expressions are powerful but notoriously difficult to read and debug. Many developers struggle to understand complex patterns, especially when expressions contain multiple groups, quantifiers and conditions.",
+  "problem": "Regular expressions are powerful but notoriously difficult to read, learn and debug. Developers often struggle to understand complex patterns, especially when expressions contain multiple groups, quantifiers and conditions. Without proper visualization tools, debugging regex patterns becomes slow and error-prone.",
 
-  "solution": "The tool parses a regular expression into individual tokens and converts them into a visual flow representation. Each part of the expression becomes a node in a diagram, helping developers understand how the pattern is interpreted and executed.",
+  "solution": "Regex Visualizer parses regular expressions into tokens, validates them, highlights matches in real time and provides a structured cheatsheet for quick reference. It combines visual diagrams, explanations and interactive testing so developers can experiment with regex patterns and immediately see how they behave.",
 
   "features": [
     {
       "title": "Regex Input",
-      "description": "Write or paste a regular expression to analyze and visualize."
+      "description": "Write or paste a regular expression to analyze and test."
+    },
+    {
+      "title": "Regex Validation",
+      "description": "Automatically detect invalid regex patterns and display meaningful error messages."
     },
     {
       "title": "Pattern Parser",
-      "description": "Break the regular expression into structured tokens and groups."
+      "description": "Break the regular expression into structured tokens that can be visualized."
     },
     {
       "title": "Visual Diagram",
-      "description": "Generate a visual flow that represents how the regex engine evaluates the pattern."
+      "description": "Display regex tokens as visual nodes to help developers understand pattern structure."
     },
     {
       "title": "Live Test Strings",
-      "description": "Test strings against the regex and see matching segments highlighted in real time."
+      "description": "Paste or write text to test against the regex pattern."
+    },
+    {
+      "title": "Match Highlighting",
+      "description": "Highlight matching segments directly inside the test text."
+    },
+    {
+      "title": "Match Counter",
+      "description": "Show the total number of matches detected in the input text."
+    },
+    {
+      "title": "Regex Explanation Panel",
+      "description": "Explain common regex tokens (\\d, \\w, quantifiers, etc.) to help users understand what each pattern means."
+    },
+    {
+      "title": "Regex Cheatsheet",
+      "description": "Provide a categorized cheatsheet of common regex patterns with explanations."
+    },
+    {
+      "title": "Insert Pattern from Cheatsheet",
+      "description": "Allow users to click a cheatsheet pattern and automatically insert it into the regex input."
+    },
+    {
+      "title": "Responsive Developer UI",
+      "description": "A responsive multi-column layout for exploring regex documentation while testing patterns."
     }
   ],
 
-  "architecture": "RegexVisualizer\n│\n├── RegexInput\n├── TestStringInput\n├── RegexDiagram\n│    └── RegexNode\n│\n├── useRegexParser (hook)\n│\n└── parseRegex (logic)",
+  "architecture": "RegexVisualizer\n│\n├── RegexInput\n├── TestStringInput\n├── MatchPreview\n├── RegexDiagram\n│    └── RegexNode\n├── RegexExplanation\n├── RegexCheatsheet\n│\n├── hooks\n│    ├── useRegexParser\n│    └── useRegexValidation\n│\n├── logic\n│    ├── parseRegex\n│    └── explainRegex\n│\n└── utils\n     └── highlightMatches",
 
   "implementation": "const tokens = regex.split(/(\\(|\\)|\\+|\\*|\\?|\\|)/)\n\nreturn tokens.map(token => ({ type: 'token', value: token }))",
 
   "developmentFlow": [
     {
       "title": "Idea",
-      "description": "Create a developer tool to visualize how regex patterns work."
+      "description": "Create a developer tool to visualize and experiment with regular expressions."
     },
     {
-      "title": "Parser Design",
+      "title": "Regex Parser",
       "description": "Build a parser that converts regex patterns into tokens."
     },
     {
-      "title": "Diagram System",
-      "description": "Design a node-based diagram to represent regex execution flow."
+      "title": "Live Testing",
+      "description": "Allow users to test regex patterns against arbitrary text input."
     },
     {
-      "title": "Interaction",
-      "description": "Allow users to test strings and highlight matches dynamically."
+      "title": "Visualization",
+      "description": "Render regex tokens visually to help developers understand pattern structure."
     },
     {
-      "title": "Testing",
-      "description": "Validate parsing accuracy and ensure correct visualization of patterns."
+      "title": "Documentation Layer",
+      "description": "Add a cheatsheet and explanation system to help users learn regex patterns."
     }
   ],
 
   "lessons": [
     "Understanding how regex engines process tokens sequentially.",
-    "Designing visual representations for abstract programming concepts.",
+    "Designing developer tools that combine documentation and experimentation.",
     "Building parser logic for pattern interpretation.",
-    "Managing interactive diagrams within a React UI."
+    "Managing interactive diagrams within a React UI.",
+    "Designing developer-focused UI patterns similar to playground tools."
   ],
 
   "nextSteps": [
-    "Support advanced regex features like lookaheads and lookbehinds.",
-    "Add step-by-step regex execution visualization.",
-    "Allow exporting diagrams as SVG.",
-    "Integrate regex explanation generated by AI."
+    "Support advanced regex features such as lookaheads, lookbehinds and named groups.",
+    "Add step-by-step regex execution visualization to show how the engine processes text.",
+    "Allow exporting diagrams as SVG or PNG for documentation.",
+    "Implement a regex match inspector showing match index, length and captured groups.",
+    "Add regex examples library (emails, URLs, dates, phone numbers, IDs).",
+    "Add copy-to-clipboard functionality for cheatsheet patterns.",
+    "Implement a regex builder UI that helps users construct patterns visually.",
+    "Integrate AI assistance to generate regex from natural language descriptions.",
+    "Add performance indicators for large text inputs and complex regex patterns."
   ]
 }

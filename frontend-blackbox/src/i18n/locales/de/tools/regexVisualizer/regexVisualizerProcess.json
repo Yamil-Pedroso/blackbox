@@ -1,70 +1,69 @@
 {
   "title": "Regex Visualizer",
-  "description": "Ein Tool zur Visualisierung der Funktionsweise von regulären Ausdrücken durch interaktive Diagramme und Live-Tests.",
+  "description": "Ein Entwickler-Tool zum Erkunden, Testen und Verstehen von regulären Ausdrücken durch Visualisierung, Mustererklärung und Live-Tests.",
 
-  "overview": "Regex Visualizer ist ein Entwicklerwerkzeug, das hilft, reguläre Ausdrücke durch visuelle Darstellungen besser zu verstehen und zu debuggen. Anstatt komplexe Muster Zeile für Zeile zu lesen, können Entwickler sehen, wie die Regex-Engine jedes Token interpretiert.",
+  "overview": "Regex Visualizer ist ein Entwicklerwerkzeug, das dabei hilft, reguläre Ausdrücke zu verstehen und zu debuggen. Anstatt komplexe Muster Zeile für Zeile zu lesen, können Entwickler sehen, wie die Regex-Engine jedes Token interpretiert und die Treffer direkt im Text hervorgehoben betrachten.",
 
-  "problem": "Reguläre Ausdrücke sind leistungsstark, aber schwer zu lesen und zu debuggen. Viele Entwickler haben Schwierigkeiten, komplexe Muster zu verstehen, insbesondere wenn sie mehrere Gruppen, Quantifizierer und Bedingungen enthalten.",
+  "problem": "Reguläre Ausdrücke sind sehr leistungsfähig, aber oft schwer zu lesen, zu lernen und zu debuggen. Viele Entwickler haben Schwierigkeiten, komplexe Muster zu verstehen, insbesondere wenn sie mehrere Gruppen, Quantifizierer oder Bedingungen enthalten. Ohne geeignete Visualisierungstools wird das Debuggen langsam und fehleranfällig.",
 
-  "solution": "Das Tool analysiert einen regulären Ausdruck und zerlegt ihn in einzelne Tokens. Diese Tokens werden anschließend in ein visuelles Flussdiagramm umgewandelt, sodass Entwickler nachvollziehen können, wie der Regex ausgeführt wird.",
+  "solution": "Regex Visualizer analysiert reguläre Ausdrücke in Tokens, validiert Muster, hebt Treffer in Echtzeit hervor und stellt eine strukturierte Regex-Referenz bereit. Durch visuelle Diagramme, Erklärungen und interaktive Tests können Entwickler mit Regex experimentieren und sofort sehen, wie sich ihre Muster verhalten.",
 
   "features": [
     {
       "title": "Regex Eingabe",
-      "description": "Schreibe oder füge einen regulären Ausdruck ein, um ihn zu analysieren."
+      "description": "Schreibe oder füge einen regulären Ausdruck ein, um ihn zu analysieren und zu testen."
+    },
+    {
+      "title": "Regex Validierung",
+      "description": "Erkennt automatisch ungültige Regex-Muster und zeigt Fehlermeldungen an."
     },
     {
       "title": "Pattern Parser",
-      "description": "Zerlegt den regulären Ausdruck in strukturierte Tokens und Gruppen."
+      "description": "Zerlegt den regulären Ausdruck in strukturierte Tokens zur Visualisierung."
     },
     {
       "title": "Visuelles Diagramm",
-      "description": "Erzeugt ein Diagramm, das zeigt, wie die Regex-Engine das Muster auswertet."
+      "description": "Zeigt Regex-Tokens als visuelle Knoten, um die Struktur des Musters zu verstehen."
     },
     {
-      "title": "Live String Tests",
-      "description": "Teste Texte gegen den Regex und sehe passende Segmente in Echtzeit."
+      "title": "Live Test Text",
+      "description": "Erlaubt das Einfügen oder Schreiben von Text, der gegen das Regex-Muster getestet wird."
+    },
+    {
+      "title": "Treffer Hervorhebung",
+      "description": "Markiert passende Segmente direkt im Text."
+    },
+    {
+      "title": "Trefferzähler",
+      "description": "Zeigt die Gesamtanzahl der gefundenen Treffer."
+    },
+    {
+      "title": "Regex Erklärungspanel",
+      "description": "Erklärt häufige Regex-Tokens wie \\d, \\w oder Quantifizierer."
+    },
+    {
+      "title": "Regex Cheatsheet",
+      "description": "Bietet eine kategorisierte Referenz für häufig verwendete Regex-Muster."
+    },
+    {
+      "title": "Pattern aus Cheatsheet Einfügen",
+      "description": "Erlaubt das Einfügen eines Patterns mit einem Klick in das Regex-Feld."
+    },
+    {
+      "title": "Responsive Entwickler-Oberfläche",
+      "description": "Responsives Layout mit mehreren Spalten für paralleles Testen und Lernen."
     }
-  ],
-
-  "architecture": "RegexVisualizer\n│\n├── RegexInput\n├── TestStringInput\n├── RegexDiagram\n│    └── RegexNode\n│\n├── useRegexParser (Hook)\n│\n└── parseRegex (Logik)",
-
-  "implementation": "const tokens = regex.split(/(\\(|\\)|\\+|\\*|\\?|\\|)/)\n\nreturn tokens.map(token => ({ type: 'token', value: token }))",
-
-  "developmentFlow": [
-    {
-      "title": "Idee",
-      "description": "Ein Tool entwickeln, um Regex-Muster visuell darzustellen."
-    },
-    {
-      "title": "Parser Design",
-      "description": "Einen Parser erstellen, der Regex-Muster in Tokens zerlegt."
-    },
-    {
-      "title": "Diagramm System",
-      "description": "Ein Node-basiertes Diagramm entwerfen, das den Regex-Fluss darstellt."
-    },
-    {
-      "title": "Interaktion",
-      "description": "Benutzern ermöglichen, Strings zu testen und Matches hervorzuheben."
-    },
-    {
-      "title": "Tests",
-      "description": "Sicherstellen, dass Parsing und Visualisierung korrekt funktionieren."
-    }
-  ],
-
-  "lessons": [
-    "Verstehen, wie Regex-Engines Tokens sequenziell verarbeiten.",
-    "Visuelle Darstellungen für abstrakte Programmierkonzepte entwickeln.",
-    "Parser-Logik für Pattern-Interpretation erstellen.",
-    "Interaktive Diagramme innerhalb einer React UI verwalten."
   ],
 
   "nextSteps": [
     "Unterstützung für fortgeschrittene Regex-Funktionen wie Lookaheads und Lookbehinds.",
     "Schrittweise Visualisierung der Regex-Ausführung hinzufügen.",
-    "Diagramme als SVG exportieren.",
-    "KI-generierte Erklärungen für Regex-Muster integrieren."
+    "Export der Diagramme als SVG oder PNG ermöglichen.",
+    "Match-Inspector implementieren (Index, Länge, Gruppen).",
+    "Bibliothek mit Regex-Beispielen hinzufügen (E-Mail, URL, Datum, Telefonnummer).",
+    "Copy-to-Clipboard Funktion für Patterns hinzufügen.",
+    "Visuellen Regex Builder entwickeln.",
+    "KI-Integration zur Generierung von Regex aus natürlicher Sprache.",
+    "Performance-Indikatoren für große Texte oder komplexe Regex hinzufügen."
   ]
 }
