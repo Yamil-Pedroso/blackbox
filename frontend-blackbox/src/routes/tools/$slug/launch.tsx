@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ColorPaletteGenerator from "../../../components/tools/color-palette-generator/ColorPaletteGenerator";
 import RegexVisualizer from "../../../components/tools/regex-visualizer/RegexVisualizer";
+import AccessibilityPlayground from "../../../components/tools/accessibility/AccessibilityPlayground";
 
 export const Route = createFileRoute("/tools/$slug/launch")({
   component: RouteComponent,
@@ -9,6 +10,7 @@ export const Route = createFileRoute("/tools/$slug/launch")({
 const toolRegistry: Record<string, React.FC> = {
   "color-palette-generator": ColorPaletteGenerator,
   "regex-visualizer": RegexVisualizer,
+  "accessibility-playground": AccessibilityPlayground,
 };
 
 function RouteComponent() {

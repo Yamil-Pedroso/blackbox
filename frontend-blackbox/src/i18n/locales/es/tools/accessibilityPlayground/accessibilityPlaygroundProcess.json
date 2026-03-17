@@ -1,0 +1,90 @@
+{
+  "title": "Accessibility Playground",
+  "description": "Un laboratorio interactivo para explorar conceptos de accesibilidad web, incluyendo WCAG, navegación por teclado, screen readers, roles ARIA y patrones de UI accesibles.",
+
+  "overview": "Accessibility Playground es un entorno interactivo diseñado para ayudar a desarrolladores a comprender y experimentar la accesibilidad web de forma práctica. En lugar de solo leer teoría, los usuarios pueden interactuar con ejemplos reales como navegación por teclado, gestión del foco, comportamiento de screen readers y validación de contraste de color. La herramienta está basada en los principios de WCAG y muestra cómo se comportan las interfaces accesibles en escenarios reales.",
+
+  "problem": "La accesibilidad suele ser mal entendida o ignorada durante el desarrollo. Muchos desarrolladores dependen demasiado del mouse, no utilizan HTML semántico correctamente y no consideran usuarios con discapacidades visuales, motoras o cognitivas. Como resultado, las interfaces se vuelven difíciles o imposibles de usar para muchas personas.",
+
+  "solution": "Accessibility Playground ofrece un entorno práctico donde los desarrolladores pueden probar y entender el comportamiento de la accesibilidad. A través de la interacción con componentes reales, los usuarios aprenden cómo funcionan la navegación por teclado, los atributos ARIA y las reglas de contraste, permitiendo crear aplicaciones accesibles que cumplen con los estándares WCAG.",
+
+  "features": [
+    {
+      "title": "Demo de Navegación por Teclado",
+      "description": "Prueba cómo los usuarios navegan usando TAB, SHIFT+TAB, ENTER y SPACE sin usar el mouse."
+    },
+    {
+      "title": "Ejemplos de Screen Reader",
+      "description": "Explora cómo los roles ARIA, labels y HTML semántico son interpretados por lectores de pantalla."
+    },
+    {
+      "title": "Gestión del Foco",
+      "description": "Modal interactivo que demuestra focus trapping y patrones accesibles."
+    },
+    {
+      "title": "Verificador de Contraste",
+      "description": "Evalúa combinaciones de colores y verifica cumplimiento con WCAG."
+    },
+    {
+      "title": "ARIA Playground",
+      "description": "Experimenta con atributos como aria-label, role y aria-live."
+    },
+    {
+      "title": "Componentes Accesibles",
+      "description": "Colección de componentes UI reutilizables con buenas prácticas de accesibilidad."
+    },
+    {
+      "title": "Pruebas de Interacción Real",
+      "description": "Simula escenarios reales de accesibilidad usando teclado y comportamientos asistivos."
+    }
+  ],
+
+  "architecture": "AccessibilityPlayground\n│\n├── Section\n│\n├── KeyboardNavigationDemo\n├── ScreenReaderDemo\n├── FocusTrapModal\n├── ContrastChecker\n├── ARIAPlayground\n│\n├── AccessibleButton\n├── AccessibleInput\n├── AccessibleModal\n│\n├── useFocusTrap\n├── useKeyboardNavigation\n│\n└── accessibilityUtils",
+
+  "implementation": "const sections = [...]",
+
+  "developmentFlow": [
+    {
+      "title": "Investigación",
+      "description": "Estudio de las guías WCAG y problemas comunes de accesibilidad."
+    },
+    {
+      "title": "Diseño del Concepto",
+      "description": "Diseñar un laboratorio interactivo para probar accesibilidad."
+    },
+    {
+      "title": "Demos Base",
+      "description": "Implementar navegación por teclado, screen readers y gestión del foco."
+    },
+    {
+      "title": "Herramientas de Accesibilidad",
+      "description": "Añadir verificación de contraste y herramientas ARIA."
+    },
+    {
+      "title": "Estructura UI",
+      "description": "Crear componentes reutilizables y modulares."
+    },
+    {
+      "title": "Testing",
+      "description": "Validar comportamiento con teclado y tecnologías asistivas."
+    }
+  ],
+
+  "lessons": [
+    "Comprender los principios WCAG aplicados a interfaces reales.",
+    "Implementar correctamente navegación por teclado y gestión del foco.",
+    "Uso efectivo de HTML semántico y ARIA.",
+    "Diseño de componentes accesibles desde cero.",
+    "Mejorar la usabilidad para distintos tipos de usuarios.",
+    "Construcción de herramientas educativas interactivas."
+  ],
+
+  "nextSteps": [
+    "Integrar análisis automático con axe-core.",
+    "Añadir un analizador de accesibilidad con IA.",
+    "Permitir analizar URLs externas.",
+    "Visualizar el flujo de foco dinámicamente.",
+    "Añadir formularios accesibles reales.",
+    "Modo de aprendizaje guiado."
+  ]
+}

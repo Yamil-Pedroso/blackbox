@@ -58,6 +58,11 @@ import accessibilityPlayground_en from "./locales/en/tools/accessibilityPlaygrou
 import accessibilityPlayground_es from "./locales/es/tools/accessibilityPlayground/accessibilityPlayground.json";
 import accessibilityPlayground_de from "./locales/de/tools/accessibilityPlayground/accessibilityPlayground.json";
 
+// Accessibility Playground - Process - Tool
+import accessibilityPlaygroundProcess_en from "./locales/en/tools/accessibilityPlayground/accessibilityPlaygroundProcess.json";
+import accessibilityPlaygroundProcess_es from "./locales/es/tools/accessibilityPlayground/accessibilityPlaygroundProcess.json";
+import accessibilityPlaygroundProcess_de from "./locales/de/tools/accessibilityPlayground/accessibilityPlaygroundProcess.json";
+
 // AI
 import ai_en from "./locales/en/ai.json";
 import ai_es from "./locales/es/ai.json";
@@ -114,6 +119,7 @@ i18n
         regexVisualizer: regexVisualizer_en,
         regexVisualizerProcess: regexVisualizerProcess_en,
         accessibilityPlayground: accessibilityPlayground_en,
+        accessibilityPlaygroundProcess: accessibilityPlaygroundProcess_en,
         ai: ai_en,
         systems: systems_en,
         experiments: exp_en,
@@ -135,6 +141,7 @@ i18n
         regexVisualizer: regexVisualizer_es,
         regexVisualizerProcess: regexVisualizerProcess_es,
         accessibilityPlayground: accessibilityPlayground_es,
+        accessibilityPlaygroundProcess: accessibilityPlaygroundProcess_es,
         ai: ai_es,
         systems: systems_es,
         experiments: exp_es,
@@ -156,6 +163,7 @@ i18n
         regexVisualizer: regexVisualizer_de,
         regexVisualizerProcess: regexVisualizerProcess_de,
         accessibilityPlayground: accessibilityPlayground_de,
+        accessibilityPlaygroundProcess: accessibilityPlaygroundProcess_de,
         ai: ai_de,
         systems: systems_de,
         experiments: exp_de,

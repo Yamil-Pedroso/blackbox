@@ -1,0 +1,90 @@
+{
+  "title": "Accessibility Playground",
+  "description": "An interactive lab for exploring web accessibility concepts, including WCAG guidelines, keyboard navigation, screen readers, ARIA roles and UI accessibility patterns.",
+
+  "overview": "Accessibility Playground is an interactive environment designed to help developers understand and experiment with web accessibility in a practical way. Instead of only reading about accessibility, users can directly interact with real examples such as keyboard navigation, focus management, screen reader behavior and color contrast validation. The tool is built around WCAG principles and demonstrates how accessible interfaces behave in real-world scenarios.",
+
+  "problem": "Accessibility is often misunderstood or ignored during development. Many developers rely heavily on mouse interactions, overlook semantic HTML and fail to consider users with visual, motor or cognitive impairments. As a result, interfaces become difficult or impossible to use for a significant number of people.",
+
+  "solution": "The Accessibility Playground provides a hands-on environment where developers can test and understand accessibility behaviors. By interacting with real UI components and observing how keyboard navigation, ARIA attributes and contrast rules work, users can learn how to build accessible applications that follow WCAG standards.",
+
+  "features": [
+    {
+      "title": "Keyboard Navigation Demo",
+      "description": "Test how users navigate interfaces using TAB, SHIFT+TAB, ENTER and SPACE without a mouse."
+    },
+    {
+      "title": "Screen Reader Examples",
+      "description": "Explore how ARIA roles, labels and semantic HTML are interpreted by screen readers."
+    },
+    {
+      "title": "Focus Management",
+      "description": "Interactive modal demonstrating focus trapping and keyboard accessibility patterns."
+    },
+    {
+      "title": "Color Contrast Checker",
+      "description": "Evaluate color combinations and verify WCAG contrast compliance."
+    },
+    {
+      "title": "ARIA Playground",
+      "description": "Experiment with accessibility attributes such as aria-label, role and aria-live."
+    },
+    {
+      "title": "Accessible Components",
+      "description": "Collection of reusable UI components built following accessibility best practices."
+    },
+    {
+      "title": "Real Interaction Testing",
+      "description": "Simulate real accessibility scenarios using keyboard and assistive behaviors."
+    }
+  ],
+
+  "architecture": "AccessibilityPlayground\n│\n├── Section (wrapper component)\n│\n├── KeyboardNavigationDemo\n├── ScreenReaderDemo\n├── FocusTrapModal\n├── ContrastChecker\n├── ARIAPlayground\n│\n├── AccessibleButton\n├── AccessibleInput\n├── AccessibleModal\n│\n├── useFocusTrap (custom hook)\n├── useKeyboardNavigation (custom hook)\n│\n└── accessibilityUtils (contrast + aria helpers)",
+
+  "implementation": "const sections = [\n  {\n    title: \"Keyboard Navigation\",\n    component: KeyboardNavigationDemo\n  },\n  {\n    title: \"Screen Reader\",\n    component: ScreenReaderDemo\n  }\n]\n\nreturn (\n  <div>\n    {sections.map((section, i) => {\n      const Component = section.component\n      return <Component key={i} />\n    })}\n  </div>\n)",
+
+  "developmentFlow": [
+    {
+      "title": "Research",
+      "description": "Study WCAG guidelines and identify common accessibility issues in modern web apps."
+    },
+    {
+      "title": "Concept Design",
+      "description": "Design an interactive lab where users can test accessibility concepts in real time."
+    },
+    {
+      "title": "Core Demos",
+      "description": "Implement keyboard navigation, screen reader and focus management examples."
+    },
+    {
+      "title": "Accessibility Tools",
+      "description": "Add utilities such as contrast checking and ARIA experimentation."
+    },
+    {
+      "title": "UI Structuring",
+      "description": "Create reusable sections and modular components for scalability."
+    },
+    {
+      "title": "Testing",
+      "description": "Validate accessibility behaviors using keyboard and assistive technologies."
+    }
+  ],
+
+  "lessons": [
+    "Understanding WCAG principles and how they apply to real interfaces.",
+    "Implementing keyboard navigation and focus management correctly.",
+    "Using semantic HTML and ARIA attributes effectively.",
+    "Designing accessible UI components from scratch.",
+    "Improving usability for users with different types of impairments.",
+    "Building interactive educational tools for developers."
+  ],
+
+  "nextSteps": [
+    "Integrate automated accessibility testing using axe-core.",
+    "Add an AI-powered accessibility analyzer for HTML and components.",
+    "Support testing external URLs for accessibility issues.",
+    "Visualize focus flow and tab order dynamically.",
+    "Add more real-world UI patterns such as forms and navigation menus.",
+    "Create a guided learning mode for accessibility concepts."
+  ]
+}

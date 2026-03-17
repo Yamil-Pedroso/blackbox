@@ -1,0 +1,88 @@
+{
+  "title": "Accessibility Playground",
+  "description": "Ein interaktives Labor zur Erforschung von Web-Accessibility, einschließlich WCAG, Tastaturnavigation, Screenreadern, ARIA-Rollen und zugänglichen UI-Mustern.",
+
+  "overview": "Accessibility Playground ist eine interaktive Umgebung, die Entwicklern hilft, Web-Accessibility praktisch zu verstehen. Anstatt nur Theorie zu lesen, können Nutzer echte Beispiele testen, wie Tastaturnavigation, Fokusmanagement, Screenreader-Verhalten und Farbkontrast. Die Anwendung basiert auf WCAG-Prinzipien und zeigt, wie barrierefreie Interfaces in der Praxis funktionieren.",
+
+  "problem": "Accessibility wird oft missverstanden oder ignoriert. Viele Entwickler verlassen sich zu stark auf Mausinteraktionen, verwenden kein semantisches HTML und berücksichtigen Nutzer mit visuellen, motorischen oder kognitiven Einschränkungen nicht. Dadurch entstehen schwer zugängliche Interfaces.",
+
+  "solution": "Das Accessibility Playground bietet eine praktische Umgebung, in der Entwickler Accessibility-Verhalten testen können. Durch interaktive Komponenten lernen Nutzer, wie Tastaturnavigation, ARIA-Attribute und Kontrastregeln funktionieren, um barrierefreie Anwendungen gemäß WCAG zu entwickeln.",
+
+  "features": [
+    {
+      "title": "Tastaturnavigation Demo",
+      "description": "Teste Navigation mit TAB, SHIFT+TAB, ENTER und SPACE ohne Maus."
+    },
+    {
+      "title": "Screenreader Beispiele",
+      "description": "Zeigt, wie ARIA-Rollen und semantisches HTML interpretiert werden."
+    },
+    {
+      "title": "Fokusmanagement",
+      "description": "Interaktives Modal mit Fokus-Trapping und Tastatursteuerung."
+    },
+    {
+      "title": "Farbkontrast Prüfer",
+      "description": "Überprüft Farbkontraste nach WCAG-Richtlinien."
+    },
+    {
+      "title": "ARIA Playground",
+      "description": "Experimentiere mit aria-label, role und aria-live."
+    },
+    {
+      "title": "Barrierefreie Komponenten",
+      "description": "Wiederverwendbare UI-Komponenten nach Accessibility Best Practices."
+    },
+    {
+      "title": "Interaktive Tests",
+      "description": "Simuliert reale Accessibility-Szenarien."
+    }
+  ],
+
+  "architecture": "AccessibilityPlayground\n├── Section\n├── KeyboardNavigationDemo\n├── ScreenReaderDemo\n├── FocusTrapModal\n├── ContrastChecker\n├── ARIAPlayground",
+
+  "implementation": "const sections = [...]",
+
+  "developmentFlow": [
+    {
+      "title": "Recherche",
+      "description": "Analyse von WCAG-Richtlinien und typischen Problemen."
+    },
+    {
+      "title": "Konzept",
+      "description": "Design eines interaktiven Labs."
+    },
+    {
+      "title": "Grundfunktionen",
+      "description": "Implementierung von Navigation und Fokus."
+    },
+    {
+      "title": "Tools",
+      "description": "Kontrastprüfung und ARIA Features."
+    },
+    {
+      "title": "UI Struktur",
+      "description": "Modulare Komponenten erstellen."
+    },
+    {
+      "title": "Tests",
+      "description": "Validierung mit Tastatur und Screenreadern."
+    }
+  ],
+
+  "lessons": [
+    "WCAG-Prinzipien praktisch verstehen.",
+    "Tastaturnavigation korrekt implementieren.",
+    "Semantisches HTML und ARIA effektiv nutzen.",
+    "Barrierefreie UI-Komponenten entwickeln.",
+    "Usability für verschiedene Nutzer verbessern."
+  ],
+
+  "nextSteps": [
+    "Integration von axe-core.",
+    "KI-basierte Accessibility Analyse.",
+    "Externe Webseiten analysieren.",
+    "Fokusfluss visualisieren.",
+    "Mehr reale UI-Beispiele hinzufügen."
+  ]
+}

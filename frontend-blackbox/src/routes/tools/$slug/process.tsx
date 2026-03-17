@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ColorPaletteGeratorCaseStudy from "../../../components/tools/color-palette-generator/ColorPaletteGeneratorCaseStudy";
 import RegexVisualizerCaseStudy from "../../../components/tools/regex-visualizer/RegexVisualizerCaseStudy";
+import AccessibilityPlaygroundCaseStudy from "../../../components/tools/accessibility/AccessibilityPlaygroundCaseStudy";
 
 export const Route = createFileRoute("/tools/$slug/process")({
   component: RouteComponent,
@@ -9,6 +10,7 @@ export const Route = createFileRoute("/tools/$slug/process")({
 const processRegistry: Record<string, React.FC> = {
   "color-palette-generator": ColorPaletteGeratorCaseStudy,
   "regex-visualizer": RegexVisualizerCaseStudy,
+  "accessibility-playground": AccessibilityPlaygroundCaseStudy,
 };
 
 function RouteComponent() {

@@ -18,7 +18,6 @@ import ToolsSidePanel from "./components/sidepanel/ToolsSidePanel";
 import SidePanelToggle from "./components/sidepanel/SidePanelToggle";
 import ImagePaletteExtractor from "./components/image-palette/ImagePaletteExtractor";
 import { getRandomGradient } from "./hooks/useRandomGradient";
-
 import Tooltip from "./components/ui/Tooltip";
 import { motion } from "framer-motion";
 
