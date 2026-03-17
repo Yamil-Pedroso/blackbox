@@ -63,7 +63,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               <div className="text-xs text-green-500/60">● Status: Active</div>
             </div>
           ),
-          { duration: 20000 },
+          { duration: 6000 },
         );
 
         hasShownGlobalToast.current = true;
