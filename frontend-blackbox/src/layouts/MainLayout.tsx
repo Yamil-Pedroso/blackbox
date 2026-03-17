@@ -4,6 +4,7 @@ import TopNavbar from "./TopNavbar";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
 import { Toaster, toast } from "sonner";
+import { FaGear } from "react-icons/fa6";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -50,11 +51,19 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               <div className="flex gap-2 text-green-300">
                 🧠 <span className="uppercase">Blackbox System</span>
               </div>
-              <div>⚙️ Building new tools and experiments...</div>
+              <div className="flex text-green-500">
+                <div>
+                  <FaGear
+                    className="inline-block animate-spin"
+                    style={{ animationDuration: "5s" }}
+                  />
+                </div>
+                <p className="mx-2">Building new tools and experiments...</p>
+              </div>
               <div className="text-xs text-green-500/60">● Status: Active</div>
             </div>
           ),
-          { duration: 50000 },
+          { duration: 20000 },
         );
 
         hasShownGlobalToast.current = true;
