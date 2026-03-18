@@ -12,7 +12,7 @@ const StackOverview = () => {
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold">{t("stackOverviewTitle")}</h2>
+      <h2 className="text-xl font-semibold">{t("stackOverview.title")}</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {stack.map((item, index) => (
@@ -21,6 +21,7 @@ const StackOverview = () => {
             title={item.name}
             icon={iconsMap[item.icon]}
             description={item.description}
+            className=""
           />
         ))}
       </div>

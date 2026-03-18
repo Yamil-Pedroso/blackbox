@@ -69,44 +69,12 @@
     },
     "projects": [
       {
-        "title": "Aplicación tipo Notion",
-        "description": "Plataforma de productividad full stack con bloques dinámicos y edición colaborativa.",
-        "stack": ["React", "Node.js", "PostgreSQL"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/notion-app",
-        "demo": "https://demo-app.com"
-      },
-      {
-        "title": "Lector de Libros con IA",
-        "description": "Lector interactivo con asistente de IA capaz de responder preguntas sobre el contenido del libro.",
-        "stack": ["React", "Supabase", "OpenAI"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/ai-reader",
-        "demo": "https://demo-ai-reader.com"
-      },
-      {
-        "title": "Gestor de Snippets",
-        "description": "Herramienta para desarrolladores para almacenar y organizar fragmentos de código reutilizables.",
-        "stack": ["React", "MongoDB", "Express"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/snippets",
-        "demo": "https://demo-snippets.com"
-      },
-      {
-        "title": "Aplicación de Fitness y Nutrición",
+        "title": "Fitboard",
         "description": "Aplicación full stack para seguimiento de entrenamientos, planes nutricionales y análisis de progreso.",
-        "stack": ["React", "Node", "Postgres"],
-        "image": "PROJECT_IMAGE",
+        "stack": ["React", "TypeScript", "Node", "Postgres"],
+        "image": "./images/fs-web-projects/fit_nut.webp",
         "caseStudy": "/blackbox/projects/fitness-app",
-        "demo": "https://demo-fitness.com"
-      },
-      {
-        "title": "Plataforma de Chat en Tiempo Real",
-        "description": "Sistema de chat en tiempo real con autenticación y mensajería mediante WebSockets.",
-        "stack": ["React", "Node", "Socket.io"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/chat",
-        "demo": "https://demo-chat.com"
+        "demo": "https://fitboard-six.vercel.app/"
       }
     ]
   }

@@ -69,44 +69,12 @@
     },
     "projects": [
       {
-        "title": "Notion-ähnliche Anwendung",
-        "description": "Full-Stack-Produktivitätsplattform mit dynamischen Blöcken und kollaborativer Bearbeitung.",
-        "stack": ["React", "Node.js", "PostgreSQL"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/notion-app",
-        "demo": "https://demo-app.com"
-      },
-      {
-        "title": "KI-Buchleser",
-        "description": "Interaktiver Reader mit KI-Assistent, der Fragen zum Buchinhalt beantworten kann.",
-        "stack": ["React", "Supabase", "OpenAI"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/ai-reader",
-        "demo": "https://demo-ai-reader.com"
-      },
-      {
-        "title": "Snippet-Manager",
-        "description": "Tool für Entwickler zum Speichern und Organisieren wiederverwendbarer Code-Snippets.",
-        "stack": ["React", "MongoDB", "Express"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/snippets",
-        "demo": "https://demo-snippets.com"
-      },
-      {
-        "title": "Fitness- und Ernährungs-App",
+        "title": "Fitboard",
         "description": "Full-Stack-Anwendung zur Verwaltung von Trainingsplänen, Ernährung und Fortschrittsanalysen.",
-        "stack": ["React", "Node", "Postgres"],
-        "image": "PROJECT_IMAGE",
+        "stack": ["React", "TypeScript", "Node", "Postgres"],
+        "image": "./images/fs-web-projects/fit_nut.webp",
         "caseStudy": "/blackbox/projects/fitness-app",
-        "demo": "https://demo-fitness.com"
-      },
-      {
-        "title": "Realtime-Chat-Plattform",
-        "description": "Chat-System in Echtzeit mit Authentifizierung und WebSocket-Messaging.",
-        "stack": ["React", "Node", "Socket.io"],
-        "image": "PROJECT_IMAGE",
-        "caseStudy": "/blackbox/projects/chat",
-        "demo": "https://demo-chat.com"
+        "demo": "https://fitboard-six.vercel.app/"
       }
     ]
   }

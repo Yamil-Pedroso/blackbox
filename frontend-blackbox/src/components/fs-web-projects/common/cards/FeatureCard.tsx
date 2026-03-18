@@ -2,13 +2,11 @@ interface FeatureCardProps {
   icon?: React.ReactNode;
   title: string;
   description?: string;
-
   image?: string;
   tags?: string[];
-
   width?: string;
   height?: string;
-
+  className?: string;
   children?: React.ReactNode;
 }
 
@@ -20,14 +18,15 @@ const FeatureCard = ({
   tags,
   width = "w-full",
   height = "h-auto",
+  className = "",
   children,
 }: FeatureCardProps) => {
   return (
     <div
-      className={`border border-zinc-700 rounded-xl bg-zinc-900/40 hover:bg-zinc-900/70 transition overflow-hidden ${width} ${height}`}
+      className={`border border-zinc-700 rounded-xl bg-zinc-900/40 hover:bg-zinc-900/70 transition overflow-hidden ${width} ${height} ${className}`}
     >
       {image && (
-        <div className="h-40 bg-linear-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-zinc-500 text-sm">
+        <div className="h-70 bg-linear-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-zinc-500 text-sm">
           {image ? (
             <img
               src={image}

@@ -6,12 +6,10 @@ import {
   FaExternalLinkAlt,
   FaBookOpen,
 } from "react-icons/fa";
+import Tooltip from "./ui/Tooltip";
 
 import FeatureCard from "./common/cards/FeatureCard";
 import type { Project } from "./types/fsWebProjects.types";
-
-const PROJECT_IMAGE =
-  "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2240&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -41,7 +39,7 @@ const ProjectsGrid = () => {
   return (
     <section className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">{t("projectsGridTitle")}</h2>
+        <h2 className="text-xl font-semibold">{t("projectsGrid.title")}</h2>
 
         {totalPages > 1 && (
           <div className="flex gap-2">
@@ -64,8 +62,7 @@ const ProjectsGrid = () => {
 
       <div className="grid md:grid-cols-2 gap-6">
         {visibleProjects.map((project, index) => {
-          const image =
-            project.image === "PROJECT_IMAGE" ? PROJECT_IMAGE : project.image;
+          const image = project.image;
 
           return (
             <FeatureCard
@@ -77,13 +74,18 @@ const ProjectsGrid = () => {
             >
               <div className="flex gap-3 pt-3">
                 {project.caseStudy && (
-                  <a
-                    href={project.caseStudy}
-                    className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-zinc-800 hover:bg-zinc-700 transition"
+                  <Tooltip
+                    className="bg-secondary-bg border border-green"
+                    text="Pending"
                   >
-                    <FaBookOpen />
-                    {t("caseStudy")}
-                  </a>
+                    <a
+                      href={project.caseStudy}
+                      className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-zinc-800 hover:bg-zinc-700 transition cursor-not-allowed pointer-events-none"
+                    >
+                      <FaBookOpen />
+                      {t("projectsGrid.buttons.caseStudy")}
+                    </a>
+                  </Tooltip>
                 )}
 
                 {project.demo && (
@@ -91,10 +93,10 @@ const ProjectsGrid = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-blue-600 hover:bg-blue-500 transition"
+                    className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-green-700 hover:bg-green-600 transition"
                   >
                     <FaExternalLinkAlt />
-                    {t("liveDemo")}
+                    {t("projectsGrid.buttons.liveDemo")}
                   </a>
                 )}
               </div>
