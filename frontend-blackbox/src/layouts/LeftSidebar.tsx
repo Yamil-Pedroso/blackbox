@@ -25,7 +25,6 @@ const LeftSidebar = () => {
 
   return (
     <aside className="border-r border-neutral-800 bg-secondary-bg hidden large:flex flex-col h-screen px-8 py-10">
-      {/* Profile Header */}
       <div className="flex items-center gap-4">
         <div className="w-12.5 h-12.5 bg-neutral-700 flex items-center justify-center overflow-hidden">
           <img
@@ -45,13 +44,11 @@ const LeftSidebar = () => {
         </div>
       </div>
 
-      {/* Content */}
       <div className="mt-12 flex flex-col gap-12">
         <p className="font-ibm-plex-mono text-secondary text-[14px] leading-relaxed">
           {t("profile.description")}
         </p>
 
-        {/* Info List */}
         <nav>
           <ul className="space-y-4">
             {defaultInfoItems.map((item) => (
@@ -74,7 +71,6 @@ const LeftSidebar = () => {
           </ul>
         </nav>
 
-        {/* Status Section */}
         <div className="border-t border-neutral-800 pt-6">
           <h3 className="font-ibm-plex-mono text-secondary text-[12px] uppercase tracking-widest mb-4">
             {t("status.title")}
@@ -99,7 +95,6 @@ const LeftSidebar = () => {
         </div>
       </div>
 
-      {/* Bottom Buttons */}
       <div className="mt-auto pt-6 border-t border-neutral-800 flex flex-col gap-4 mb-3.5">
         <Button
           className="bg-white text-tertiary w-full text-[13px]"
