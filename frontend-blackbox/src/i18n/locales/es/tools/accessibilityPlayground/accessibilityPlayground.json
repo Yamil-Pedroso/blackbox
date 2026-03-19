@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "title": "Laboratorio de Accesibilidad (Conceptos WCAG)",
+      "title": "Accesibilidad DOCU (Conceptos WCAG)",
       "slug": "accessibility-playground",
       "description": "Laboratorio interactivo para explorar conceptos de accesibilidad web incluyendo navegación por teclado, lectores de pantalla, roles ARIA, gestión del foco y principios WCAG.",
       "stack": "React + TypeScript + TailwindCSS + ARIA",

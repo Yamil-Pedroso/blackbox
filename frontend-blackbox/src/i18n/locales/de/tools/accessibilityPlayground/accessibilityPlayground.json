@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "title": "Barrierefreiheits-Labor (WCAG-Konzepte)",
+      "title": "Barrierefreiheits-DOCU (WCAG-Konzepte)",
       "slug": "accessibility-playground",
       "description": "Interaktives Labor zur Erforschung von Web-Accessibility-Konzepten, einschließlich Tastaturnavigation, Screenreadern, ARIA-Rollen, Fokusverwaltung und WCAG-Prinzipien.",
       "stack": "React + TypeScript + TailwindCSS + ARIA",
