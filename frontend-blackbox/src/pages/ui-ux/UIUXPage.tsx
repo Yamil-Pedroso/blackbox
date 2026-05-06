@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
 import FeatureHeader from "../../components/common/header/FeatureHeader";
 import MagnetBtn from "@/components/ui-ux/MagnetBtn";
+import assets from "../../assets";
 
 interface DesignPrinciple {
   title: string;
@@ -107,11 +108,13 @@ const UIUXPage = () => {
             <div
               className={`${
                 index % 2 === 0 ? "order-2" : "order-1"
-              } h-64 bg-linear-to-br from-neutral-800 to-neutral-700 flex items-center justify-center`}
+              }  bg-linear-to-br from-neutral-800 to-neutral-700 flex items-center justify-center overflow-hidden`}
             >
-              <span className="font-ibm-plex-mono text-xl uppercase tracking-widest opacity-40">
-                Visual Placeholder
-              </span>
+              <img
+                src={assets[`uiux_${index + 1}`]}
+                alt={`Step ${index + 1}`}
+                className="h-full w-full object-contain"
+              />
             </div>
           </div>
         ))}
