@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 //import UIUXComparisonPhone from "../../components/ui-ux/UIUXComparisonPhone";
 import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
 import FeatureHeader from "../../components/common/header/FeatureHeader";
+import MagnetBtn from "@/components/ui-ux/MagnetBtn";
 
 interface DesignPrinciple {
   title: string;
@@ -73,16 +74,17 @@ const UIUXPage = () => {
       <FeatureHeader label="uiux" content="uiux" />
 
       <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {designPrinciples.map((item, index) => (
-          <div
-            key={index}
-            className="uiux-rect flex items-center justify-center shadow-xl"
-            style={{ backgroundColor: item.color }}
+        {designPrinciples.map((item, i) => (
+          <MagnetBtn
+            key={i}
+            style={{
+              backgroundColor: item.color,
+            }}
           >
-            <h3 className="text-[1rem] md:text-3xl font-bold uppercase text-white text-center px-4">
+            <h3 className="text-[1rem] md:text-3xl font-bold uppercase text-white text-center px-4 p-6">
               {item.title}
             </h3>
-          </div>
+          </MagnetBtn>
         ))}
       </div>
 

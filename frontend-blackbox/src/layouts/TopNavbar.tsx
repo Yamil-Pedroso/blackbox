@@ -331,14 +331,14 @@ const TopNavbar = () => {
           </div>
           <div className="mt-auto pt-6 border-t border-neutral-800 flex gap-4 mb-3.5">
             <Button
-              className="bg-white text-tertiary text-[13px]"
+              className="bg-white text-tertiary text-[10px] sm:text-[13px]"
               onClick={() => {}}
             >
               {t("buttons.schedule")}
             </Button>
 
             <Button
-              className="border border-white text-white text-[13px]"
+              className="border border-white text-white text-[10px] sm:text-[13px]"
               onClick={() => {}}
             >
               {t("buttons.journey")}
