@@ -75,6 +75,23 @@
         "image": "./images/fs-web-projects/fit_nut.webp",
         "caseStudy": "/blackbox/projects/fitness-app",
         "demo": "https://fitboard-six.vercel.app/"
+      },
+      {
+        "title": "NeuroNote",
+        "description": "Workspace full stack impulsado por IA para notas inteligentes, búsqueda semántica, resúmenes, tags y flujos de productividad avanzados.",
+        "stack": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "pgvector",
+          "OpenAI",
+          "Tailwind"
+        ],
+        "image": "./images/fs-web-projects/neuronote.webp",
+        "caseStudy": "/blackbox/projects/neuronote",
+        "demo": "https://neuronote-pi.vercel.app/"
       }
     ]
   }

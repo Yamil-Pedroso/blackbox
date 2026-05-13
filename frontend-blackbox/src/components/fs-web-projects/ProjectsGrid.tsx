@@ -60,7 +60,7 @@ const ProjectsGrid = () => {
         )}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 items-stretch">
         {visibleProjects.map((project, index) => {
           const image = project.image;
 
@@ -71,8 +71,9 @@ const ProjectsGrid = () => {
               description={project.description}
               image={image}
               tags={project.stack}
+              className="h-full"
             >
-              <div className="flex gap-3 pt-3">
+              <div className="flex gap-3 pt-3 mt-auto pb-4">
                 {project.caseStudy && (
                   <Tooltip
                     className="bg-secondary-bg border border-green"
