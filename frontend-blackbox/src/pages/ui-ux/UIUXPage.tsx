@@ -1,9 +1,16 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-//import UIUXComparisonPhone from "../../components/ui-ux/UIUXComparisonPhone";
 import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
 import FeatureHeader from "../../components/common/header/FeatureHeader";
 import MagnetBtn from "@/components/ui-ux/MagnetBtn";
+import UIUXLabIntro from "@/components/ui-ux/UIUXLabIntro";
+import UIUXDeepMap from "@/components/ui-ux/UIUXDeepMap";
+import UXThinkingCards from "@/components/ui-ux/UXThinkingCards";
+import ComponentAnatomy from "@/components/ui-ux/ComponentAnatomy";
+import MotionPrinciples from "@/components/ui-ux/MotionPrinciples";
+import AccessibilityChecklist from "@/components/ui-ux/AccessibilityChecklist";
+import BeforeAfterUX from "@/components/ui-ux/BeforeAfterUX";
+import UIUXCaseStudyStrip from "@/components/ui-ux/UIUXCaseStudyStrip";
 import assets from "../../assets";
 
 interface DesignPrinciple {
@@ -17,7 +24,7 @@ interface ProjectFlow {
 }
 
 const UIUXPage = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null!);
   const { t } = useTranslation("uiux");
 
   const designPrinciples = t("designPrinciples", {
@@ -29,7 +36,7 @@ const UIUXPage = () => {
   }) as ProjectFlow[];
 
   useGsapPageAnimation(
-    containerRef as React.RefObject<HTMLDivElement>,
+    containerRef,
     (tl) => {
       tl.from(".uiux-hero", {
         y: 60,
@@ -40,28 +47,16 @@ const UIUXPage = () => {
       });
 
       tl.fromTo(
-        ".uiux-rect",
-        { y: 60, opacity: 0 },
+        ".uiux-reveal",
+        { y: 70, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.9,
           ease: "power3.out",
-          stagger: 0.15,
+          stagger: 0.12,
         },
-        "-=0.6",
-      );
-
-      tl.from(
-        ".uiux-process",
-        {
-          y: 80,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-          stagger: 0.2,
-        },
-        "-=0.4",
+        "-=0.5",
       );
     },
     [],
@@ -70,45 +65,62 @@ const UIUXPage = () => {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen px-6 md:px-10 xl:px-8 py-12 text-primary overflow-hidden"
+      className="relative min-h-screen overflow-hidden px-6 py-12 text-primary md:px-10 xl:px-8"
     >
       <FeatureHeader label="uiux" content="uiux" />
 
-      <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <UIUXLabIntro />
+
+      <section className="uiux-reveal mt-20 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {designPrinciples.map((item, i) => (
-          <MagnetBtn
-            key={i}
-            style={{
-              backgroundColor: item.color,
-            }}
-          >
-            <h3 className="text-[1rem] md:text-3xl font-bold uppercase text-white text-center px-4 p-6">
+          <MagnetBtn key={i} style={{ backgroundColor: item.color }}>
+            <h3 className="p-6 text-center text-[1rem] font-bold uppercase text-white md:text-3xl">
               {item.title}
             </h3>
           </MagnetBtn>
         ))}
-      </div>
+      </section>
 
-      <div className="mt-32 space-y-24">
+      <UIUXDeepMap />
+
+      <UXThinkingCards />
+
+      <ComponentAnatomy />
+
+      <MotionPrinciples />
+
+      <AccessibilityChecklist />
+
+      <BeforeAfterUX />
+
+      <section className="mt-32 space-y-24">
         {projectFlow.map((step, index) => (
           <div
             key={index}
-            className="uiux-process grid md:grid-cols-2 gap-10 items-center"
+            className="uiux-reveal grid items-center gap-10 md:grid-cols-2"
           >
             <div
-              className={`${index % 2 === 0 ? "order-1" : "order-2"} space-y-4`}
+              className={`space-y-4 ${
+                index % 2 === 0 ? "md:order-1" : "md:order-2"
+              }`}
             >
-              <h2 className="font-geist text-3xl md:text-4xl font-bold">
+              <span className="font-ibm-plex-mono text-sm uppercase tracking-[0.35em] opacity-50">
+                Flow 0{index + 1}
+              </span>
+
+              <h2 className="font-geist text-3xl font-bold md:text-4xl">
                 {step.title}
               </h2>
-              <p className="font-ibm-plex-mono text-lg opacity-80 leading-relaxed">
+
+              <p className="font-ibm-plex-mono text-lg leading-relaxed opacity-80">
                 {step.description}
               </p>
             </div>
+
             <div
-              className={`${
-                index % 2 === 0 ? "order-2" : "order-1"
-              }  bg-linear-to-br from-neutral-800 to-neutral-700 flex items-center justify-center overflow-hidden`}
+              className={`overflow-hidden rounded-4xl border border-primary/10 bg-linear-to-br from-neutral-800 to-neutral-700 ${
+                index % 2 === 0 ? "md:order-2" : "md:order-1"
+              }`}
             >
               <img
                 src={assets[`uiux_${index + 1}`]}
@@ -118,7 +130,9 @@ const UIUXPage = () => {
             </div>
           </div>
         ))}
-      </div>
+      </section>
+
+      <UIUXCaseStudyStrip />
     </div>
   );
 };

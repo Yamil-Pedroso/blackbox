@@ -5,6 +5,7 @@ import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
 import { Toaster, toast } from "sonner";
 import { FaGear } from "react-icons/fa6";
+import FloatingServices from "@/components/common/FloatingService";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -96,6 +97,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div className="h-screen grid grid-rows-[auto_1fr] overflow-y-auto">
       <Toaster position="bottom-right" expand />
+
+      <FloatingServices />
 
       <TopNavbar />
 
