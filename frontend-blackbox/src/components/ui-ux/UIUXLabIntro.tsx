@@ -3,7 +3,7 @@ import BlackboxMascot3D from "./BlackboxMacot3D";
 const UIUXLabIntro = () => {
   return (
     <section className="uiux-hero mt-16 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-      <div className="rounded-[2rem] border border-primary/10 bg-white/5 p-6 backdrop-blur md:p-10">
+      <div className="rounded-4xl border border-primary/10 bg-white/5 p-6 backdrop-blur md:p-10">
         <p className="font-ibm-plex-mono text-sm uppercase tracking-[0.35em] opacity-60">
           UI/UX Laboratory
         </p>
@@ -19,7 +19,7 @@ const UIUXLabIntro = () => {
         </p>
       </div>
 
-      <div className="relative min-h-[320px] overflow-hidden rounded-[2rem] border border-primary/10 bg-neutral-600 p-5">
+      <div className="relative min-h-80 overflow-hidden rounded-4xl border border-primary/10 bg-neutral-600 p-5">
         <div className="absolute left-8 top-8 h-24 w-24 rounded-full bg-green-300 blur-3xl" />
 
         <div className="relative grid h-full place-items-center">

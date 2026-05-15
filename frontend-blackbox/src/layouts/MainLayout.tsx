@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import TopNavbar from "./TopNavbar";
 import LeftSidebar from "./LeftSidebar";
@@ -15,6 +15,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   const mainRef = useRef<HTMLDivElement>(null);
   const hasShownGlobalToast = useRef(false);
   const prevPath = useRef<string | null>(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
@@ -95,10 +96,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }
 
   return (
-    <div className="h-screen grid grid-rows-[auto_1fr] overflow-y-auto">
+    <div className={`h-screen grid grid-rows-[auto_1fr] overflow-y-auto `}>
       <Toaster position="bottom-right" expand />
 
-      <FloatingServices />
+      <FloatingServices open={servicesOpen} setOpen={setServicesOpen} />
 
       <TopNavbar />
 
