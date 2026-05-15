@@ -7,6 +7,8 @@ import assets from "../assets";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import Button from "../components/common/Button";
+import i18n from "@/i18n/i18n";
+import { changeLanguage } from "i18next";
 
 /*interface TopNavbarProps {
   itemsMenu?: { name: string; to: string }[];
@@ -14,6 +16,12 @@ import Button from "../components/common/Button";
 } */
 
 type LayoutMode = "mobile" | "medium" | "large";
+
+const langLabels: Record<string, string> = {
+  en: "EN",
+  es: "ES",
+  de: "DE",
+};
 
 const TopNavbar = () => {
   const pathname = useRouterState({
@@ -221,6 +229,17 @@ const TopNavbar = () => {
       {/* MEDIUM */}
       {layout >= "medium" && (
         <div className="flex items-center gap-6 animate-section px-4">
+          <div className="flex text-[11px] gap-2">
+            {Object.keys(langLabels).map((lng) => (
+              <button
+                key={lng}
+                onClick={() => changeLanguage(lng)}
+                className={`px-2 py-1 border border-neutral-800 rounded ${i18n.language === lng ? "bg-neutral-800 text-green" : "text-secondary"}`}
+              >
+                {langLabels[lng]}
+              </button>
+            ))}
+          </div>
           <span className="font-ibm-plex-mono text-secondary text-[12px]">
             {t("brand")}
           </span>
