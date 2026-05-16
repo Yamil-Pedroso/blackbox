@@ -353,7 +353,9 @@ const TopNavbar = () => {
           <div className="mt-auto pt-6 border-t border-neutral-800 flex gap-4 mb-3.5">
             <Button
               className="bg-white text-tertiary text-[10px] sm:text-[13px]"
-              onClick={() => {}}
+              onClick={() =>
+                window.open("https://calendly.com/yamilpedroso/30min", "_blank")
+              }
             >
               {t("buttons.schedule")}
             </Button>
