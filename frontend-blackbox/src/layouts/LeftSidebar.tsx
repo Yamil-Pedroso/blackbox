@@ -82,7 +82,7 @@ const LeftSidebar = () => {
           <div className="space-y-3 font-ibm-plex-mono text-secondary text-sm">
             <div className="flex justify-between">
               <span>{t("status.modules")}</span>
-              <span>5</span>
+              <span>6</span>
             </div>
 
             <div className="flex justify-between">
