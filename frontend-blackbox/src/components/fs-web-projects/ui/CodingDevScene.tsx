@@ -85,7 +85,7 @@ export default function CodingDevScene() {
 
   return (
     <section className="relative mx-auto h-128 w-full max-w-240 overflow-hidden  border border-white/10 bg-[#09090f] p-3 shadow-2xl sm:h-144 sm:p-4 md:h-160 md:p-5 lg:h-180 lg:p-6">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.18),_transparent_35%)]" />
+      <div className="absolute inset-0" />
 
       <div className="relative z-10 flex h-full flex-col overflow-hidden  border border-white/10 bg-[#11111a]/90 shadow-[0_0_60px_rgba(0,0,0,0.45)] backdrop-blur-xl ">
         <header className="flex flex-col gap-3 border-b border-white/10 bg-white/3 px-3 py-3 sm:px-4 md:flex-row md:items-center md:justify-between md:px-5 md:py-4">
