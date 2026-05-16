@@ -352,19 +352,65 @@ const TopNavbar = () => {
           </div>
           <div className="mt-auto pt-6 border-t border-neutral-800 flex gap-4 mb-3.5">
             <Button
-              className="bg-white text-tertiary text-[10px] sm:text-[13px]"
+              className="
+      group relative w-full overflow-hidden
+      border border-white
+      bg-white
+      text-[10px] text-black
+
+      transition-all duration-500
+    "
               onClick={() =>
                 window.open("https://calendly.com/yamilpedroso/30min", "_blank")
               }
             >
-              {t("buttons.schedule")}
+              <span
+                className="
+        absolute inset-0 z-0
+        bg-[#111]
+
+        origin-right scale-x-0
+        transition-transform duration-500 ease-out
+
+        group-hover:origin-left
+        group-hover:scale-x-100
+      "
+              />
+
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                {t("buttons.schedule")}
+              </span>
             </Button>
 
+            {/* JOURNEY */}
+
             <Button
-              className="border border-white text-white text-[10px] sm:text-[13px]"
+              className="
+      group relative w-full overflow-hidden
+      border border-white
+      bg-[#111]
+      text-[10px] text-white
+
+      transition-all duration-500
+    "
               onClick={() => setJourneyOpen(true)}
             >
-              {t("buttons.journey")}
+              <span
+                className="
+        absolute inset-0 z-0
+        bg-white
+
+        origin-left scale-x-0
+        transition-transform duration-500 ease-out
+
+        group-hover:origin-right
+        group-hover:scale-x-100
+      "
+              />
+
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+                {t("buttons.journey")}
+              </span>
             </Button>
           </div>
           <JourneyCVOverlay open={journeyOpen} setOpen={setJourneyOpen} />
