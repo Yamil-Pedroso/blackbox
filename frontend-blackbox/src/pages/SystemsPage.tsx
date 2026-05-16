@@ -2,6 +2,7 @@ import { useRef } from "react";
 import SystemsContainer from "@/components/systems/SystemsContainer";
 import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
 import FeatureHeader from "../components/common/header/FeatureHeader";
+import AlgorithmComplexityVisualizer from "@/components/systems/AlgorithmComplexityVisualizer";
 
 const SystemsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,6 +60,7 @@ const SystemsPage = () => {
     <div ref={containerRef} className="p-8 max-w-6xl space-y-20">
       <FeatureHeader label="systems" content="systems" />
 
+      <AlgorithmComplexityVisualizer />
       <SystemsContainer />
     </div>
   );
