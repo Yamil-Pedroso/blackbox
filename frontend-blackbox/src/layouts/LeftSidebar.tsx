@@ -1,9 +1,12 @@
+import { useState } from "react";
 import assets from "../assets";
 import Button from "../components/common/Button";
 import { useTranslation } from "react-i18next";
+import JourneyCVOverlay from "@/components/fs-web-projects/common/JourneyCVOverlay";
 
 const LeftSidebar = () => {
   const { t } = useTranslation("leftSidebar");
+  const [journeyOpen, setJourneyOpen] = useState(false);
 
   const defaultInfoItems = [
     {
@@ -98,18 +101,21 @@ const LeftSidebar = () => {
       <div className="mt-auto pt-6 border-t border-neutral-800 flex flex-col gap-4 mb-3.5">
         <Button
           className="bg-white text-tertiary w-full text-[13px]"
-          onClick={() => {}}
+          onClick={() =>
+            window.open("https://calendly.com/yamilpedroso/30min", "_blank")
+          }
         >
           {t("buttons.schedule")}
         </Button>
 
         <Button
           className="border border-white text-white w-full text-[13px]"
-          onClick={() => {}}
+          onClick={() => setJourneyOpen(true)}
         >
           {t("buttons.journey")}
         </Button>
       </div>
+      <JourneyCVOverlay open={journeyOpen} setOpen={setJourneyOpen} />
     </aside>
   );
 };

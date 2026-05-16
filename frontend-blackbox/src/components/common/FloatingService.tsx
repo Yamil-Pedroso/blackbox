@@ -173,12 +173,15 @@ const FloatingServices = ({ open, setOpen }: IServiceProps) => {
                   </p>
 
                   <p className="mt-1 text-xs text-[#B1B1B1]">
-                    Open for freelance, product and creative web work.
+                    Open to work with companies, freelance clients, product
+                    teams and creative web experiences.
                   </p>
                 </div>
 
                 <a
-                  href="mailto:your@email.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=yamilpedroso@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
                     grid h-12 w-12 shrink-0 place-items-center rounded-2xl
                     bg-black text-green

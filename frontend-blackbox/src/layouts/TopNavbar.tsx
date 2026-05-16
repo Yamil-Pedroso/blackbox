@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import Button from "../components/common/Button";
 import i18n from "@/i18n/i18n";
 import { changeLanguage } from "i18next";
+import JourneyCVOverlay from "@/components/fs-web-projects/common/JourneyCVOverlay";
 
 /*interface TopNavbarProps {
   itemsMenu?: { name: string; to: string }[];
@@ -24,6 +25,7 @@ const langLabels: Record<string, string> = {
 };
 
 const TopNavbar = () => {
+  const [journeyOpen, setJourneyOpen] = useState(false);
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -358,11 +360,12 @@ const TopNavbar = () => {
 
             <Button
               className="border border-white text-white text-[10px] sm:text-[13px]"
-              onClick={() => {}}
+              onClick={() => setJourneyOpen(true)}
             >
               {t("buttons.journey")}
             </Button>
           </div>
+          <JourneyCVOverlay open={journeyOpen} setOpen={setJourneyOpen} />
         </div>
       )}
 

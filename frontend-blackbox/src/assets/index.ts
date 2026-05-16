@@ -13,6 +13,27 @@ import uiux_2 from "./images/ui-ux/uiux-02.png";
 import uiux_3 from "./images/ui-ux/uiux-03.png";
 import uiux_4 from "./images/ui-ux/uiux-04.png";
 
+// Experience
+import experience_1 from "./images/experience/squib.png";
+import experience_2 from "./images/experience/qiibee.png";
+import experience_3 from "./images/experience/mundus.png";
+import experience_4 from "./images/experience/alba.jpeg";
+import experience_5 from "./images/experience/unesco.png";
+
+// Education
+import education_1 from "./images/education/brainnest.png";
+import education_2 from "./images/education/leWagon.png";
+import education_3 from "./images/education/constructor1.jpeg";
+import education_4 from "./images/education/free_code_camp.png";
+import education_5 from "./images/education/udemy.png";
+import education_6 from "./images/education/havannaUni.jpg";
+
+// Testimonials
+import testimonial_1 from "./images/tesmonial-avatars/avatar_1.jpg";
+import testimonial_2 from "./images/tesmonial-avatars/avatar_2.jpg";
+import testimonial_3 from "./images/tesmonial-avatars/avatar_3.jpg";
+import testimonial_4 from "./images/tesmonial-avatars/avatar_4.jpg";
+
 interface IAssets {
   [key: string]: string;
 }
@@ -30,6 +51,21 @@ const assets: IAssets = {
   uiux_2,
   uiux_3,
   uiux_4,
+  experience_1,
+  experience_2,
+  experience_3,
+  experience_4,
+  experience_5,
+  education_1,
+  education_2,
+  education_3,
+  education_4,
+  education_5,
+  education_6,
+  testimonial_1,
+  testimonial_2,
+  testimonial_3,
+  testimonial_4,
 };
 
 export default assets;
