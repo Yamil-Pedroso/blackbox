@@ -7,7 +7,7 @@
   "designPrinciples": [
     { "title": "Linie", "color": "#4FA3D1" },
     { "title": "Form", "color": "#F2B24D" },
-    { "title": "Farbe", "color": "#D9D9D9" },
+    { "title": "Farbe", "color": "#F2C230" },
     { "title": "Wert", "color": "#7BCB5B" },
     { "title": "Volumen", "color": "#8C5CC4" },
     { "title": "Textur", "color": "#F28C52" },

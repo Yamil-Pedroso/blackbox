@@ -6,10 +6,8 @@ import MagnetBtn from "@/components/ui-ux/MagnetBtn";
 import UIUXLabIntro from "@/components/ui-ux/UIUXLabIntro";
 import UIUXDeepMap from "@/components/ui-ux/UIUXDeepMap";
 import UXThinkingCards from "@/components/ui-ux/UXThinkingCards";
-import ComponentAnatomy from "@/components/ui-ux/ComponentAnatomy";
 import MotionPrinciples from "@/components/ui-ux/MotionPrinciples";
 import AccessibilityChecklist from "@/components/ui-ux/AccessibilityChecklist";
-import BeforeAfterUX from "@/components/ui-ux/BeforeAfterUX";
 import UIUXCaseStudyStrip from "@/components/ui-ux/UIUXCaseStudyStrip";
 import assets from "../../assets";
 
@@ -85,13 +83,9 @@ const UIUXPage = () => {
 
       <UXThinkingCards />
 
-      <ComponentAnatomy />
-
       <MotionPrinciples />
 
       <AccessibilityChecklist />
-
-      <BeforeAfterUX />
 
       <section className="mt-32 space-y-24">
         {projectFlow.map((step, index) => (
