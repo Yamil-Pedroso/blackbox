@@ -296,7 +296,8 @@ const JourneyCVOverlay = ({ open, setOpen }: JourneyCVOverlayProps) => {
                 border border-green/20
                 bg-green/10
                 px-2 py-1
-                text-[10px] text-green
+                text-[10px] text-green hover:scale-115
+                transition-transform duration-300
               "
                           >
                             {skill}
