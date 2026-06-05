@@ -7,20 +7,24 @@
   "explore": "Explore →",
   "modules": [
     {
-      "title": "Streaming Engine",
-      "description": "Token-level streaming pipeline with incremental rendering and context injection."
+      "title": "AI Scraping Engine",
+      "description": "Automated website scraping pipeline with content extraction, processing, and AI-powered summarization.",
+      "link": "https://llm-engineering-ts.vercel.app/"
     },
     {
       "title": "Context Memory System",
-      "description": "Short-term and long-term memory handling using structured context storage."
+      "description": "Short-term and long-term memory handling using structured context storage.",
+      "link": null
     },
     {
       "title": "RAG Prototype",
-      "description": "Retrieval-Augmented Generation system with vector similarity search."
+      "description": "Retrieval-Augmented Generation system with vector similarity search.",
+      "link": null
     },
     {
       "title": "Embedding Visualizer",
-      "description": "Interactive vector space visualization for semantic comparison."
+      "description": "Interactive vector space visualization for semantic comparison.",
+      "link": null
     }
   ]
 }

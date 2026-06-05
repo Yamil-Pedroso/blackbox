@@ -7,20 +7,24 @@
   "explore": "Erkunden →",
   "modules": [
     {
-      "title": "Streaming-Engine",
-      "description": "Token-basierte Streaming-Pipeline mit inkrementellem Rendering und Kontext-Injektion."
+      "title": "KI-Scraping-Engine",
+      "description": "Automatisierte Web-Scraping-Pipeline mit Inhaltsanalyse, Verarbeitung und KI-gestützter Zusammenfassung.",
+      "link": "https://llm-engineering-ts.vercel.app/"
     },
     {
       "title": "Kontext-Speichersystem",
-      "description": "Kurz- und Langzeit-Speicherverwaltung mit strukturierter Kontextspeicherung."
+      "description": "Kurz- und Langzeit-Speicherverwaltung mit strukturierter Kontextspeicherung.",
+      "link": null
     },
     {
       "title": "RAG-Prototyp",
-      "description": "Retrieval-Augmented-Generation-System mit Vektor-Ähnlichkeitssuche."
+      "description": "Retrieval-Augmented-Generation-System mit Vektor-Ähnlichkeitssuche.",
+      "link": null
     },
     {
       "title": "Embedding-Visualizer",
-      "description": "Interaktive Vektorraum-Visualisierung für semantischen Vergleich."
+      "description": "Interaktive Vektorraum-Visualisierung für semantischen Vergleich.",
+      "link": null
     }
   ]
 }

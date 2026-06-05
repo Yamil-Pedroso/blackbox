@@ -2,17 +2,31 @@ import { useRef } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useTranslation } from "react-i18next";
-import { useGsapPageAnimation } from "../lib/hooks/useGSAPAanimation";
-import FeatureHeader from "../components/common/header/FeatureHeader";
+import { useGsapPageAnimation } from "../../lib/hooks/useGSAPAanimation";
+import FeatureHeader from "../../components/common/header/FeatureHeader";
+
+const TooltipNotYetAvailable = ({ text }: { text: string }) => {
+  return (
+    <div className="text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity">
+      {text}
+    </div>
+  );
+};
 
 const AIPage = () => {
+  //const [isOpenApp, setIsOpenApp] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation("ai");
 
   const aiModules = t("modules", { returnObjects: true }) as {
     title: string;
     description: string;
+    link: string;
   }[];
+
+  //const handleOpenApp = () => {
+  //  setIsOpenApp(true);
+  //};
 
   useGsapPageAnimation(
     containerRef as React.RefObject<HTMLDivElement>,
@@ -92,33 +106,38 @@ const AIPage = () => {
   );
 
   return (
-    <div
-      ref={containerRef}
-      className="px-6 md:px-10 xl:px-8 py-8 max-w-6xl space-y-24"
-    >
-      <FeatureHeader label="ai" content="ai" />
+    <>
+      <div className={`px-6 md:px-10 xl:px-8 py-8 max-w-6xl space-y-24`}>
+        <FeatureHeader label="ai" content="ai" />
 
-      <section className="grid md:grid-cols-2 gap-16">
-        {aiModules.map((module) => (
-          <div
-            key={module.title}
-            className="ai-module group relative space-y-6 border-b border-neutral-800 pb-10 hover:border-primary transition-colors duration-300"
-          >
-            <h2 className="text-2xl md:text-3xl font-geist text-primary group-hover:translate-x-2 transition-transform duration-300">
-              {module.title}
-            </h2>
+        <section className="grid md:grid-cols-2 gap-16">
+          {aiModules.map((module) => (
+            <div
+              key={module.title}
+              className="ai-module group relative space-y-6 border-b border-neutral-800 pb-10 hover:border-primary transition-colors duration-300"
+            >
+              <h2 className="text-2xl md:text-3xl font-geist text-primary group-hover:translate-x-2 transition-transform duration-300">
+                {module.title}
+              </h2>
 
-            <p className="text-secondary font-ibm-plex-mono text-sm leading-relaxed max-w-md">
-              {module.description}
-            </p>
+              <p className="text-secondary font-ibm-plex-mono text-sm leading-relaxed max-w-md">
+                {module.description}
+              </p>
 
-            <button className="text-sm font-ibm-plex-mono text-secondary opacity-70 group-hover:opacity-100 transition-opacity">
-              {t("explore")}
-            </button>
-          </div>
-        ))}
-      </section>
-    </div>
+              {module.link ? (
+                <a href={module.link} target="_blank" rel="noopener noreferrer">
+                  <button className="text-sm font-ibm-plex-mono text-green-500 opacity-70 group-hover:opacity-100 transition-opacity cursor-pointer">
+                    {t("explore")}
+                  </button>
+                </a>
+              ) : (
+                <TooltipNotYetAvailable text={`is not yet available`} />
+              )}
+            </div>
+          ))}
+        </section>
+      </div>
+    </>
   );
 };
 

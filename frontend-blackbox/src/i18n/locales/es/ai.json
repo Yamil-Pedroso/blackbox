@@ -7,20 +7,24 @@
   "explore": "Explorar →",
   "modules": [
     {
-      "title": "Motor de Streaming",
-      "description": "Pipeline de streaming a nivel de token con renderizado incremental e inyección de contexto."
+      "title": "Motor de Scraping con IA",
+      "description": "Pipeline automatizado de scraping web con extracción de contenido, procesamiento y resumen impulsado por IA.",
+      "link": "https://llm-engineering-ts.vercel.app/"
     },
     {
       "title": "Sistema de Memoria Contextual",
-      "description": "Gestión de memoria a corto y largo plazo mediante almacenamiento estructurado de contexto."
+      "description": "Gestión de memoria a corto y largo plazo mediante almacenamiento estructurado de contexto.",
+      "link": null
     },
     {
       "title": "Prototipo RAG",
-      "description": "Sistema de Generación Aumentada por Recuperación con búsqueda por similitud vectorial."
+      "description": "Sistema de Generación Aumentada por Recuperación con búsqueda por similitud vectorial.",
+      "link": null
     },
     {
       "title": "Visualizador de Embeddings",
-      "description": "Visualización interactiva del espacio vectorial para comparación semántica."
+      "description": "Visualización interactiva del espacio vectorial para comparación semántica.",
+      "link": null
     }
   ]
 }
