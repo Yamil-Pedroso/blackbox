@@ -68,6 +68,11 @@ import ai_en from "./locales/en/ai.json";
 import ai_es from "./locales/es/ai.json";
 import ai_de from "./locales/de/ai.json";
 
+// AI Mini Apps - Process
+import processMiniAppsAi_en from "./locales/en/processMiniAppsAi.json";
+import processMiniAppsAi_es from "./locales/es/processMiniAppsAi.json";
+import processMiniAppsAi_de from "./locales/de/processMiniAppsAi.json";
+
 // Systems
 import systems_en from "./locales/en/systems.json";
 import systems_es from "./locales/es/systems.json";
@@ -121,6 +126,7 @@ i18n
         accessibilityPlayground: accessibilityPlayground_en,
         accessibilityPlaygroundProcess: accessibilityPlaygroundProcess_en,
         ai: ai_en,
+        processMiniAppsAi: processMiniAppsAi_en,
         systems: systems_en,
         experiments: exp_en,
         miniGames: mini_en,
@@ -143,6 +149,7 @@ i18n
         accessibilityPlayground: accessibilityPlayground_es,
         accessibilityPlaygroundProcess: accessibilityPlaygroundProcess_es,
         ai: ai_es,
+        processMiniAppsAi: processMiniAppsAi_es,
         systems: systems_es,
         experiments: exp_es,
         miniGames: mini_es,
@@ -165,6 +172,7 @@ i18n
         accessibilityPlayground: accessibilityPlayground_de,
         accessibilityPlaygroundProcess: accessibilityPlaygroundProcess_de,
         ai: ai_de,
+        processMiniAppsAi: processMiniAppsAi_de,
         systems: systems_de,
         experiments: exp_de,
         miniGames: mini_de,

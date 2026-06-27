@@ -1,0 +1,476 @@
+{
+  "shared": {
+    "runtime": "Beteiligter Stack",
+    "userValue": "Was der Nutzer lernt",
+    "concept": "AI-Konzept",
+    "conceptLens": "AI-Konzeptperspektive",
+    "fullStackLens": "Full-Stack-Perspektive",
+    "whatItIs": "Worum es in dieser Mini-App geht",
+    "howItRuns": "Wie Frontend und Backend zusammenarbeiten",
+    "pipeline": "Ausführung von Frontend zu Backend",
+    "architecture": "Full-Stack-Fluss",
+    "signals": "Qualitätssignale",
+    "caveats": "Grenzen beachten"
+  },
+  "apps": {
+    "transformers-llm": {
+      "eyebrow": "ProcessTransformers",
+      "title": "Wie die Transformer-Lektion ein Modell als System erkundbar macht",
+      "summary": "Dieser Prozess erklärt den Lernfluss der Transformer-Mini-App: Die Oberfläche zerlegt ein LLM in Attention, Tokens, Schichten und Vorhersage, damit jeder Mechanismus einzeln inspiziert werden kann.",
+      "conceptDetails": [
+        "Ein Transformer ist die zentrale Architektur hinter den meisten modernen LLMs. Die Grundidee ist, eine Token-Sequenz zu verarbeiten und für jede Position zu bestimmen, welche Teile des Kontexts wichtig sind.",
+        "Attention erlaubt jedem Token, andere Tokens im Kontext zu betrachten. So verbindet das Modell Subjekte, Intentionen, lange Abhängigkeiten und Bedeutung.",
+        "In einem LLM verfeinern viele Transformer-Schichten interne Repräsentationen: einfache Muster werden zu abstrakteren Beziehungen und am Ende zu einer Wahrscheinlichkeitsverteilung über das nächste Token.",
+        "Die Mini-App trainiert keinen echten Transformer; sie erklärt die wichtigsten Bausteine, damit Attention, Kontext und Vorhersage verständlich werden."
+      ],
+      "runtime": "React-Komponenten mit lokalem Interaktionszustand und visuellen Diagrammen.",
+      "userValue": "Verstehen, wie Attention und geschichtete Berechnung Next-Token-Verhalten erzeugen.",
+      "stages": [
+        {
+          "title": "Modell einordnen",
+          "description": "Die Lektion stellt den Transformer als Sequenzverarbeiter vor.",
+          "detail": "Tokens, Kontext und Repräsentationen geben Orientierung, bevor Details erscheinen."
+        },
+        {
+          "title": "Attention sichtbar machen",
+          "description": "Attention erscheint als gewichtete Beziehung zwischen Tokens.",
+          "detail": "Queries, Keys und Values werden greifbar, um Token-Einflüsse zu erklären."
+        },
+        {
+          "title": "Schichten stapeln",
+          "description": "Wiederholte Blöcke verfeinern die Repräsentation.",
+          "detail": "Jede Schicht ergänzt Normalisierung, Attention, Feed-forward und Residualfluss."
+        },
+        {
+          "title": "Token vorhersagen",
+          "description": "Der letzte Schritt verbindet Aktivierungen mit Next-Token-Wahrscheinlichkeiten.",
+          "detail": "Die Ausgabe wird als sortierte Verteilung verstanden, nicht als magische Einzelantwort."
+        }
+      ],
+      "architecture": [
+        "Statische Lerninhalte definieren die zentralen Transformer-Konzepte.",
+        "Interaktive Komponenten trennen Attention, Architektur, Glossar und Vorhersage.",
+        "Frontend-State steuert das aktuelle Konzept ohne Backend-Anfrage.",
+        "Das Routenregister verbindet den AI-Slug mit Prozess- und Explore-Seite."
+      ],
+      "signals": [
+        "Der Nutzer kann Attention ohne vage Modellbegriffe erklären.",
+        "Tokens, Schichten und Vorhersage bleiben visuell verbunden.",
+        "Die Komplexität steigt Schritt für Schritt."
+      ],
+      "caveats": [
+        "Es ist ein konzeptueller Simulator, kein exaktes Produktions-LLM.",
+        "Diagramme vereinfachen Dimensionen, Heads und Matrixoperationen.",
+        "Die Lektion sollte nicht suggerieren, dass immer das wahrscheinlichste Token gewählt wird."
+      ]
+    },
+    "web-scraping-ai": {
+      "eyebrow": "ProcessWebScrapingAI",
+      "title": "Wie aus einer URL bereinigter Seitentext und eine KI-Zusammenfassung werden",
+      "summary": "Dieser Prozess erklärt zwei Scraping-Flüsse: einen Ollama-gestützten Pfad und einen OpenAI-Pfad. Beide beginnen mit einer URL, extrahieren lesbaren Inhalt und lassen ein Modell eine kompakte Zusammenfassung erzeugen.",
+      "conceptDetails": [
+        "Web Scraping bedeutet, eine Webseite automatisch zu lesen, um nützliche Inhalte wie Titel, Haupttext, Links oder strukturierte Daten zu extrahieren.",
+        "Mit KI wird Scraping mehr als reine Extraktion: Bereinigter Seitentext kann zusammengefasst, klassifiziert oder in nutzbares Wissen verwandelt werden.",
+        "Die Schwierigkeit ist nicht nur der URL-Aufruf. Viele Seiten laden Inhalte per JavaScript, blockieren Bots oder mischen Navigation, Scripts und Werbung mit relevantem Text.",
+        "Die Mini-App zeigt diese Kette: URL, HTML-Download, Parser-Bereinigung, Browser-Fallback bei Bedarf und modellbasierte Zusammenfassung."
+      ],
+      "runtime": "Frontend-Formular, Axios-Client, Express-Routen, Axios/Cheerio-Scraping, optionaler Playwright-Fallback und LLM-Completion.",
+      "userValue": "Den echten Pfad zwischen Webseite, extrahiertem Text und generierter Zusammenfassung verstehen.",
+      "stages": [
+        {
+          "title": "URL senden",
+          "description": "Der Nutzer gibt eine URL ein und das Frontend prüft, dass sie nicht leer ist.",
+          "detail": "React Query startet die Mutation und Fortschrittstexte führen durch Anfrage, Scraping, Bereinigung und Zusammenfassung."
+        },
+        {
+          "title": "Dokument abrufen",
+          "description": "Das Backend ruft die Seite mit browserähnlichen Headern ab.",
+          "detail": "Statisches HTML wird zuerst versucht, weil es schneller und günstiger ist als ein Browser."
+        },
+        {
+          "title": "Text extrahieren",
+          "description": "Cheerio entfernt Scripts, Styles und Rauschen und normalisiert Body-Text.",
+          "detail": "Ist der Inhalt zu kurz, kann Playwright dynamische Seiten rendern."
+        },
+        {
+          "title": "Zusammenfassen",
+          "description": "Der bereinigte Inhalt geht mit einem fokussierten Prompt an Ollama oder OpenAI.",
+          "detail": "Die Antwort enthält Titel, URL, Inhaltsvorschau, Zusammenfassung und Laufzeitmetriken."
+        }
+      ],
+      "architecture": [
+        "Ollama-Fluss: Das Frontend ruft /summarized-website auf und das Backend nutzt Ollamas OpenAI-kompatiblen Endpoint.",
+        "OpenAI-Fluss: Das Frontend ruft /openai/summarized-website auf und das Backend nutzt den OpenAI-Client.",
+        "Scraping folgt konzeptionell demselben Ablauf: HTML holen, Text extrahieren, bei Bedarf Browser-Rendering.",
+        "Die UI trennt langsame Backend-Arbeit von sichtbarem Nutzerfeedback."
+      ],
+      "signals": [
+        "Die Zusammenfassung enthält Titel und Überblick, nicht nur Rohtext.",
+        "Backend-Logs zeigen, ob Scraping oder Generierung fehlgeschlagen ist.",
+        "Das Frontend sollte Backend-Fehlermeldungen statt nur Axios-Status anzeigen."
+      ],
+      "caveats": [
+        "Manche Seiten blockieren Scraping oder liefern Bot-Schutzseiten.",
+        "Ollama kann Proxy-Timeouts auslösen, wenn das Modell kalt ist oder der Inhalt groß ist.",
+        "Playwright-Browser müssen auf dem Server installiert sein."
+      ]
+    },
+    "multi-modal-ai-sdk-demos": {
+      "eyebrow": "ProcessMultiModalAI",
+      "title": "Wie multimodale Eingaben in einen KI-Fluss normalisiert werden",
+      "summary": "Dieser Prozess erklärt, wie die Multimodal-Demo verschiedene Eingabetypen sammelt, in ein Backend-fähiges Request-Format bringt und ein strukturiertes Ergebnis rendert.",
+      "conceptDetails": [
+        "Multimodale KI arbeitet mit mehr als einer Informationsart: Text, Bilder, Audio, Dokumente oder Metadaten. Das Modell interpretiert nicht nur Wörter, sondern auch visuelle oder kontextuelle Signale.",
+        "Der Wert entsteht, wenn Modalitäten kombiniert werden: ein Bild mit Instruktion, eine Datei mit Frage oder visueller Inhalt als Beschreibung und Analyse.",
+        "Die Architektur muss unterschiedliche Eingaben in eine konsistente Anfrage normalisieren, damit das Backend validieren, den richtigen Provider aufrufen und eine darstellbare Antwort liefern kann.",
+        "Die Mini-App zeigt, warum multimodale Experiences Preview-UI, Payload-Validierung und strukturierte Antworten brauchen."
+      ],
+      "runtime": "React-Steuerung, Multipart- oder JSON-Payloads, Backend-Validierung und Modellaufrufe über AI SDK/OpenAI.",
+      "userValue": "Verstehen, wie Text, Bilder und Metadaten gemeinsam in einer KI-Interaktion wirken.",
+      "stages": [
+        {
+          "title": "Input sammeln",
+          "description": "Die Oberfläche sammelt Textprompts und optionale Medien.",
+          "detail": "Die Controls machen deutlich, welche Modalität getestet wird."
+        },
+        {
+          "title": "Payload vorbereiten",
+          "description": "Frontend-Services verpacken die Eingaben für die Backend-Route.",
+          "detail": "Dateien, Prompt und Optionen bleiben bis zur API-Grenze getrennt."
+        },
+        {
+          "title": "Modell ausführen",
+          "description": "Das Backend sendet normalisierte Eingaben an ein multimodales Modell.",
+          "detail": "Der Prompt fordert eine renderbare Antwort statt reiner Prosa an."
+        },
+        {
+          "title": "Ergebnis rendern",
+          "description": "Die UI zeigt Zusammenfassungen, Labels, Text und Metadaten.",
+          "detail": "Das Ergebnis bleibt inspizierbar, um Modalitäten zu vergleichen."
+        }
+      ],
+      "architecture": [
+        "Die View besitzt Interaktionszustand und Input-Vorschau.",
+        "Eine Service-Schicht versteckt Request-Details vor dem visuellen Component.",
+        "Das Backend validiert Payloads vor dem Provider-Aufruf.",
+        "Die Antwort ist für Dashboard-Darstellung statt Roh-Chat optimiert."
+      ],
+      "signals": [
+        "Die Antwort bezieht sich direkt auf die gewählte Modalität.",
+        "Loading States lassen lange Generierung nachvollziehbar wirken.",
+        "Modelloutput und Transport-Metadaten sind getrennt."
+      ],
+      "caveats": [
+        "Große Bilder oder Dateien erhöhen Latenz und Kosten.",
+        "Modelle haben unterschiedliche Modalitätsgrenzen.",
+        "Die UI sollte nicht unterstützte Dateitypen früh abfangen."
+      ]
+    },
+    "pipelines-architecture": {
+      "eyebrow": "ProcessPipelinesArchitecture",
+      "title": "Wie KI-Aufgaben durch providerbewusste Pipelines laufen",
+      "summary": "Dieser Prozess erklärt, wie die Pipelines-Mini-App KI-Aufgaben in einen konsistenten Backend-Vertrag überführt: validieren, Provider wählen, ausführen und Metadaten zurückgeben.",
+      "conceptDetails": [
+        "Eine KI-Pipeline ist eine Schrittfolge, die Eingabe in nützliche Ausgabe verwandelt: Daten validieren, Prompt vorbereiten, Modell wählen, Inferenz ausführen, nachbearbeiten und Metadaten zurückgeben.",
+        "In LLM-Systemen verhindern Pipelines, dass jede Feature nur ein improvisierter Modellaufruf ist. Zusammenfassung, Klassifikation und Extraktion werden zu klaren Verträgen.",
+        "Pipeline-Architektur macht Providerwechsel sicherer. Das Frontend fordert eine Aufgabe an; das Backend entscheidet zwischen lokaler Logik, Hugging Face, OpenAI oder anderen Providern.",
+        "Die Mini-App erklärt KI als betriebliches System, nicht als magischen Button."
+      ],
+      "runtime": "React-Panels, API-Services, Express-Pipeline-Routen und Provider-Implementierungen.",
+      "userValue": "Sehen, wie Zusammenfassung, Klassifikation und Generierung Architektur teilen können.",
+      "stages": [
+        {
+          "title": "Aufgabe wählen",
+          "description": "Der Nutzer wählt eine Pipeline wie Summarization oder Classification.",
+          "detail": "Das Frontend hält Inputs aufgabenspezifisch bei gleichem Interaktionsmuster."
+        },
+        {
+          "title": "Request validieren",
+          "description": "Das Backend prüft Form und Mindestinhalt.",
+          "detail": "Ungültige Payloads scheitern vor der Provider-Schicht."
+        },
+        {
+          "title": "Provider ausführen",
+          "description": "Der Service wählt lokale oder externe Ausführung per Konfiguration.",
+          "detail": "Provider-Klassen halten Hugging Face, lokale Logik oder neue Anbieter hinter einer Schnittstelle."
+        },
+        {
+          "title": "Metadaten zurückgeben",
+          "description": "Die Antwort enthält Ergebnis plus Modell- und Providerinformationen.",
+          "detail": "So erklärt die UI auch, wie die Antwort entstanden ist."
+        }
+      ],
+      "architecture": [
+        "Frontend-Services kapseln Endpoints hinter Task-Funktionen.",
+        "Controller parsen und validieren DTOs vor dem Service.",
+        "Provider teilen eine gemeinsame Schnittstelle.",
+        "Metadaten ergänzen jedes Ergebnis für Beobachtbarkeit."
+      ],
+      "signals": [
+        "Ein UI-Muster kann mehrere Task-Typen ausführen.",
+        "Providerwechsel erzwingen keine Component-Rewrites.",
+        "Antworten enthalten Debug-Informationen zum Backend-Pfad."
+      ],
+      "caveats": [
+        "Remote Provider können unabhängig vom Frontend ausfallen.",
+        "Lokale Fallbacks können weniger genau sein.",
+        "Lange Texte brauchen Trunkierung oder Chunking."
+      ]
+    },
+    "tokenizer-playground": {
+      "eyebrow": "ProcessTokenizerPlayground",
+      "title": "Wie Rohtext zu modellzählbaren Tokens wird",
+      "summary": "Dieser Prozess erklärt, wie der Tokenizer Text in Tokens, Klassen und Metriken verwandelt, damit Wortwahl und Tokenbudget sichtbar werden.",
+      "conceptDetails": [
+        "Tokenisierung wandelt menschlichen Text in Einheiten um, die ein Modell verarbeiten kann. Ein Token kann ein ganzes Wort, ein Wortfragment, Leerraum, Satzzeichen oder ein Symbol sein.",
+        "LLMs sehen Sätze nicht wie Menschen; sie sehen Sequenzen von Token-IDs. Zwei Texte mit ähnlicher Zeichenzahl können sehr unterschiedliche Kontextbudgets verbrauchen.",
+        "Tokenisierung beeinflusst Kosten, Latenz, Kontextgrenzen und Prompt-Qualität. Sie zu verstehen hilft, bessere Instruktionen zu schreiben.",
+        "Die Mini-App macht Unsichtbares sichtbar: Wie Text zerlegt wird, wie Tokens gezählt werden und wie sie die Modellnutzung beeinflussen."
+      ],
+      "runtime": "Frontend-Textsteuerung, Tokenizer-Service und Backend-Provider.",
+      "userValue": "Lernen, warum Zeichen, Wörter und Tokens unterschiedliche Einheiten in LLM-Systemen sind.",
+      "stages": [
+        {
+          "title": "Text eingeben",
+          "description": "Der Nutzer schreibt oder fügt Text ein.",
+          "detail": "Die UI hält den Originaltext sichtbar, um Tokengrenzen zu vergleichen."
+        },
+        {
+          "title": "Tokenisieren",
+          "description": "Das Backend teilt Text mit modellabhängigen Regeln.",
+          "detail": "Ein Fallback hält die Demo nutzbar, wenn ein externer Tokenizer fehlt."
+        },
+        {
+          "title": "Tokens klassifizieren",
+          "description": "Tokens werden als Wörter, Leerzeichen, Zahlen, Währung oder Fragmente markiert.",
+          "detail": "Klassifikation gibt sonst opaken IDs Bedeutung."
+        },
+        {
+          "title": "Impact zeigen",
+          "description": "Das Ergebnis zeigt Counts, Vorschauen und Nutzungsmetriken.",
+          "detail": "Nutzer sehen sofort, wie Prompt-Form das Tokenbudget verändert."
+        }
+      ],
+      "architecture": [
+        "React steuert Text, Modell und Visualisierung.",
+        "Der Service sendet Text und Einstellungen ans Backend.",
+        "Backend-Provider normalisieren Token-Ausgaben.",
+        "Formatierungshelfer bereiten Labels und Statistiken auf."
+      ],
+      "signals": [
+        "Tokengrenzen passen zum gewählten Modell.",
+        "Counts ändern sich nachvollziehbar.",
+        "Leerzeichen, Währung und Interpunktion bleiben sichtbar."
+      ],
+      "caveats": [
+        "Fallback-Tokenisierung ist lehrreich, aber nicht exakt.",
+        "Modelle nutzen verschiedene Vokabulare und Merge-Regeln.",
+        "Sehr große Inputs sollten begrenzt werden."
+      ]
+    },
+    "quantization-playground": {
+      "eyebrow": "ProcessQuantizationPlayground",
+      "title": "Wie Präzision Modellgröße, Geschwindigkeit und Fehler verändert",
+      "summary": "Dieser Prozess erklärt Quantisierung: Die App simuliert das Komprimieren von Modellwerten in niedrigere Präzision und zeigt den Tradeoff zwischen Speicherersparnis und Fehler.",
+      "conceptDetails": [
+        "Quantisierung reduziert die numerische Präzision von Modellgewichten oder Aktivierungen, zum Beispiel von 32 Bit auf 16, 8 oder noch kleinere Formate.",
+        "Bei LLMs können dadurch größere Modelle mit weniger Speicher und geringeren Kosten laufen, besonders auf kleineren GPUs, CPUs oder Edge-Umgebungen.",
+        "Der Tradeoff ist Fehler: Komprimierte Zahlen sind weniger exakt. Gut kalibriert kann der Qualitätsverlust klein sein; schlecht gewählt kann er Antworten und Stabilität verschlechtern.",
+        "Die Mini-App zeigt, dass Modelloptimierung nicht nur Verkleinerung bedeutet, sondern den Vergleich von Ersparnis, Präzision, Fehler und Deployment-Folgen."
+      ],
+      "runtime": "React-Controls, Compression Hook, Quantization Service und Ergebnisvisualisierung.",
+      "userValue": "Verstehen, warum geringere Präzision Inferenz günstiger machen und Qualität verändern kann.",
+      "stages": [
+        {
+          "title": "Präzision wählen",
+          "description": "Der Nutzer wählt Quell- und Zielformate.",
+          "detail": "Controls machen den Tradeoff vor der Berechnung sichtbar."
+        },
+        {
+          "title": "Werte komprimieren",
+          "description": "Der Service mappt Beispielgewichte in niedrigere Präzision.",
+          "detail": "Quantisierung wird als messbare Transformation gezeigt."
+        },
+        {
+          "title": "Ergebnis vergleichen",
+          "description": "Originale und quantisierte Werte werden nach Fehler und Speicher verglichen.",
+          "detail": "Metriken zeigen Kompression, Speicher und Rekonstruktionsdifferenz."
+        },
+        {
+          "title": "Tradeoff erklären",
+          "description": "Die UI übersetzt Zahlen in Deployment-Konsequenzen.",
+          "detail": "Weniger Speicher wird mit möglichem Qualitätsverlust und schnellerer Inferenz verbunden."
+        }
+      ],
+      "architecture": [
+        "Frontend-Controls definieren das Szenario.",
+        "Ein Hook verwaltet Request und Fortschritt.",
+        "Das Backend-Modul berechnet Metriken.",
+        "Ergebniskarten trennen Präzision, Kompression und Qualität."
+      ],
+      "signals": [
+        "Ersparnis und Fehler stehen gemeinsam im Blick.",
+        "Präzisionsänderungen verändern Metriken nachvollziehbar.",
+        "Die Erklärung verbindet Mathematik mit Deployment."
+      ],
+      "caveats": [
+        "Die Demo vereinfacht echte Quantisierungsalgorithmen.",
+        "Echte Qualität hängt von Kalibrierung und Architektur ab.",
+        "Kompressionsrate allein reicht nicht."
+      ]
+    },
+    "embeddings-lab": {
+      "eyebrow": "ProcessEmbeddingsLab",
+      "title": "Wie Text zu suchbarer Vektorbedeutung wird",
+      "summary": "Dieser Prozess erklärt, wie das Embeddings Lab Text an einen Provider sendet, Vektoren erhält und Distanz oder Gruppierung nutzt, um semantische Ähnlichkeit sichtbar zu machen.",
+      "conceptDetails": [
+        "Ein Embedding ist eine numerische Repräsentation von Bedeutung. Das Modell verwandelt Text, Dokumente oder Phrasen in Vektoren, deren Abstand semantische Ähnlichkeit ausdrückt.",
+        "Damit wird Suche nach Bedeutung möglich, nicht nur nach exakten Keywords. Zwei verschiedene Sätze können nahe liegen, wenn sie dieselbe Idee ausdrücken.",
+        "Embeddings sind Grundlage für semantische Suche, Clustering, Empfehlungen und RAG, bei dem relevanter Kontext vor dem LLM-Aufruf abgerufen wird.",
+        "Die Mini-App zeigt, wie Vektoren erzeugt, mit Cosine Similarity verglichen und semantische Beziehungen sichtbar gemacht werden."
+      ],
+      "runtime": "React-Panels, Embedding Hooks, Backend-Provider und Similarity Utilities.",
+      "userValue": "Lernen, wie semantische Suche Bedeutung statt exakter Keywords vergleicht.",
+      "stages": [
+        {
+          "title": "Text bereitstellen",
+          "description": "Der Nutzer gibt Queries, Dokumente oder Textgruppen ein.",
+          "detail": "Jedes Panel fokussiert Generieren, Vergleichen, Suchen oder Gruppieren."
+        },
+        {
+          "title": "Vektoren erzeugen",
+          "description": "Der Backend-Provider verwandelt Text in numerische Embeddings.",
+          "detail": "Das Frontend muss Vektordimensionen nicht verstehen."
+        },
+        {
+          "title": "Ähnlichkeit messen",
+          "description": "Cosine Similarity oder ähnliches Scoring vergleicht Vektoren.",
+          "detail": "Scores machen semantische Nähe sichtbar."
+        },
+        {
+          "title": "Insight rendern",
+          "description": "Die UI zeigt Matches, Cluster oder Rankings.",
+          "detail": "Der Nutzer erkennt, warum ein Text nahe an einem anderen liegt."
+        }
+      ],
+      "architecture": [
+        "Mehrere Panels nutzen denselben Embedding-Service über spezialisierte Hooks.",
+        "Das Backend wählt Provider per Environment-Konfiguration.",
+        "Responses normalisieren Vektoren, Scores und Metadaten.",
+        "Die Oberfläche priorisiert semantische Interpretation vor Vektormechanik."
+      ],
+      "signals": [
+        "Semantisch ähnliche Texte ranken hoch trotz anderer Wörter.",
+        "Scores stehen neben lesbaren Labels.",
+        "Provider-Metadaten helfen beim Debuggen."
+      ],
+      "caveats": [
+        "Embeddings können Bias und Domänenmismatch enthalten.",
+        "Similarity Scores sind relativ, keine absolute Wahrheit.",
+        "Große Dokumentmengen brauchen Indexierung."
+      ]
+    },
+    "autoregressive-inference-token-by-token": {
+      "eyebrow": "ProcessAutoregressiveInferenceTokenByToken",
+      "title": "Wie Generierung Token für Token entsteht",
+      "summary": "Dieser Prozess erklärt autoregressive Inferenz als Schleife: Kontext tokenisieren, nächstes Token vorhersagen, anhängen und wiederholen, bis die Generierung stoppt.",
+      "conceptDetails": [
+        "Autoregressive Inferenz ist der Mechanismus, mit dem ein LLM Text sequenziell erzeugt. Das Modell schreibt nicht die ganze Antwort auf einmal, sondern sagt immer wieder das nächste Token voraus.",
+        "Jedes erzeugte Token wird dem Kontext hinzugefügt, und dieser neue Kontext verändert die nächste Vorhersage. So nimmt die Ausgabe Schritt für Schritt Form an.",
+        "Parameter wie Temperature, top-k oder top-p beeinflussen, wie viel Variation das Modell bei wahrscheinlichen Tokens zulässt.",
+        "Die Mini-App erklärt Generierung als beobachtbare Schleife: Kontext, Verteilung, Auswahl, Anhängen und nächste Vorhersage."
+      ],
+      "runtime": "React-Generation-Controls, Token-Preview-Panels und Backend-Inference-Service.",
+      "userValue": "Verstehen, warum LLM-Ausgabe sequenziell ist und jedes Token die nächste Vorhersage verändert.",
+      "stages": [
+        {
+          "title": "Kontext vorbereiten",
+          "description": "Der Prompt wird tokenisiert und als Startkontext gezeigt.",
+          "detail": "Generierung beginnt mit vorhandenen Tokens."
+        },
+        {
+          "title": "Nächstes Token vorhersagen",
+          "description": "Das Modell bewertet mögliche Fortsetzungen.",
+          "detail": "Die Demo kann normale Generierung mit Streaming-Schritten vergleichen."
+        },
+        {
+          "title": "Ausgabe anhängen",
+          "description": "Das gewählte Token wird zum Kontext hinzugefügt.",
+          "detail": "Der neue Kontext ist die Eingabe für den nächsten Loop."
+        },
+        {
+          "title": "Generierung stoppen",
+          "description": "Die Schleife endet durch Limit, Stoppsignal oder fertige Antwort.",
+          "detail": "Stopbedingungen bleiben in der UI sichtbar."
+        }
+      ],
+      "architecture": [
+        "Controls definieren Prompt, Einstellungen und Modus.",
+        "Der Service koordiniert Backend-Aufrufe.",
+        "Panels trennen Tokenisierung, normale Generierung und Streaming.",
+        "Token Chips zeigen jede Einheit der Sequenz."
+      ],
+      "signals": [
+        "Jeder Schritt hängt sichtbar von vorherigen Tokens ab.",
+        "Streaming wird als wiederholte Vorhersage verständlich.",
+        "Promptänderungen können gegen Fortsetzungsänderungen verglichen werden."
+      ],
+      "caveats": [
+        "Die Demo kann lokale oder vereinfachte Inferenz nutzen.",
+        "Sampling kann je nach Einstellung nicht deterministisch sein.",
+        "Lange Generierungen brauchen Limits."
+      ]
+    },
+    "token-prediction": {
+      "eyebrow": "ProcessTokenPrediction",
+      "title": "Wie Next-Token-Wahrscheinlichkeiten zu einem inspizierbaren Pfad werden",
+      "summary": "Dieser Prozess erklärt, wie das Backend wahrscheinliche nächste Tokens berechnet und das Frontend die Verteilung in Karten, Timeline, Pfad und Baumdarstellung übersetzt.",
+      "conceptDetails": [
+        "Next-Token Prediction ist der operative Kern von LLMs. Aus einem Kontext berechnet das Modell Wahrscheinlichkeiten für viele mögliche nächste Tokens.",
+        "Das echte Ergebnis ist nicht ein einziges unvermeidbares Wort, sondern eine Verteilung. Manche Fortsetzungen sind sehr wahrscheinlich, andere selten und manche fast ausgeschlossen.",
+        "Diese Verteilung sichtbar zu machen erklärt Unsicherheit, Kreativität, alternative Completions und warum kleine Promptänderungen die Ausgabe stark verschieben können.",
+        "Die Mini-App macht eine abstrakte Operation inspizierbar: Kandidaten, Ranking, Wahrscheinlichkeit, Pfad und Verzweigungen."
+      ],
+      "runtime": "React-Prediction-Visualisierungen, Prediction Hook und Backend-Provider.",
+      "userValue": "Lernen, dass Sprachmodelle aus einer Wahrscheinlichkeitsverteilung wählen.",
+      "stages": [
+        {
+          "title": "Kontext senden",
+          "description": "Der Nutzer gibt eine Phrase oder ein Prompt-Fragment ein.",
+          "detail": "Der Text wird genutzt, um nächste Tokens zu bewerten."
+        },
+        {
+          "title": "Kandidaten bewerten",
+          "description": "Der Provider liefert Top-Kandidaten und wahrscheinlichkeitsähnliche Werte.",
+          "detail": "Alternativen machen Unsicherheit sichtbar."
+        },
+        {
+          "title": "Pfad bauen",
+          "description": "Das Frontend organisiert Kandidaten in Karten, Timeline und Branches.",
+          "detail": "Mehrere Visualisierungen erzählen dieselbe Wahrscheinlichkeitsgeschichte."
+        },
+        {
+          "title": "Auswahl erklären",
+          "description": "Statistiken und Labels erklären, warum eine Fortsetzung wahrscheinlicher ist.",
+          "detail": "Die UI fokussiert Ranking, Vertrauen und Verzweigung."
+        }
+      ],
+      "architecture": [
+        "Der Hook verwaltet Request State und Prediction-Daten.",
+        "Das Backend abstrahiert lokale oder OpenAI-basierte Logik.",
+        "View-Komponenten trennen Karten, Baum, Timeline, Pfad und Stats.",
+        "Der Prompt bleibt nah an der Wahrscheinlichkeitsdarstellung."
+      ],
+      "signals": [
+        "Top-Kandidaten sind leicht vergleichbar.",
+        "Der Pfad zeigt Wahrscheinlichkeitsunterschiede ohne Alternativen zu verstecken.",
+        "Stats machen Unsicherheit lesbar."
+      ],
+      "caveats": [
+        "Werte können je nach Provider und Sampling variieren.",
+        "Top-k zeigt nur einen Ausschnitt des Vokabulars.",
+        "Die Demo sollte keine perfekte Intent-Erkennung suggerieren."
+      ]
+    }
+  }
+}
