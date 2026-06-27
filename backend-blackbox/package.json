@@ -14,15 +14,22 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.0",
+    "ai": "^7.0.0",
+    "axios": "^1.18.1",
+    "cheerio": "^1.2.0",
     "colors": "^1.4.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "js-tiktoken": "^1.0.21",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.1",
     "multer": "^2.1.1",
     "openai": "^6.22.0",
-    "stripe": "^20.3.1"
+    "playwright": "^1.61.1",
+    "stripe": "^20.3.1",
+    "yampe-observability": "file:../../../engineering_lab/yampe-observability/libraries"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
@@ -30,6 +37,7 @@
     "@types/mongoose": "^5.11.96",
     "@types/multer": "^2.1.0",
     "@types/node": "^25.2.3",
+    "@types/pg": "^8.20.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
   }

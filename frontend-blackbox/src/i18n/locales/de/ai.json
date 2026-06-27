@@ -1,30 +1,92 @@
 {
-  "label": "Intelligenz-Ebene",
+  "label": "Intelligenzschicht",
   "hero": {
-    "title": "Künstliche Intelligenz Systeme",
-    "description": "Dieses Modul untersucht strukturierte KI-Integration, Streaming-Pipelines, Speichersysteme und retrieval-basierte Architekturen. Intelligenz wird als Systemebene behandelt, nicht als Feature."
+    "title": "Systeme der Künstlichen Intelligenz",
+    "description": "Dieses Modul behandelt die strukturierte Integration von KI, Streaming-Pipelines, Speichersysteme und auf Informationsabruf basierende Architekturen. Intelligenz wird als Systemschicht und nicht nur als einzelne Funktion betrachtet."
   },
-  "explore": "Erkunden →",
+  "explore": "Entdecken →",
+  "viewProcess": "Prozess ansehen →",
   "modules": [
     {
-      "title": "KI-Scraping-Engine",
-      "description": "Automatisierte Web-Scraping-Pipeline mit Inhaltsanalyse, Verarbeitung und KI-gestützter Zusammenfassung.",
-      "link": "https://llm-engineering-ts.vercel.app/"
+      "title": "Transformers",
+      "description": "Visuelles Lernmodul zur Architektur moderner LLMs: Attention, Schichten, Positionskodierung und Next-Token-Vorhersage.",
+      "link": "/ai/transformers",
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "transformers-llm",
+      "slugExplore": "transformers-llm"
     },
     {
-      "title": "Kontext-Speichersystem",
-      "description": "Kurz- und Langzeit-Speicherverwaltung mit strukturierter Kontextspeicherung.",
-      "link": null
+      "title": "Web-Scraping mit KI",
+      "description": "Automatisierte Datenextraktion aus Webquellen mithilfe KI-gestützter Verfahren.",
+      "link": "/ai/ai-chat-engine/app",
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "web-scraping-ai",
+      "slugExplore": "web-scraping-ai"
     },
     {
-      "title": "RAG-Prototyp",
-      "description": "Retrieval-Augmented-Generation-System mit Vektor-Ähnlichkeitssuche.",
-      "link": null
+      "title": "Multimodale KI-SDK-Demos",
+      "description": "Demonstration multimodaler KI-Funktionen, einschließlich der Verarbeitung von Text, Bildern und Audio.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "multi-modal-ai-sdk-demos",
+      "slugExplore": "multi-modal-ai-sdk-demos"
     },
     {
-      "title": "Embedding-Visualizer",
-      "description": "Interaktive Vektorraum-Visualisierung für semantischen Vergleich.",
-      "link": null
+      "title": "Pipeline-Architektur",
+      "description": "Entwicklung und Implementierung von KI-Pipelines für eine effiziente Datenverarbeitung und Modellbereitstellung.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "pipelines-architecture",
+      "slugExplore": "pipelines-architecture"
+    },
+    {
+      "title": "Tokenizer-Spielwiese",
+      "description": "Interaktive Umgebung zum Experimentieren mit verschiedenen Tokenisierungsstrategien und deren Auswirkungen auf die Leistung von KI-Modellen.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "tokenizer-playground",
+      "slugExplore": "tokenizer-playground"
+    },
+    {
+      "title": "Quantisierungs-Spielwiese",
+      "description": "Praktische Erkundung von Quantisierungstechniken zur Optimierung von KI-Modellen für Geräte mit begrenzten Ressourcen.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "quantization-playground",
+      "slugExplore": "quantization-playground"
+    },
+    {
+      "title": "Embeddings-Labor",
+      "description": "Experimenteller Bereich zum Testen und Visualisieren von Embeddings, die von KI-Modellen erzeugt werden, um das Modellverhalten und die Datenrepräsentation besser zu verstehen.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "embeddings-lab",
+      "slugExplore": "embeddings-lab"
+    },
+    {
+      "title": "Autoregressive Inferenz Token für Token",
+      "description": "Token für Token Demonstration des Prozesses der autoregressiven Inferenz, die zeigt, wie KI-Modelle auf Grundlage des vorherigen Kontexts sequenziell Ausgaben erzeugen.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "autoregressive-inference-token-by-token",
+      "slugExplore": "autoregressive-inference-token-by-token"
+    },
+    {
+      "title": "Token-Vorhersage",
+      "description": "Interaktives Modul zur Vorhersage des nächsten Tokens in einer Sequenz, das die Vorhersagefähigkeiten von KI-Sprachmodellen veranschaulicht.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "token-prediction",
+      "slugExplore": "token-prediction"
     }
   ]
 }

@@ -6,6 +6,7 @@ import RightSidebar from "./RightSidebar";
 import { Toaster, toast } from "sonner";
 import { FaGear } from "react-icons/fa6";
 import FloatingServices from "@/components/common/FloatingService";
+import MascotRunner from "@/components/common/MascotRunner";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -27,8 +28,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     pathname.includes("/experiments/booking-platform/success") ||
     pathname.includes("/tools/color-palette-generator/launch") ||
     pathname.includes("/tools/regex-visualizer/launch") ||
-    pathname.includes("/tools/accessibility-playground/launch");
-
+    pathname.includes("/tools/accessibility-playground/launch") ||
+    pathname.includes("/ai/ai-chat-engine/app");
   useEffect(() => {
     const wasLaunch = prevPath.current?.includes("/launch");
     const isNowLaunch = pathname.includes("/launch");
@@ -102,6 +103,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <FloatingServices open={servicesOpen} setOpen={setServicesOpen} />
 
       <TopNavbar />
+      <MascotRunner />
 
       <div className="grid h-full overflow-hidden grid-cols-1 large:grid-cols-[300px_1fr_200px]">
         <LeftSidebar />
@@ -112,7 +114,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         >
           <div className="grid grid-cols-[40px_1fr] min-h-full">
             <div className="text-right pr-3 border-r border-neutral-800 font-ibm-plex-mono text-[11px] text-secondary select-none">
-              {Array.from({ length: 260 }, (_, i) => (
+              {Array.from({ length: 300 }, (_, i) => (
                 <div key={i + 1} className="leading-6">
                   {i + 1}
                 </div>

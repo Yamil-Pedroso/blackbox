@@ -11,12 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as MiniGamesRouteImport } from './routes/mini-games'
-import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WebProjectsIndexRouteImport } from './routes/web-projects/index'
 import { Route as UiuxIndexRouteImport } from './routes/uiux/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
+import { Route as AiIndexRouteImport } from './routes/ai/index'
 import { Route as ExperimentsBookingSimulationRouteImport } from './routes/experiments/booking-simulation'
 import { Route as ExperimentsBookingPlatformRouteImport } from './routes/experiments/booking-platform'
 import { Route as ExperimentsBookingPlatformIndexRouteImport } from './routes/experiments/booking-platform/index'
@@ -25,6 +25,9 @@ import { Route as ToolsSlugLaunchRouteImport } from './routes/tools/$slug/launch
 import { Route as ExperimentsBookingSimulationAppRouteImport } from './routes/experiments/booking-simulation/app'
 import { Route as ExperimentsBookingPlatformSuccessRouteImport } from './routes/experiments/booking-platform/success'
 import { Route as ExperimentsBookingPlatformAppRouteImport } from './routes/experiments/booking-platform/app'
+import { Route as AiAiChatEngineAppRouteImport } from './routes/ai/ai-chat-engine/app'
+import { Route as AiSlugProcessRouteImport } from './routes/ai/$slug/process'
+import { Route as AiSlugExploreRouteImport } from './routes/ai/$slug/explore'
 
 const SystemsRoute = SystemsRouteImport.update({
   id: '/systems',
@@ -34,11 +37,6 @@ const SystemsRoute = SystemsRouteImport.update({
 const MiniGamesRoute = MiniGamesRouteImport.update({
   id: '/mini-games',
   path: '/mini-games',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AiRoute = AiRouteImport.update({
-  id: '/ai',
-  path: '/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -64,6 +62,11 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
 const ExperimentsIndexRoute = ExperimentsIndexRouteImport.update({
   id: '/experiments/',
   path: '/experiments/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiIndexRoute = AiIndexRouteImport.update({
+  id: '/ai/',
+  path: '/ai/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperimentsBookingSimulationRoute =
@@ -112,18 +115,36 @@ const ExperimentsBookingPlatformAppRoute =
     path: '/app',
     getParentRoute: () => ExperimentsBookingPlatformRoute,
   } as any)
+const AiAiChatEngineAppRoute = AiAiChatEngineAppRouteImport.update({
+  id: '/ai/ai-chat-engine/app',
+  path: '/ai/ai-chat-engine/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiSlugProcessRoute = AiSlugProcessRouteImport.update({
+  id: '/ai/$slug/process',
+  path: '/ai/$slug/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiSlugExploreRoute = AiSlugExploreRouteImport.update({
+  id: '/ai/$slug/explore',
+  path: '/ai/$slug/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/ai': typeof AiRoute
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/experiments/booking-platform': typeof ExperimentsBookingPlatformRouteWithChildren
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
+  '/ai/': typeof AiIndexRoute
   '/experiments/': typeof ExperimentsIndexRoute
   '/tools/': typeof ToolsIndexRoute
   '/uiux/': typeof UiuxIndexRoute
   '/web-projects/': typeof WebProjectsIndexRoute
+  '/ai/$slug/explore': typeof AiSlugExploreRoute
+  '/ai/$slug/process': typeof AiSlugProcessRoute
+  '/ai/ai-chat-engine/app': typeof AiAiChatEngineAppRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -133,14 +154,17 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/ai': typeof AiRoute
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
+  '/ai': typeof AiIndexRoute
   '/experiments': typeof ExperimentsIndexRoute
   '/tools': typeof ToolsIndexRoute
   '/uiux': typeof UiuxIndexRoute
   '/web-projects': typeof WebProjectsIndexRoute
+  '/ai/$slug/explore': typeof AiSlugExploreRoute
+  '/ai/$slug/process': typeof AiSlugProcessRoute
+  '/ai/ai-chat-engine/app': typeof AiAiChatEngineAppRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -151,15 +175,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/ai': typeof AiRoute
   '/mini-games': typeof MiniGamesRoute
   '/systems': typeof SystemsRoute
   '/experiments/booking-platform': typeof ExperimentsBookingPlatformRouteWithChildren
   '/experiments/booking-simulation': typeof ExperimentsBookingSimulationRouteWithChildren
+  '/ai/': typeof AiIndexRoute
   '/experiments/': typeof ExperimentsIndexRoute
   '/tools/': typeof ToolsIndexRoute
   '/uiux/': typeof UiuxIndexRoute
   '/web-projects/': typeof WebProjectsIndexRoute
+  '/ai/$slug/explore': typeof AiSlugExploreRoute
+  '/ai/$slug/process': typeof AiSlugProcessRoute
+  '/ai/ai-chat-engine/app': typeof AiAiChatEngineAppRoute
   '/experiments/booking-platform/app': typeof ExperimentsBookingPlatformAppRoute
   '/experiments/booking-platform/success': typeof ExperimentsBookingPlatformSuccessRoute
   '/experiments/booking-simulation/app': typeof ExperimentsBookingSimulationAppRoute
@@ -171,15 +198,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/ai'
     | '/mini-games'
     | '/systems'
     | '/experiments/booking-platform'
     | '/experiments/booking-simulation'
+    | '/ai/'
     | '/experiments/'
     | '/tools/'
     | '/uiux/'
     | '/web-projects/'
+    | '/ai/$slug/explore'
+    | '/ai/$slug/process'
+    | '/ai/ai-chat-engine/app'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -189,14 +219,17 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/ai'
     | '/mini-games'
     | '/systems'
     | '/experiments/booking-simulation'
+    | '/ai'
     | '/experiments'
     | '/tools'
     | '/uiux'
     | '/web-projects'
+    | '/ai/$slug/explore'
+    | '/ai/$slug/process'
+    | '/ai/ai-chat-engine/app'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -206,15 +239,18 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/ai'
     | '/mini-games'
     | '/systems'
     | '/experiments/booking-platform'
     | '/experiments/booking-simulation'
+    | '/ai/'
     | '/experiments/'
     | '/tools/'
     | '/uiux/'
     | '/web-projects/'
+    | '/ai/$slug/explore'
+    | '/ai/$slug/process'
+    | '/ai/ai-chat-engine/app'
     | '/experiments/booking-platform/app'
     | '/experiments/booking-platform/success'
     | '/experiments/booking-simulation/app'
@@ -225,15 +261,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AiRoute: typeof AiRoute
   MiniGamesRoute: typeof MiniGamesRoute
   SystemsRoute: typeof SystemsRoute
   ExperimentsBookingPlatformRoute: typeof ExperimentsBookingPlatformRouteWithChildren
   ExperimentsBookingSimulationRoute: typeof ExperimentsBookingSimulationRouteWithChildren
+  AiIndexRoute: typeof AiIndexRoute
   ExperimentsIndexRoute: typeof ExperimentsIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
   UiuxIndexRoute: typeof UiuxIndexRoute
   WebProjectsIndexRoute: typeof WebProjectsIndexRoute
+  AiSlugExploreRoute: typeof AiSlugExploreRoute
+  AiSlugProcessRoute: typeof AiSlugProcessRoute
+  AiAiChatEngineAppRoute: typeof AiAiChatEngineAppRoute
   ToolsSlugLaunchRoute: typeof ToolsSlugLaunchRoute
   ToolsSlugProcessRoute: typeof ToolsSlugProcessRoute
 }
@@ -252,13 +291,6 @@ declare module '@tanstack/react-router' {
       path: '/mini-games'
       fullPath: '/mini-games'
       preLoaderRoute: typeof MiniGamesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ai': {
-      id: '/ai'
-      path: '/ai'
-      fullPath: '/ai'
-      preLoaderRoute: typeof AiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -294,6 +326,13 @@ declare module '@tanstack/react-router' {
       path: '/experiments'
       fullPath: '/experiments/'
       preLoaderRoute: typeof ExperimentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai/': {
+      id: '/ai/'
+      path: '/ai'
+      fullPath: '/ai/'
+      preLoaderRoute: typeof AiIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/experiments/booking-simulation': {
@@ -352,6 +391,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExperimentsBookingPlatformAppRouteImport
       parentRoute: typeof ExperimentsBookingPlatformRoute
     }
+    '/ai/ai-chat-engine/app': {
+      id: '/ai/ai-chat-engine/app'
+      path: '/ai/ai-chat-engine/app'
+      fullPath: '/ai/ai-chat-engine/app'
+      preLoaderRoute: typeof AiAiChatEngineAppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai/$slug/process': {
+      id: '/ai/$slug/process'
+      path: '/ai/$slug/process'
+      fullPath: '/ai/$slug/process'
+      preLoaderRoute: typeof AiSlugProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai/$slug/explore': {
+      id: '/ai/$slug/explore'
+      path: '/ai/$slug/explore'
+      fullPath: '/ai/$slug/explore'
+      preLoaderRoute: typeof AiSlugExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -390,16 +450,19 @@ const ExperimentsBookingSimulationRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AiRoute: AiRoute,
   MiniGamesRoute: MiniGamesRoute,
   SystemsRoute: SystemsRoute,
   ExperimentsBookingPlatformRoute: ExperimentsBookingPlatformRouteWithChildren,
   ExperimentsBookingSimulationRoute:
     ExperimentsBookingSimulationRouteWithChildren,
+  AiIndexRoute: AiIndexRoute,
   ExperimentsIndexRoute: ExperimentsIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
   UiuxIndexRoute: UiuxIndexRoute,
   WebProjectsIndexRoute: WebProjectsIndexRoute,
+  AiSlugExploreRoute: AiSlugExploreRoute,
+  AiSlugProcessRoute: AiSlugProcessRoute,
+  AiAiChatEngineAppRoute: AiAiChatEngineAppRoute,
   ToolsSlugLaunchRoute: ToolsSlugLaunchRoute,
   ToolsSlugProcessRoute: ToolsSlugProcessRoute,
 }

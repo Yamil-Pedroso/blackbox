@@ -169,3 +169,350 @@ body {
 .toast-slide-in {
   animation: slide-in-right 0.4s ease-out;
 }
+
+.mascot-runner-track {
+  position: absolute;
+  left: -90px;
+  top: 8px;
+  width: 74px;
+  height: 34px;
+  opacity: 0.68;
+  animation: mascot-runner-cross 58s linear infinite;
+}
+
+.mascot-runner {
+  position: relative;
+  width: 64px;
+  height: 32px;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
+  animation: mascot-runner-bob 0.54s ease-in-out infinite;
+}
+
+.mascot-runner__body,
+.mascot-runner__head,
+.mascot-runner__tail,
+.mascot-runner__leg,
+.mascot-runner__ear,
+.mascot-runner__eye,
+.mascot-runner__nose {
+  position: absolute;
+  display: block;
+}
+
+.mascot-runner__body {
+  left: 13px;
+  top: 12px;
+  width: 34px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 16px 18px 14px 14px;
+  background: #5bee6c;
+}
+
+.mascot-runner__head {
+  left: 42px;
+  top: 6px;
+  width: 20px;
+  height: 19px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 44% 52% 48% 46%;
+  background: #5bee6c;
+}
+
+.mascot-runner__tail {
+  left: 0;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-left: 4px solid #5bee6c;
+  border-top: 4px solid #5bee6c;
+  border-radius: 18px 0 0 0;
+  transform-origin: 21px 20px;
+  animation: mascot-runner-tail 0.7s ease-in-out infinite;
+}
+
+.mascot-runner__ear {
+  top: -7px;
+  width: 0;
+  height: 0;
+  border-right: 5px solid transparent;
+  border-bottom: 11px solid #5bee6c;
+  border-left: 5px solid transparent;
+  background: transparent;
+}
+
+.mascot-runner__ear--left {
+  left: 1px;
+  transform: rotate(-18deg);
+}
+
+.mascot-runner__ear--right {
+  right: 1px;
+  transform: rotate(18deg);
+}
+
+.mascot-runner__eye {
+  top: 7px;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: #050505;
+}
+
+.mascot-runner__eye--left {
+  left: 6px;
+}
+
+.mascot-runner__eye--right {
+  right: 5px;
+}
+
+.mascot-runner__nose {
+  right: 1px;
+  top: 11px;
+  width: 4px;
+  height: 3px;
+  border-radius: 999px;
+  background: #050505;
+}
+
+.mascot-runner__leg {
+  top: 25px;
+  width: 4px;
+  height: 8px;
+  border-radius: 999px;
+  background: #5bee6c;
+  transform-origin: top center;
+}
+
+.mascot-runner__leg--front {
+  left: 38px;
+  animation: mascot-runner-leg-front 0.42s ease-in-out infinite;
+}
+
+.mascot-runner__leg--back {
+  left: 20px;
+  animation: mascot-runner-leg-back 0.42s ease-in-out infinite;
+}
+
+.mascot-runner--dog .mascot-runner__body,
+.mascot-runner--dog .mascot-runner__head,
+.mascot-runner--dog .mascot-runner__ear,
+.mascot-runner--dog .mascot-runner__leg {
+  background: #38bdf8;
+}
+
+.mascot-runner--dog .mascot-runner__tail {
+  left: 4px;
+  top: 11px;
+  width: 16px;
+  height: 8px;
+  border: 0;
+  border-top: 4px solid #38bdf8;
+  border-radius: 999px 0 0 0;
+  transform-origin: 15px 7px;
+  animation-name: mascot-runner-dog-tail;
+}
+
+.mascot-runner--dog .mascot-runner__ear {
+  top: 3px;
+  width: 9px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 999px 999px 80% 80%;
+  background: #0ea5e9;
+  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.12);
+}
+
+.mascot-runner--dog .mascot-runner__ear--left {
+  left: -5px;
+  transform: rotate(34deg);
+  transform-origin: 7px 2px;
+  animation: mascot-runner-dog-ear-left 0.72s ease-in-out infinite;
+}
+
+.mascot-runner--dog .mascot-runner__ear--right {
+  right: -5px;
+  transform: rotate(-34deg);
+  transform-origin: 2px 2px;
+  animation: mascot-runner-dog-ear-right 0.72s ease-in-out infinite;
+}
+
+.mascot-runner--ghost {
+  animation: mascot-runner-ghost-float 1.8s ease-in-out infinite;
+}
+
+.mascot-runner--ghost .mascot-runner__tail,
+.mascot-runner--ghost .mascot-runner__ear {
+  display: none;
+}
+
+.mascot-runner--ghost .mascot-runner__body {
+  left: 17px;
+  top: 8px;
+  width: 34px;
+  height: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 18px 18px 8px 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 -8px 14px rgba(56, 189, 248, 0.16);
+}
+
+.mascot-runner--ghost .mascot-runner__head {
+  left: 21px;
+  top: 1px;
+  width: 27px;
+  height: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px 999px 70% 70%;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.mascot-runner--ghost .mascot-runner__eye {
+  top: 8px;
+  width: 4px;
+  height: 5px;
+  background: #050505;
+}
+
+.mascot-runner--ghost .mascot-runner__eye--left {
+  left: 7px;
+}
+
+.mascot-runner--ghost .mascot-runner__eye--right {
+  right: 7px;
+}
+
+.mascot-runner--ghost .mascot-runner__nose {
+  right: 10px;
+  top: 16px;
+  width: 7px;
+  height: 4px;
+  border-radius: 0 0 999px 999px;
+  background: #050505;
+}
+
+.mascot-runner--ghost .mascot-runner__leg {
+  top: 29px;
+  width: 11px;
+  height: 7px;
+  border-radius: 0 0 999px 999px;
+  background: rgba(255, 255, 255, 0.88);
+  animation: none;
+}
+
+.mascot-runner--ghost .mascot-runner__leg--front {
+  left: 36px;
+}
+
+.mascot-runner--ghost .mascot-runner__leg--back {
+  left: 20px;
+}
+
+@keyframes mascot-runner-cross {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  49% {
+    transform: translateX(calc(100vw + 120px)) scaleX(1);
+  }
+  50% {
+    transform: translateX(calc(100vw + 120px)) scaleX(-1);
+  }
+  99% {
+    transform: translateX(0) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+@keyframes mascot-runner-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes mascot-runner-ghost-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+}
+
+@keyframes mascot-runner-tail {
+  0%,
+  100% {
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes mascot-runner-dog-tail {
+  0%,
+  100% {
+    transform: rotate(24deg);
+  }
+  50% {
+    transform: rotate(42deg);
+  }
+}
+
+@keyframes mascot-runner-dog-ear-left {
+  0%,
+  100% {
+    transform: rotate(34deg);
+  }
+  50% {
+    transform: rotate(48deg);
+  }
+}
+
+@keyframes mascot-runner-dog-ear-right {
+  0%,
+  100% {
+    transform: rotate(-34deg);
+  }
+  50% {
+    transform: rotate(-48deg);
+  }
+}
+
+@keyframes mascot-runner-leg-front {
+  0%,
+  100% {
+    transform: rotate(16deg);
+  }
+  50% {
+    transform: rotate(-16deg);
+  }
+}
+
+@keyframes mascot-runner-leg-back {
+  0%,
+  100% {
+    transform: rotate(-16deg);
+  }
+  50% {
+    transform: rotate(16deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot-runner-track,
+  .mascot-runner,
+  .mascot-runner__tail,
+  .mascot-runner__leg {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}

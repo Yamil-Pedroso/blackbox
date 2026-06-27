@@ -7,6 +7,10 @@ import lan_gray from "./images/icons/lan_gray.png";
 import sun_gray from "./images/icons/sun_gray.png";
 import moon_black from "./images/icons/moon_black.png";
 
+// ai
+import explore from "./images/ai/explore.png";
+import process from "./images/ai/process.png";
+
 // UI/UX Page
 import uiux_1 from "./images/ui-ux/uiux-01.png";
 import uiux_2 from "./images/ui-ux/uiux-02.png";
@@ -43,6 +47,8 @@ const assets: IAssets = {
   arrow_black,
   arrow_gray,
   map,
+  explore,
+  process,
   phone_gray,
   lan_gray,
   sun_gray,

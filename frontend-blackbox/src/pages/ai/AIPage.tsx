@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "@tanstack/react-router";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useTranslation } from "react-i18next";
@@ -21,7 +22,11 @@ const AIPage = () => {
   const aiModules = t("modules", { returnObjects: true }) as {
     title: string;
     description: string;
-    link: string;
+    link: string | null;
+    viewProcessLink: string | null;
+    viewExploreLink: string | null;
+    slugProcess: string;
+    slugExplore: string;
   }[];
 
   //const handleOpenApp = () => {
@@ -124,15 +129,38 @@ const AIPage = () => {
                 {module.description}
               </p>
 
-              {module.link ? (
-                <a href={module.link} target="_blank" rel="noopener noreferrer">
-                  <button className="text-sm font-ibm-plex-mono text-green-500 opacity-70 group-hover:opacity-100 transition-opacity cursor-pointer">
-                    {t("explore")}
-                  </button>
-                </a>
-              ) : (
-                <TooltipNotYetAvailable text={`is not yet available`} />
-              )}
+              <div className="flex justify-between">
+                {module.viewExploreLink && module.slugExplore ? (
+                  <Link
+                    to={module.viewExploreLink}
+                    params={{ slug: module.slugExplore }}
+                  >
+                    <button className="text-sm font-ibm-plex-mono text-green-500 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+                      {t("explore")}
+                    </button>
+                  </Link>
+                ) : module.link ? (
+                  <Link to={module.link}>
+                    <button className="text-sm font-ibm-plex-mono text-green-500 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+                      {t("explore")}
+                    </button>
+                  </Link>
+                ) : (
+                  <TooltipNotYetAvailable text={`is not yet available`} />
+                )}
+
+                {module.viewProcessLink && module.slugProcess ? (
+                  <Link
+                    to={module.viewProcessLink}
+                    params={{ slug: module.slugProcess }}
+                    className="text-sm font-ibm-plex-mono text-blue-500 hover:opacity-100 transition-opacity cursor-pointer"
+                  >
+                    {t("viewProcess")}
+                  </Link>
+                ) : (
+                  <TooltipNotYetAvailable text="Process not yet available" />
+                )}
+              </div>
             </div>
           ))}
         </section>

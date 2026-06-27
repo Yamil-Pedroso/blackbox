@@ -28,6 +28,7 @@ pids/
 ############################################
 .env
 .env.*
+# Keep the empty environment template versioned in Git.
 !.env.example
 config.env
 config.env.*

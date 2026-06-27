@@ -2,29 +2,91 @@
   "label": "Capa de Inteligencia",
   "hero": {
     "title": "Sistemas de Inteligencia Artificial",
-    "description": "Este módulo explora la integración estructurada de IA, pipelines de streaming, sistemas de memoria y arquitecturas basadas en recuperación. La inteligencia se trata como una capa del sistema, no como una característica."
+    "description": "Este módulo explora la integración estructurada de IA, los pipelines de procesamiento en streaming, los sistemas de memoria y las arquitecturas basadas en recuperación de información. La inteligencia se trata como una capa del sistema, no como una simple característica."
   },
   "explore": "Explorar →",
+  "viewProcess": "Ver Proceso →",
   "modules": [
     {
-      "title": "Motor de Scraping con IA",
-      "description": "Pipeline automatizado de scraping web con extracción de contenido, procesamiento y resumen impulsado por IA.",
-      "link": "https://llm-engineering-ts.vercel.app/"
+      "title": "Transformers",
+      "description": "Módulo visual educativo que explica la arquitectura detrás de los LLM modernos: atención, capas, codificación posicional y predicción del siguiente token.",
+      "link": "/ai/transformers",
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "transformers-llm",
+      "slugExplore": "transformers-llm"
     },
     {
-      "title": "Sistema de Memoria Contextual",
-      "description": "Gestión de memoria a corto y largo plazo mediante almacenamiento estructurado de contexto.",
-      "link": null
+      "title": "Web Scraping con IA",
+      "description": "Extracción automatizada de datos desde fuentes web utilizando técnicas impulsadas por inteligencia artificial.",
+      "link": "/ai/ai-chat-engine/app",
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "web-scraping-ai",
+      "slugExplore": "web-scraping-ai"
     },
     {
-      "title": "Prototipo RAG",
-      "description": "Sistema de Generación Aumentada por Recuperación con búsqueda por similitud vectorial.",
-      "link": null
+      "title": "Demostraciones del SDK de IA Multimodal",
+      "description": "Demostración de capacidades multimodales de IA, incluyendo procesamiento de texto, imágenes y audio.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "multi-modal-ai-sdk-demos",
+      "slugExplore": "multi-modal-ai-sdk-demos"
     },
     {
-      "title": "Visualizador de Embeddings",
-      "description": "Visualización interactiva del espacio vectorial para comparación semántica.",
-      "link": null
+      "title": "Arquitectura de Pipelines",
+      "description": "Diseño e implementación de pipelines de inteligencia artificial para el procesamiento eficiente de datos y el despliegue de modelos.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "pipelines-architecture",
+      "slugExplore": "pipelines-architecture"
+    },
+    {
+      "title": "Laboratorio de Tokenización",
+      "description": "Entorno interactivo para experimentar con diferentes estrategias de tokenización y analizar su impacto en el rendimiento de los modelos de IA.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "tokenizer-playground",
+      "slugExplore": "tokenizer-playground"
+    },
+    {
+      "title": "Laboratorio de Cuantización",
+      "description": "Exploración práctica de técnicas de cuantización para optimizar modelos de IA destinados a dispositivos con recursos limitados.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "quantization-playground",
+      "slugExplore": "quantization-playground"
+    },
+    {
+      "title": "Laboratorio de Embeddings",
+      "description": "Espacio experimental para probar y visualizar embeddings generados por modelos de IA, facilitando una mejor comprensión del comportamiento del modelo y de la representación de los datos.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "embeddings-lab",
+      "slugExplore": "embeddings-lab"
+    },
+    {
+      "title": "Inferencia Autorregresiva Token por Token",
+      "description": "Demostración Token por Token del proceso de inferencia autorregresiva, mostrando cómo los modelos de IA generan resultados secuencialmente a partir del contexto previo.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "autoregressive-inference-token-by-token",
+      "slugExplore": "autoregressive-inference-token-by-token"
+    },
+    {
+      "title": "Predicción de Tokens",
+      "description": "Módulo interactivo para predecir el siguiente token de una secuencia, ilustrando la capacidad predictiva de los modelos de lenguaje basados en IA.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "token-prediction",
+      "slugExplore": "token-prediction"
     }
   ]
 }

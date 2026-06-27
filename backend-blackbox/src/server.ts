@@ -1,19 +1,21 @@
 import { app } from "./app";
-import { connectDB } from "./core/database/mongo";
+import { connectDB } from "./core/databases/mongo";
 import { env } from "./core/config/env";
 
 const startServer = async () => {
+  const PORT = env.app.port;
+
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+
   try {
     await connectDB();
-
-    const PORT = env.app.port;
-
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
   } catch (error) {
-    console.error("❌ Server failed to start:", error);
-    process.exit(1);
+    console.error(
+      "⚠️ Server is running, but database connections are unavailable:",
+      error,
+    );
   }
 };
 
