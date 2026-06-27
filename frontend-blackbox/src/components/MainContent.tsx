@@ -153,7 +153,7 @@ const MainContent = () => {
                       src={module.image}
                       alt=""
                       aria-hidden="true"
-                      className="absolute -top-5 inset-0 h-full w-full object-cover grayscale opacity-55 transition duration-700 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-70"
+                      className="absolute -top-10 inset-0 h-full w-full object-cover grayscale opacity-55 transition duration-700 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-70"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(91,238,108,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(91,238,108,0.07)_1px,transparent_1px)] bg-size-[28px_28px]" />
 
