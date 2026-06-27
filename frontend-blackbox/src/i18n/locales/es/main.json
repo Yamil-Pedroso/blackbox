@@ -5,6 +5,7 @@
     "description": "Un entorno sandbox para mostrar investigación, sistemas de movimiento, diseño, desarrollo full-stack y prototipos interactivos. Cada módulo representa una dimensión técnica del ecosistema Blackbox."
   },
   "modulesLabel": "Módulos de Blackbox",
+  "moduleCta": "Abrir módulo",
   "footer": "Blackbox es un entorno en evolución. Cada módulo representa una dimensión de la ingeniería: rendering, arquitectura, inteligencia, interacción y sistemas estructurados.",
   "modules": {
     "tools": {

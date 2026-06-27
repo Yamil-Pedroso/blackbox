@@ -5,16 +5,67 @@ import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import FeatureHeader from "./common/header/FeatureHeader";
+import assets from "../assets";
+
+type ModuleKey =
+  | "tools"
+  | "ai"
+  | "systems"
+  | "experiments"
+  | "uiux"
+  | "webProjects";
 
 const modules = [
-  { key: "tools", to: "/tools" },
-  { key: "ai", to: "/ai" },
-  { key: "systems", to: "/systems" },
-  { key: "experiments", to: "/experiments" },
-  { key: "uiux", to: "/uiux" },
-  { key: "webProjects", to: "/web-projects" },
+  {
+    key: "tools",
+    to: "/tools",
+    image: assets.tools,
+
+    meta: "Toolkit",
+  },
+  {
+    key: "ai",
+    to: "/ai",
+    image: assets.ai,
+
+    meta: "Intelligence",
+  },
+  {
+    key: "systems",
+    to: "/systems",
+    image: assets.systems,
+
+    meta: "Architecture",
+  },
+  {
+    key: "experiments",
+    to: "/experiments",
+    image: assets.experiments,
+
+    meta: "Lab",
+  },
+  {
+    key: "uiux",
+    to: "/uiux",
+    image: assets.uiux,
+
+    meta: "Design",
+  },
+  {
+    key: "webProjects",
+    to: "/web-projects",
+    image: assets.fullstack,
+
+    meta: "Full-stack",
+  },
   /*{ key: "miniGames", to: "/mini-games" },*/
-];
+] satisfies {
+  key: ModuleKey;
+  to: string;
+  image: string;
+
+  meta: string;
+}[];
 
 const MainContent = () => {
   const { t } = useTranslation("main");
@@ -76,9 +127,13 @@ const MainContent = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 xl:gap-10">
             {modules.map((module) => (
-              <Link key={module.key} to={module.to}>
+              <Link
+                key={module.key}
+                to={module.to}
+                className="mx-auto block w-fit max-w-full"
+              >
                 <motion.div
-                  whileHover={{ y: -6 }}
+                  whileHover={{ y: -8, scale: 1.015 }}
                   transition={{
                     type: "spring",
                     stiffness: 200,
@@ -86,22 +141,58 @@ const MainContent = () => {
                   }}
                   className="
                     modules-animate
-                    group relative border border-neutral-800
-                    bg-secondary-bg p-6 md:p-8
-                    cursor-pointer overflow-hidden
+                    group relative mx-auto w-full max-w-76
+                    cursor-pointer border border-neutral-800 bg-secondary-bg p-2
+                    shadow-[0_20px_48px_rgba(0,0,0,0.32)]
+                    transition-colors duration-500 hover:border-green/60
+                    hover:shadow-[0_26px_64px_rgba(0,0,0,0.44)]
                   "
                 >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-primary/5 to-transparent pointer-events-none" />
+                  <article className="relative flex aspect-[0.58] min-h-120 overflow-hidden border border-neutral-800 bg-main-bg text-white">
+                    <img
+                      src={module.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute -top-5 inset-0 h-full w-full object-cover grayscale opacity-55 transition duration-700 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-70"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(91,238,108,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(91,238,108,0.07)_1px,transparent_1px)] bg-size-[28px_28px]" />
 
-                  <h3 className="text-primary font-geist text-xl md:text-2xl mb-4 relative z-10">
-                    {t(`modules.${module.key}.title`)}
-                  </h3>
+                    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black via-black/80 to-transparent" />
 
-                  <p className="text-secondary font-ibm-plex-mono text-sm md:text-base leading-relaxed relative z-10">
-                    {t(`modules.${module.key}.description`)}
-                  </p>
+                    <div className="absolute left-4 right-4 top-4 flex items-center justify-between border border-neutral-800 bg-black/55 px-3 py-2 backdrop-blur-sm">
+                      <div className="flex gap-1.5">
+                        {["Q", "K", "V"].map((label) => (
+                          <span
+                            key={label}
+                            className="grid size-6 place-items-center border border-green/40 font-ibm-plex-mono text-[10px] text-green"
+                          >
+                            {label}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="font-ibm-plex-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
+                        module
+                      </span>
+                    </div>
 
-                  <div className="mt-6 md:mt-8 h-px w-0 bg-primary group-hover:w-full transition-all duration-700 relative z-10" />
+                    <div className="relative z-10 mt-auto flex h-full flex-col justify-end p-5">
+                      <span className="mb-3 w-fit border border-green/30 px-2 py-1 font-ibm-plex-mono text-[9px] uppercase tracking-[0.16em] text-green">
+                        {module.meta}
+                      </span>
+
+                      <h3 className="font-geist text-2xl font-medium leading-none text-primary md:text-2xl">
+                        {t(`modules.${module.key}.title`)}
+                      </h3>
+
+                      <p className="mt-4 line-clamp-3 min-h-[4.5rem] border-l border-green/40 pl-3 font-ibm-plex-mono text-xs leading-relaxed text-secondary">
+                        {t(`modules.${module.key}.description`)}
+                      </p>
+
+                      <span className="mt-6 inline-flex h-11 w-full items-center justify-center border border-green/40 bg-green px-5 font-ibm-plex-mono text-xs font-semibold uppercase tracking-[0.12em] text-black transition duration-300 group-hover:border-green group-hover:bg-transparent group-hover:text-green">
+                        {t("moduleCta")}
+                      </span>
+                    </div>
+                  </article>
                 </motion.div>
               </Link>
             ))}

@@ -5,6 +5,7 @@
     "description": "A sandbox environment for rendering research, motion systems, design, full-stack development and interactive prototypes. Each module represents a technical dimension of the Blackbox ecosystem."
   },
   "modulesLabel": "Blackbox Modules",
+  "moduleCta": "Open module",
   "footer": "Blackbox is an evolving environment. Each module represents a dimension of engineering: rendering, architecture, intelligence, interaction and structured systems.",
   "modules": {
     "tools": {

@@ -7,6 +7,14 @@ import lan_gray from "./images/icons/lan_gray.png";
 import sun_gray from "./images/icons/sun_gray.png";
 import moon_black from "./images/icons/moon_black.png";
 
+// Home
+import tools from "./images/home/tools.png";
+import ai from "./images/home/ai.png";
+import systems from "./images/home/systems.png";
+import experiments from "./images/home/experiments.png";
+import uiux from "./images/home/ui-ux.png";
+import fullstack from "./images/home/fullstack.png";
+
 // ai
 import explore from "./images/ai/explore.png";
 import process from "./images/ai/process.png";
@@ -44,6 +52,12 @@ interface IAssets {
 
 const assets: IAssets = {
   avatar,
+  tools,
+  ai,
+  systems,
+  experiments,
+  uiux,
+  fullstack,
   arrow_black,
   arrow_gray,
   map,

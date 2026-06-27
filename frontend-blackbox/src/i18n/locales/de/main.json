@@ -5,6 +5,7 @@
     "description": "Eine Sandbox-Umgebung für Rendering-Forschung, Bewegungssysteme und interaktive Prototypen. Jedes Modul repräsentiert eine technische Dimension des Blackbox-Ökosystems."
   },
   "modulesLabel": "Blackbox Module",
+  "moduleCta": "Modul öffnen",
   "footer": "Eine Sandbox-Umgebung zur Darstellung von Forschung, Motion-Systemen, Design, Full-Stack-Entwicklung und interaktiven Prototypen. Jedes Modul repräsentiert eine technische Dimension des Blackbox-Ökosystems.",
   "modules": {
     "tools": {
