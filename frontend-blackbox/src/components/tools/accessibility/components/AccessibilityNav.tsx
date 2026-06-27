@@ -27,7 +27,7 @@ function AccessibilityNav({
           onClick={() => setActive(section.id)}
           className={`
             transition
-            ${active === section.id ? "text-blue-700" : "text-gray-400"}
+            ${active === section.id ? "text-blue-800" : "text-gray-400"}
             hover:text-black/80
           `}
         >
