@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
 import { useTokenInferenceStream } from "../../../../../lib/hooks/ai/useTokenInference";
 import type { TokenInferenceSettings } from "../../../../../types/ai/tokenInference.types";
 import { GenerationControls } from "./GenerationControls";
@@ -11,8 +12,14 @@ const initialSettings: TokenInferenceSettings = {
   topP: 0.95,
 };
 
-export function StreamingGenerationPanel() {
-  const [prompt, setPrompt] = useState("Explain React");
+interface StreamingGenerationPanelProps {
+  t: TFunction<"exploreMiniAppsAi">;
+}
+
+export function StreamingGenerationPanel({ t }: StreamingGenerationPanelProps) {
+  const [prompt, setPrompt] = useState(
+    t("autoregressiveInference.stream.defaultPrompt"),
+  );
   const [settings, setSettings] =
     useState<TokenInferenceSettings>(initialSettings);
   const { tokens, fullText, metadata, isStreaming, error, start, stop, clear } =
@@ -33,7 +40,7 @@ export function StreamingGenerationPanel() {
     <div className="grid gap-6">
       <form onSubmit={handleStart} className="grid gap-4">
         <label className="grid gap-2 text-sm font-semibold text-primary">
-          Streaming prompt
+          {t("autoregressiveInference.stream.prompt")}
           <textarea
             value={prompt}
             onChange={(event) => setPrompt(event.target.value)}
@@ -41,7 +48,7 @@ export function StreamingGenerationPanel() {
             className="border border-neutral-800 bg-main-bg px-4 py-3 font-ibm-plex-mono text-sm font-normal text-primary outline-none focus:border-green"
           />
         </label>
-        <GenerationControls settings={settings} onChange={setSettings} />
+        <GenerationControls settings={settings} onChange={setSettings} t={t} />
         {error && (
           <p className="border border-red-400/20 bg-red-400/10 p-3 text-sm text-red-300">
             {error}
@@ -53,7 +60,9 @@ export function StreamingGenerationPanel() {
             disabled={isStreaming}
             className="min-h-11 bg-green px-5 font-ibm-plex-mono text-xs font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
           >
-            {isStreaming ? "Streaming..." : "Start stream"}
+            {isStreaming
+              ? t("autoregressiveInference.stream.loading")
+              : t("autoregressiveInference.stream.button")}
           </button>
           <button
             type="button"
@@ -61,7 +70,7 @@ export function StreamingGenerationPanel() {
             disabled={!isStreaming}
             className="min-h-11 border border-red-400/20 bg-red-400/10 px-5 font-ibm-plex-mono text-xs font-semibold text-red-300 disabled:opacity-40"
           >
-            Stop
+            {t("autoregressiveInference.stream.stop")}
           </button>
         </div>
       </form>
@@ -70,14 +79,14 @@ export function StreamingGenerationPanel() {
         <div className="flex flex-wrap justify-between gap-3 border-b border-neutral-800 pb-4">
           <div>
             <p className="font-ibm-plex-mono text-xs uppercase text-green">
-              Live token stream
+              {t("autoregressiveInference.stream.title")}
             </p>
             <p className="mt-1 font-ibm-plex-mono text-xs text-secondary">
               {isStreaming
-                ? "Receiving SSE token events..."
+                ? t("autoregressiveInference.stream.receiving")
                 : metadata
                   ? `${metadata.provider} · ${metadata.model}`
-                  : "Ready to stream"}
+                  : t("autoregressiveInference.stream.ready")}
             </p>
           </div>
           <div className="flex gap-2">
@@ -87,21 +96,21 @@ export function StreamingGenerationPanel() {
               disabled={!fullText}
               className="border border-neutral-800 bg-secondary-bg px-3 py-1.5 font-ibm-plex-mono text-xs font-semibold text-primary transition hover:border-green/50 disabled:opacity-40"
             >
-              Copy
+              {t("autoregressiveInference.normal.copy")}
             </button>
             <button
               type="button"
               onClick={clear}
               className="border border-neutral-800 bg-secondary-bg px-3 py-1.5 font-ibm-plex-mono text-xs font-semibold text-primary transition hover:border-green/50"
             >
-              Clear
+              {t("autoregressiveInference.normal.clear")}
             </button>
           </div>
         </div>
 
         {!fullText && !isStreaming ? (
           <div className="flex min-h-72 items-center justify-center text-center text-sm text-secondary">
-            Tokens will appear one by one as SSE events arrive.
+            {t("autoregressiveInference.stream.empty")}
           </div>
         ) : (
           <>
@@ -118,10 +127,13 @@ export function StreamingGenerationPanel() {
               <TokenChips
                 tokens={tokens}
                 activeIndex={isStreaming ? tokens.length - 1 : undefined}
+                t={t}
               />
             </div>
             <p className="mt-5 font-ibm-plex-mono text-xs text-secondary">
-              {tokens.length} token events received
+              {t("autoregressiveInference.stream.events", {
+                count: tokens.length,
+              })}
             </p>
           </>
         )}

@@ -8,55 +8,29 @@ import {
   Sigma,
   Waypoints,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const components = [
-  {
-    title: "Self-Attention",
-    icon: Waypoints,
-    body: "Scores token-to-token relationships and blends the most useful context.",
-  },
-  {
-    title: "Multi-Head Attention",
-    icon: Network,
-    body: "Runs several attention patterns in parallel, then merges them.",
-  },
-  {
-    title: "Positional Encoding",
-    icon: MoveHorizontal,
-    body: "Adds order information so the model knows where tokens sit.",
-  },
-  {
-    title: "Feed Forward Network",
-    icon: BrainCircuit,
-    body: "Transforms each contextual token vector through learned nonlinear layers.",
-  },
-  {
-    title: "Add & Norm",
-    icon: GitMerge,
-    body: "Stabilizes deep stacks with residual paths and normalization.",
-  },
-  {
-    title: "Token Prediction",
-    icon: Sigma,
-    body: "Turns final vectors into vocabulary probabilities.",
-  },
-  {
-    title: "Embeddings",
-    icon: Binary,
-    body: "Represent each token as a dense vector the network can compute with.",
-  },
-  {
-    title: "Transformer Layers",
-    icon: Layers3,
-    body: "Repeat attention, residual, normalization, and feed forward blocks.",
-  },
+const icons = [
+  Waypoints,
+  Network,
+  MoveHorizontal,
+  BrainCircuit,
+  GitMerge,
+  Sigma,
+  Binary,
+  Layers3,
 ];
 
 const ComponentCards = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const components = t("transformers.components", {
+    returnObjects: true,
+  }) as Array<{ title: string; body: string }>;
+
   return (
     <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {components.map((component) => {
-        const Icon = component.icon;
+      {components.map((component, index) => {
+        const Icon = icons[index] ?? Layers3;
 
         return (
           <article

@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import type { TFunction } from "i18next";
 import type {
   PredictionTreeNode,
   PredictionTreeResponse,
@@ -6,6 +7,7 @@ import type {
 
 interface PredictionTreeProps {
   tree: PredictionTreeResponse;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
 interface Point {
@@ -43,7 +45,7 @@ function shortLabel(value: string): string {
   return visible.length > 15 ? `${visible.slice(0, 14)}…` : visible;
 }
 
-export function PredictionTree({ tree }: PredictionTreeProps) {
+export function PredictionTree({ tree, t }: PredictionTreeProps) {
   const [scale, setScale] = useState(0.85);
   const [offset, setOffset] = useState({ x: 20, y: 35 });
   const [selectedNode, setSelectedNode] = useState<PredictionTreeNode | null>(
@@ -95,18 +97,18 @@ export function PredictionTree({ tree }: PredictionTreeProps) {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-800 px-4 py-3">
         <div>
           <p className="font-ibm-plex-mono text-xs uppercase text-green">
-            Interactive probability graph
+            {t("tokenPrediction.tree.title")}
           </p>
           <p className="mt-1 text-sm text-secondary">
-            Drag to pan. Select a node to inspect it.
+            {t("tokenPrediction.tree.description")}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => zoom(-0.15)}
-            aria-label="Zoom out"
-            title="Zoom out"
+            aria-label={t("tokenPrediction.tree.zoomOut")}
+            title={t("tokenPrediction.tree.zoomOut")}
             className="flex size-9 items-center justify-center border border-neutral-800 bg-secondary-bg text-lg font-semibold hover:border-green/50"
           >
             −
@@ -117,8 +119,8 @@ export function PredictionTree({ tree }: PredictionTreeProps) {
           <button
             type="button"
             onClick={() => zoom(0.15)}
-            aria-label="Zoom in"
-            title="Zoom in"
+            aria-label={t("tokenPrediction.tree.zoomIn")}
+            title={t("tokenPrediction.tree.zoomIn")}
             className="flex size-9 items-center justify-center border border-neutral-800 bg-secondary-bg text-lg font-semibold hover:border-green/50"
           >
             +
@@ -128,7 +130,7 @@ export function PredictionTree({ tree }: PredictionTreeProps) {
             onClick={resetView}
             className="min-h-9 border border-neutral-800 bg-secondary-bg px-3 font-ibm-plex-mono text-xs font-semibold hover:border-green/50"
           >
-            Reset view
+            {t("tokenPrediction.tree.reset")}
           </button>
         </div>
       </div>
@@ -138,7 +140,7 @@ export function PredictionTree({ tree }: PredictionTreeProps) {
           className="size-full cursor-grab touch-none active:cursor-grabbing"
           viewBox="0 0 1200 480"
           role="img"
-          aria-label="Interactive next-token prediction tree"
+          aria-label={t("tokenPrediction.tree.aria")}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={stopDragging}
@@ -225,7 +227,9 @@ export function PredictionTree({ tree }: PredictionTreeProps) {
                     fontSize="12"
                     fontWeight="700"
                   >
-                    {node.kind === "prompt" ? "PROMPT" : shortLabel(node.label)}
+                    {node.kind === "prompt"
+                      ? t("tokenPrediction.tree.prompt")
+                      : shortLabel(node.label)}
                   </text>
                   <text
                     x="0"
@@ -246,13 +250,14 @@ export function PredictionTree({ tree }: PredictionTreeProps) {
         {selectedNode && (
           <div className="absolute bottom-3 left-3 max-w-72 border border-neutral-800 bg-secondary-bg/95 p-3 shadow-xl">
             <p className="font-ibm-plex-mono text-[10px] uppercase text-secondary">
-              {selectedNode.kind} · step {selectedNode.step}
+              {selectedNode.kind} · {t("tokenPrediction.tree.step")}{" "}
+              {selectedNode.step}
             </p>
             <p className="mt-1 break-words font-ibm-plex-mono text-sm font-semibold">
               {selectedNode.label}
             </p>
             <p className="mt-2 text-xs text-secondary">
-              Probability{" "}
+              {t("tokenPrediction.tree.probability")}{" "}
               <strong className="text-primary">
                 {(selectedNode.probability * 100).toFixed(4)}%
               </strong>

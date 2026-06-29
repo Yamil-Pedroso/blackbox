@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   usePredictionPath,
   usePredictionTree,
@@ -12,28 +13,25 @@ import { PredictionTimeline } from "./view-comps/PredictionTimeline";
 import { PredictionTree } from "./view-comps/PredictionTree";
 import { TopPredictionCards } from "./view-comps/TopPredictionCards";
 
-const initialPrompt =
-  "In one sentence, describe the color orange to someone who has never been able to see.";
-
-const modelOptions = [
-  {
-    value: "educational-local",
-    label: "Educational local model",
-  },
-  {
-    value: "gpt-4.1-mini",
-    label: "GPT-4.1 Mini",
-  },
-  {
-    value: "gpt-4o-mini",
-    label: "GPT-4o Mini",
-  },
-];
-
 const TokenPredictionView = () => {
-  const [prompt, setPrompt] = useState(initialPrompt);
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const [prompt, setPrompt] = useState(t("tokenPrediction.initialPrompt"));
   const [model, setModel] = useState("educational-local");
   const [topK, setTopK] = useState(10);
+  const modelOptions = [
+    {
+      value: "educational-local",
+      label: t("tokenPrediction.models.educationalLocal"),
+    },
+    {
+      value: "gpt-4.1-mini",
+      label: t("tokenPrediction.models.gpt41Mini"),
+    },
+    {
+      value: "gpt-4o-mini",
+      label: t("tokenPrediction.models.gpt4oMini"),
+    },
+  ];
   const prediction = useTokenPrediction();
   const tree = usePredictionTree();
   const path = usePredictionPath();
@@ -68,25 +66,23 @@ const TokenPredictionView = () => {
     <section className="min-w-0 overflow-hidden border border-neutral-800 bg-secondary-bg text-primary">
       <header className="border-b border-neutral-800 bg-secondary-bg px-5 py-8 sm:px-8">
         <p className="font-ibm-plex-mono text-xs uppercase text-green">
-          Next-token probability laboratory
+          {t("tokenPrediction.header.eyebrow")}
         </p>
         <div className="mt-3 flex flex-wrap items-end justify-between gap-5">
           <div>
             <h2 className="text-3xl sm:text-4xl">
-              Token Prediction
+              {t("tokenPrediction.header.title")}
             </h2>
             <p className="mt-3 max-w-3xl font-ibm-plex-mono text-sm leading-6 text-secondary">
-              Watch a sentence emerge from repeated probability decisions.
-              Inspect what was selected, what nearly won, and how each choice
-              changed the path forward.
+              {t("tokenPrediction.header.description")}
             </p>
           </div>
           <div className="border border-neutral-800 bg-main-bg px-4 py-3">
             <p className="font-ibm-plex-mono text-[10px] uppercase text-green">
-              Core loop
+              {t("tokenPrediction.header.loopLabel")}
             </p>
             <p className="mt-1 font-ibm-plex-mono text-xs text-primary">
-              context → distribution → token → repeat
+              {t("tokenPrediction.header.loopValue")}
             </p>
           </div>
         </div>
@@ -97,19 +93,19 @@ const TokenPredictionView = () => {
         className="grid gap-5 border-b border-neutral-800 p-5 sm:p-8 lg:grid-cols-[1fr_280px]"
       >
         <label className="grid gap-2 text-sm font-semibold text-primary">
-          Prompt
+          {t("tokenPrediction.form.prompt")}
           <textarea
             value={prompt}
             onChange={(event) => setPrompt(event.target.value)}
             rows={6}
-            placeholder="Ask for a short generation..."
+            placeholder={t("tokenPrediction.form.placeholder")}
             className="resize-y border border-neutral-800 bg-main-bg px-4 py-3 font-ibm-plex-mono text-sm font-normal leading-6 text-primary outline-none transition placeholder:text-secondary/50 focus:border-green"
           />
         </label>
 
         <div className="grid content-start gap-4">
           <label className="grid gap-2 text-sm font-semibold text-primary">
-            Model
+            {t("tokenPrediction.form.model")}
             <select
               value={model}
               onChange={(event) => setModel(event.target.value)}
@@ -123,7 +119,7 @@ const TokenPredictionView = () => {
             </select>
           </label>
           <label className="grid gap-2 text-sm font-semibold text-primary">
-            Top-K predictions: {topK}
+            {t("tokenPrediction.form.topK", { topK })}
             <input
               type="range"
               min="2"
@@ -139,14 +135,16 @@ const TokenPredictionView = () => {
               disabled={isLoading || !prompt.trim()}
               className="min-h-11 bg-green px-4 font-ibm-plex-mono text-xs font-semibold text-black transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {isLoading ? "Predicting..." : "Predict"}
+              {isLoading
+                ? t("tokenPrediction.form.predicting")
+                : t("tokenPrediction.form.predict")}
             </button>
             <button
               type="button"
               onClick={clearAll}
               className="min-h-11 border border-neutral-800 bg-main-bg px-4 font-ibm-plex-mono text-xs font-semibold text-secondary transition hover:border-green/50 hover:text-primary"
             >
-              Clear
+              {t("tokenPrediction.form.clear")}
             </button>
           </div>
         </div>
@@ -165,12 +163,10 @@ const TokenPredictionView = () => {
               P(t)
             </div>
             <h3 className="mt-5 text-xl font-semibold">
-              Run a prediction to reveal the hidden choices
+              {t("tokenPrediction.empty.title")}
             </h3>
             <p className="mt-2 text-sm leading-6 text-secondary">
-              The local mode uses transparent educational probabilities. Enable
-              the OpenAI provider in the backend to request real token log
-              probabilities from compatible models.
+              {t("tokenPrediction.empty.description")}
             </p>
           </div>
         </div>
@@ -185,7 +181,7 @@ const TokenPredictionView = () => {
               className="mx-auto size-12 border-4 border-neutral-800 border-t-green"
             />
             <p className="mt-4 text-sm font-semibold text-secondary">
-              Building token distributions and graph...
+              {t("tokenPrediction.loading")}
             </p>
           </div>
         </div>
@@ -208,12 +204,12 @@ const TokenPredictionView = () => {
               <div>
                 <p className="font-ibm-plex-mono text-xs font-semibold uppercase text-green">
                   {prediction.data.isApproximation
-                    ? "Educational approximation"
-                    : "Real provider log probabilities"}
+                    ? t("tokenPrediction.provider.educational")
+                    : t("tokenPrediction.provider.real")}
                 </p>
                 <p className="mt-1 text-sm leading-6 text-secondary">
                   {prediction.data.approximationReason ??
-                    "Probabilities were converted from provider token log probabilities."}
+                    t("tokenPrediction.provider.fallbackReason")}
                 </p>
               </div>
               <span className="border border-neutral-800 bg-main-bg px-3 py-2 font-ibm-plex-mono text-xs font-semibold text-primary">
@@ -223,12 +219,12 @@ const TokenPredictionView = () => {
           </div>
 
           <section className="min-w-0 border border-neutral-800 bg-main-bg p-5 sm:p-6">
-            <PredictionTimeline steps={prediction.data.predictionSteps} />
+            <PredictionTimeline steps={prediction.data.predictionSteps} t={t} />
             <div className="mt-6 border-t border-neutral-800 pt-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="font-ibm-plex-mono text-xs uppercase text-secondary">
-                    Generated sentence
+                    {t("tokenPrediction.result.generatedSentence")}
                   </p>
                   <p className="mt-2 max-w-4xl text-lg font-semibold leading-8 text-primary">
                     {prediction.data.generatedText}
@@ -239,38 +235,42 @@ const TokenPredictionView = () => {
                   onClick={() => void copyResult()}
                   className="shrink-0 border border-neutral-800 bg-secondary-bg px-3 py-2 font-ibm-plex-mono text-xs font-semibold text-primary transition hover:border-green/50"
                 >
-                  Copy
+                  {t("tokenPrediction.result.copy")}
                 </button>
               </div>
             </div>
           </section>
 
-          <PredictionStats prediction={prediction.data} />
+          <PredictionStats prediction={prediction.data} t={t} />
 
-          {path.data && <PredictionPath path={path.data} />}
+          {path.data && <PredictionPath path={path.data} t={t} />}
 
-          {tree.data && <PredictionTree tree={tree.data} />}
+          {tree.data && <PredictionTree tree={tree.data} t={t} />}
 
-          <TopPredictionCards steps={prediction.data.predictionSteps} />
+          <TopPredictionCards steps={prediction.data.predictionSteps} t={t} />
 
           <aside className="border-t border-neutral-800 pt-6">
             <p className="font-ibm-plex-mono text-xs uppercase text-green">
-              How to read this experiment
+              {t("tokenPrediction.reading.title")}
             </p>
             <div className="mt-3 grid gap-4 text-sm leading-6 text-secondary md:grid-cols-3">
               <p>
-                <strong className="block text-primary">Distribution</strong>
-                At each position the model scores many possible next tokens.
+                <strong className="block text-primary">
+                  {t("tokenPrediction.reading.distribution")}
+                </strong>
+                {t("tokenPrediction.reading.distributionText")}
               </p>
               <p>
-                <strong className="block text-primary">Selection</strong>
-                One candidate is chosen, often influenced by temperature and
-                sampling settings.
+                <strong className="block text-primary">
+                  {t("tokenPrediction.reading.selection")}
+                </strong>
+                {t("tokenPrediction.reading.selectionText")}
               </p>
               <p>
-                <strong className="block text-primary">New context</strong>
-                The chosen token is appended, changing the next probability
-                distribution.
+                <strong className="block text-primary">
+                  {t("tokenPrediction.reading.newContext")}
+                </strong>
+                {t("tokenPrediction.reading.newContextText")}
               </p>
             </div>
           </aside>

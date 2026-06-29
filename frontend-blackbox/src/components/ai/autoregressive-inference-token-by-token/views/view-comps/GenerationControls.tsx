@@ -1,18 +1,21 @@
+import type { TFunction } from "i18next";
 import type { TokenInferenceSettings } from "../../../../../types/ai/tokenInference.types";
 
 interface GenerationControlsProps {
   settings: TokenInferenceSettings;
   onChange: (settings: TokenInferenceSettings) => void;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
 export function GenerationControls({
   settings,
   onChange,
+  t,
 }: GenerationControlsProps) {
   return (
     <div className="grid gap-4 sm:grid-cols-3">
       <label className="grid gap-2 font-ibm-plex-mono text-xs font-semibold uppercase text-secondary">
-        Max new tokens
+        {t("autoregressiveInference.controls.maxNewTokens")}
         <input
           type="number"
           min={1}
@@ -28,7 +31,7 @@ export function GenerationControls({
         />
       </label>
       <label className="grid gap-2 font-ibm-plex-mono text-xs font-semibold uppercase text-secondary">
-        Temperature
+        {t("autoregressiveInference.controls.temperature")}
         <input
           type="number"
           min={0}
@@ -45,7 +48,7 @@ export function GenerationControls({
         />
       </label>
       <label className="grid gap-2 font-ibm-plex-mono text-xs font-semibold uppercase text-secondary">
-        Top P
+        {t("autoregressiveInference.controls.topP")}
         <input
           type="number"
           min={0}

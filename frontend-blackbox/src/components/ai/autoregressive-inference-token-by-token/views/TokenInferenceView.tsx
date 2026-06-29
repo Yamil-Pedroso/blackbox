@@ -1,54 +1,54 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NormalGenerationPanel } from "./view-comps/NormalGenerationPanel";
 import { StreamingGenerationPanel } from "./view-comps/StreamingGenerationPanel";
 import { TokenizationPreviewPanel } from "./view-comps/TokenizationPreviewPanel";
 
 type InferenceView = "tokenize" | "generate" | "stream";
 
-const views: Array<{
-  id: InferenceView;
-  label: string;
-  description: string;
-}> = [
-  {
-    id: "tokenize",
-    label: "Tokenization Preview",
-    description: "Inspect approximate token boundaries.",
-  },
-  {
-    id: "generate",
-    label: "Normal Generation",
-    description: "Receive one complete model response.",
-  },
-  {
-    id: "stream",
-    label: "Streaming Generation",
-    description: "Watch SSE tokens arrive one by one.",
-  },
-];
-
 const TokenInferenceView = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const [activeView, setActiveView] = useState<InferenceView>("tokenize");
+  const views: Array<{
+    id: InferenceView;
+    label: string;
+    description: string;
+  }> = [
+    {
+      id: "tokenize",
+      label: t("autoregressiveInference.tabs.tokenize.label"),
+      description: t("autoregressiveInference.tabs.tokenize.description"),
+    },
+    {
+      id: "generate",
+      label: t("autoregressiveInference.tabs.generate.label"),
+      description: t("autoregressiveInference.tabs.generate.description"),
+    },
+    {
+      id: "stream",
+      label: t("autoregressiveInference.tabs.stream.label"),
+      description: t("autoregressiveInference.tabs.stream.description"),
+    },
+  ];
 
   return (
     <section className="overflow-hidden border border-neutral-800 bg-secondary-bg text-primary">
       <header className="border-b border-neutral-800 px-5 py-7 sm:px-8">
         <p className="font-ibm-plex-mono text-xs uppercase text-green">
-          Autoregressive inference
+          {t("autoregressiveInference.header.eyebrow")}
         </p>
         <h2 className="mt-3 text-3xl sm:text-4xl">
-          Token-by-Token Lab
+          {t("autoregressiveInference.header.title")}
         </h2>
         <p className="mt-3 max-w-3xl font-ibm-plex-mono text-sm leading-6 text-secondary">
-          See how text is split into units, compare a complete response with an
-          SSE stream, and observe generation unfold one token at a time.
+          {t("autoregressiveInference.header.description")}
         </p>
       </header>
 
       <div
         className="grid border-b border-neutral-800 md:grid-cols-3"
         role="tablist"
-        aria-label="Token inference views"
+        aria-label={t("autoregressiveInference.tabs.aria")}
       >
         {views.map((view) => (
           <button
@@ -76,21 +76,17 @@ const TokenInferenceView = () => {
       </div>
 
       <div className="p-5 sm:p-8" role="tabpanel">
-        {activeView === "tokenize" && <TokenizationPreviewPanel />}
-        {activeView === "generate" && <NormalGenerationPanel />}
-        {activeView === "stream" && <StreamingGenerationPanel />}
+        {activeView === "tokenize" && <TokenizationPreviewPanel t={t} />}
+        {activeView === "generate" && <NormalGenerationPanel t={t} />}
+        {activeView === "stream" && <StreamingGenerationPanel t={t} />}
       </div>
 
       <aside className="border-t border-neutral-800 bg-main-bg p-5 sm:p-8">
         <p className="font-ibm-plex-mono text-xs uppercase text-green">
-          What the animation means
+          {t("autoregressiveInference.aside.title")}
         </p>
         <p className="mt-2 max-w-4xl text-sm leading-6 text-secondary">
-          The local provider generates the complete educational answer first,
-          then the SSE endpoint simulates provider streaming by emitting its
-          approximate tokens with a short delay. A real provider adapter can
-          later forward native token deltas from Hugging Face, OpenAI, Ollama,
-          or Transformers.js through the same frontend contract.
+          {t("autoregressiveInference.aside.description")}
         </p>
       </aside>
     </section>

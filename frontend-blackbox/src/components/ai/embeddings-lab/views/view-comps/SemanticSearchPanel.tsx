@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useSemanticSearch } from "../../../../../lib/hooks/ai/useEmbeddings";
 
-const defaultDocuments = `Change your account password from settings
-Upload a new profile picture
-Update your billing method`;
-
 export function SemanticSearchPanel() {
-  const [query, setQuery] = useState("How do I reset my password?");
-  const [documentsText, setDocumentsText] = useState(defaultDocuments);
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const [query, setQuery] = useState(t("embeddingsLab.search.defaultQuery"));
+  const [documentsText, setDocumentsText] = useState(
+    t("embeddingsLab.search.defaultDocuments"),
+  );
   const { data, isLoading, error, execute } = useSemanticSearch();
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -24,7 +24,7 @@ export function SemanticSearchPanel() {
     <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
       <form onSubmit={handleSubmit} className="grid gap-4">
         <label className="grid gap-2 text-sm font-semibold text-primary">
-          Search query
+          {t("embeddingsLab.search.query")}
           <textarea
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -33,7 +33,7 @@ export function SemanticSearchPanel() {
           />
         </label>
         <label className="grid gap-2 text-sm font-semibold text-primary">
-          Documents, one per line
+          {t("embeddingsLab.search.documents")}
           <textarea
             value={documentsText}
             onChange={(event) => setDocumentsText(event.target.value)}
@@ -51,19 +51,21 @@ export function SemanticSearchPanel() {
           disabled={isLoading}
           className="min-h-11 bg-green px-5 font-ibm-plex-mono text-xs font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
         >
-          {isLoading ? "Searching..." : "Run semantic search"}
+          {isLoading
+            ? t("embeddingsLab.search.loading")
+            : t("embeddingsLab.search.button")}
         </button>
       </form>
 
       <div className="min-h-80 border border-neutral-800 bg-main-bg p-5 sm:p-6">
         {!data ? (
           <div className="flex h-full min-h-72 items-center justify-center text-center text-sm text-secondary">
-            Results will be ranked by cosine similarity to the query.
+            {t("embeddingsLab.search.empty")}
           </div>
         ) : (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <p className="font-ibm-plex-mono text-xs uppercase text-green">
-              Ranked matches
+              {t("embeddingsLab.search.matches")}
             </p>
             <div className="mt-4 grid gap-3">
               {data.results.map((result) => {

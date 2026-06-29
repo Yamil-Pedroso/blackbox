@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useOpenAISummary } from "../../../../lib/hooks/ai/useOpenAISummary";
 import { ColoredText } from "./ColoredText";
 
 const OpenAISummaryView = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const [inputUrl, setInputUrl] = useState("");
   const { data, loading, progress, status, error, summarize } =
     useOpenAISummary();
@@ -22,15 +24,15 @@ const OpenAISummaryView = () => {
     >
       <div>
         <p className="font-ibm-plex-mono text-xs uppercase text-green">
-          OpenAI Website Summarizer
+          {t("webScrapingAi.openai.eyebrow")}
         </p>
 
         <h1 className="mt-3 text-3xl text-primary md:text-4xl">
-          Scrape and summarize any website
+          {t("webScrapingAi.openai.title")}
         </h1>
 
         <p className="mt-4 max-w-2xl font-ibm-plex-mono text-sm leading-relaxed text-secondary">
-          Insert a URL, extract its content, summarize it with OpenAI.
+          {t("webScrapingAi.openai.description")}
         </p>
       </div>
 
@@ -41,7 +43,7 @@ const OpenAISummaryView = () => {
         <input
           value={inputUrl}
           onChange={(e) => setInputUrl(e.target.value)}
-          placeholder="https://react.dev"
+          placeholder={t("webScrapingAi.placeholder")}
           className="min-h-12 flex-1 border border-neutral-800 bg-main-bg px-4 py-3 font-ibm-plex-mono text-sm text-primary outline-none transition placeholder:text-secondary/50 focus:border-green"
         />
 
@@ -49,7 +51,9 @@ const OpenAISummaryView = () => {
           disabled={loading}
           className="min-h-12 border border-green/50 bg-green px-6 py-3 font-ibm-plex-mono text-xs font-semibold text-black transition-opacity disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
         >
-          {loading ? "Working..." : "Summarize"}
+          {loading
+            ? t("webScrapingAi.openai.loading")
+            : t("webScrapingAi.openai.button")}
         </button>
       </form>
 
@@ -106,15 +110,27 @@ const OpenAISummaryView = () => {
           </article>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-4">
-            <Metric label="Model" value={data.metrics.model} />
-            <Metric label="Time" value={`${data.metrics.durationMs}ms`} />
             <Metric
-              label="Prompt tokens"
-              value={data.metrics.promptTokens ?? "N/A"}
+              label={t("webScrapingAi.metrics.model")}
+              value={data.metrics.model}
             />
             <Metric
-              label="Total tokens"
-              value={data.metrics.totalTokens ?? "N/A"}
+              label={t("webScrapingAi.metrics.time")}
+              value={`${data.metrics.durationMs}ms`}
+            />
+            <Metric
+              label={t("webScrapingAi.metrics.promptTokens")}
+              value={
+                data.metrics.promptTokens ??
+                t("webScrapingAi.metrics.notAvailable")
+              }
+            />
+            <Metric
+              label={t("webScrapingAi.metrics.totalTokens")}
+              value={
+                data.metrics.totalTokens ??
+                t("webScrapingAi.metrics.notAvailable")
+              }
             />
           </div>
         </motion.div>

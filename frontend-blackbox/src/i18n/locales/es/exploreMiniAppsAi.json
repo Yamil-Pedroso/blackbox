@@ -1,0 +1,776 @@
+{
+  "webScrapingAi": {
+    "placeholder": "https://react.dev",
+    "ollama": {
+      "eyebrow": "Scraper web con Ollama",
+      "title": "Extraer contenido de una web",
+      "description": "Inserta una URL, extrae el contenido de la página y previsualiza la respuesta scrapeada.",
+      "button": "Scrapear",
+      "loading": "Scrapeando..."
+    },
+    "openai": {
+      "eyebrow": "Resumidor web con OpenAI",
+      "title": "Scrapea y resume cualquier web",
+      "description": "Inserta una URL, extrae su contenido y resúmelo con OpenAI.",
+      "button": "Resumir",
+      "loading": "Trabajando..."
+    },
+    "metrics": {
+      "model": "Modelo",
+      "time": "Tiempo",
+      "promptTokens": "Tokens del prompt",
+      "totalTokens": "Tokens totales",
+      "notAvailable": "N/D"
+    }
+  },
+  "embeddingsLab": {
+    "header": {
+      "eyebrow": "Vectores semánticos",
+      "title": "Laboratorio de Embeddings",
+      "description": "Explora cómo el texto se convierte en coordenadas, cómo cosine similarity compara significado y cómo los embeddings impulsan búsqueda, agrupación y RAG."
+    },
+    "tabs": {
+      "aria": "Vistas de aprendizaje de embeddings",
+      "generate": {
+        "label": "Generar Embedding",
+        "description": "Convierte texto en un vector numérico."
+      },
+      "compare": {
+        "label": "Comparar Textos",
+        "description": "Mide similitud semántica."
+      },
+      "search": {
+        "label": "Búsqueda Semántica",
+        "description": "Ordena documentos por significado."
+      },
+      "group": {
+        "label": "Agrupar Textos",
+        "description": "Descubre clusters conceptuales simples."
+      }
+    },
+    "note": {
+      "title": "Nota de aprendizaje",
+      "prefix": "El provider local es un vectorizador educativo determinista, no un modelo neural de embeddings. Configura",
+      "middle": "a",
+      "suffix": "y proporciona",
+      "ending": "para usar el provider remoto de feature-extraction. La abstracción está lista para adaptadores de OpenAI, Ollama y Transformers.js."
+    },
+    "generate": {
+      "defaultText": "Me encanta programar con React y Node.js",
+      "label": "Texto para embedding",
+      "placeholder": "Introduce una frase o párrafo...",
+      "loading": "Generando...",
+      "button": "Generar embedding",
+      "clear": "Limpiar",
+      "empty": "Genera un vector para inspeccionar sus dimensiones y primeros valores.",
+      "dimensions": "Dimensiones",
+      "provider": "Provider",
+      "model": "Modelo",
+      "values": "Primeros 20 valores del vector"
+    },
+    "compare": {
+      "defaultA": "Me encanta programar",
+      "defaultB": "Disfruto escribir código",
+      "first": "Primer texto",
+      "second": "Segundo texto",
+      "loading": "Comparando...",
+      "button": "Comparar significado",
+      "empty": "Compara dos textos para ver cómo cosine similarity mide su dirección en el espacio de embeddings.",
+      "high": "Alta similitud",
+      "medium": "Similitud media",
+      "low": "Baja similitud",
+      "cosine": "Cosine similarity: {{similarity}} · {{dimensions}} dimensiones"
+    },
+    "search": {
+      "defaultQuery": "¿Cómo restablezco mi contraseña?",
+      "defaultDocuments": "Cambia la contraseña desde configuración\nSube una nueva foto de perfil\nActualiza tu método de pago",
+      "query": "Consulta de búsqueda",
+      "documents": "Documentos, uno por línea",
+      "loading": "Buscando...",
+      "button": "Ejecutar búsqueda semántica",
+      "empty": "Los resultados se ordenarán por cosine similarity contra la consulta.",
+      "matches": "Coincidencias ordenadas"
+    },
+    "group": {
+      "defaultTexts": "Me encanta React\nVue es un framework frontend\nEl perro está corriendo\nLos gatos son adorables",
+      "label": "Textos para agrupar, uno por línea",
+      "loading": "Agrupando...",
+      "button": "Agrupar textos relacionados",
+      "empty": "La demo comparará vectores y creará grupos simples por similitud.",
+      "group": "Grupo {{number}}",
+      "centroid": "similitud al centroide {{value}}"
+    }
+  },
+  "tokenPrediction": {
+    "initialPrompt": "En una frase, describe el color naranja a alguien que nunca ha podido ver.",
+    "header": {
+      "eyebrow": "Laboratorio de probabilidad del siguiente token",
+      "title": "Predicción de Tokens",
+      "description": "Observa cómo una frase emerge de decisiones de probabilidad repetidas. Inspecciona qué se seleccionó, qué estuvo cerca de ganar y cómo cada elección cambió el camino siguiente.",
+      "loopLabel": "Bucle central",
+      "loopValue": "contexto -> distribución -> token -> repetir"
+    },
+    "form": {
+      "prompt": "Prompt",
+      "placeholder": "Pide una generación corta...",
+      "model": "Modelo",
+      "topK": "Predicciones Top-K: {{topK}}",
+      "predict": "Predecir",
+      "predicting": "Prediciendo...",
+      "clear": "Limpiar"
+    },
+    "models": {
+      "educationalLocal": "Modelo local educativo",
+      "gpt41Mini": "GPT-4.1 Mini",
+      "gpt4oMini": "GPT-4o Mini"
+    },
+    "empty": {
+      "title": "Ejecuta una predicción para revelar las decisiones ocultas",
+      "description": "El modo local usa probabilidades educativas transparentes. Habilita el provider de OpenAI en el backend para solicitar log probabilities reales de tokens en modelos compatibles."
+    },
+    "loading": "Construyendo distribuciones de tokens y grafo...",
+    "provider": {
+      "educational": "Aproximación educativa",
+      "real": "Log probabilities reales del provider",
+      "fallbackReason": "Las probabilidades se convirtieron desde las log probabilities de tokens del provider."
+    },
+    "result": {
+      "generatedSentence": "Frase generada",
+      "copy": "Copiar"
+    },
+    "stats": {
+      "totalTokens": "Tokens totales",
+      "averageProbability": "Probabilidad promedio",
+      "lowestProbability": "Probabilidad más baja",
+      "highestProbability": "Probabilidad más alta",
+      "generationTime": "Tiempo de generación",
+      "model": "Modelo"
+    },
+    "timeline": {
+      "eyebrow": "Secuencia elegida",
+      "title": "Línea de tiempo de predicción",
+      "positions": "{{count}} posiciones"
+    },
+    "path": {
+      "title": "Ruta de selección real",
+      "description": "Estas son las ramas que terminaron formando la frase final. Las alternativas siguen visibles en el árbol, pero no fueron seleccionadas."
+    },
+    "tree": {
+      "title": "Grafo interactivo de probabilidades",
+      "description": "Arrastra para moverte. Selecciona un nodo para inspeccionarlo.",
+      "zoomOut": "Alejar",
+      "zoomIn": "Acercar",
+      "reset": "Reiniciar vista",
+      "aria": "Árbol interactivo de predicción del siguiente token",
+      "prompt": "PROMPT",
+      "step": "paso",
+      "probability": "Probabilidad"
+    },
+    "cards": {
+      "eyebrow": "Distribución en cada paso",
+      "title": "Predicciones top de tokens",
+      "description": "Cada card es una captura de la distribución del siguiente token del modelo. La fila en verde es el token que continuó la frase generada.",
+      "position": "Posición {{position}}",
+      "chosen": "Elegido: {{token}}"
+    },
+    "reading": {
+      "title": "Cómo leer este experimento",
+      "distribution": "Distribución",
+      "distributionText": "En cada posición, el modelo puntúa muchos posibles tokens siguientes.",
+      "selection": "Selección",
+      "selectionText": "Se elige un candidato, a menudo influido por temperature y ajustes de sampling.",
+      "newContext": "Nuevo contexto",
+      "newContextText": "El token elegido se añade al contexto, cambiando la siguiente distribución de probabilidad."
+    }
+  },
+  "autoregressiveInference": {
+    "header": {
+      "eyebrow": "Inferencia autoregresiva",
+      "title": "Laboratorio Token por Token",
+      "description": "Mira cómo el texto se divide en unidades, compara una respuesta completa con un stream SSE y observa cómo la generación avanza token por token."
+    },
+    "tabs": {
+      "aria": "Vistas de inferencia de tokens",
+      "tokenize": {
+        "label": "Preview de Tokenización",
+        "description": "Inspecciona límites aproximados de tokens."
+      },
+      "generate": {
+        "label": "Generación Normal",
+        "description": "Recibe una respuesta completa del modelo."
+      },
+      "stream": {
+        "label": "Generación en Streaming",
+        "description": "Observa tokens SSE llegar uno por uno."
+      }
+    },
+    "aside": {
+      "title": "Qué significa la animación",
+      "description": "El provider local genera primero la respuesta educativa completa, luego el endpoint SSE simula streaming del provider emitiendo sus tokens aproximados con un pequeño delay. Más adelante, un adaptador real puede reenviar deltas nativos de tokens desde Hugging Face, OpenAI, Ollama o Transformers.js usando el mismo contrato del frontend."
+    },
+    "controls": {
+      "maxNewTokens": "Máx. nuevos tokens",
+      "temperature": "Temperature",
+      "topP": "Top P"
+    },
+    "tokenize": {
+      "defaultText": "React es una librería JavaScript para crear interfaces de usuario.",
+      "label": "Texto para tokenizar",
+      "loading": "Tokenizando...",
+      "button": "Previsualizar tokens",
+      "clear": "Limpiar",
+      "empty": "Los chips de tokens aparecerán aquí con los espacios iniciales mostrados como puntos.",
+      "functionName": "approximateTokenize",
+      "subtitle": "Preview educativo del tokenizer"
+    },
+    "normal": {
+      "defaultPrompt": "Explica qué es React",
+      "prompt": "Prompt",
+      "loading": "Generando...",
+      "button": "Generar normalmente",
+      "empty": "La respuesta completa y sus tokens aproximados aparecerán aquí.",
+      "title": "Respuesta generada",
+      "copy": "Copiar",
+      "clear": "Limpiar",
+      "tokenMeta": "{{provider}} · {{model}} · {{count}} tokens"
+    },
+    "stream": {
+      "defaultPrompt": "Explica React",
+      "prompt": "Prompt de streaming",
+      "loading": "Transmitiendo...",
+      "button": "Iniciar stream",
+      "stop": "Detener",
+      "title": "Stream de tokens en vivo",
+      "receiving": "Recibiendo eventos SSE de tokens...",
+      "ready": "Listo para stream",
+      "empty": "Los tokens aparecerán uno por uno cuando lleguen los eventos SSE.",
+      "events": "{{count}} eventos de token recibidos"
+    },
+    "chips": {
+      "title": "Token {{number}}: {{token}}"
+    }
+  },
+  "transformers": {
+    "topics": {
+      "transformer": "Transformer",
+      "llmFlow": "Flujo LLM",
+      "selfAttention": "Self-Attention",
+      "multiHead": "Multi-Head",
+      "position": "Posición",
+      "addNorm": "Add & Norm",
+      "tokenPrediction": "Predicción de Tokens",
+      "loadingExplanation": "Cargando explicación..."
+    },
+    "hero": {
+      "eyebrow": "Capa de inteligencia / Arquitectura",
+      "title": "Transformers: la arquitectura detrás de los LLMs",
+      "description": "Un módulo visual para entender cómo el texto se convierte en tokens, embeddings, patrones de atención, activaciones por capas, probabilidades y finalmente el siguiente token generado.",
+      "cards": [
+        {
+          "title": "Contexto en paralelo",
+          "body": "Los tokens se comparan con toda la secuencia."
+        },
+        {
+          "title": "Capas apiladas",
+          "body": "Los bloques de attention y feed forward se repiten en profundidad."
+        },
+        {
+          "title": "Bucle del siguiente token",
+          "body": "La generación se repite un token a la vez."
+        }
+      ]
+    },
+    "sections": {
+      "what": {
+        "eyebrow": "01 / Qué",
+        "title": "¿Qué es un Transformer?",
+        "body": "Un Transformer es un modelo de secuencia construido alrededor de attention. En vez de leer texto estrictamente de izquierda a derecha, permite que los tokens se comparen con otros tokens y construyan representaciones más ricas y conscientes del contexto."
+      },
+      "flow": {
+        "eyebrow": "02 / Flujo",
+        "title": "Flujo LLM de alto nivel",
+        "body": "Un modelo de lenguaje convierte texto crudo en una cadena de representaciones y luego predice qué token probablemente viene después."
+      },
+      "architecture": {
+        "eyebrow": "03 / Arquitectura",
+        "title": "Arquitectura encoder / decoder",
+        "body": "Los Transformers clásicos incluyen encoders y decoders. Los LLMs de chat modernos suelen usar stacks decoder-only, pero los mismos bloques centrados en attention siguen siendo esenciales."
+      },
+      "attention": {
+        "eyebrow": "04 / Attention",
+        "title": "Self-attention y multi-head attention",
+        "body": "Attention es el mecanismo de enrutamiento: cada token decide cuánto debe escuchar a otros tokens. Multi-head attention repite esto desde varias vistas aprendidas."
+      },
+      "components": {
+        "eyebrow": "05 / Componentes",
+        "title": "Componentes clave de un Transformer",
+        "body": "El bloque completo sigue un ritmo compacto: attention, conexión residual, normalización, red feed forward, conexión residual y normalización."
+      },
+      "interactive": {
+        "eyebrow": "06 / Interactivo",
+        "title": "Pruébalo: demo de Transformer",
+        "body": "Ejecuta un forward pass simulado. El objetivo es visualización e intuición, por eso los pesos de attention son aproximados y no mediciones internas del modelo."
+      },
+      "glossary": {
+        "eyebrow": "07 / Vocabulario",
+        "title": "Glosario",
+        "body": "Definiciones compactas para términos que aparecen en papers de Transformers, model cards y tooling de LLMs."
+      }
+    },
+    "flowDiagram": [
+      "Texto de entrada",
+      "Tokenización",
+      "Embeddings",
+      "Capas Transformer",
+      "Probabilidades de salida",
+      "Siguiente token"
+    ],
+    "architectureDiagram": {
+      "encoder": "Stack encoder",
+      "encoderBadge": "entiende la entrada",
+      "encoderBlocks": [
+        "Embeddings de entrada + posición",
+        "Self-attention multi-head",
+        "Add & Norm",
+        "Red feed forward",
+        "Add & Norm"
+      ],
+      "decoder": "Stack decoder",
+      "decoderBadge": "genera tokens",
+      "decoderBlocks": [
+        "Embeddings de salida desplazados",
+        "Self-attention enmascarada",
+        "Cross-attention al encoder",
+        "Red feed forward",
+        "Proyección de probabilidades"
+      ]
+    },
+    "attention": {
+      "map": "Mapa de self-attention",
+      "context": "Tokens intercambiando contexto",
+      "defaultTokens": ["El", "gato", "se", "sienta", "en", "la alfombra"]
+    },
+    "components": [
+      {
+        "title": "Self-Attention",
+        "body": "Puntúa relaciones token a token y mezcla el contexto más útil."
+      },
+      {
+        "title": "Multi-Head Attention",
+        "body": "Ejecuta varios patrones de attention en paralelo y luego los fusiona."
+      },
+      {
+        "title": "Positional Encoding",
+        "body": "Añade información de orden para que el modelo sepa dónde está cada token."
+      },
+      {
+        "title": "Feed Forward Network",
+        "body": "Transforma cada vector contextual de token con capas no lineales aprendidas."
+      },
+      {
+        "title": "Add & Norm",
+        "body": "Estabiliza stacks profundos con rutas residuales y normalización."
+      },
+      {
+        "title": "Predicción de Tokens",
+        "body": "Convierte los vectores finales en probabilidades del vocabulario."
+      },
+      {
+        "title": "Embeddings",
+        "body": "Representan cada token como un vector denso con el que la red puede calcular."
+      },
+      {
+        "title": "Capas Transformer",
+        "body": "Repiten attention, residual, normalización y bloques feed forward."
+      }
+    ],
+    "demo": {
+      "samplePrompts": [
+        "El gato se sienta en",
+        "Un modelo Transformer aprende",
+        "Buen código debería"
+      ],
+      "eyebrow": "Pruébalo",
+      "title": "Forward pass Transformer simulado",
+      "description": "Escribe un prompt y observa una aproximación educativa de tokens, pesos de attention, embeddings y probabilidades del siguiente token.",
+      "placeholder": "Escribe un prompt...",
+      "run": "Ejecutar demo",
+      "clear": "Limpiar",
+      "loading": [
+        "Tokenizando",
+        "Calculando attention",
+        "Proyectando logits"
+      ],
+      "empty": "Estado vacío: ejecuta la demo para generar una traza visual del Transformer.",
+      "chosen": "elegido",
+      "embeddingPreview": "Preview de embeddings",
+      "nextTokenProbabilities": "Probabilidades del siguiente token",
+      "highlightedPath": "Ruta destacada: {{path}}",
+      "approximation": "isApproximation: {{value}}. Estos pesos son simulados para educación, no extraídos de un modelo de producción."
+    },
+    "glossary": [
+      ["Token", "Un fragmento de texto que procesa el modelo."],
+      ["Embedding", "Un vector numérico que representa un token."],
+      ["Query", "Lo que un token está buscando."],
+      ["Key", "Lo que un token ofrece para hacer matching."],
+      ["Value", "La información mezclada después del scoring de attention."],
+      ["Logits", "Puntuaciones crudas del siguiente token antes de probabilidades."]
+    ],
+    "resources": {
+      "title": "Recursos / próximos temas",
+      "items": [
+        "Attention is all you need",
+        "Tokenización y embeddings",
+        "Modelos de lenguaje decoder-only",
+        "Estrategias de sampling: greedy, top-k, top-p"
+      ],
+      "next": "Próxima idea: comparar LLMs decoder-only con modelos encoder-only de embeddings."
+    }
+  },
+  "multiModalAi": {
+    "titleTop": "MULTIMODAL",
+    "titleBottom": "DEMOS AI SDK",
+    "streaming": {
+      "defaultInput": "Explica las respuestas en streaming en apps con LLMs.",
+      "title": "Tutor en streaming",
+      "description": "Observa cómo la respuesta llega progresivamente.",
+      "empty": "Haz una pregunta y mira cómo la respuesta llega en stream.",
+      "loading": "Transmitiendo...",
+      "send": "Enviar",
+      "stop": "Detener"
+    },
+    "structured": {
+      "defaultTopic": "RAG versus fine-tuning",
+      "title": "Salida estructurada",
+      "description": "Genera un brief JSON limpio.",
+      "fallbackError": "No se pudo generar el brief",
+      "next": "Siguiente: {{value}}",
+      "tokens": "{{model}} · {{tokens}} tokens",
+      "notAvailable": "N/D",
+      "loading": "Generando...",
+      "button": "Generar brief JSON"
+    },
+    "tools": {
+      "defaultInput": "Voy a visitar Zúrich mañana. ¿Debería planear trabajo en interior o exterior?",
+      "title": "Tool calling",
+      "description": "Haz preguntas que necesitan herramientas externas.",
+      "empty": "Pide consejos de planificación que dependan del clima.",
+      "loading": "Pensando...",
+      "button": "Preguntar con tool"
+    },
+    "speech": {
+      "defaultText": "La generación de voz con AI SDK convierte texto en audio desde un endpoint backend.",
+      "defaultInstructions": "Habla claro con un tono cálido de enseñanza.",
+      "title": "Voz",
+      "description": "Convierte tu texto en audio generado.",
+      "fallbackError": "No se pudo generar la voz",
+      "loading": "Generando...",
+      "button": "Generar voz"
+    }
+  },
+  "quantization": {
+    "defaultWeights": "0.123456, -0.987654, 1.234567, -2.456789",
+    "inputError": "Introduce al menos un número válido separado por comas, espacios o nuevas líneas.",
+    "header": {
+      "eyebrow": "Compresión de modelos",
+      "title": "Playground de Quantization",
+      "description": "Simula cómo una menor precisión numérica cambia pesos de ejemplo, memoria del modelo y error de aproximación.",
+      "legend": "Leyenda de precisión"
+    },
+    "form": {
+      "weights": "Pesos de ejemplo del modelo",
+      "placeholder": "0.123456, -0.987654, 1.234567",
+      "parameters": "Cantidad de parámetros del modelo",
+      "scale": "Escala actual: {{value}} parámetros",
+      "loading": "Cuantizando...",
+      "analyze": "Analizar quantization",
+      "clear": "Limpiar"
+    },
+    "presets": [
+      { "label": "Modelo demo pequeño", "detail": "1M" },
+      { "label": "Llama 3.1 8B", "detail": "8B" },
+      { "label": "Llama 3.1 70B", "detail": "70B" }
+    ],
+    "compressionLabels": {
+      "FP16": "Comprimir a FP16",
+      "INT8": "Comprimir a Q8",
+      "INT4": "Comprimir a Q4",
+      "INT2": "Comprimir a INT2"
+    },
+    "loading": "Simulando formatos de precisión...",
+    "metrics": {
+      "parameters": "Parámetros",
+      "sampleWeights": "Pesos de ejemplo",
+      "fp32": "Baseline FP32"
+    },
+    "cards": {
+      "title": "Cards de precisión",
+      "description": "Menos bits ahorran memoria, pero ofrecen menos valores representables.",
+      "bitsPerParameter": "{{bits}} bits / parámetro",
+      "avgError": "Error prom.: {{value}}",
+      "compressing": "Comprimiendo..."
+    },
+    "table": {
+      "title": "Tabla comparativa",
+      "precision": "Precisión",
+      "bits": "Bits",
+      "estimatedSize": "Tamaño estimado",
+      "memorySaved": "Memoria ahorrada",
+      "averageError": "Error promedio",
+      "sampleWeights": "Pesos de ejemplo"
+    },
+    "guide": {
+      "eyebrow": "Guía educativa",
+      "title": "Menos bits, modelo más pequeño",
+      "body": "Quantization reduce el número de bits usados para guardar pesos del modelo. Pesos compactos necesitan menos RAM o VRAM, pero redondearlos a menos valores introduce error de aproximación.",
+      "bullets": [
+        "FP16 e INT8 suelen preservar más detalle mientras reducen memoria comparado con FP32.",
+        "Variantes Q4, Q5 y Q8 son comunes al ejecutar LLMs locales con GGUF, llama.cpp u Ollama.",
+        "Quantizers reales pueden operar por tensor, canal o bloque, y guardar escalas y zero points adicionales.",
+        "Archivos más pequeños no garantizan calidad idéntica ni inferencia más rápida en todos los dispositivos."
+      ],
+      "disclaimer": "{{disclaimer}} Este playground no crea ni modifica un archivo real de modelo. La animación de compresión es una ayuda visual de aprendizaje; quantization en producción usa herramientas y formatos como GGUF, llama.cpp, GPTQ, AWQ, bitsandbytes y archivos compatibles con Ollama."
+    },
+    "empty": {
+      "title": "Listo para una muestra de pesos",
+      "description": "Elige una escala de modelo y analiza pesos de ejemplo para comparar precisión, memoria y error de aproximación."
+    },
+    "progress": {
+      "title": "Flujo visual de compresión",
+      "reset": "Reiniciar compresión",
+      "aria": "Compresión a {{precision}}",
+      "complete": "El análisis del backend y la animación educativa están completos.",
+      "running": "La petición al backend y la animación visual de aprendizaje corren en paralelo."
+    },
+    "result": {
+      "title": "Resultado del modelo comprimido",
+      "smaller": "{{ratio}}x más pequeño",
+      "before": "Antes",
+      "after": "Después",
+      "beforeDescription": "Alto uso de memoria · Alta precisión",
+      "afterDescription": "Menor uso de memoria · Error de aproximación {{error}}",
+      "memorySaved": "Memoria ahorrada",
+      "compressionRatio": "Ratio de compresión",
+      "averageError": "Error promedio",
+      "weights": "Pesos cuantizados de ejemplo"
+    }
+  },
+  "pipelinesArchitecture": {
+    "header": {
+      "eyebrow": "Pipelines de Hugging Face",
+      "title": "Workspace de inferencia",
+      "description": "Selecciona una tarea, configura su entrada e inspecciona la respuesta normalizada del provider sin salir del workspace.",
+      "stats": {
+        "tasks": "Tareas",
+        "input": "Entrada",
+        "inputValue": "Texto",
+        "output": "Salida",
+        "outputValue": "JSON"
+      }
+    },
+    "select": "Selecciona pipeline",
+    "activeTask": "Tarea activa",
+    "cards": {
+      "question-answering": {
+        "name": "Question Answering",
+        "description": "Haz una pregunta contra un contexto proporcionado.",
+        "shortLabel": "Q&A"
+      },
+      "summarization": {
+        "name": "Summarization",
+        "description": "Convierte texto largo en un resumen compacto.",
+        "shortLabel": "Resumen"
+      },
+      "translation": {
+        "name": "Translation",
+        "description": "Traduce texto entre códigos de idioma.",
+        "shortLabel": "Traducir"
+      },
+      "classification": {
+        "name": "Classification",
+        "description": "Ejecuta sentiment analysis u otras tareas futuras de clasificación.",
+        "shortLabel": "Clasificar"
+      },
+      "text-generation": {
+        "name": "Text Generation",
+        "description": "Genera texto desde un prompt y opciones de decoding.",
+        "shortLabel": "Generar"
+      },
+      "audio-generation": {
+        "name": "Audio Generation",
+        "description": "Prepara salida text-to-speech mediante un provider.",
+        "shortLabel": "Audio"
+      }
+    },
+    "defaults": {
+      "question": "¿Quién creó React?",
+      "context": "React fue creado por Facebook y Jordan Walke.",
+      "summaryText": "Los pipelines son APIs de alto nivel para tareas comunes de machine learning. Hacen más fácil ejecutar inferencia para question answering, summarization, translation, classification, generation y flujos de audio.",
+      "translationText": "Hola mundo",
+      "classificationText": "Me encanta programar.",
+      "prompt": "Explica qué es un modelo Transformer.",
+      "audioText": "Bienvenido a mi aplicación."
+    },
+    "fields": {
+      "question": "Pregunta",
+      "context": "Contexto",
+      "text": "Texto",
+      "sourceLanguage": "Idioma origen",
+      "targetLanguage": "Idioma destino",
+      "classificationType": "Tipo de clasificación",
+      "prompt": "Prompt",
+      "temperature": "Temperature",
+      "maxNewTokens": "Máx. nuevos tokens",
+      "topP": "Top P"
+    },
+    "actions": {
+      "clear": "Limpiar",
+      "running": "Ejecutando pipeline...",
+      "run": "Ejecutar pipeline"
+    },
+    "result": {
+      "emptyTitle": "La salida del pipeline aparecerá aquí.",
+      "emptyDescription": "Ejecuta cualquier tarea para inspeccionar su respuesta, metadata y JSON crudo.",
+      "title": "Resultado del pipeline",
+      "description": "Respuesta normalizada del provider",
+      "copied": "Copiado",
+      "copy": "Copiar",
+      "provider": "Provider",
+      "model": "Modelo",
+      "duration": "Duración"
+    }
+  },
+  "tokenizerPlayground": {
+    "exampleText": "Los LLMs dividen texto en tokens. La versión 2 cuesta $19.99, ¡y la puntuación importa!",
+    "tokenLabels": {
+      "word": "Palabra",
+      "number": "Número",
+      "punctuation": "Puntuación",
+      "whitespace": "Espacio",
+      "special": "Especial"
+    },
+    "header": {
+      "eyebrow": "Estimación consciente del provider",
+      "title": "Tokenizer Playground",
+      "description": "Compara estrategias de tokenización y estima costos separados de input y output para un modelo seleccionado.",
+      "legend": "Leyenda de tipos de token"
+    },
+    "form": {
+      "title": "Entrada de análisis",
+      "description": "Configura texto, provider y output esperado.",
+      "text": "Texto para analizar",
+      "placeholder": "Pega un prompt, párrafo o extracto de documento...",
+      "provider": "Provider",
+      "model": "Modelo",
+      "estimatedOutputTokens": "Tokens de output estimados",
+      "includeSpaces": "Mostrar tokens de espacio cuando el adaptador seleccionado lo soporte",
+      "clear": "Limpiar",
+      "analyzing": "Analizando...",
+      "analyze": "Analizar"
+    },
+    "loading": "Ejecutando estrategias de tokenización y pricing...",
+    "summary": {
+      "characters": "Caracteres",
+      "words": "Palabras",
+      "inputTokens": "Tokens de input",
+      "outputEstimate": "Output estimado"
+    },
+    "visualization": "Visualización de tokens",
+    "latency": {
+      "title": "Latencia del backend",
+      "subtitle": "También se registra en la terminal del backend",
+      "measured": "medido",
+      "requestMeasured": "Request medido después de hacer clic en Analyze",
+      "best": "Mejor",
+      "average": "Promedio",
+      "worst": "Peor",
+      "runs": "Ejecuciones"
+    },
+    "cost": {
+      "title": "Estimación de costo",
+      "input": "Costo input",
+      "output": "Costo output",
+      "totalUsd": "Total USD",
+      "totalChf": "Total CHF"
+    },
+    "insights": {
+      "title": "Insights educativos",
+      "counted": "{{model}} contó {{tokens}} tokens de input desde {{words}} palabras.",
+      "exact": "Este modelo usa localmente un tokenizer compatible con el provider.",
+      "fallback": "Este modelo actualmente usa una estimación fallback explícita.",
+      "outputBudget": "{{tokens}} tokens de output se presupuestan aparte porque el texto generado tiene su propio precio.",
+      "conversion": "La conversión configurada usa 1 USD = {{rate}} CHF."
+    },
+    "pricing": {
+      "title": "Contexto de pricing",
+      "input": "Input / 1M",
+      "output": "Output / 1M",
+      "updated": "Pricing actualizado"
+    },
+    "disclaimer": {
+      "eyebrow": "Disclaimer educativo",
+      "title": "Estimación útil, no una factura",
+      "body": "Este playground está diseñado para explicar tokenización y comparar modelos de pricing. La facturación en producción debe basarse en metadata de uso devuelta por el provider después de una request real de API.",
+      "bullets": [
+        "Los modelos de OpenAI usan una codificación local compatible con js-tiktoken. Claude, Gemini, Llama y Hugging Face actualmente usan estimaciones fallback claramente etiquetadas.",
+        "Los tokens de input se calculan con el tokenizer seleccionado. El costo de output usa la cantidad esperada introducida arriba, no una respuesta generada real.",
+        "Llama es open-weight, así que su costo de serving depende del hosting provider, hardware y plataforma de inferencia.",
+        "USD a CHF usa actualmente una tasa fija configurada de {{rate}}. Los precios de modelos y tipos de cambio pueden cambiar con el tiempo.",
+        "Costos precisos requieren tokenización oficial del provider o metadata de uso de API, pricing actual del modelo, tipos de cambio actuales y consideración de tokens cached, reasoning, audio, imagen u otros tokens específicos del provider."
+      ]
+    },
+    "empty": {
+      "title": "Elige un modelo y ejecuta una estimación",
+      "description": "Los modelos de OpenAI usan tokenización BPE compatible. Otros providers se etiquetan claramente cuando usan estimaciones fallback.",
+      "cta": "Configurar input"
+    }
+  },
+  "ragWorkbench": {
+    "sampleDocument": "React Query es una librería para gestionar estado de servidor en aplicaciones React. Maneja caché, refetch en segundo plano, reintentos, estados de carga y sincronización entre la UI y datos remotos.\n\nLos embeddings son representaciones numéricas del significado. Una frase, documento o pregunta puede transformarse en un vector para que ideas parecidas queden cerca en el espacio vectorial.\n\nRetrieval augmented generation, también llamado RAG, conecta búsqueda con generación de lenguaje. El sistema divide un documento en chunks, crea embeddings de esos chunks, recupera las partes más relevantes para una pregunta e inyecta ese contexto en el prompt del modelo.\n\nEl chunking importa porque los modelos de lenguaje tienen ventanas de contexto limitadas. Si los chunks son demasiado grandes, el retrieval mete ruido. Si son demasiado pequeños, explicaciones importantes pueden romperse.\n\nEl overlap repite una pequeña parte del texto entre chunks vecinos. Ayuda a preservar contexto cuando un párrafo o idea cruza el límite entre dos chunks.\n\nTop-k retrieval significa seleccionar los k chunks más relevantes para una consulta. Un k bajo puede perder evidencia útil, mientras que un k alto puede añadir contexto distractor.\n\nEl paso final de generación debe responder usando los chunks recuperados y citar los chunks fuente. Esto hace la respuesta más fácil de inspeccionar y reduce afirmaciones sin soporte.",
+    "defaults": {
+      "sourceTitle": "Notas de aprendizaje RAG",
+      "question": "¿Por qué importan el chunking y el overlap en RAG?"
+    },
+    "header": {
+      "eyebrow": "Retrieval Augmented Generation",
+      "title": "RAG Workbench",
+      "description": "Divide una fuente en chunks, preserva contexto con overlap, recupera evidencia top-k e inspecciona el prompt que se enviaría a un LLM."
+    },
+    "form": {
+      "sourceSection": "Documento fuente",
+      "titleLabel": "Título",
+      "textLabel": "Texto a indexar",
+      "wordCount": "{{count}} palabras. Mínimo: 120 caracteres.",
+      "retrievalSection": "Pregunta y retrieval",
+      "questionLabel": "Pregunta del usuario",
+      "chunkSize": "Tamaño de chunk",
+      "overlap": "Overlap",
+      "topK": "Top-k",
+      "submit": "Ejecutar pipeline RAG",
+      "loading": "Ejecutando RAG..."
+    },
+    "concepts": {
+      "chunking": "Chunking",
+      "chunkingValue": "Dividir fuente",
+      "overlap": "Overlap",
+      "overlapValue": "Preservar contexto",
+      "topK": "Top-k",
+      "topKValue": "Elegir evidencia"
+    },
+    "metrics": {
+      "chunks": "Chunks",
+      "retrieved": "Recuperados",
+      "contextTokens": "Tokens de contexto",
+      "latency": "Latencia"
+    },
+    "results": {
+      "answer": "Respuesta generada",
+      "retrieved": "Chunks top-k recuperados",
+      "allChunks": "Todos los chunks generados",
+      "promptPreview": "Preview del prompt",
+      "rank": "Rank {{rank}} · {{id}}",
+      "similarity": "similitud {{value}}",
+      "chunkMeta": "{{id}} · palabras {{start}}-{{end}} · aprox. {{tokens}} tokens"
+    }
+  }
+}

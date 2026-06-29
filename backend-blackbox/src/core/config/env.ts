@@ -15,6 +15,8 @@ export const env = {
     nodeEnv: process.env.NODE_ENV ?? "development",
   },
 
+  cors_origins: required(process.env.CORS_ORIGINS, "CORS_ORIGINS"),
+
   database: {
     mongoUri: required(process.env.MONGO_URI, "MONGO_URI"),
   },

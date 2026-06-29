@@ -1,16 +1,18 @@
 import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
 import { Loader2, Play, RotateCcw } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useTransformerDemo } from "../../../../../lib/hooks/ai/useTransformerDemo";
 import AttentionVisualizer from "./AttentionVisualizer";
 
-const samplePrompts = [
-  "The cat sits on the",
-  "A Transformer model learns",
-  "Good code should",
-];
-
 const TokenPredictionDemo = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const samplePrompts = t("transformers.demo.samplePrompts", {
+    returnObjects: true,
+  }) as string[];
+  const loadingSteps = t("transformers.demo.loading", {
+    returnObjects: true,
+  }) as string[];
   const [prompt, setPrompt] = useState(samplePrompts[0]);
   const { data, loading, error, runDemo, clear } = useTransformerDemo();
 
@@ -30,14 +32,13 @@ const TokenPredictionDemo = () => {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <span className="font-ibm-plex-mono text-xs uppercase text-green">
-              Try it
+              {t("transformers.demo.eyebrow")}
             </span>
             <h3 className="mt-2 text-2xl text-primary">
-              Simulated Transformer pass
+              {t("transformers.demo.title")}
             </h3>
             <p className="mt-2 max-w-2xl font-ibm-plex-mono text-xs leading-relaxed text-secondary">
-              Type a prompt and watch an educational approximation of tokens,
-              attention weights, embeddings, and next-token probabilities.
+              {t("transformers.demo.description")}
             </p>
           </div>
 
@@ -62,7 +63,7 @@ const TokenPredictionDemo = () => {
           <input
             value={prompt}
             onChange={(event) => setPrompt(event.target.value)}
-            placeholder="Type a prompt..."
+            placeholder={t("transformers.demo.placeholder")}
             className="min-h-12 border border-neutral-800 bg-main-bg px-4 text-primary outline-none focus:border-green"
           />
           <button
@@ -75,7 +76,7 @@ const TokenPredictionDemo = () => {
             ) : (
               <Play className="h-4 w-4" />
             )}
-            Run demo
+            {t("transformers.demo.run")}
           </button>
           <button
             type="button"
@@ -83,7 +84,7 @@ const TokenPredictionDemo = () => {
             className="inline-flex min-h-12 items-center justify-center gap-2 border border-neutral-800 px-5 font-ibm-plex-mono text-xs text-secondary hover:text-primary"
           >
             <RotateCcw className="h-4 w-4" />
-            Clear
+            {t("transformers.demo.clear")}
           </button>
         </form>
       </div>
@@ -91,8 +92,7 @@ const TokenPredictionDemo = () => {
       {loading && (
         <div className="p-8">
           <div className="grid gap-4 md:grid-cols-3">
-            {["Tokenizing", "Computing attention", "Projecting logits"].map(
-              (label) => (
+            {loadingSteps.map((label) => (
                 <div
                   key={label}
                   className="h-28 animate-pulse border border-neutral-800 bg-main-bg p-4"
@@ -100,15 +100,14 @@ const TokenPredictionDemo = () => {
                   <div className="mb-6 h-3 w-24 bg-neutral-800" />
                   <div className="h-8 w-full bg-neutral-800" />
                 </div>
-              ),
-            )}
+            ))}
           </div>
         </div>
       )}
 
       {!loading && !data && !error && (
         <div className="p-8 text-center font-ibm-plex-mono text-sm text-secondary">
-          Empty state: run the demo to generate a visual Transformer trace.
+          {t("transformers.demo.empty")}
         </div>
       )}
 
@@ -130,13 +129,15 @@ const TokenPredictionDemo = () => {
               </span>
             ))}
             <span className="border border-green/50 bg-green/10 px-3 py-2 font-ibm-plex-mono text-xs text-green">
-              chosen {"->"} {data.chosenToken}
+              {t("transformers.demo.chosen")} {"->"} {data.chosenToken}
             </span>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-3">
             <div className="border border-neutral-800 bg-main-bg p-4 lg:col-span-2">
-              <h4 className="mb-4 text-primary">Embedding preview</h4>
+              <h4 className="mb-4 text-primary">
+                {t("transformers.demo.embeddingPreview")}
+              </h4>
               <div className="grid gap-3 md:grid-cols-2">
                 {data.embeddingsPreview.map((embedding) => (
                   <div
@@ -168,7 +169,9 @@ const TokenPredictionDemo = () => {
             </div>
 
             <div className="border border-neutral-800 bg-main-bg p-4">
-              <h4 className="mb-4 text-primary">Next-token probabilities</h4>
+              <h4 className="mb-4 text-primary">
+                {t("transformers.demo.nextTokenProbabilities")}
+              </h4>
               <div className="space-y-3">
                 {data.nextTokenPredictions.map((prediction) => (
                   <div key={prediction.token}>
@@ -210,7 +213,9 @@ const TokenPredictionDemo = () => {
           {activeAttention && (
             <div className="border border-neutral-800 bg-main-bg p-4">
               <h4 className="mb-4 text-primary">
-                Highlighted path: {data.highlightedPath.join(" -> ")}
+                {t("transformers.demo.highlightedPath", {
+                  path: data.highlightedPath.join(" -> "),
+                })}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {activeAttention.toTokens.map((target) => (
@@ -227,8 +232,9 @@ const TokenPredictionDemo = () => {
           )}
 
           <div className="font-ibm-plex-mono text-xs text-secondary">
-            isApproximation: {String(data.isApproximation)}. These weights are
-            simulated for education, not extracted from a production model.
+            {t("transformers.demo.approximation", {
+              value: String(data.isApproximation),
+            })}
           </div>
         </div>
       )}

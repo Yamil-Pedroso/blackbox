@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
 import type { CompressionResult } from "../../../../../types/ai/quantization.types";
 
 interface QuantizedResultCardProps {
   result: CompressionResult;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
 function formatSize(value: number): string {
@@ -19,7 +21,7 @@ function formatError(value: number): string {
   });
 }
 
-export function QuantizedResultCard({ result }: QuantizedResultCardProps) {
+export function QuantizedResultCard({ result, t }: QuantizedResultCardProps) {
   const compressionRatio =
     result.original.bitsPerParameter / result.compressed.bitsPerParameter;
 
@@ -32,31 +34,35 @@ export function QuantizedResultCard({ result }: QuantizedResultCardProps) {
       <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
         <div>
           <p className="font-ibm-plex-mono text-xs uppercase text-green">
-            Compressed model result
+            {t("quantization.result.title")}
           </p>
           <h3 className="mt-2 text-2xl font-semibold">
             {result.modelName} {result.compressed.precision}
           </h3>
         </div>
         <span className="w-fit border border-green/40 bg-green/10 px-3 py-1.5 font-ibm-plex-mono text-sm font-semibold text-green">
-          {compressionRatio}x smaller
+          {t("quantization.result.smaller", { ratio: compressionRatio })}
         </span>
       </div>
 
       <div className="mt-6 grid overflow-hidden border border-neutral-800 bg-main-bg lg:grid-cols-2">
         <div className="border-b border-neutral-800 p-5 lg:border-b-0 lg:border-r">
-          <p className="font-ibm-plex-mono text-xs uppercase text-secondary">Before</p>
+          <p className="font-ibm-plex-mono text-xs uppercase text-secondary">
+            {t("quantization.result.before")}
+          </p>
           <h4 className="mt-2 text-xl font-semibold">{result.modelName} FP32</h4>
           <p className="mt-3 text-3xl font-semibold">
             {formatSize(result.original.estimatedSizeGB)}
           </p>
           <p className="mt-2 text-sm text-secondary">
-            Large memory usage · High precision
+            {t("quantization.result.beforeDescription")}
           </p>
         </div>
 
         <div className="p-5">
-          <p className="font-ibm-plex-mono text-xs uppercase text-green">After</p>
+          <p className="font-ibm-plex-mono text-xs uppercase text-green">
+            {t("quantization.result.after")}
+          </p>
           <h4 className="mt-2 text-xl font-semibold">
             {result.modelName} {result.compressed.precision}
           </h4>
@@ -64,8 +70,9 @@ export function QuantizedResultCard({ result }: QuantizedResultCardProps) {
             {formatSize(result.compressed.estimatedSizeGB)}
           </p>
           <p className="mt-2 text-sm text-secondary">
-            Lower memory usage · Approximation error{" "}
-            {formatError(result.compressed.averageAbsoluteError)}
+            {t("quantization.result.afterDescription", {
+              error: formatError(result.compressed.averageAbsoluteError),
+            })}
           </p>
         </div>
       </div>
@@ -73,7 +80,7 @@ export function QuantizedResultCard({ result }: QuantizedResultCardProps) {
       <dl className="mt-5 grid gap-3 sm:grid-cols-3">
         <div className="border border-neutral-800 bg-main-bg p-4">
           <dt className="font-ibm-plex-mono text-xs uppercase text-secondary">
-            Memory saved
+            {t("quantization.result.memorySaved")}
           </dt>
           <dd className="mt-1 text-2xl font-semibold">
             {result.compressed.memoryReductionPercentage}%
@@ -81,13 +88,13 @@ export function QuantizedResultCard({ result }: QuantizedResultCardProps) {
         </div>
         <div className="border border-neutral-800 bg-main-bg p-4">
           <dt className="font-ibm-plex-mono text-xs uppercase text-secondary">
-            Compression ratio
+            {t("quantization.result.compressionRatio")}
           </dt>
           <dd className="mt-1 text-2xl font-semibold">{compressionRatio}x</dd>
         </div>
         <div className="border border-neutral-800 bg-main-bg p-4">
           <dt className="font-ibm-plex-mono text-xs uppercase text-secondary">
-            Average error
+            {t("quantization.result.averageError")}
           </dt>
           <dd className="mt-1 font-ibm-plex-mono text-lg font-semibold">
             {formatError(result.compressed.averageAbsoluteError)}
@@ -97,7 +104,7 @@ export function QuantizedResultCard({ result }: QuantizedResultCardProps) {
 
       <div className="mt-5">
         <p className="font-ibm-plex-mono text-xs uppercase text-secondary">
-          Quantized sample weights
+          {t("quantization.result.weights")}
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
           {result.compressed.quantizedWeights.map((weight, index) => (

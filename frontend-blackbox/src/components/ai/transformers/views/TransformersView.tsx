@@ -1,4 +1,5 @@
 import { ArrowDown, Cpu, Layers3, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import ArchitectureDiagram from "./view-comps/ArchitectureDiagram";
 import AttentionVisualizer from "./view-comps/AttentionVisualizer";
 import ComponentCards from "./view-comps/ComponentCards";
@@ -10,13 +11,13 @@ import { useTransformerExplanation } from "../../../../lib/hooks/ai/useTransform
 import type { TransformerTopic } from "../../../../types/ai/transformers.types";
 
 const topics: { label: string; value: TransformerTopic }[] = [
-  { label: "Transformer", value: "transformer" },
-  { label: "LLM Flow", value: "llm-flow" },
-  { label: "Self-Attention", value: "self-attention" },
-  { label: "Multi-Head", value: "multi-head-attention" },
-  { label: "Position", value: "positional-encoding" },
-  { label: "Add & Norm", value: "add-and-norm" },
-  { label: "Token Prediction", value: "token-prediction" },
+  { label: "transformer", value: "transformer" },
+  { label: "llmFlow", value: "llm-flow" },
+  { label: "selfAttention", value: "self-attention" },
+  { label: "multiHead", value: "multi-head-attention" },
+  { label: "position", value: "positional-encoding" },
+  { label: "addNorm", value: "add-and-norm" },
+  { label: "tokenPrediction", value: "token-prediction" },
 ];
 
 const SectionHeading = ({
@@ -40,8 +41,12 @@ const SectionHeading = ({
 );
 
 const TransformersView = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const { topic, setTopic, data, loading, error } =
     useTransformerExplanation("transformer");
+  const heroCards = t("transformers.hero.cards", {
+    returnObjects: true,
+  }) as Array<{ title: string; body: string }>;
 
   return (
     <div className="px-5 py-8 md:px-10 xl:px-8">
@@ -60,30 +65,18 @@ const TransformersView = () => {
 
           <div className="max-w-3xl">
             <span className="font-ibm-plex-mono text-xs uppercase text-green">
-              Intelligence Layer / Architecture
+              {t("transformers.hero.eyebrow")}
             </span>
             <h1 className="mt-5 text-4xl leading-tight text-primary md:text-6xl">
-              Transformers: The Architecture Behind LLMs
+              {t("transformers.hero.title")}
             </h1>
             <p className="mt-6 max-w-2xl font-ibm-plex-mono text-sm leading-relaxed text-secondary">
-              A visual module for understanding how text becomes tokens,
-              embeddings, attention patterns, layer activations, probabilities,
-              and finally the next generated token.
+              {t("transformers.hero.description")}
             </p>
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              [
-                "Parallel context",
-                "Tokens compare themselves to the full sequence.",
-              ],
-              [
-                "Stacked layers",
-                "Attention and feed forward blocks repeat deeply.",
-              ],
-              ["Next token loop", "Generation repeats one token at a time."],
-            ].map(([title, body]) => (
+            {heroCards.map(({ title, body }) => (
               <div
                 key={title}
                 className="border border-neutral-800 bg-main-bg p-4"
@@ -99,9 +92,9 @@ const TransformersView = () => {
 
         <section>
           <SectionHeading
-            eyebrow="01 / What"
-            title="What is a Transformer?"
-            body="A Transformer is a sequence model built around attention. Instead of reading text strictly left-to-right, it lets tokens compare with other tokens and build richer context-aware representations."
+            eyebrow={t("transformers.sections.what.eyebrow")}
+            title={t("transformers.sections.what.title")}
+            body={t("transformers.sections.what.body")}
           />
 
           <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
@@ -118,7 +111,7 @@ const TransformersView = () => {
                         : "border-neutral-800 text-secondary hover:text-primary"
                     }`}
                   >
-                    {item.label}
+                    {t(`transformers.topics.${item.label}`)}
                   </button>
                 ))}
               </div>
@@ -126,7 +119,7 @@ const TransformersView = () => {
               <div className="mt-6 min-h-44 border border-neutral-800 bg-main-bg p-5">
                 {loading && (
                   <div className="font-ibm-plex-mono text-sm text-secondary">
-                    Loading explanation...
+                    {t("transformers.topics.loadingExplanation")}
                   </div>
                 )}
                 {error && (
@@ -173,56 +166,60 @@ const TransformersView = () => {
 
         <section>
           <SectionHeading
-            eyebrow="02 / Flow"
-            title="High-level LLM flow"
-            body="A language model turns raw text into a chain of representations, then predicts what token is likely to come next."
+            eyebrow={t("transformers.sections.flow.eyebrow")}
+            title={t("transformers.sections.flow.title")}
+            body={t("transformers.sections.flow.body")}
           />
           <TransformerFlowDiagram />
         </section>
 
         <section>
           <SectionHeading
-            eyebrow="03 / Architecture"
-            title="Encoder / Decoder architecture"
-            body="Classic Transformers include encoders and decoders. Modern chat LLMs often use decoder-only stacks, but the same attention-centered building blocks remain central."
+            eyebrow={t("transformers.sections.architecture.eyebrow")}
+            title={t("transformers.sections.architecture.title")}
+            body={t("transformers.sections.architecture.body")}
           />
           <ArchitectureDiagram />
         </section>
 
         <section>
           <SectionHeading
-            eyebrow="04 / Attention"
-            title="Self-attention and multi-head attention"
-            body="Attention is the routing mechanism: each token decides how strongly it should listen to other tokens. Multi-head attention repeats this through several learned views."
+            eyebrow={t("transformers.sections.attention.eyebrow")}
+            title={t("transformers.sections.attention.title")}
+            body={t("transformers.sections.attention.body")}
           />
           <AttentionVisualizer
-            tokens={["The", "cat", "sits", "on", "the", "mat"]}
+            tokens={
+              t("transformers.attention.defaultTokens", {
+                returnObjects: true,
+              }) as string[]
+            }
           />
         </section>
 
         <section>
           <SectionHeading
-            eyebrow="05 / Components"
-            title="Key Transformer components"
-            body="The full block is a compact rhythm: attention, residual connection, normalization, feed forward network, residual connection, normalization."
+            eyebrow={t("transformers.sections.components.eyebrow")}
+            title={t("transformers.sections.components.title")}
+            body={t("transformers.sections.components.body")}
           />
           <ComponentCards />
         </section>
 
         <section>
           <SectionHeading
-            eyebrow="06 / Interactive"
-            title="Try it: Transformer demo"
-            body="Run a simulated forward pass. The goal is visualization and intuition, so the attention weights are approximate rather than model-internal measurements."
+            eyebrow={t("transformers.sections.interactive.eyebrow")}
+            title={t("transformers.sections.interactive.title")}
+            body={t("transformers.sections.interactive.body")}
           />
           <TokenPredictionDemo />
         </section>
 
         <section>
           <SectionHeading
-            eyebrow="07 / Vocabulary"
-            title="Glossary"
-            body="A few compact definitions for the terms that appear across Transformer papers, model cards, and LLM tooling."
+            eyebrow={t("transformers.sections.glossary.eyebrow")}
+            title={t("transformers.sections.glossary.title")}
+            body={t("transformers.sections.glossary.body")}
           />
           <TransformerGlossary />
         </section>
@@ -231,8 +228,7 @@ const TransformersView = () => {
           <TransformerResources />
           <div className="mt-8 flex items-center gap-3 font-ibm-plex-mono text-xs text-secondary">
             <ArrowDown className="h-4 w-4 text-green" />
-            Next topic idea: compare decoder-only LLMs with encoder-only
-            embedding models.
+            {t("transformers.resources.next")}
           </div>
         </section>
       </div>

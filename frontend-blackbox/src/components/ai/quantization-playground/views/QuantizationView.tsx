@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useQuantization } from "../../../../lib/hooks/ai/useQuantization";
 import { useCompressionFlow } from "../../../../lib/hooks/ai/useCompressionFlow";
 import { CompressionProgress } from "./view-comps/CompressionProgress";
@@ -9,12 +10,10 @@ import type {
   QuantizationResult,
 } from "../../../../types/ai/quantization.types";
 
-const defaultWeights = "0.123456, -0.987654, 1.234567, -2.456789";
-
 const presets = [
-  { label: "Small demo model", detail: "1M", parameterCount: 1_000_000 },
-  { label: "Llama 3.1 8B", detail: "8B", parameterCount: 8_000_000_000 },
-  { label: "Llama 3.1 70B", detail: "70B", parameterCount: 70_000_000_000 },
+  { key: 0, parameterCount: 1_000_000 },
+  { key: 1, parameterCount: 8_000_000_000 },
+  { key: 2, parameterCount: 70_000_000_000 },
 ] as const;
 
 const precisionStyles: Record<QuantizationPrecision, string> = {
@@ -23,13 +22,6 @@ const precisionStyles: Record<QuantizationPrecision, string> = {
   INT8: "border-green/50 bg-green/15 text-primary",
   INT4: "border-neutral-700 bg-secondary-bg text-primary",
   INT2: "border-neutral-800 bg-main-bg text-primary",
-};
-
-const compressionLabels: Partial<Record<QuantizationPrecision, string>> = {
-  FP16: "Compress to FP16",
-  INT8: "Compress to Q8",
-  INT4: "Compress to Q4",
-  INT2: "Compress to INT2",
 };
 
 function parseWeights(value: string): number[] | null {
@@ -72,9 +64,12 @@ function formatError(value: number): string {
   });
 }
 
-function getModelName(parameterCount: number): string {
+function getModelName(parameterCount: number, presetLabels: string[]): string {
   return (
-    presets.find((preset) => preset.parameterCount === parameterCount)?.label ??
+    presetLabels[
+      presets.find((preset) => preset.parameterCount === parameterCount)
+        ?.key ?? -1
+    ] ??
     `${formatParameterCount(parameterCount)} model`
   );
 }
@@ -95,20 +90,27 @@ function WeightPreview({ result }: { result: QuantizationResult }) {
 }
 
 const QuantizationView = () => {
-  const [weightsText, setWeightsText] = useState(defaultWeights);
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const [weightsText, setWeightsText] = useState(
+    t("quantization.defaultWeights"),
+  );
   const [parameterCount, setParameterCount] = useState(8_000_000_000);
   const [inputError, setInputError] = useState<string | null>(null);
   const { data, error, isLoading, analyze, reset } = useQuantization();
   const compression = useCompressionFlow(analyze);
+  const presetCopies = t("quantization.presets", {
+    returnObjects: true,
+  }) as Array<{ label: string; detail: string }>;
+  const guideBullets = t("quantization.guide.bullets", {
+    returnObjects: true,
+  }) as string[];
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const weights = parseWeights(weightsText);
 
     if (!weights) {
-      setInputError(
-        "Enter at least one valid number separated by commas, spaces, or new lines.",
-      );
+      setInputError(t("quantization.inputError"));
       return;
     }
 
@@ -127,9 +129,7 @@ const QuantizationView = () => {
     const weights = parseWeights(weightsText);
 
     if (!weights) {
-      setInputError(
-        "Enter at least one valid number separated by commas, spaces, or new lines.",
-      );
+      setInputError(t("quantization.inputError"));
       return;
     }
 
@@ -137,7 +137,10 @@ const QuantizationView = () => {
     void compression.startCompression({
       request: { weights, parameterCount },
       targetPrecision,
-      modelName: getModelName(parameterCount),
+      modelName: getModelName(
+        parameterCount,
+        presetCopies.map((preset) => preset.label),
+      ),
     });
   }
 
@@ -145,19 +148,21 @@ const QuantizationView = () => {
     <section className="overflow-hidden border border-neutral-800 bg-secondary-bg text-primary">
       <header className="border-b border-neutral-800 px-5 py-7 sm:px-8">
         <p className="font-ibm-plex-mono text-xs uppercase text-green">
-          Model compression
+          {t("quantization.header.eyebrow")}
         </p>
         <div className="mt-3 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <h2 className="text-3xl sm:text-4xl">
-              Quantization Playground
+              {t("quantization.header.title")}
             </h2>
             <p className="mt-3 max-w-3xl font-ibm-plex-mono text-sm leading-6 text-secondary">
-              Simulate how lower numerical precision changes sample weights,
-              model memory, and approximation error.
+              {t("quantization.header.description")}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2" aria-label="Precision legend">
+          <div
+            className="flex flex-wrap gap-2"
+            aria-label={t("quantization.header.legend")}
+          >
             {(Object.keys(precisionStyles) as QuantizationPrecision[]).map(
               (precision) => (
                 <span
@@ -178,19 +183,19 @@ const QuantizationView = () => {
       >
         <div className="grid gap-5 lg:grid-cols-[1fr_0.55fr]">
           <label className="grid gap-2 text-sm font-semibold text-primary">
-            Sample model weights
+            {t("quantization.form.weights")}
             <textarea
               value={weightsText}
               onChange={(event) => setWeightsText(event.target.value)}
               rows={6}
-              placeholder="0.123456, -0.987654, 1.234567"
+              placeholder={t("quantization.form.placeholder")}
               className="resize-y border border-neutral-800 bg-main-bg px-4 py-3 font-ibm-plex-mono text-sm font-normal leading-6 text-primary outline-none transition placeholder:text-secondary/50 focus:border-green"
             />
           </label>
 
           <div>
             <label className="grid gap-2 text-sm font-semibold text-primary">
-              Model parameter count
+              {t("quantization.form.parameters")}
               <input
                 type="number"
                 min={1}
@@ -204,20 +209,22 @@ const QuantizationView = () => {
             </label>
 
             <p className="mt-2 font-ibm-plex-mono text-xs font-semibold text-secondary">
-              Current scale: {formatParameterCount(parameterCount)} parameters
+              {t("quantization.form.scale", {
+                value: formatParameterCount(parameterCount),
+              })}
             </p>
 
             <div className="mt-4 grid gap-2">
               {presets.map((preset) => (
                 <button
-                  key={preset.label}
+                  key={preset.parameterCount}
                   type="button"
                   onClick={() => setParameterCount(preset.parameterCount)}
                   className="flex min-h-11 items-center justify-between border border-neutral-800 bg-main-bg px-3 text-left text-sm font-semibold text-primary transition hover:border-green/50"
                 >
-                  <span>{preset.label}</span>
+                  <span>{presetCopies[preset.key]?.label}</span>
                   <span className="font-ibm-plex-mono text-xs text-green">
-                    {preset.detail}
+                    {presetCopies[preset.key]?.detail}
                   </span>
                 </button>
               ))}
@@ -240,7 +247,9 @@ const QuantizationView = () => {
             disabled={isLoading}
             className="min-h-11 bg-green px-5 font-ibm-plex-mono text-xs font-semibold text-black shadow-[0_10px_24px_rgba(0,255,136,0.12)] transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {isLoading ? "Quantizing..." : "Analyze quantization"}
+            {isLoading
+              ? t("quantization.form.loading")
+              : t("quantization.form.analyze")}
           </button>
           <button
             type="button"
@@ -248,7 +257,7 @@ const QuantizationView = () => {
             disabled={isLoading}
             className="min-h-11 border border-neutral-800 bg-main-bg px-5 font-ibm-plex-mono text-xs font-semibold text-secondary transition hover:border-green/50 hover:text-primary disabled:opacity-50"
           >
-            Clear
+            {t("quantization.form.clear")}
           </button>
         </div>
       </form>
@@ -259,7 +268,7 @@ const QuantizationView = () => {
             <div className="text-center">
               <div className="mx-auto size-9 animate-spin border-2 border-green border-t-transparent" />
               <p className="mt-4 text-sm font-semibold text-secondary">
-                Simulating precision formats...
+                {t("quantization.loading")}
               </p>
             </div>
           </div>
@@ -270,9 +279,18 @@ const QuantizationView = () => {
           >
             <div className="grid border-b border-neutral-800 sm:grid-cols-3">
               {[
-                ["Parameters", formatParameterCount(data.parameterCount)],
-                ["Sample weights", data.originalWeights.length],
-                ["FP32 baseline", formatSize(data.fp32EstimatedSizeGB)],
+                [
+                  t("quantization.metrics.parameters"),
+                  formatParameterCount(data.parameterCount),
+                ],
+                [
+                  t("quantization.metrics.sampleWeights"),
+                  data.originalWeights.length,
+                ],
+                [
+                  t("quantization.metrics.fp32"),
+                  formatSize(data.fp32EstimatedSizeGB),
+                ],
               ].map(([label, value]) => (
                 <div
                   key={label}
@@ -289,10 +307,11 @@ const QuantizationView = () => {
             </div>
 
             <div className="p-5 sm:p-8">
-              <h3 className="text-lg font-semibold">Precision cards</h3>
+              <h3 className="text-lg font-semibold">
+                {t("quantization.cards.title")}
+              </h3>
               <p className="mt-1 text-sm text-secondary">
-                Lower bit widths save memory but provide fewer representable
-                values.
+                {t("quantization.cards.description")}
               </p>
 
               <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
@@ -307,7 +326,9 @@ const QuantizationView = () => {
                           {result.precision}
                         </h4>
                         <p className="font-ibm-plex-mono text-xs font-semibold text-secondary">
-                          {result.bitsPerParameter} bits / parameter
+                          {t("quantization.cards.bitsPerParameter", {
+                            bits: result.bitsPerParameter,
+                          })}
                         </p>
                       </div>
                       <span className="border border-neutral-800 bg-main-bg px-2 py-1 font-ibm-plex-mono text-xs font-semibold text-green">
@@ -320,10 +341,14 @@ const QuantizationView = () => {
                       {formatSize(result.estimatedSizeGB)}
                     </strong>
                     <p className="mt-1 font-ibm-plex-mono text-xs text-secondary">
-                      Avg. error: {formatError(result.averageAbsoluteError)}
+                      {t("quantization.cards.avgError", {
+                        value: formatError(result.averageAbsoluteError),
+                      })}
                     </p>
                     <WeightPreview result={result} />
-                    {compressionLabels[result.precision] && (
+                    {t(`quantization.compressionLabels.${result.precision}`, {
+                      defaultValue: "",
+                    }) && (
                       <button
                         type="button"
                         onClick={() => handleCompress(result.precision)}
@@ -332,8 +357,10 @@ const QuantizationView = () => {
                       >
                         {compression.selectedTarget === result.precision &&
                         compression.status === "compressing"
-                          ? "Compressing..."
-                          : compressionLabels[result.precision]}
+                          ? t("quantization.cards.compressing")
+                          : t(
+                              `quantization.compressionLabels.${result.precision}`,
+                            )}
                       </button>
                     )}
                   </article>
@@ -348,25 +375,40 @@ const QuantizationView = () => {
                 status={compression.status}
                 currentStep={compression.currentStep}
                 onReset={compression.resetCompression}
+                t={t}
               />
             )}
 
             {compression.result && (
-              <QuantizedResultCard result={compression.result} />
+              <QuantizedResultCard result={compression.result} t={t} />
             )}
 
             <div className="border-t border-neutral-800 p-5 sm:p-8">
-              <h3 className="text-lg font-semibold">Comparison table</h3>
+              <h3 className="text-lg font-semibold">
+                {t("quantization.table.title")}
+              </h3>
               <div className="mt-4 overflow-x-auto border border-neutral-800">
                 <table className="w-full min-w-[820px] border-collapse text-left text-sm">
                   <thead className="bg-main-bg font-ibm-plex-mono text-xs uppercase text-secondary">
                     <tr>
-                      <th className="px-4 py-3">Precision</th>
-                      <th className="px-4 py-3">Bits</th>
-                      <th className="px-4 py-3">Estimated size</th>
-                      <th className="px-4 py-3">Memory saved</th>
-                      <th className="px-4 py-3">Average error</th>
-                      <th className="px-4 py-3">Sample weights</th>
+                      <th className="px-4 py-3">
+                        {t("quantization.table.precision")}
+                      </th>
+                      <th className="px-4 py-3">
+                        {t("quantization.table.bits")}
+                      </th>
+                      <th className="px-4 py-3">
+                        {t("quantization.table.estimatedSize")}
+                      </th>
+                      <th className="px-4 py-3">
+                        {t("quantization.table.memorySaved")}
+                      </th>
+                      <th className="px-4 py-3">
+                        {t("quantization.table.averageError")}
+                      </th>
+                      <th className="px-4 py-3">
+                        {t("quantization.table.sampleWeights")}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -403,43 +445,28 @@ const QuantizationView = () => {
             <aside className="grid border-t border-neutral-800 bg-main-bg lg:grid-cols-[0.4fr_0.6fr]">
               <div className="border-b border-neutral-800 p-5 sm:p-8 lg:border-b-0 lg:border-r">
                 <p className="font-ibm-plex-mono text-xs uppercase text-green">
-                  Educational guide
+                  {t("quantization.guide.eyebrow")}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold">
-                  Fewer bits, smaller model
+                  {t("quantization.guide.title")}
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-secondary">
-                  Quantization reduces the number of bits used to store model
-                  weights. Compact weights need less RAM or VRAM, but rounding
-                  them to fewer values introduces approximation error.
+                  {t("quantization.guide.body")}
                 </p>
               </div>
 
               <div className="p-5 sm:p-8">
                 <ul className="grid gap-3 text-sm leading-6 text-secondary md:grid-cols-2">
-                  <li className="border-l-2 border-green pl-3">
-                    FP16 and INT8 often preserve more detail while reducing
-                    memory compared with FP32.
-                  </li>
-                  <li className="border-l-2 border-green pl-3">
-                    Q4, Q5, and Q8 variants are common when running local LLMs
-                    through GGUF, llama.cpp, or Ollama.
-                  </li>
-                  <li className="border-l-2 border-green pl-3">
-                    Real quantizers may operate per tensor, channel, or block
-                    and store additional scales and zero points.
-                  </li>
-                  <li className="border-l-2 border-green pl-3">
-                    Smaller files do not guarantee identical model quality or
-                    faster inference on every device.
-                  </li>
+                  {guideBullets.map((bullet) => (
+                    <li key={bullet} className="border-l-2 border-green pl-3">
+                      {bullet}
+                    </li>
+                  ))}
                 </ul>
                 <p className="mt-5 border-t border-neutral-800 pt-4 text-xs leading-5 text-secondary">
-                  {data.disclaimer} This playground does not create or modify a
-                  real model file. The compression animation is a visual
-                  learning aid; production quantization uses tools and formats
-                  such as GGUF, llama.cpp, GPTQ, AWQ, bitsandbytes, and
-                  Ollama-compatible model files.
+                  {t("quantization.guide.disclaimer", {
+                    disclaimer: data.disclaimer,
+                  })}
                 </p>
               </div>
             </aside>
@@ -447,10 +474,11 @@ const QuantizationView = () => {
         ) : (
           <div className="flex min-h-80 items-center justify-center p-8 text-center">
             <div className="max-w-md">
-              <p className="text-xl font-semibold">Ready for a weight sample</p>
+              <p className="text-xl font-semibold">
+                {t("quantization.empty.title")}
+              </p>
               <p className="mt-2 text-sm leading-6 text-secondary">
-                Choose a model scale and analyze sample weights to compare
-                precision, memory, and approximation error.
+                {t("quantization.empty.description")}
               </p>
             </div>
           </div>

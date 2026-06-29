@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useGenerateEmbedding } from "../../../../../lib/hooks/ai/useEmbeddings";
 
-const defaultText = "I love programming with React and Node.js";
-
 export function GenerateEmbeddingPanel() {
-  const [text, setText] = useState(defaultText);
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const [text, setText] = useState(t("embeddingsLab.generate.defaultText"));
   const { data, isLoading, error, execute, reset } = useGenerateEmbedding();
   const visibleValues = data?.embedding.slice(0, 20) ?? [];
   const maxMagnitude = Math.max(
@@ -27,12 +27,12 @@ export function GenerateEmbeddingPanel() {
     <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
       <form onSubmit={handleSubmit}>
         <label className="grid gap-2 text-sm font-semibold text-primary">
-          Text to embed
+          {t("embeddingsLab.generate.label")}
           <textarea
             value={text}
             onChange={(event) => setText(event.target.value)}
             rows={8}
-            placeholder="Enter a sentence or paragraph..."
+            placeholder={t("embeddingsLab.generate.placeholder")}
             className="resize-y border border-neutral-800 bg-main-bg px-4 py-3 font-ibm-plex-mono text-sm font-normal leading-6 text-primary outline-none placeholder:text-secondary/50 focus:border-green"
           />
         </label>
@@ -47,14 +47,16 @@ export function GenerateEmbeddingPanel() {
             disabled={isLoading}
             className="min-h-11 bg-green px-5 font-ibm-plex-mono text-xs font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
           >
-            {isLoading ? "Generating..." : "Generate embedding"}
+            {isLoading
+              ? t("embeddingsLab.generate.loading")
+              : t("embeddingsLab.generate.button")}
           </button>
           <button
             type="button"
             onClick={handleClear}
             className="min-h-11 border border-neutral-800 bg-main-bg px-5 font-ibm-plex-mono text-xs font-semibold text-secondary transition hover:border-green/50 hover:text-primary"
           >
-            Clear
+            {t("embeddingsLab.generate.clear")}
           </button>
         </div>
       </form>
@@ -62,33 +64,33 @@ export function GenerateEmbeddingPanel() {
       <div className="min-h-80 border border-neutral-800 bg-main-bg p-5 text-primary sm:p-6">
         {!data ? (
           <div className="flex h-full min-h-72 items-center justify-center text-center text-sm text-secondary">
-            Generate a vector to inspect its dimensions and first values.
+            {t("embeddingsLab.generate.empty")}
           </div>
         ) : (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="flex flex-wrap gap-4 border-b border-neutral-800 pb-5">
               <div>
                 <p className="font-ibm-plex-mono text-xs uppercase text-secondary">
-                  Dimensions
+                  {t("embeddingsLab.generate.dimensions")}
                 </p>
                 <strong className="text-3xl font-semibold text-primary">{data.dimensions}</strong>
               </div>
               <div>
                 <p className="font-ibm-plex-mono text-xs uppercase text-secondary">
-                  Provider
+                  {t("embeddingsLab.generate.provider")}
                 </p>
                 <strong className="font-ibm-plex-mono text-sm font-semibold text-primary">{data.provider}</strong>
               </div>
               <div>
                 <p className="font-ibm-plex-mono text-xs uppercase text-secondary">
-                  Model
+                  {t("embeddingsLab.generate.model")}
                 </p>
                 <strong className="font-ibm-plex-mono text-sm font-semibold text-primary">{data.model}</strong>
               </div>
             </div>
 
             <p className="mt-5 font-ibm-plex-mono text-xs uppercase text-green">
-              First 20 vector values
+              {t("embeddingsLab.generate.values")}
             </p>
             <div className="mt-3 grid grid-cols-10 gap-1.5">
               {visibleValues.map((value, index) => (

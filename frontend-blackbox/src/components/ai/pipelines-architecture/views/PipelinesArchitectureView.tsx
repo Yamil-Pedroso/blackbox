@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
 import {
   ArrowRight,
   AudioLines,
@@ -29,54 +31,33 @@ type PipelineId =
 
 type PipelineCard = {
   id: PipelineId;
-  name: string;
-  description: string;
   icon: React.ComponentType<{ className?: string }>;
-  shortLabel: string;
 };
 
 const pipelineCards: PipelineCard[] = [
   {
     id: "question-answering",
-    name: "Question Answering",
-    description: "Ask a question against a supplied context.",
     icon: MessageCircleQuestion,
-    shortLabel: "Q&A",
   },
   {
     id: "summarization",
-    name: "Summarization",
-    description: "Turn long text into a compact summary.",
     icon: TextQuote,
-    shortLabel: "Summary",
   },
   {
     id: "translation",
-    name: "Translation",
-    description: "Translate text between language codes.",
     icon: Languages,
-    shortLabel: "Translate",
   },
   {
     id: "classification",
-    name: "Classification",
-    description: "Run sentiment or future text classification tasks.",
     icon: Tags,
-    shortLabel: "Classify",
   },
   {
     id: "text-generation",
-    name: "Text Generation",
-    description: "Generate text from a prompt and decoding options.",
     icon: Sparkles,
-    shortLabel: "Generate",
   },
   {
     id: "audio-generation",
-    name: "Audio Generation",
-    description: "Prepare text-to-speech output through a provider.",
     icon: AudioLines,
-    shortLabel: "Audio",
   },
 ];
 
@@ -92,28 +73,37 @@ function resultText(result: PipelineResponse | null) {
 }
 
 const PipelinesArchitectureView = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const [activePipeline, setActivePipeline] =
     useState<PipelineId>("question-answering");
-  const [question, setQuestion] = useState("Who created React?");
+  const [question, setQuestion] = useState(
+    t("pipelinesArchitecture.defaults.question"),
+  );
   const [context, setContext] = useState(
-    "React was created by Facebook and Jordan Walke.",
+    t("pipelinesArchitecture.defaults.context"),
   );
   const [summaryText, setSummaryText] = useState(
-    "Pipelines are high-level APIs for common machine learning tasks. They make it easier to run inference for question answering, summarization, translation, classification, generation, and audio workflows.",
+    t("pipelinesArchitecture.defaults.summaryText"),
   );
-  const [translationText, setTranslationText] = useState("Hello world");
+  const [translationText, setTranslationText] = useState(
+    t("pipelinesArchitecture.defaults.translationText"),
+  );
   const [sourceLanguage, setSourceLanguage] = useState("en");
   const [targetLanguage, setTargetLanguage] = useState("es");
   const [classificationText, setClassificationText] = useState(
-    "I love programming.",
+    t("pipelinesArchitecture.defaults.classificationText"),
   );
   const [classificationType, setClassificationType] =
     useState<ClassificationType>("sentiment-analysis");
-  const [prompt, setPrompt] = useState("Explain what a Transformer model is.");
+  const [prompt, setPrompt] = useState(
+    t("pipelinesArchitecture.defaults.prompt"),
+  );
   const [temperature, setTemperature] = useState(0.7);
   const [maxNewTokens, setMaxNewTokens] = useState(200);
   const [topP, setTopP] = useState(0.95);
-  const [audioText, setAudioText] = useState("Welcome to my application.");
+  const [audioText, setAudioText] = useState(
+    t("pipelinesArchitecture.defaults.audioText"),
+  );
   const [copied, setCopied] = useState(false);
 
   const {
@@ -183,21 +173,29 @@ const PipelinesArchitectureView = () => {
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 font-ibm-plex-mono text-xs uppercase text-green">
               <Braces className="h-4 w-4" />
-              Hugging Face pipelines
+              {t("pipelinesArchitecture.header.eyebrow")}
             </div>
             <h2 className="mt-3 text-[1.65rem] text-primary min-[380px]:text-3xl sm:text-4xl lg:text-5xl">
-              Inference workspace
+              {t("pipelinesArchitecture.header.title")}
             </h2>
             <p className="mt-3 max-w-xl font-ibm-plex-mono text-sm leading-relaxed text-secondary">
-              Select a task, configure its input and inspect the normalized
-              provider response without leaving the workspace.
+              {t("pipelinesArchitecture.header.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-1.5 min-[380px]:gap-2 sm:flex">
-            <HeaderStat label="Tasks" value="06" />
-            <HeaderStat label="Input" value="Typed" />
-            <HeaderStat label="Output" value="JSON" />
+            <HeaderStat
+              label={t("pipelinesArchitecture.header.stats.tasks")}
+              value="06"
+            />
+            <HeaderStat
+              label={t("pipelinesArchitecture.header.stats.input")}
+              value={t("pipelinesArchitecture.header.stats.inputValue")}
+            />
+            <HeaderStat
+              label={t("pipelinesArchitecture.header.stats.output")}
+              value={t("pipelinesArchitecture.header.stats.outputValue")}
+            />
           </div>
         </div>
       </header>
@@ -205,7 +203,7 @@ const PipelinesArchitectureView = () => {
       <div className="relative p-3 min-[380px]:p-4 sm:p-7 lg:p-10">
         <div className="mb-6">
           <p className="mb-3 font-ibm-plex-mono text-xs uppercase text-green">
-            Select pipeline
+            {t("pipelinesArchitecture.select")}
           </p>
           <div
             data-lenis-prevent
@@ -233,7 +231,7 @@ const PipelinesArchitectureView = () => {
                   }`}
                 />
                 <span className="mt-3 block text-sm font-black min-[380px]:mt-5">
-                  {card.shortLabel}
+                  {t(`pipelinesArchitecture.cards.${card.id}.shortLabel`)}
                 </span>
                 <span
                   className={`mt-1 hidden text-xs leading-5 xl:block ${
@@ -242,7 +240,7 @@ const PipelinesArchitectureView = () => {
                       : "text-secondary"
                   }`}
                 >
-                  {card.name}
+                  {t(`pipelinesArchitecture.cards.${card.id}.name`)}
                 </span>
               </button>
             ))}
@@ -262,13 +260,19 @@ const PipelinesArchitectureView = () => {
               )}
               <div className="min-w-0">
                 <p className="font-ibm-plex-mono text-xs uppercase text-green">
-                  Active task
+                  {t("pipelinesArchitecture.activeTask")}
                 </p>
                 <h3 className="mt-1 break-words text-lg leading-6 text-primary min-[380px]:text-xl">
-                  {activeCard?.name}
+                  {activeCard
+                    ? t(`pipelinesArchitecture.cards.${activeCard.id}.name`)
+                    : null}
                 </h3>
                 <p className="mt-1 text-sm leading-6 text-secondary">
-                  {activeCard?.description}
+                  {activeCard
+                    ? t(
+                        `pipelinesArchitecture.cards.${activeCard.id}.description`,
+                      )
+                    : null}
                 </p>
               </div>
             </div>
@@ -277,12 +281,12 @@ const PipelinesArchitectureView = () => {
               {activePipeline === "question-answering" && (
                 <>
                   <TextInput
-                    label="Question"
+                    label={t("pipelinesArchitecture.fields.question")}
                     value={question}
                     onChange={setQuestion}
                   />
                   <TextArea
-                    label="Context"
+                    label={t("pipelinesArchitecture.fields.context")}
                     value={context}
                     onChange={setContext}
                     rows={5}
@@ -292,7 +296,7 @@ const PipelinesArchitectureView = () => {
 
               {activePipeline === "summarization" && (
                 <TextArea
-                  label="Text"
+                  label={t("pipelinesArchitecture.fields.text")}
                   value={summaryText}
                   onChange={setSummaryText}
                   rows={7}
@@ -302,19 +306,19 @@ const PipelinesArchitectureView = () => {
               {activePipeline === "translation" && (
                 <>
                   <TextArea
-                    label="Text"
+                    label={t("pipelinesArchitecture.fields.text")}
                     value={translationText}
                     onChange={setTranslationText}
                     rows={4}
                   />
                   <div className="grid gap-3 sm:grid-cols-2">
                     <TextInput
-                      label="Source language"
+                      label={t("pipelinesArchitecture.fields.sourceLanguage")}
                       value={sourceLanguage}
                       onChange={setSourceLanguage}
                     />
                     <TextInput
-                      label="Target language"
+                      label={t("pipelinesArchitecture.fields.targetLanguage")}
                       value={targetLanguage}
                       onChange={setTargetLanguage}
                     />
@@ -325,13 +329,13 @@ const PipelinesArchitectureView = () => {
               {activePipeline === "classification" && (
                 <>
                   <TextArea
-                    label="Text"
+                    label={t("pipelinesArchitecture.fields.text")}
                     value={classificationText}
                     onChange={setClassificationText}
                     rows={4}
                   />
                   <label className="grid gap-2 text-sm font-semibold text-primary">
-                    Classification type
+                    {t("pipelinesArchitecture.fields.classificationType")}
                     <select
                       value={classificationType}
                       onChange={(event) =>
@@ -358,25 +362,25 @@ const PipelinesArchitectureView = () => {
               {activePipeline === "text-generation" && (
                 <>
                   <TextArea
-                    label="Prompt"
+                    label={t("pipelinesArchitecture.fields.prompt")}
                     value={prompt}
                     onChange={setPrompt}
                     rows={5}
                   />
                   <div className="grid gap-3 sm:grid-cols-3">
                     <NumberInput
-                      label="Temperature"
+                      label={t("pipelinesArchitecture.fields.temperature")}
                       value={temperature}
                       onChange={setTemperature}
                       step={0.1}
                     />
                     <NumberInput
-                      label="Max new tokens"
+                      label={t("pipelinesArchitecture.fields.maxNewTokens")}
                       value={maxNewTokens}
                       onChange={setMaxNewTokens}
                     />
                     <NumberInput
-                      label="Top P"
+                      label={t("pipelinesArchitecture.fields.topP")}
                       value={topP}
                       onChange={setTopP}
                       step={0.05}
@@ -387,7 +391,7 @@ const PipelinesArchitectureView = () => {
 
               {activePipeline === "audio-generation" && (
                 <TextArea
-                  label="Text"
+                  label={t("pipelinesArchitecture.fields.text")}
                   value={audioText}
                   onChange={setAudioText}
                   rows={5}
@@ -408,20 +412,27 @@ const PipelinesArchitectureView = () => {
                 className="inline-flex min-h-11 items-center justify-center gap-2 border border-neutral-800 bg-main-bg px-4 font-ibm-plex-mono text-xs font-semibold text-secondary transition hover:border-green/50 hover:text-primary min-[380px]:min-h-12 min-[380px]:px-5"
               >
                 <RotateCcw className="h-4 w-4" />
-                Clear
+                {t("pipelinesArchitecture.actions.clear")}
               </button>
               <button
                 type="submit"
                 disabled={loading}
                 className="inline-flex min-h-11 items-center justify-center gap-2 bg-green px-4 font-ibm-plex-mono text-xs font-semibold text-black shadow-[0_10px_24px_rgba(0,255,136,0.12)] transition hover:-translate-y-0.5 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 min-[380px]:min-h-12 min-[380px]:px-6"
               >
-                {loading ? "Running pipeline..." : "Run pipeline"}
+                {loading
+                  ? t("pipelinesArchitecture.actions.running")
+                  : t("pipelinesArchitecture.actions.run")}
                 {!loading && <ArrowRight className="h-4 w-4" />}
               </button>
             </div>
           </form>
 
-          <ResultPanel result={result} copied={copied} onCopy={copyResult} />
+          <ResultPanel
+            result={result}
+            copied={copied}
+            onCopy={copyResult}
+            t={t}
+          />
         </div>
       </div>
     </section>
@@ -432,10 +443,12 @@ function ResultPanel({
   result,
   copied,
   onCopy,
+  t,
 }: {
   result: PipelineResponse | null;
   copied: boolean;
   onCopy: () => void;
+  t: TFunction<"exploreMiniAppsAi">;
 }) {
   return (
     <div className="min-w-0 border border-neutral-800 bg-main-bg p-3 text-primary shadow-[0_24px_60px_rgba(0,0,0,0.18)] min-[380px]:p-4 sm:p-6 xl:sticky xl:top-6 xl:self-start">
@@ -445,10 +458,10 @@ function ResultPanel({
             <Braces className="h-6 w-6" />
           </div>
           <p className="mt-5 max-w-xs text-sm font-semibold leading-6 text-primary">
-            Your pipeline output will appear here.
+            {t("pipelinesArchitecture.result.emptyTitle")}
           </p>
           <p className="mt-2 max-w-xs text-xs leading-5 text-secondary">
-            Run any task to inspect its response, metadata and raw JSON.
+            {t("pipelinesArchitecture.result.emptyDescription")}
           </p>
         </div>
       ) : (
@@ -460,10 +473,10 @@ function ResultPanel({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-ibm-plex-mono text-xs uppercase text-green">
-                Pipeline result
+                {t("pipelinesArchitecture.result.title")}
               </p>
               <p className="mt-1 text-sm text-secondary">
-                Normalized provider response
+                {t("pipelinesArchitecture.result.description")}
               </p>
             </div>
             <button
@@ -476,7 +489,9 @@ function ResultPanel({
               ) : (
                 <Clipboard className="h-3.5 w-3.5" />
               )}
-              {copied ? "Copied" : "Copy"}
+              {copied
+                ? t("pipelinesArchitecture.result.copied")
+                : t("pipelinesArchitecture.result.copy")}
             </button>
           </div>
 
@@ -490,9 +505,18 @@ function ResultPanel({
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <Metric label="Provider" value={result.meta.provider} />
-            <Metric label="Model" value={result.meta.model} />
-            <Metric label="Duration" value={`${result.meta.durationMs}ms`} />
+            <Metric
+              label={t("pipelinesArchitecture.result.provider")}
+              value={result.meta.provider}
+            />
+            <Metric
+              label={t("pipelinesArchitecture.result.model")}
+              value={result.meta.model}
+            />
+            <Metric
+              label={t("pipelinesArchitecture.result.duration")}
+              value={`${result.meta.durationMs}ms`}
+            />
           </div>
 
           <pre

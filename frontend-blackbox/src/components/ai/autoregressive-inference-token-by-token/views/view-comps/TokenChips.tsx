@@ -1,6 +1,9 @@
+import type { TFunction } from "i18next";
+
 interface TokenChipsProps {
   tokens: string[];
   activeIndex?: number;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
 function visibleToken(token: string): string {
@@ -13,6 +16,7 @@ function visibleToken(token: string): string {
 export function TokenChips({
   tokens,
   activeIndex,
+  t,
 }: TokenChipsProps) {
   return (
     <div className="flex flex-wrap gap-2">
@@ -24,7 +28,10 @@ export function TokenChips({
               ? "border-green bg-green text-black"
               : "border-neutral-800 bg-secondary-bg text-primary"
           }`}
-          title={`Token ${index + 1}: ${JSON.stringify(token)}`}
+          title={t("autoregressiveInference.chips.title", {
+            number: index + 1,
+            token: JSON.stringify(token),
+          })}
         >
           {visibleToken(token)}
         </span>

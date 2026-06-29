@@ -1,19 +1,20 @@
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
 import type { PredictionPathResponse } from "../../../../../types/ai/tokenPrediction.types";
 
 interface PredictionPathProps {
   path: PredictionPathResponse;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
-export function PredictionPath({ path }: PredictionPathProps) {
+export function PredictionPath({ path, t }: PredictionPathProps) {
   return (
     <section className="border border-neutral-800 bg-main-bg p-5">
       <p className="font-ibm-plex-mono text-xs uppercase text-green">
-        Actual selection path
+        {t("tokenPrediction.path.title")}
       </p>
       <p className="mt-2 text-sm leading-6 text-secondary">
-        These are the branches that became the final sentence. Alternatives
-        remain visible in the tree but were not selected.
+        {t("tokenPrediction.path.description")}
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-2">
         {path.path.map((item, index) => (

@@ -8,6 +8,7 @@ import ExploreQuantizationPlayground from "@/components/ai/quantization-playgrou
 import ExploreEmbeddingsLab from "@/components/ai/embeddings-lab/ExploreEmbeddingsLab";
 import ExploreAutoregressiveInferenceTokenByToken from "@/components/ai/autoregressive-inference-token-by-token/ExploreAutoregressiveInferenceTokenByToken";
 import ExploreTokenPrediction from "@/components/ai/token-prediction/ExploreTokenPrediction";
+import ExploreRagWorkbench from "@/components/ai/rag-workbench/ExploreRagWorkbench";
 
 export const Route = createFileRoute("/ai/$slug/explore")({
   component: RouteComponent,
@@ -24,6 +25,7 @@ const exploreRegistry: Record<string, React.FC> = {
   "autoregressive-inference-token-by-token":
     ExploreAutoregressiveInferenceTokenByToken,
   "token-prediction": ExploreTokenPrediction,
+  "rag-workbench": ExploreRagWorkbench,
 };
 
 function RouteComponent() {

@@ -1,13 +1,11 @@
-const terms = [
-  ["Token", "A chunk of text the model processes."],
-  ["Embedding", "A numeric vector representing a token."],
-  ["Query", "What a token is looking for."],
-  ["Key", "What a token offers for matching."],
-  ["Value", "The information blended after attention scoring."],
-  ["Logits", "Raw next-token scores before probabilities."],
-];
+import { useTranslation } from "react-i18next";
 
 const TransformerGlossary = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const terms = t("transformers.glossary", {
+    returnObjects: true,
+  }) as string[][];
+
   return (
     <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
       {terms.map(([term, definition]) => (

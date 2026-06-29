@@ -87,6 +87,15 @@
       "viewExploreLink": "/ai/$slug/explore",
       "slugProcess": "token-prediction",
       "slugExplore": "token-prediction"
+    },
+    {
+      "title": "RAG Workbench",
+      "description": "Laboratorio interactivo de retrieval augmented generation para dividir documentos, recuperar contexto top-k, inyectar evidencia y responder con citas.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "rag-workbench",
+      "slugExplore": "rag-workbench"
     }
   ]
 }

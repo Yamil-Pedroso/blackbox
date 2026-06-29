@@ -1,24 +1,26 @@
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
 import type { TokenPredictionStep } from "../../../../../types/ai/tokenPrediction.types";
 
 interface PredictionTimelineProps {
   steps: TokenPredictionStep[];
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
-export function PredictionTimeline({ steps }: PredictionTimelineProps) {
+export function PredictionTimeline({ steps, t }: PredictionTimelineProps) {
   return (
     <section className="min-w-0">
       <div className="flex items-end justify-between gap-4">
         <div>
           <p className="font-ibm-plex-mono text-xs uppercase text-green">
-            Chosen sequence
+            {t("tokenPrediction.timeline.eyebrow")}
           </p>
           <h3 className="mt-1 text-xl font-semibold text-primary">
-            Prediction timeline
+            {t("tokenPrediction.timeline.title")}
           </h3>
         </div>
         <span className="font-ibm-plex-mono text-xs text-secondary">
-          {steps.length} positions
+          {t("tokenPrediction.timeline.positions", { count: steps.length })}
         </span>
       </div>
 

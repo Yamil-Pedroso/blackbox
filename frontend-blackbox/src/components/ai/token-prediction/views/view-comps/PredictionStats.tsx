@@ -1,21 +1,23 @@
+import type { TFunction } from "i18next";
 import type { TokenPredictionResponse } from "../../../../../types/ai/tokenPrediction.types";
 
 interface PredictionStatsProps {
   prediction: TokenPredictionResponse;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
 function percent(value: number): string {
   return `${(value * 100).toFixed(1)}%`;
 }
 
-export function PredictionStats({ prediction }: PredictionStatsProps) {
+export function PredictionStats({ prediction, t }: PredictionStatsProps) {
   const items = [
-    ["Total tokens", String(prediction.statistics.totalTokens)],
-    ["Average probability", percent(prediction.statistics.averageProbability)],
-    ["Lowest probability", percent(prediction.statistics.lowestProbability)],
-    ["Highest probability", percent(prediction.statistics.highestProbability)],
-    ["Generation time", `${prediction.statistics.generationTimeMs} ms`],
-    ["Model", prediction.model],
+    [t("tokenPrediction.stats.totalTokens"), String(prediction.statistics.totalTokens)],
+    [t("tokenPrediction.stats.averageProbability"), percent(prediction.statistics.averageProbability)],
+    [t("tokenPrediction.stats.lowestProbability"), percent(prediction.statistics.lowestProbability)],
+    [t("tokenPrediction.stats.highestProbability"), percent(prediction.statistics.highestProbability)],
+    [t("tokenPrediction.stats.generationTime"), `${prediction.statistics.generationTimeMs} ms`],
+    [t("tokenPrediction.stats.model"), prediction.model],
   ];
 
   return (

@@ -1,14 +1,16 @@
-const resources = [
-  "Attention is all you need",
-  "Tokenization and embeddings",
-  "Decoder-only language models",
-  "Sampling strategies: greedy, top-k, top-p",
-];
+import { useTranslation } from "react-i18next";
 
 const TransformerResources = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const resources = t("transformers.resources.items", {
+    returnObjects: true,
+  }) as string[];
+
   return (
     <div className="border border-neutral-800 bg-secondary-bg p-5">
-      <h2 className="mb-4 text-2xl text-primary">Resources / next topics</h2>
+      <h2 className="mb-4 text-2xl text-primary">
+        {t("transformers.resources.title")}
+      </h2>
       <div className="grid gap-3 md:grid-cols-2">
         {resources.map((resource, index) => (
           <div

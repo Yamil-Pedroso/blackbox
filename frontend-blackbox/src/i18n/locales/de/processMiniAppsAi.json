@@ -471,6 +471,57 @@
         "Top-k zeigt nur einen Ausschnitt des Vokabulars.",
         "Die Demo sollte keine perfekte Intent-Erkennung suggerieren."
       ]
+    },
+    "rag-workbench": {
+      "eyebrow": "ProcessRagWorkbench",
+      "title": "Wie Retrieval private Dokumente in fundierte LLM-Antworten verwandelt",
+      "summary": "RAG, Retrieval Augmented Generation, ist ein Muster, bei dem eine App relevante Quellenpassagen abruft, bevor ein Sprachmodell antwortet. Statt nur auf Modellgedächtnis zu vertrauen, erhält das Modell frischen Kontext aus dem eigenen Dokument.",
+      "conceptDetails": [
+        "Chunking teilt ein langes Dokument in kleinere Passagen, damit jede Einheit eingebettet, gesucht und inspiziert werden kann.",
+        "Overlap wiederholt etwas Text zwischen benachbarten Chunks, damit Ideen nicht verloren gehen, wenn sie über eine Chunk-Grenze laufen.",
+        "Top-k Retrieval wählt die k relevantesten Chunks für die Nutzerfrage. Diese Chunks werden zur Evidenz im Prompt.",
+        "Context Injection platziert die abgerufenen Chunks neben der Frage und hilft dem Modell, aus Quellenmaterial zu antworten und Zitate zu liefern."
+      ],
+      "runtime": "React Workbench, RAG Hook, Axios Service, Express /rag/query Route, Chunking Service, lokale Embeddings, Cosine Similarity und extraktive Antwortbildung.",
+      "userValue": "Verstehen, wie RAG Dokumente, Embeddings, semantisches Retrieval und LLM-artige Antworten mit Zitaten verbindet.",
+      "stages": [
+        {
+          "title": "Quelle indexieren",
+          "description": "Der Nutzer fügt ein Dokument ein und wählt Chunk Size und Overlap.",
+          "detail": "Das Backend normalisiert Text und erstellt nachvollziehbare Chunks mit IDs, Wortbereichen und Token-Schätzung."
+        },
+        {
+          "title": "Chunks einbetten",
+          "description": "Jeder Chunk wird in eine Vektorrepräsentation umgewandelt.",
+          "detail": "Die aktuelle Umsetzung nutzt den lokalen Bildungs-Embedding-Provider und kann später durch OpenAI, Hugging Face oder pgvector ersetzt werden."
+        },
+        {
+          "title": "Top-k abrufen",
+          "description": "Die Frage wird eingebettet und mit jedem Chunk verglichen.",
+          "detail": "Cosine Similarity sortiert Chunks, damit die UI zeigt, welche Evidenz ausgewählt wurde."
+        },
+        {
+          "title": "Antwort erzeugen",
+          "description": "Abgerufene Chunks werden zum Kontext der finalen Antwort.",
+          "detail": "Das Workbench liefert inspizierbare Antwort, Zitate, Prompt Preview und Metriken."
+        }
+      ],
+      "architecture": [
+        "RagWorkbenchView verwaltet Dokument, Frage und Retrieval-Kontrollen.",
+        "useRagQuery ruft ragService auf, der an /rag/query postet.",
+        "Das Backend validiert, chunked die Quelle, embedddet Frage und Chunks, rankt Top-k und baut eine zitierte Antwort.",
+        "Das Frontend rendert Chunks, abgerufene Evidenz, Prompt Preview, Zitate und Latenzmetriken."
+      ],
+      "signals": [
+        "Abgerufene Chunks sollten sichtbar zur Frage passen.",
+        "Chunk Size und Overlap sollten beeinflussen, wie Evidenz geteilt und gerankt wird.",
+        "Die Antwort sollte Chunk-IDs zitieren statt unbelegte Aussagen zu machen."
+      ],
+      "caveats": [
+        "Diese erste Version nutzt einen didaktischen In-Memory-Index, keine persistente Vektordatenbank.",
+        "Der Antwortgenerator ist lokal und extraktiv; eine produktive Version würde nach Retrieval ein LLM aufrufen.",
+        "Schlechtes Chunking oder zu hohes top-k kann Rauschen hinzufügen."
+      ]
     }
   }
 }

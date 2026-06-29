@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { TFunction } from "i18next";
 import { useGenerateTokenInference } from "../../../../../lib/hooks/ai/useTokenInference";
 import type { TokenInferenceSettings } from "../../../../../types/ai/tokenInference.types";
 import { GenerationControls } from "./GenerationControls";
@@ -10,8 +11,14 @@ const initialSettings: TokenInferenceSettings = {
   topP: 0.95,
 };
 
-export function NormalGenerationPanel() {
-  const [prompt, setPrompt] = useState("Explain what React is");
+interface NormalGenerationPanelProps {
+  t: TFunction<"exploreMiniAppsAi">;
+}
+
+export function NormalGenerationPanel({ t }: NormalGenerationPanelProps) {
+  const [prompt, setPrompt] = useState(
+    t("autoregressiveInference.normal.defaultPrompt"),
+  );
   const [settings, setSettings] =
     useState<TokenInferenceSettings>(initialSettings);
   const { data, isLoading, error, execute, clear } =
@@ -32,7 +39,7 @@ export function NormalGenerationPanel() {
     <div className="grid gap-6">
       <form onSubmit={handleSubmit} className="grid gap-4">
         <label className="grid gap-2 text-sm font-semibold text-primary">
-          Prompt
+          {t("autoregressiveInference.normal.prompt")}
           <textarea
             value={prompt}
             onChange={(event) => setPrompt(event.target.value)}
@@ -40,7 +47,7 @@ export function NormalGenerationPanel() {
             className="border border-neutral-800 bg-main-bg px-4 py-3 font-ibm-plex-mono text-sm font-normal text-primary outline-none focus:border-green"
           />
         </label>
-        <GenerationControls settings={settings} onChange={setSettings} />
+        <GenerationControls settings={settings} onChange={setSettings} t={t} />
         {error && (
           <p className="border border-red-400/20 bg-red-400/10 p-3 text-sm text-red-300">
             {error}
@@ -51,24 +58,30 @@ export function NormalGenerationPanel() {
           disabled={isLoading}
           className="min-h-11 bg-green px-5 font-ibm-plex-mono text-xs font-semibold text-black transition hover:opacity-90 disabled:opacity-50"
         >
-          {isLoading ? "Generating..." : "Generate normally"}
+          {isLoading
+            ? t("autoregressiveInference.normal.loading")
+            : t("autoregressiveInference.normal.button")}
         </button>
       </form>
 
       <div className="min-h-80 border border-neutral-800 bg-main-bg p-5 text-primary sm:p-6">
         {!data ? (
           <div className="flex min-h-72 items-center justify-center text-center text-sm text-secondary">
-            The complete response and its approximate tokens will appear here.
+            {t("autoregressiveInference.normal.empty")}
           </div>
         ) : (
           <>
             <div className="flex flex-wrap justify-between gap-3 border-b border-neutral-800 pb-4">
               <div>
                 <p className="font-ibm-plex-mono text-xs uppercase text-green">
-                  Generated response
+                  {t("autoregressiveInference.normal.title")}
                 </p>
                 <p className="mt-1 font-ibm-plex-mono text-xs text-secondary">
-                  {data.provider} · {data.model} · {data.tokenCount} tokens
+                  {t("autoregressiveInference.normal.tokenMeta", {
+                    provider: data.provider,
+                    model: data.model,
+                    count: data.tokenCount,
+                  })}
                 </p>
               </div>
               <div className="flex gap-2">
@@ -77,14 +90,14 @@ export function NormalGenerationPanel() {
                   onClick={() => void copyResult()}
                   className="border border-neutral-800 bg-secondary-bg px-3 py-1.5 font-ibm-plex-mono text-xs font-semibold text-primary transition hover:border-green/50"
                 >
-                  Copy
+                  {t("autoregressiveInference.normal.copy")}
                 </button>
                 <button
                   type="button"
                   onClick={clear}
                   className="border border-neutral-800 bg-secondary-bg px-3 py-1.5 font-ibm-plex-mono text-xs font-semibold text-primary transition hover:border-green/50"
                 >
-                  Clear
+                  {t("autoregressiveInference.normal.clear")}
                 </button>
               </div>
             </div>
@@ -92,7 +105,7 @@ export function NormalGenerationPanel() {
               {data.generatedText}
             </p>
             <div className="mt-5">
-              <TokenChips tokens={data.tokens} />
+              <TokenChips tokens={data.tokens} t={t} />
             </div>
           </>
         )}

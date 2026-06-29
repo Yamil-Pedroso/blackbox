@@ -1,15 +1,12 @@
 import { ArrowRight } from "lucide-react";
-
-const steps = [
-  "Input Text",
-  "Tokenization",
-  "Embeddings",
-  "Transformer Layers",
-  "Output Probabilities",
-  "Next Token",
-];
+import { useTranslation } from "react-i18next";
 
 const TransformerFlowDiagram = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const steps = t("transformers.flowDiagram", {
+    returnObjects: true,
+  }) as string[];
+
   return (
     <div className="grid gap-3 md:grid-cols-[repeat(6,minmax(0,1fr))]">
       {steps.map((step, index) => (

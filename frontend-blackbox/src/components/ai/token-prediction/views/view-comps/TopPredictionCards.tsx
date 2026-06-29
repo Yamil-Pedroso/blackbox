@@ -1,22 +1,23 @@
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
 import type { TokenPredictionStep } from "../../../../../types/ai/tokenPrediction.types";
 
 interface TopPredictionCardsProps {
   steps: TokenPredictionStep[];
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
-export function TopPredictionCards({ steps }: TopPredictionCardsProps) {
+export function TopPredictionCards({ steps, t }: TopPredictionCardsProps) {
   return (
     <section className="min-w-0">
       <p className="font-ibm-plex-mono text-xs uppercase text-green">
-        Distribution at each step
+        {t("tokenPrediction.cards.eyebrow")}
       </p>
       <h3 className="mt-1 text-2xl font-semibold text-primary">
-        Top token predictions
+        {t("tokenPrediction.cards.title")}
       </h3>
       <p className="mt-2 max-w-3xl text-sm leading-6 text-secondary">
-        Every card is a snapshot of the model's next-token distribution. The
-        cyan row is the token that continued the generated sentence.
+        {t("tokenPrediction.cards.description")}
       </p>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
@@ -28,10 +29,14 @@ export function TopPredictionCards({ steps }: TopPredictionCardsProps) {
             <div className="flex items-center justify-between gap-3 border-b border-neutral-800 pb-3">
               <div>
                 <p className="font-ibm-plex-mono text-[10px] uppercase text-secondary">
-                  Position {step.position}
+                  {t("tokenPrediction.cards.position", {
+                    position: step.position,
+                  })}
                 </p>
                 <p className="mt-1 font-ibm-plex-mono text-sm font-semibold text-primary">
-                  Chosen: {step.generatedToken.replace(/\s/g, "·")}
+                  {t("tokenPrediction.cards.chosen", {
+                    token: step.generatedToken.replace(/\s/g, "·"),
+                  })}
                 </p>
               </div>
               <span className="border border-green/40 bg-green/10 px-2 py-1 font-ibm-plex-mono text-xs font-semibold text-green">

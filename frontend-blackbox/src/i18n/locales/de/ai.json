@@ -87,6 +87,15 @@
       "viewExploreLink": "/ai/$slug/explore",
       "slugProcess": "token-prediction",
       "slugExplore": "token-prediction"
+    },
+    {
+      "title": "RAG Workbench",
+      "description": "Interaktives Retrieval-Augmented-Generation-Lab für Chunking, Top-k-Retrieval, Kontextinjektion und Antworten mit Zitaten.",
+      "link": null,
+      "viewProcessLink": "/ai/$slug/process",
+      "viewExploreLink": "/ai/$slug/explore",
+      "slugProcess": "rag-workbench",
+      "slugExplore": "rag-workbench"
     }
   ]
 }

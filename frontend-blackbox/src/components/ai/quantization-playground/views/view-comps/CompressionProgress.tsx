@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { TFunction } from "i18next";
 import type {
   CompressionStatus,
   QuantizationPrecision,
@@ -10,6 +11,7 @@ interface CompressionProgressProps {
   status: CompressionStatus;
   currentStep: string;
   onReset: () => void;
+  t: TFunction<"exploreMiniAppsAi">;
 }
 
 export function CompressionProgress({
@@ -18,6 +20,7 @@ export function CompressionProgress({
   status,
   currentStep,
   onReset,
+  t,
 }: CompressionProgressProps) {
   const isComplete = status === "complete";
 
@@ -26,7 +29,7 @@ export function CompressionProgress({
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <p className="font-ibm-plex-mono text-xs uppercase text-green">
-            Visual compression flow
+            {t("quantization.progress.title")}
           </p>
           <h3 className="mt-2 text-xl font-semibold">FP32 to {targetPrecision}</h3>
           <p className="mt-2 text-sm text-secondary">{currentStep}</p>
@@ -38,7 +41,7 @@ export function CompressionProgress({
             onClick={onReset}
             className="min-h-10 border border-neutral-800 bg-secondary-bg px-4 font-ibm-plex-mono text-xs font-semibold text-primary transition hover:border-green/50"
           >
-            Reset compression
+            {t("quantization.progress.reset")}
           </button>
         </div>
       </div>
@@ -49,7 +52,9 @@ export function CompressionProgress({
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={progress}
-        aria-label={`Compression to ${targetPrecision}`}
+        aria-label={t("quantization.progress.aria", {
+          precision: targetPrecision,
+        })}
       >
         <motion.div
           className="h-full bg-green"
@@ -60,8 +65,8 @@ export function CompressionProgress({
 
       <p className="mt-3 text-xs text-secondary">
         {isComplete
-          ? "The backend analysis and educational animation are complete."
-          : "The backend request and visual learning animation are running in parallel."}
+          ? t("quantization.progress.complete")
+          : t("quantization.progress.running")}
       </p>
     </section>
   );

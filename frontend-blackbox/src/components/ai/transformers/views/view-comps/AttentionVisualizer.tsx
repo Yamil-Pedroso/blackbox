@@ -1,16 +1,20 @@
 import type { AttentionRow } from "../../../../../types/ai/transformers.types";
+import { useTranslation } from "react-i18next";
 
 type AttentionVisualizerProps = {
   tokens: string[];
   attention?: AttentionRow[];
 };
 
-const defaultTokens = ["The", "cat", "sits", "on", "the", "mat"];
-
 const AttentionVisualizer = ({
-  tokens = defaultTokens,
+  tokens,
   attention,
 }: AttentionVisualizerProps) => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const defaultTokens = t("transformers.attention.defaultTokens", {
+    returnObjects: true,
+  }) as string[];
+  const visualTokens = tokens ?? defaultTokens;
   const rows =
     attention ??
     defaultTokens.map((fromToken, rowIndex) => ({
@@ -24,7 +28,9 @@ const AttentionVisualizer = ({
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
       <div className="border border-neutral-800 bg-secondary-bg p-5">
-        <h3 className="mb-5 text-xl text-primary">Self-attention map</h3>
+        <h3 className="mb-5 text-xl text-primary">
+          {t("transformers.attention.map")}
+        </h3>
         <div className="space-y-4">
           {rows.slice(0, 6).map((row) => (
             <div
@@ -55,9 +61,11 @@ const AttentionVisualizer = ({
       </div>
 
       <div className="border border-neutral-800 bg-secondary-bg p-5">
-        <h3 className="mb-5 text-xl text-primary">Tokens exchanging context</h3>
+        <h3 className="mb-5 text-xl text-primary">
+          {t("transformers.attention.context")}
+        </h3>
         <svg viewBox="0 0 620 230" className="h-64 w-full">
-          {tokens.slice(0, 6).map((token, index) => {
+          {visualTokens.slice(0, 6).map((token, index) => {
             const x = 70 + index * 95;
             return (
               <g key={token}>
@@ -80,8 +88,8 @@ const AttentionVisualizer = ({
               </g>
             );
           })}
-          {tokens.slice(0, 6).map((_, index) =>
-            tokens.slice(index + 1, 6).map((__, targetIndex) => {
+          {visualTokens.slice(0, 6).map((_, index) =>
+            visualTokens.slice(index + 1, 6).map((__, targetIndex) => {
               const startX = 70 + index * 95;
               const endX = 70 + (targetIndex + index + 1) * 95;
               const opacity = 0.12 + 0.12 / (targetIndex + 1);

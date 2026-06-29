@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../../api/apiClient";
 
 const apiBaseUrl =
@@ -44,11 +45,15 @@ const buttonBase =
   "min-h-11 border border-green/50 px-5 font-ibm-plex-mono text-xs font-semibold transition-opacity disabled:cursor-not-allowed disabled:opacity-50";
 
 const MultiModalAIView = () => {
+  const { t } = useTranslation("exploreMiniAppsAi");
+
   return (
     <section className="relative overflow-hidden border border-neutral-800 bg-secondary-bg px-5 py-8 text-primary md:px-10">
       <h1 className="relative text-center text-4xl text-primary md:text-6xl">
-        <span className="block">MULTIMODAL</span>
-        <span className="block text-secondary">AI SDK DEMOS</span>
+        <span className="block">{t("multiModalAi.titleTop")}</span>
+        <span className="block text-secondary">
+          {t("multiModalAi.titleBottom")}
+        </span>
       </h1>
 
       <div className="relative mt-12 grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -62,8 +67,9 @@ const MultiModalAIView = () => {
 };
 
 function StreamingTutorExample() {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const [input, setInput] = useState(
-    "Explain streaming responses in LLM apps.",
+    t("multiModalAi.streaming.defaultInput"),
   );
 
   const transport = useMemo(
@@ -87,13 +93,13 @@ function StreamingTutorExample() {
   return (
     <ExamplePanel
       accent="cyan"
-      title="Streaming tutor"
-      description="Watch the response arrive progressively."
+      title={t("multiModalAi.streaming.title")}
+      description={t("multiModalAi.streaming.description")}
     >
       <div className="flex h-full flex-col">
         <ChatTranscript
           messages={messages}
-          empty="Ask a question and watch the response stream in."
+          empty={t("multiModalAi.streaming.empty")}
         />
 
         {error && <ErrorText message={error.message} />}
@@ -115,7 +121,9 @@ function StreamingTutorExample() {
               disabled={busy}
               className={`${buttonBase} flex-1 bg-green text-black hover:opacity-90`}
             >
-              {busy ? "Streaming..." : "Send"}
+              {busy
+                ? t("multiModalAi.streaming.loading")
+                : t("multiModalAi.streaming.send")}
             </button>
 
             {busy && (
@@ -124,7 +132,7 @@ function StreamingTutorExample() {
                 onClick={stop}
                 className={`${buttonBase} border-neutral-800 bg-main-bg text-secondary hover:text-primary`}
               >
-                Stop
+                {t("multiModalAi.streaming.stop")}
               </button>
             )}
           </div>
@@ -135,7 +143,8 @@ function StreamingTutorExample() {
 }
 
 function StructuredBriefExample() {
-  const [topic, setTopic] = useState("RAG versus fine-tuning");
+  const { t } = useTranslation("exploreMiniAppsAi");
+  const [topic, setTopic] = useState(t("multiModalAi.structured.defaultTopic"));
   const [data, setData] = useState<StructuredBriefResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -154,7 +163,11 @@ function StructuredBriefExample() {
       );
       setData(response.data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to generate brief");
+      setError(
+        err instanceof Error
+          ? err.message
+          : t("multiModalAi.structured.fallbackError"),
+      );
     } finally {
       setLoading(false);
     }
@@ -163,8 +176,8 @@ function StructuredBriefExample() {
   return (
     <ExamplePanel
       accent="amber"
-      title="Structured output"
-      description="Generate a clean JSON brief."
+      title={t("multiModalAi.structured.title")}
+      description={t("multiModalAi.structured.description")}
     >
       <form onSubmit={handleSubmit} className="flex h-full flex-col gap-3">
         <input
@@ -204,11 +217,18 @@ function StructuredBriefExample() {
             </ul>
 
             <p className="mt-4 text-sm font-semibold text-green">
-              Next: {data.brief.nextExperiment}
+              {t("multiModalAi.structured.next", {
+                value: data.brief.nextExperiment,
+              })}
             </p>
 
             <p className="mt-4 break-words text-xs text-secondary">
-              {data.metrics.model} · {data.metrics.totalTokens ?? "N/A"} tokens
+              {t("multiModalAi.structured.tokens", {
+                model: data.metrics.model,
+                tokens:
+                  data.metrics.totalTokens ??
+                  t("multiModalAi.structured.notAvailable"),
+              })}
             </p>
           </div>
         )}
@@ -217,7 +237,9 @@ function StructuredBriefExample() {
           disabled={loading}
           className={`${buttonBase} mt-auto bg-green text-black hover:opacity-90`}
         >
-          {loading ? "Generating..." : "Generate JSON brief"}
+          {loading
+            ? t("multiModalAi.structured.loading")
+            : t("multiModalAi.structured.button")}
         </button>
       </form>
     </ExamplePanel>
@@ -225,8 +247,9 @@ function StructuredBriefExample() {
 }
 
 function ToolCallingExample() {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const [input, setInput] = useState(
-    "I am visiting Zurich tomorrow. Should I plan indoor or outdoor work?",
+    t("multiModalAi.tools.defaultInput"),
   );
 
   const transport = useMemo(
@@ -250,13 +273,13 @@ function ToolCallingExample() {
   return (
     <ExamplePanel
       accent="fuchsia"
-      title="Tool calling"
-      description="Ask questions that need external tools."
+      title={t("multiModalAi.tools.title")}
+      description={t("multiModalAi.tools.description")}
     >
       <div className="flex h-full flex-col">
         <ChatTranscript
           messages={messages}
-          empty="Ask for planning advice that depends on weather."
+          empty={t("multiModalAi.tools.empty")}
         />
 
         {error && <ErrorText message={error.message} />}
@@ -276,7 +299,9 @@ function ToolCallingExample() {
             disabled={busy}
             className={`${buttonBase} mt-auto bg-green text-black hover:opacity-90`}
           >
-            {busy ? "Thinking..." : "Ask with tool"}
+            {busy
+              ? t("multiModalAi.tools.loading")
+              : t("multiModalAi.tools.button")}
           </button>
         </form>
       </div>
@@ -285,12 +310,13 @@ function ToolCallingExample() {
 }
 
 function SpeechExample() {
+  const { t } = useTranslation("exploreMiniAppsAi");
   const [text, setText] = useState(
-    "AI SDK speech generation turns text into audio from a backend endpoint.",
+    t("multiModalAi.speech.defaultText"),
   );
   const [voice, setVoice] = useState("alloy");
   const [instructions, setInstructions] = useState(
-    "Speak clearly with a warm teaching tone.",
+    t("multiModalAi.speech.defaultInstructions"),
   );
   const [data, setData] = useState<SpeechResponse | null>(null);
   const [loading, setLoading] = useState(false);
@@ -313,7 +339,7 @@ function SpeechExample() {
       setData(response.data);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Failed to generate speech",
+        err instanceof Error ? err.message : t("multiModalAi.speech.fallbackError"),
       );
     } finally {
       setLoading(false);
@@ -327,8 +353,8 @@ function SpeechExample() {
   return (
     <ExamplePanel
       accent="emerald"
-      title="Speech"
-      description="Turn your text into generated audio."
+      title={t("multiModalAi.speech.title")}
+      description={t("multiModalAi.speech.description")}
     >
       <form onSubmit={handleSubmit} className="flex h-full flex-col gap-3">
         <textarea
@@ -378,7 +404,9 @@ function SpeechExample() {
           disabled={loading}
           className={`${buttonBase} mt-auto bg-green text-black hover:opacity-90`}
         >
-          {loading ? "Generating..." : "Generate speech"}
+          {loading
+            ? t("multiModalAi.speech.loading")
+            : t("multiModalAi.speech.button")}
         </button>
       </form>
     </ExamplePanel>

@@ -471,6 +471,57 @@
         "Top-k views only show a slice of the full vocabulary.",
         "Prediction demos should avoid implying that language models understand intent perfectly."
       ]
+    },
+    "rag-workbench": {
+      "eyebrow": "ProcessRagWorkbench",
+      "title": "How retrieval turns private documents into grounded LLM answers",
+      "summary": "RAG, or retrieval augmented generation, is a pattern where an app retrieves relevant source passages before asking a language model to answer. Instead of trusting the model's memory, the system gives it fresh context from your own document.",
+      "conceptDetails": [
+        "Chunking splits a long document into smaller passages so each unit can be embedded, searched and inspected.",
+        "Overlap repeats a little text between neighboring chunks so an idea is not lost when it crosses a chunk boundary.",
+        "Top-k retrieval selects the k most relevant chunks for the user's question. Those chunks become the evidence passed into the prompt.",
+        "Context injection places retrieved chunks beside the user question, which helps the model answer from source material and cite where the answer came from."
+      ],
+      "runtime": "React workbench, RAG hook, Axios service, Express /rag/query route, chunking service, local embeddings, cosine similarity and extractive answer assembly.",
+      "userValue": "Understand how RAG connects documents, embeddings, semantic retrieval and LLM-style answers with citations.",
+      "stages": [
+        {
+          "title": "Index source",
+          "description": "The user pastes a document and chooses chunk size and overlap.",
+          "detail": "The backend normalizes the text and creates traceable chunks with ids, word ranges and token estimates."
+        },
+        {
+          "title": "Embed chunks",
+          "description": "Each chunk is converted into a vector representation.",
+          "detail": "The current implementation uses the educational local embedding provider, ready to be swapped for OpenAI, Hugging Face or pgvector-backed storage later."
+        },
+        {
+          "title": "Retrieve top-k",
+          "description": "The question is embedded and compared with every chunk.",
+          "detail": "Cosine similarity ranks chunks so the UI can show which evidence was selected and why."
+        },
+        {
+          "title": "Generate answer",
+          "description": "Retrieved chunks become context for the final answer.",
+          "detail": "The workbench returns an inspectable answer, citations, prompt preview and metrics so the RAG path is visible."
+        }
+      ],
+      "architecture": [
+        "RagWorkbenchView owns document, question and retrieval controls.",
+        "useRagQuery calls ragService, which posts to /rag/query.",
+        "The backend validates the request, chunks the source, embeds query plus chunks, ranks top-k passages and assembles a cited answer.",
+        "The frontend renders generated chunks, retrieved evidence, prompt preview, citations and latency metrics."
+      ],
+      "signals": [
+        "Retrieved chunks should visibly match the user question.",
+        "Chunk size and overlap should change how evidence is split and ranked.",
+        "The answer should cite chunk ids instead of making unsupported claims."
+      ],
+      "caveats": [
+        "This first version uses an in-memory educational index, not a persistent vector database.",
+        "The answer builder is local and extractive; a production version would call an LLM after retrieval.",
+        "Bad chunking or too large top-k can add noise and reduce answer quality."
+      ]
     }
   }
 }

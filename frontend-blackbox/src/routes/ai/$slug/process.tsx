@@ -8,6 +8,7 @@ import ProcessQuantizationPlayground from "@/components/ai/quantization-playgrou
 import ProcessEmbeddingsLab from "@/components/ai/embeddings-lab/ProcessEmbeddingsLab";
 import ProcessAutoregressiveInferenceTokenByToken from "@/components/ai/autoregressive-inference-token-by-token/ProcessAutoregressiveInferenceTokenByToken";
 import ProcessTokenPrediction from "@/components/ai/token-prediction/ProcessTokenPrediction";
+import ProcessRagWorkbench from "@/components/ai/rag-workbench/ProcessRagWorkbench";
 
 export const Route = createFileRoute("/ai/$slug/process")({
   component: RouteComponent,
@@ -24,6 +25,7 @@ const processRegistry: Record<string, React.FC> = {
   "autoregressive-inference-token-by-token":
     ProcessAutoregressiveInferenceTokenByToken,
   "token-prediction": ProcessTokenPrediction,
+  "rag-workbench": ProcessRagWorkbench,
 };
 
 function RouteComponent() {
