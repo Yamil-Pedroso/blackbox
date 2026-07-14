@@ -81,9 +81,15 @@ const StackOverview = () => {
   const { t } = useTranslation("fullStackProjects");
 
   return (
-    <section className="space-y-5">
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="space-y-5"
+    >
       <div>
-        <h2 className="mt-2 text-xl font-semibold text-white">
+        <h2 className="mt-2 text-xl font-semibold text-primary">
           {t("stackOverview.title")}
         </h2>
       </div>
@@ -202,7 +208,7 @@ const StackOverview = () => {
           ))}
         </div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

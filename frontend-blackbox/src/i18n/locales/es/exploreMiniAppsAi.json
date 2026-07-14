@@ -727,9 +727,65 @@
   },
   "ragWorkbench": {
     "sampleDocument": "React Query es una librería para gestionar estado de servidor en aplicaciones React. Maneja caché, refetch en segundo plano, reintentos, estados de carga y sincronización entre la UI y datos remotos.\n\nLos embeddings son representaciones numéricas del significado. Una frase, documento o pregunta puede transformarse en un vector para que ideas parecidas queden cerca en el espacio vectorial.\n\nRetrieval augmented generation, también llamado RAG, conecta búsqueda con generación de lenguaje. El sistema divide un documento en chunks, crea embeddings de esos chunks, recupera las partes más relevantes para una pregunta e inyecta ese contexto en el prompt del modelo.\n\nEl chunking importa porque los modelos de lenguaje tienen ventanas de contexto limitadas. Si los chunks son demasiado grandes, el retrieval mete ruido. Si son demasiado pequeños, explicaciones importantes pueden romperse.\n\nEl overlap repite una pequeña parte del texto entre chunks vecinos. Ayuda a preservar contexto cuando un párrafo o idea cruza el límite entre dos chunks.\n\nTop-k retrieval significa seleccionar los k chunks más relevantes para una consulta. Un k bajo puede perder evidencia útil, mientras que un k alto puede añadir contexto distractor.\n\nEl paso final de generación debe responder usando los chunks recuperados y citar los chunks fuente. Esto hace la respuesta más fácil de inspeccionar y reduce afirmaciones sin soporte.",
+    "tabs": {
+      "assistant": "Knowledge Assistant",
+      "assistantHint": "Haz preguntas grounded sobre una fuente.",
+      "workbench": "Pipeline Workbench",
+      "workbenchHint": "Inspecciona chunks, retrieval y prompt."
+    },
     "defaults": {
       "sourceTitle": "Notas de aprendizaje RAG",
       "question": "¿Por qué importan el chunking y el overlap en RAG?"
+    },
+    "assistant": {
+      "defaults": {
+        "title": "Notas de onboarding del producto",
+        "question": "¿Qué debería entender primero un nuevo compañero?",
+        "knowledgeBase": "Blackbox AI Studio es un espacio de aprendizaje para ingeniería práctica de IA. El RAG Workbench muestra cómo un texto fuente se divide en chunks, se convierte en embeddings, se recupera y se transforma en respuestas grounded.\n\nLos nuevos compañeros deben entender que el assistant no busca en internet abierto. Responde solo desde la knowledge base pegada en el panel. Esto hace que la evidencia sea fácil de inspeccionar y mantiene la demo predecible.\n\nUna buena respuesta RAG debe mencionar la evidencia recuperada, citar los ids de chunks y evitar afirmaciones que no estén en la fuente. Si la fuente está incompleta, el assistant debe decir que la respuesta está limitada por el contexto disponible.\n\nEl mejor flujo de demo es pegar un documento corto del proyecto, hacer una pregunta concreta, revisar las citas y después refinar la knowledge base o la pregunta cuando la respuesta sea demasiado amplia."
+      },
+      "header": {
+        "eyebrow": "Módulo RAG simple",
+        "title": "Simple RAG Knowledge Assistant",
+        "description": "Pega una knowledge base compacta, haz una pregunta y recibe una respuesta grounded con citas, traza de retrieval y prompts de seguimiento.",
+        "badge": "Backend: /api/v1/rag/assistant"
+      },
+      "knowledge": {
+        "title": "Knowledge base",
+        "titleLabel": "Título de la fuente",
+        "baseLabel": "Texto fuente",
+        "wordCount": "{{count}} palabras indexadas localmente."
+      },
+      "chat": {
+        "title": "Assistant",
+        "questionLabel": "Pregunta",
+        "submit": "Preguntar al knowledge assistant",
+        "loading": "Recuperando evidencia..."
+      },
+      "tones": {
+        "explanatory": "Explicativo",
+        "concise": "Conciso",
+        "support": "Soporte"
+      },
+      "answerModes": {
+        "local": "Local",
+        "localDescription": "Sin API key. Usa el generador local educativo.",
+        "openai": "OpenAI",
+        "openaiDescription": "Usa OpenAI para la respuesta final después del retrieval local."
+      },
+      "empty": "Haz una pregunta para ver una respuesta grounded, la evidencia recuperada y la traza del assistant.",
+      "answerLabel": "Respuesta grounded",
+      "metrics": {
+        "chunks": "Chunks",
+        "retrieved": "Recuperados",
+        "latency": "Latencia",
+        "mode": "Modo de respuesta",
+        "model": "Modelo de respuesta"
+      },
+      "panels": {
+        "citations": "Citas",
+        "trace": "Traza del assistant",
+        "suggestions": "Prompts de seguimiento"
+      }
     },
     "header": {
       "eyebrow": "Retrieval Augmented Generation",

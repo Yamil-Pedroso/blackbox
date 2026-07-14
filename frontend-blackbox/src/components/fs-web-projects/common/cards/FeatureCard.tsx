@@ -23,10 +23,10 @@ const FeatureCard = ({
 }: FeatureCardProps) => {
   return (
     <div
-      className={`border border-zinc-700 rounded-xl bg-zinc-900/40 hover:bg-zinc-900/70 transition overflow-hidden flex flex-col ${width} ${height} ${className}`}
+      className={`border border-border rounded-xl bg-secondary-bg text-primary shadow-sm shadow-black/5 transition hover:border-green/50 hover:bg-tertiary dark:shadow-black/20 overflow-hidden flex flex-col ${width} ${height} ${className}`}
     >
       {image && (
-        <div className="h-70 bg-linear-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-zinc-500 text-sm">
+        <div className="h-70 bg-linear-to-br from-muted to-secondary flex items-center justify-center text-secondary text-sm">
           <img src={image} alt={title} className="w-full h-full object-cover" />
         </div>
       )}
@@ -38,13 +38,16 @@ const FeatureCard = ({
         </div>
 
         {description && (
-          <p className="text-sm text-zinc-400 leading-relaxed">{description}</p>
+          <p className="text-sm text-secondary leading-relaxed">{description}</p>
         )}
 
         {tags && (
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, i) => (
-              <span key={i} className="text-xs px-2 py-1 bg-zinc-800 rounded">
+              <span
+                key={i}
+                className="text-xs px-2 py-1 bg-muted text-secondary rounded"
+              >
                 {tag}
               </span>
             ))}

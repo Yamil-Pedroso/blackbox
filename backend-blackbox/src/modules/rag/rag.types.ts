@@ -38,3 +38,13 @@ export type RagQueryResponse = {
     durationMs: number;
   };
 };
+
+export type RagAssistantResponse = RagQueryResponse & {
+  mode: "simple-knowledge-assistant";
+  answerMode: "local" | "openai";
+  suggestions: string[];
+  trace: Array<{
+    step: string;
+    detail: string;
+  }>;
+};

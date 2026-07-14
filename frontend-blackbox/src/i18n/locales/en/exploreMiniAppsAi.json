@@ -727,9 +727,65 @@
   },
   "ragWorkbench": {
     "sampleDocument": "React Query is a server state management library for React applications. It handles caching, background refetching, retries, loading states, and synchronization between the UI and remote data.\n\nEmbeddings are numerical representations of meaning. A sentence, document, or query can be transformed into a vector so similar ideas stay close together in vector space.\n\nRetrieval augmented generation, also called RAG, connects search with language generation. The system splits a document into chunks, embeds those chunks, retrieves the most relevant pieces for a user question, and injects them into the model prompt.\n\nChunking matters because language models have limited context windows. If chunks are too large, retrieval becomes noisy. If chunks are too small, important explanations can be broken apart.\n\nOverlap repeats a small amount of text between neighboring chunks. It helps preserve context when a paragraph or idea crosses a chunk boundary.\n\nTop-k retrieval means selecting the k most relevant chunks for a query. A low k can miss useful evidence, while a high k can add distracting context.\n\nThe final generation step should answer using the retrieved chunks and cite the source chunks. This makes the answer easier to inspect and reduces unsupported claims.",
+    "tabs": {
+      "assistant": "Knowledge Assistant",
+      "assistantHint": "Ask grounded questions over one source.",
+      "workbench": "Pipeline Workbench",
+      "workbenchHint": "Inspect chunks, retrieval, and prompt."
+    },
     "defaults": {
       "sourceTitle": "RAG learning notes",
       "question": "Why do chunking and overlap matter in RAG?"
+    },
+    "assistant": {
+      "defaults": {
+        "title": "Product onboarding notes",
+        "question": "What should a new teammate understand first?",
+        "knowledgeBase": "Blackbox AI Studio is a learning workspace for practical AI engineering. The RAG Workbench shows how source text is split into chunks, embedded, retrieved, and converted into grounded answers.\n\nNew teammates should understand that the assistant does not search the open internet. It answers only from the knowledge base pasted into the panel. This makes the evidence easy to inspect and keeps the demo predictable.\n\nA useful RAG answer should mention the retrieved evidence, cite the chunk ids, and avoid making claims that are not present in the source. If the source is incomplete, the assistant should say that the answer is limited by the available context.\n\nThe best demo flow is to paste a short project document, ask a concrete question, inspect the citations, and then refine the knowledge base or question when the answer is too broad."
+      },
+      "header": {
+        "eyebrow": "Simple RAG module",
+        "title": "Simple RAG Knowledge Assistant",
+        "description": "Paste a compact knowledge base, ask a question, and get a grounded answer with citations, retrieval trace, and follow-up prompts.",
+        "badge": "Backend: /api/v1/rag/assistant"
+      },
+      "knowledge": {
+        "title": "Knowledge base",
+        "titleLabel": "Source title",
+        "baseLabel": "Source text",
+        "wordCount": "{{count}} words indexed locally."
+      },
+      "chat": {
+        "title": "Assistant",
+        "questionLabel": "Question",
+        "submit": "Ask knowledge assistant",
+        "loading": "Retrieving evidence..."
+      },
+      "tones": {
+        "explanatory": "Explanatory",
+        "concise": "Concise",
+        "support": "Support"
+      },
+      "answerModes": {
+        "local": "Local",
+        "localDescription": "No API key. Uses the educational local answer builder.",
+        "openai": "OpenAI",
+        "openaiDescription": "Uses OpenAI for the final answer after local retrieval."
+      },
+      "empty": "Ask a question to see a grounded answer, retrieved evidence, and the assistant trace.",
+      "answerLabel": "Grounded answer",
+      "metrics": {
+        "chunks": "Chunks",
+        "retrieved": "Retrieved",
+        "latency": "Latency",
+        "mode": "Answer mode",
+        "model": "Answer model"
+      },
+      "panels": {
+        "citations": "Citations",
+        "trace": "Assistant trace",
+        "suggestions": "Follow-up prompts"
+      }
     },
     "header": {
       "eyebrow": "Retrieval Augmented Generation",

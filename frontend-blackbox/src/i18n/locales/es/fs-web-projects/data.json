@@ -92,6 +92,54 @@
         "image": "./images/fs-web-projects/neuronote.webp",
         "caseStudy": "/blackbox/projects/neuronote",
         "demo": "https://neuronote-pi.vercel.app/"
+      },
+      {
+        "title": "Codito Zeitung",
+        "description": "Plataforma moderna de noticias suizas con información sobre política, economía, tecnología, salud, transporte, cultura y deportes.",
+        "stack": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Express",
+          "Tailwind",
+          "RSS Feed Aggregation"
+        ],
+        "image": "./images/fs-web-projects/codito-zeitung.webp",
+        "caseStudy": "/blackbox/projects/codito-zeitung",
+        "demo": "https://coditozeitung.yampe.dev/"
+      }
+    ]
+  },
+
+  "mobileProjectsGrid": {
+    "eyebrow": "Conceptos mobile UI",
+    "title": "Proyectos Mobile App",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lorem at justo tempor gravida.",
+    "mockAction": "Guardar flujo",
+    "projects": [
+      {
+        "title": "Lorem Mobile 01",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.",
+        "stack": ["React Native", "Expo", "TypeScript"],
+        "status": "Lorem",
+        "accent": "#6b7280",
+        "screens": ["Lorem", "Ipsum", "Dolor"]
+      },
+      {
+        "title": "Lorem Mobile 02",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.",
+        "stack": ["React Native", "Node API", "Stripe"],
+        "status": "Ipsum",
+        "accent": "#52525b",
+        "screens": ["Amet", "Elit", "Nibh"]
+      },
+      {
+        "title": "Lorem Mobile 03",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor.",
+        "stack": ["Expo", "Supabase", "Tailwind"],
+        "status": "Dolor",
+        "accent": "#3f3f46",
+        "screens": ["Sit", "Amet", "Nulla", "Vitae"]
       }
     ]
   }

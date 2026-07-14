@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import {
   FaChevronLeft,
@@ -37,7 +38,13 @@ const ProjectsGrid = () => {
   };
 
   return (
-    <section className="space-y-6">
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="space-y-6"
+    >
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t("projectsGrid.title")}</h2>
 
@@ -45,14 +52,14 @@ const ProjectsGrid = () => {
           <div className="flex gap-2">
             <button
               onClick={prevPage}
-              className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition"
+              className="p-2 rounded-lg border border-border bg-secondary-bg text-primary hover:border-green/50 hover:bg-tertiary transition"
             >
               <FaChevronLeft />
             </button>
 
             <button
               onClick={nextPage}
-              className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition"
+              className="p-2 rounded-lg border border-border bg-secondary-bg text-primary hover:border-green/50 hover:bg-tertiary transition"
             >
               <FaChevronRight />
             </button>
@@ -65,47 +72,59 @@ const ProjectsGrid = () => {
           const image = project.image;
 
           return (
-            <FeatureCard
+            <motion.div
               key={index}
-              title={project.title}
-              description={project.description}
-              image={image}
-              tags={project.stack}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                delay: index * 0.08,
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="h-full"
             >
-              <div className="flex gap-3 pt-3 mt-auto pb-4">
-                {project.caseStudy && (
-                  <Tooltip
-                    className="bg-secondary-bg border border-green"
-                    text="Pending"
-                  >
-                    <a
-                      href={project.caseStudy}
-                      className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-zinc-800 hover:bg-zinc-700 transition cursor-not-allowed pointer-events-none"
+              <FeatureCard
+                title={project.title}
+                description={project.description}
+                image={image}
+                tags={project.stack}
+                className="h-full"
+              >
+                <div className="flex gap-3 pt-3 mt-auto pb-4">
+                  {project.caseStudy && (
+                    <Tooltip
+                      className="bg-secondary-bg border border-green"
+                      text="Pending"
                     >
-                      <FaBookOpen />
-                      {t("projectsGrid.buttons.caseStudy")}
-                    </a>
-                  </Tooltip>
-                )}
+                      <a
+                        href={project.caseStudy}
+                        className="flex items-center gap-2 px-3 py-2 text-sm rounded-md border border-border bg-muted text-secondary transition cursor-not-allowed pointer-events-none"
+                      >
+                        <FaBookOpen />
+                        {t("projectsGrid.buttons.caseStudy")}
+                      </a>
+                    </Tooltip>
+                  )}
 
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-green-700 hover:bg-green-600 transition"
-                  >
-                    <FaExternalLinkAlt />
-                    {t("projectsGrid.buttons.liveDemo")}
-                  </a>
-                )}
-              </div>
-            </FeatureCard>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-3 py-2 text-sm rounded-md bg-green text-black hover:brightness-95 transition"
+                    >
+                      <FaExternalLinkAlt />
+                      {t("projectsGrid.buttons.liveDemo")}
+                    </a>
+                  )}
+                </div>
+              </FeatureCard>
+            </motion.div>
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

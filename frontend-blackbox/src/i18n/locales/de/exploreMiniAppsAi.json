@@ -727,9 +727,65 @@
   },
   "ragWorkbench": {
     "sampleDocument": "React Query ist eine Bibliothek für Server-State-Management in React-Anwendungen. Sie verwaltet Caching, Background Refetching, Retries, Ladezustände und Synchronisierung zwischen UI und entfernten Daten.\n\nEmbeddings sind numerische Repräsentationen von Bedeutung. Ein Satz, Dokument oder eine Frage kann in einen Vektor verwandelt werden, sodass ähnliche Ideen im Vektorraum nahe beieinander liegen.\n\nRetrieval Augmented Generation, auch RAG genannt, verbindet Suche mit Sprachgenerierung. Das System teilt ein Dokument in Chunks, erzeugt Embeddings dieser Chunks, ruft die relevantesten Teile für eine Nutzerfrage ab und injiziert sie in den Modellprompt.\n\nChunking ist wichtig, weil Sprachmodelle begrenzte Kontextfenster haben. Sind Chunks zu groß, wird Retrieval verrauscht. Sind sie zu klein, können wichtige Erklärungen auseinandergerissen werden.\n\nOverlap wiederholt einen kleinen Textteil zwischen benachbarten Chunks. Das bewahrt Kontext, wenn ein Absatz oder eine Idee über eine Chunk-Grenze läuft.\n\nTop-k Retrieval bedeutet, die k relevantesten Chunks für eine Anfrage auszuwählen. Ein niedriges k kann nützliche Evidenz verpassen, ein hohes k kann störenden Kontext hinzufügen.\n\nDer finale Generierungsschritt sollte mit den abgerufenen Chunks antworten und die Quell-Chunks zitieren. So wird die Antwort leichter prüfbar und unbelegte Aussagen werden reduziert.",
+    "tabs": {
+      "assistant": "Knowledge Assistant",
+      "assistantHint": "Stelle belegte Fragen zu einer Quelle.",
+      "workbench": "Pipeline Workbench",
+      "workbenchHint": "Prüfe Chunks, Retrieval und Prompt."
+    },
     "defaults": {
       "sourceTitle": "RAG-Lernnotizen",
       "question": "Warum sind Chunking und Overlap in RAG wichtig?"
+    },
+    "assistant": {
+      "defaults": {
+        "title": "Produkt-Onboarding-Notizen",
+        "question": "Was sollte ein neues Teammitglied zuerst verstehen?",
+        "knowledgeBase": "Blackbox AI Studio ist ein Lernarbeitsbereich für praktische KI-Entwicklung. Die RAG Workbench zeigt, wie Quelltext in Chunks geteilt, eingebettet, abgerufen und in belegte Antworten verwandelt wird.\n\nNeue Teammitglieder sollten verstehen, dass der Assistant nicht im offenen Internet sucht. Er antwortet nur aus der Knowledge Base, die in das Panel eingefügt wurde. Dadurch bleibt die Evidenz leicht prüfbar und die Demo vorhersehbar.\n\nEine gute RAG-Antwort sollte die abgerufene Evidenz erwähnen, Chunk-IDs zitieren und keine Aussagen machen, die nicht in der Quelle stehen. Wenn die Quelle unvollständig ist, sollte der Assistant sagen, dass die Antwort durch den verfügbaren Kontext begrenzt ist.\n\nDer beste Demo-Ablauf ist, ein kurzes Projektdokument einzufügen, eine konkrete Frage zu stellen, die Zitate zu prüfen und danach Knowledge Base oder Frage zu verfeinern, wenn die Antwort zu breit ist."
+      },
+      "header": {
+        "eyebrow": "Einfaches RAG-Modul",
+        "title": "Simple RAG Knowledge Assistant",
+        "description": "Füge eine kompakte Knowledge Base ein, stelle eine Frage und erhalte eine belegte Antwort mit Zitaten, Retrieval-Trace und Folgeprompts.",
+        "badge": "Backend: /api/v1/rag/assistant"
+      },
+      "knowledge": {
+        "title": "Knowledge Base",
+        "titleLabel": "Quelltitel",
+        "baseLabel": "Quelltext",
+        "wordCount": "{{count}} Wörter lokal indexiert."
+      },
+      "chat": {
+        "title": "Assistant",
+        "questionLabel": "Frage",
+        "submit": "Knowledge Assistant fragen",
+        "loading": "Evidenz wird abgerufen..."
+      },
+      "tones": {
+        "explanatory": "Erklärend",
+        "concise": "Kurz",
+        "support": "Support"
+      },
+      "answerModes": {
+        "local": "Lokal",
+        "localDescription": "Kein API-Key. Nutzt den lokalen Lern-Antwortgenerator.",
+        "openai": "OpenAI",
+        "openaiDescription": "Nutzt OpenAI für die finale Antwort nach lokalem Retrieval."
+      },
+      "empty": "Stelle eine Frage, um eine belegte Antwort, abgerufene Evidenz und den Assistant-Trace zu sehen.",
+      "answerLabel": "Belegte Antwort",
+      "metrics": {
+        "chunks": "Chunks",
+        "retrieved": "Abgerufen",
+        "latency": "Latenz",
+        "mode": "Antwortmodus",
+        "model": "Antwortmodell"
+      },
+      "panels": {
+        "citations": "Zitate",
+        "trace": "Assistant-Trace",
+        "suggestions": "Folgeprompts"
+      }
     },
     "header": {
       "eyebrow": "Retrieval Augmented Generation",

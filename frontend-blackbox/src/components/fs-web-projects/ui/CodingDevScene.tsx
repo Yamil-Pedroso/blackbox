@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 
 const nodeCode = `import express from "express";
 
@@ -84,7 +85,13 @@ export default function CodingDevScene() {
   }, [activeIndex, codeBlocks]);
 
   return (
-    <section className="relative mx-auto h-128 w-full max-w-240 overflow-hidden  border border-white/10 bg-[#09090f] p-3 shadow-2xl sm:h-144 sm:p-4 md:h-160 md:p-5 lg:h-180 lg:p-6">
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto h-128 w-full max-w-240 overflow-hidden  border border-white/10 bg-[#09090f] p-3 shadow-2xl sm:h-144 sm:p-4 md:h-160 md:p-5 lg:h-180 lg:p-6"
+    >
       <div className="absolute inset-0" />
 
       <div className="relative z-10 flex h-full flex-col overflow-hidden  border border-white/10 bg-[#11111a]/90 shadow-[0_0_60px_rgba(0,0,0,0.45)] backdrop-blur-xl ">
@@ -140,6 +147,6 @@ export default function CodingDevScene() {
           <span>{codeBlocks[activeIndex].language}</span>
         </footer>
       </div>
-    </section>
+    </motion.section>
   );
 }

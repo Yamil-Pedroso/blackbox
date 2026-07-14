@@ -7,6 +7,14 @@ export type RagQueryRequest = {
   topK: number;
 };
 
+export type RagAssistantRequest = {
+  knowledgeTitle?: string;
+  knowledgeBase: string;
+  question: string;
+  tone?: "concise" | "explanatory" | "support";
+  answerMode?: "local" | "openai";
+};
+
 export type RagChunk = {
   id: string;
   index: number;
@@ -46,4 +54,14 @@ export type RagQueryResponse = {
     model: string;
     durationMs: number;
   };
+};
+
+export type RagAssistantResponse = RagQueryResponse & {
+  mode: "simple-knowledge-assistant";
+  answerMode: "local" | "openai";
+  suggestions: string[];
+  trace: Array<{
+    step: string;
+    detail: string;
+  }>;
 };

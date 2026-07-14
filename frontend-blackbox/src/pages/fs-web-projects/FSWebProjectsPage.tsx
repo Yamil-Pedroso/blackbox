@@ -1,6 +1,7 @@
 import FeatureHeader from "@/components/common/header/FeatureHeader";
 import StackOverview from "@/components/fs-web-projects/StackOverview";
 import ProjectsGrid from "@/components/fs-web-projects/ProjectsGrid";
+import ProjectsMobileGrid from "@/components/fs-web-projects/ProjectsMobileGrid";
 import EngineeringFocus from "@/components/fs-web-projects/EngineeringFocus";
 import CodingDevScene from "@/components/fs-web-projects/ui/CodingDevScene";
 
@@ -14,6 +15,8 @@ const FSWebProjectsPage = () => {
       <CodingDevScene />
 
       <ProjectsGrid />
+
+      <ProjectsMobileGrid />
 
       <EngineeringFocus />
     </div>

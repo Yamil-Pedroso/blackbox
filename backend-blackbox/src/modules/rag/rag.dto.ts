@@ -6,3 +6,11 @@ export type RagQueryDto = {
   overlap: number;
   topK: number;
 };
+
+export type RagAssistantDto = {
+  knowledgeTitle?: string;
+  knowledgeBase: string;
+  question: string;
+  tone?: "concise" | "explanatory" | "support";
+  answerMode?: "local" | "openai";
+};

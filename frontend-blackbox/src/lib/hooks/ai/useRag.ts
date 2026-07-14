@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
-import { runRagQuery } from "../../../services/ai/ragService";
+import { runRagAssistant, runRagQuery } from "../../../services/ai/ragService";
 import type {
+  RagAssistantRequest,
+  RagAssistantResponse,
   RagQueryRequest,
   RagQueryResponse,
 } from "../../../types/ai/rag.types";
@@ -34,6 +36,36 @@ export function useRagQuery() {
 
     try {
       const response = await runRagQuery(input);
+      setData(response);
+      return response;
+    } catch (requestError) {
+      setData(null);
+      setError(getErrorMessage(requestError));
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const reset = useCallback(() => {
+    setData(null);
+    setError(null);
+  }, []);
+
+  return { data, isLoading, error, execute, reset };
+}
+
+export function useRagAssistant() {
+  const [data, setData] = useState<RagAssistantResponse | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const execute = useCallback(async (input: RagAssistantRequest) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await runRagAssistant(input);
       setData(response);
       return response;
     } catch (requestError) {

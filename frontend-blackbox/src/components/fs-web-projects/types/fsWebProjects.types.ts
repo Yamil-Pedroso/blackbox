@@ -26,6 +26,15 @@ export interface Project {
   demo?: string;
 }
 
+export interface MobileProject {
+  title: string;
+  description: string;
+  stack: string[];
+  status: string;
+  accent: string;
+  screens: string[];
+}
+
 export interface FocusPoint {
   icon: keyof typeof iconsMap;
   title: string;

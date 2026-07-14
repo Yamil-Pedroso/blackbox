@@ -1,4 +1,4 @@
-import { RagQueryDto } from "./rag.dto";
+import { RagAssistantDto, RagQueryDto } from "./rag.dto";
 
 export class RagValidationError extends Error {}
 
@@ -50,5 +50,35 @@ export function validateRagQueryDto(body: unknown): RagQueryDto {
     chunkSize,
     overlap,
     topK,
+  };
+}
+
+export function validateRagAssistantDto(body: unknown): RagAssistantDto {
+  const payload = body as Record<string, unknown>;
+  const knowledgeBase = assertText(payload.knowledgeBase, "knowledgeBase", 120);
+  const question = assertText(payload.question, "question", 8);
+  const allowedTones = ["concise", "explanatory", "support"] as const;
+  const allowedAnswerModes = ["local", "openai"] as const;
+  const tone = allowedTones.includes(
+    payload.tone as (typeof allowedTones)[number],
+  )
+    ? (payload.tone as RagAssistantDto["tone"])
+    : "explanatory";
+  const answerMode = allowedAnswerModes.includes(
+    payload.answerMode as (typeof allowedAnswerModes)[number],
+  )
+    ? (payload.answerMode as RagAssistantDto["answerMode"])
+    : "local";
+
+  return {
+    knowledgeBase,
+    question,
+    tone,
+    answerMode,
+    knowledgeTitle:
+      typeof payload.knowledgeTitle === "string" &&
+      payload.knowledgeTitle.trim()
+        ? payload.knowledgeTitle.trim()
+        : "Knowledge base",
   };
 }
