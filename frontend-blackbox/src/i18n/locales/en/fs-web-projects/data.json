@@ -107,6 +107,39 @@
         "image": "./images/fs-web-projects/codito-zeitung.webp",
         "caseStudy": "/blackbox/projects/codito-zeitung",
         "demo": "https://coditozeitung.yampe.dev/"
+      },
+      {
+        "title": "Flypnp",
+        "description": "Modern vacation rental platform for discovering unique stays, seamless booking, personalized recommendations and unforgettable travel experiences.",
+        "stack": [
+          "React 19",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS",
+          "React Router",
+          "Axios",
+          "Framer Motion",
+          "Lucide React",
+          "React Icons",
+          "Stripe",
+          "Google OAuth",
+          "React Toastify",
+          "Sonner",
+          "Vitest",
+          "Testing Library",
+          "Node.js",
+          "Express",
+          "MongoDB / Mongoose",
+          "JWT",
+          "Cloudinary",
+          "Multer",
+          "Helmet",
+          "Morgan",
+          "Supertest"
+        ],
+        "image": "./images/fs-web-projects/flypnp.webp",
+        "caseStudy": "/blackbox/projects/flypnp",
+        "demo": "https://flypnp.yampe.dev/"
       }
     ]
   },
