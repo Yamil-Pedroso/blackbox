@@ -149,14 +149,16 @@
     "title": "Mobile-App-Projekte",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lorem at justo tempor gravida.",
     "mockAction": "Flow speichern",
+    "testAndroid": "PriceRadar auf Android testen",
     "projects": [
       {
-        "title": "Lorem Mobile 01",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.",
+        "title": "Price Radar",
+        "description": "PriceRadar ist eine Community-basierte mobile App, mit der Nutzer Preise in nahegelegenen Supermärkten vergleichen können. Scanne den Barcode eines Produkts, entdecke die besten lokalen Preise und teile aktuelle Preise mit anderen Käufern.",
         "stack": ["React Native", "Expo", "TypeScript"],
-        "status": "Lorem",
-        "accent": "#6b7280",
-        "screens": ["Lorem", "Ipsum", "Dolor"]
+        "status": "Android APK",
+        "accent": "#22c55e",
+        "screens": ["Bester Preis", "In der Nähe", "Barcode scannen"],
+        "downloadUrl": "https://priceradar-api.yampe.dev/downloads/PriceRadar.apk"
       },
       {
         "title": "Lorem Mobile 02",

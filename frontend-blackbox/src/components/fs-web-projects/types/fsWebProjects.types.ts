@@ -33,6 +33,7 @@ export interface MobileProject {
   status: string;
   accent: string;
   screens: string[];
+  downloadUrl?: string;
 }
 
 export interface FocusPoint {

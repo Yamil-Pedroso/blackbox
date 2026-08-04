@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { FiBattery, FiHeart, FiHome, FiSearch, FiUser } from "react-icons/fi";
+import {
+  FiBattery,
+  FiDownload,
+  FiHeart,
+  FiHome,
+  FiSearch,
+  FiUser,
+} from "react-icons/fi";
 import type { MobileProject } from "./types/fsWebProjects.types";
 
 const ProjectsMobileGrid = () => {
@@ -75,6 +82,18 @@ const ProjectsMobileGrid = () => {
                   </span>
                 ))}
               </div>
+
+              {project.downloadUrl && (
+                <a
+                  href={project.downloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center gap-2 rounded-md bg-green px-3 py-2.5 text-sm font-semibold text-black transition hover:brightness-95"
+                >
+                  <FiDownload aria-hidden="true" />
+                  {t("mobileProjectsGrid.testAndroid")}
+                </a>
+              )}
             </div>
           </motion.article>
         ))}
