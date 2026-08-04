@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import FeatureHeader from "./common/header/FeatureHeader";
-import { Glitch } from "./canvasui/Glitch";
 import assets from "../assets";
 
 type ModuleKey =
@@ -117,31 +116,30 @@ const MainContent = () => {
   }, []);
 
   return (
-    <Glitch interval={10}>
-      <div ref={containerRef} className="bg-main-bg">
-        <div className="px-6 sm:px-8 md:px-12 xl:px-8 py-8 md:py-16 xl:py-8 space-y-8 max-w-7xl mx-auto">
-          <FeatureHeader label="home" content="home" />
+    <div ref={containerRef} className="bg-main-bg">
+      <div className="px-6 sm:px-8 md:px-12 xl:px-8 py-8 md:py-16 xl:py-8 space-y-8 max-w-7xl mx-auto">
+        <FeatureHeader label="home" content="home" />
 
-          <section className="space-y-10">
-            <div className="hero-animate">
-              <SectionLabel text={t("modulesLabel")} />
-            </div>
+        <section className="space-y-10">
+          <div className="hero-animate">
+            <SectionLabel text={t("modulesLabel")} />
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 xl:gap-10">
-              {modules.map((module) => (
-                <Link
-                  key={module.key}
-                  to={module.to}
-                  className="mx-auto block w-fit max-w-full"
-                >
-                  <motion.div
-                    whileHover={{ y: -8, scale: 1.015 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 18,
-                    }}
-                    className="
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 xl:gap-10">
+            {modules.map((module) => (
+              <Link
+                key={module.key}
+                to={module.to}
+                className="mx-auto block w-fit max-w-full"
+              >
+                <motion.div
+                  whileHover={{ y: -8, scale: 1.015 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 18,
+                  }}
+                  className="
                     modules-animate
                     group relative mx-auto w-full max-w-76
                     cursor-pointer border border-neutral-800 bg-secondary-bg p-2
@@ -149,66 +147,65 @@ const MainContent = () => {
                     transition-colors duration-500 hover:border-green/60
                     hover:shadow-[0_26px_64px_rgba(0,0,0,0.44)]
                   "
-                  >
-                    <article className="relative flex aspect-[0.58] min-h-120 overflow-hidden border border-neutral-800 bg-main-bg text-white">
-                      <img
-                        src={module.image}
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute -top-10 inset-0 h-full w-full object-cover grayscale opacity-55 transition duration-700 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-70"
-                      />
-                      <div className="absolute inset-0 bg-[linear-gradient(rgba(91,238,108,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(91,238,108,0.07)_1px,transparent_1px)] bg-size-[28px_28px]" />
+                >
+                  <article className="relative flex aspect-[0.58] min-h-120 overflow-hidden border border-neutral-800 bg-main-bg text-white">
+                    <img
+                      src={module.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute -top-10 inset-0 h-full w-full object-cover grayscale opacity-55 transition duration-700 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-70"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(91,238,108,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(91,238,108,0.07)_1px,transparent_1px)] bg-size-[28px_28px]" />
 
-                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black via-black/80 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black via-black/80 to-transparent" />
 
-                      <div className="absolute left-4 right-4 top-4 flex items-center justify-between border border-neutral-800 bg-black/55 px-3 py-2 backdrop-blur-sm">
-                        <div className="flex gap-1.5">
-                          {["Q", "K", "V"].map((label) => (
-                            <span
-                              key={label}
-                              className="grid size-6 place-items-center border border-green/40 font-ibm-plex-mono text-[10px] text-green"
-                            >
-                              {label}
-                            </span>
-                          ))}
-                        </div>
-                        <span className="font-ibm-plex-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
-                          module
-                        </span>
+                    <div className="absolute left-4 right-4 top-4 flex items-center justify-between border border-neutral-800 bg-black/55 px-3 py-2 backdrop-blur-sm">
+                      <div className="flex gap-1.5">
+                        {["Q", "K", "V"].map((label) => (
+                          <span
+                            key={label}
+                            className="grid size-6 place-items-center border border-green/40 font-ibm-plex-mono text-[10px] text-green"
+                          >
+                            {label}
+                          </span>
+                        ))}
                       </div>
+                      <span className="font-ibm-plex-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
+                        module
+                      </span>
+                    </div>
 
-                      <div className="relative z-10 mt-auto flex h-full flex-col justify-end p-5">
-                        <span className="mb-3 w-fit border border-green/30 px-2 py-1 font-ibm-plex-mono text-[9px] uppercase tracking-[0.16em] text-green">
-                          {module.meta}
-                        </span>
+                    <div className="relative z-10 mt-auto flex h-full flex-col justify-end p-5">
+                      <span className="mb-3 w-fit border border-green/30 px-2 py-1 font-ibm-plex-mono text-[9px] uppercase tracking-[0.16em] text-green">
+                        {module.meta}
+                      </span>
 
-                        <h3 className="font-geist text-2xl font-medium leading-none text-primary md:text-2xl">
-                          {t(`modules.${module.key}.title`)}
-                        </h3>
+                      <h3 className="font-geist text-2xl font-medium leading-none text-primary md:text-2xl">
+                        {t(`modules.${module.key}.title`)}
+                      </h3>
 
-                        <p className="mt-4 line-clamp-3 min-h-[4.5rem] border-l border-green/40 pl-3 font-ibm-plex-mono text-xs leading-relaxed text-secondary">
-                          {t(`modules.${module.key}.description`)}
-                        </p>
+                      <p className="mt-4 line-clamp-3 min-h-[4.5rem] border-l border-green/40 pl-3 font-ibm-plex-mono text-xs leading-relaxed text-secondary">
+                        {t(`modules.${module.key}.description`)}
+                      </p>
 
-                        <span className="mt-6 inline-flex h-11 w-full items-center justify-center border border-green/40 bg-green px-5 font-ibm-plex-mono text-xs font-semibold uppercase tracking-[0.12em] text-black transition duration-300 group-hover:border-green group-hover:bg-transparent group-hover:text-green">
-                          {t("moduleCta")}
-                        </span>
-                      </div>
-                    </article>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </section>
+                      <span className="mt-6 inline-flex h-11 w-full items-center justify-center border border-green/40 bg-green px-5 font-ibm-plex-mono text-xs font-semibold uppercase tracking-[0.12em] text-black transition duration-300 group-hover:border-green group-hover:bg-transparent group-hover:text-green">
+                        {t("moduleCta")}
+                      </span>
+                    </div>
+                  </article>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-          <section className="pt-16 md:pt-20 border-t border-neutral-800">
-            <p className="footer-animate text-secondary font-ibm-plex-mono text-sm md:text-base max-w-xl">
-              {t("footer")}
-            </p>
-          </section>
-        </div>
+        <section className="pt-16 md:pt-20 border-t border-neutral-800">
+          <p className="footer-animate text-secondary font-ibm-plex-mono text-sm md:text-base max-w-xl">
+            {t("footer")}
+          </p>
+        </section>
       </div>
-    </Glitch>
+    </div>
   );
 };
 
