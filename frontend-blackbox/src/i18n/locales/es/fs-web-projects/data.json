@@ -149,7 +149,11 @@
     "title": "Proyectos Mobile App",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lorem at justo tempor gravida.",
     "mockAction": "Guardar flujo",
-    "testAndroid": "Probar PriceRadar en Android",
+    "testAndroid": "Probar en Android",
+    "scanToDownload": "Escanea para descargar",
+    "androidOnly": "Abre el código QR con un teléfono Android",
+    "testIos": "Probar en iOS",
+    "iosTooltip": "En desarrollo",
     "projects": [
       {
         "title": "Price Radar",

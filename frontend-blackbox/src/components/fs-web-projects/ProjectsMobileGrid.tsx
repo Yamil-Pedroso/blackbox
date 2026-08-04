@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
+import { QRCodeSVG } from "qrcode.react";
 import { useTranslation } from "react-i18next";
 import {
   FiBattery,
-  FiDownload,
   FiHeart,
   FiHome,
   FiSearch,
   FiUser,
 } from "react-icons/fi";
+import { FaAndroid, FaApple } from "react-icons/fa";
 import type { MobileProject } from "./types/fsWebProjects.types";
+import Tooltip from "./ui/Tooltip";
 
 const ProjectsMobileGrid = () => {
   const { t } = useTranslation("fullStackProjects");
@@ -84,15 +86,60 @@ const ProjectsMobileGrid = () => {
               </div>
 
               {project.downloadUrl && (
-                <a
-                  href={project.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-md bg-green px-3 py-2.5 text-sm font-semibold text-black transition hover:brightness-95"
-                >
-                  <FiDownload aria-hidden="true" />
-                  {t("mobileProjectsGrid.testAndroid")}
-                </a>
+                <div className="space-y-3 border-t border-border pt-4">
+                  <div className="flex flex-col items-center gap-3 rounded-lg bg-muted p-4 text-center">
+                    <a
+                      href={project.downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={t("mobileProjectsGrid.testAndroid")}
+                      className="rounded-lg bg-white p-2 shadow-sm transition hover:scale-[1.02]"
+                    >
+                      <QRCodeSVG
+                        value={project.downloadUrl}
+                        size={112}
+                        level="M"
+                        marginSize={1}
+                        title={t("mobileProjectsGrid.scanToDownload")}
+                      />
+                    </a>
+                    <div>
+                      <p className="text-sm font-semibold text-primary">
+                        {t("mobileProjectsGrid.scanToDownload")}
+                      </p>
+                      <p className="mt-1 text-xs text-secondary">
+                        {t("mobileProjectsGrid.androidOnly")}
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={project.downloadUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2 rounded-md bg-green px-3 py-2.5 text-sm font-semibold text-black transition hover:brightness-95"
+                  >
+                    <FaAndroid aria-hidden="true" />
+                    {t("mobileProjectsGrid.testAndroid")}
+                  </a>
+
+                  <div className="[&>div]:w-full">
+                    <Tooltip
+                      text={t("mobileProjectsGrid.iosTooltip")}
+                      className="border border-border bg-secondary-bg text-primary"
+                    >
+                      <button
+                        type="button"
+                        disabled
+                        aria-label={`${t("mobileProjectsGrid.testIos")}: ${t("mobileProjectsGrid.iosTooltip")}`}
+                        className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-md border border-border bg-muted px-3 py-2.5 text-sm font-semibold text-secondary opacity-70"
+                      >
+                        <FaApple aria-hidden="true" />
+                        {t("mobileProjectsGrid.testIos")}
+                      </button>
+                    </Tooltip>
+                  </div>
+                </div>
               )}
             </div>
           </motion.article>

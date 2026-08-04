@@ -150,6 +150,10 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lorem at justo tempor gravida.",
     "mockAction": "Save flow",
     "testAndroid": "Test on Android",
+    "scanToDownload": "Scan to download",
+    "androidOnly": "Open the QR code with an Android phone",
+    "testIos": "Test on iOS",
+    "iosTooltip": "In development",
     "projects": [
       {
         "title": "Price Radar",

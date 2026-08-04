@@ -8,7 +8,7 @@ type Props = {
 
 export default function Tooltip({ text, className = "", children }: Props) {
   return (
-    <div className={`relative inline-flex group`}>
+    <div className={`group/tooltip relative inline-flex`}>
       {children}
 
       <div
@@ -18,7 +18,7 @@ export default function Tooltip({ text, className = "", children }: Props) {
         -translate-x-1/2
         mb-2
         opacity-0 translate-y-2
-        group-hover:opacity-100 group-hover:translate-y-0
+        group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0
         transition-all duration-200 ease-out
         text-xs
         px-3 py-1.5
